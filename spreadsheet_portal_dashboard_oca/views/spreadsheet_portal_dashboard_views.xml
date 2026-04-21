@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Search -->
+    <record id="spreadsheet_portal_dashboard_view_search" model="ir.ui.view">
+        <field name="name">spreadsheet.portal.dashboard.search</field>
+        <field name="model">spreadsheet.portal.dashboard</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="dashboard_id" />
+                <field name="partner_ids" />
+                <filter
+                    name="all_portal"
+                    string="All Portal Users"
+                    domain="[('all_portal_users', '=', True)]"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- List -->
+    <record id="spreadsheet_portal_dashboard_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.portal.dashboard.list</field>
+        <field name="model">spreadsheet.portal.dashboard</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="dashboard_id" />
+                <field name="all_portal_users" />
+                <field name="partner_ids" widget="many2many_tags" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="spreadsheet_portal_dashboard_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.portal.dashboard.form</field>
+        <field name="model">spreadsheet.portal.dashboard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="active" invisible="1" />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="text-bg-danger"
+                        invisible="active"
+                    />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Dashboard name..." />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Dashboard">
+                            <field name="dashboard_id" />
+                            <field name="sequence" />
+                            <field name="description" />
+                        </group>
+                        <group string="Access">
+                            <field name="all_portal_users" />
+                            <field
+                                name="partner_ids"
+                                widget="many2many_tags"
+                                invisible="all_portal_users"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="spreadsheet_portal_dashboard_act_window" model="ir.actions.act_window">
+        <field name="name">Portal Dashboards</field>
+        <field name="res_model">spreadsheet.portal.dashboard</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu under Spreadsheets > Configuration -->
+    <record id="menu_portal_dashboards" model="ir.ui.menu">
+        <field name="name">Portal Dashboards</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="spreadsheet_portal_dashboard_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="30" />
+    </record>
+</odoo>

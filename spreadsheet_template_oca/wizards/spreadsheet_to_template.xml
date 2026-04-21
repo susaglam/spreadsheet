@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="spreadsheet_to_template_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.to.template.view.form</field>
+        <field name="model">spreadsheet.to.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="name" />
+                        <field name="category_id" options="{'no_open': True}" />
+                    </group>
+                    <group>
+                        <field name="description" />
+                    </group>
+                </group>
+                <footer>
+                    <button
+                        string="Save as Template"
+                        name="create_template"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

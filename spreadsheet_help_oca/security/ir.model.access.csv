@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_spreadsheet_tutorial_user,spreadsheet.tutorial.user,model_spreadsheet_tutorial,spreadsheet_oca.group_user,1,0,0,0
+access_spreadsheet_tutorial_manager,spreadsheet.tutorial.manager,model_spreadsheet_tutorial,spreadsheet_oca.group_manager,1,1,1,1
+access_sample_data_loader,spreadsheet.sample.data.loader,model_spreadsheet_sample_data_loader,spreadsheet_oca.group_user,1,1,1,1

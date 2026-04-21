@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="dashboard_rule_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.dashboard.rule.list</field>
+        <field name="model">spreadsheet.dashboard.rule</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="dashboard_id" />
+                <field name="model_name" />
+                <field name="group_ids" widget="many2many_tags" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="dashboard_rule_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.dashboard.rule.form</field>
+        <field name="model">spreadsheet.dashboard.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="dashboard_id" />
+                            <field name="model_name" />
+                            <field name="sequence" />
+                            <field name="active" />
+                        </group>
+                        <group>
+                            <field name="group_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                    <group string="Domain Extension">
+                        <field
+                            name="domain_extension"
+                            placeholder="[('user_id', '=', user.id)]"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dashboard_rule_act_window" model="ir.actions.act_window">
+        <field name="name">Dashboard Data Filters</field>
+        <field name="res_model">spreadsheet.dashboard.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="menu_dashboard_rules" model="ir.ui.menu">
+        <field name="name">Dashboard Data Filters</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="dashboard_rule_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="sequence" eval="40" />
+    </record>
+</odoo>

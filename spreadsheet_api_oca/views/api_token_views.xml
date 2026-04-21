@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="api_token_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.api.token.list</field>
+        <field name="model">spreadsheet.api.token</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="user_id" />
+                <field name="last_used" />
+                <field name="usage_count" />
+                <field name="expires_at" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="api_token_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.api.token.form</field>
+        <field name="model">spreadsheet.api.token</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_regenerate_token"
+                        type="object"
+                        string="Regenerate Token"
+                        class="btn-warning"
+                        icon="fa-refresh"
+                        confirm="Regenerating will invalidate the current token. Continue?"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" />
+                            <field name="expires_at" />
+                            <field name="active" />
+                        </group>
+                        <group>
+                            <field name="token" password="0" />
+                            <field name="last_used" />
+                            <field name="usage_count" />
+                        </group>
+                    </group>
+                    <group
+                        string="Allowed Spreadsheets"
+                        help="Leave empty to grant access to all spreadsheets the user can read."
+                    >
+                        <field
+                            name="spreadsheet_ids"
+                            widget="many2many_tags"
+                            nolabel="1"
+                        />
+                    </group>
+                    <notebook>
+                        <page string="Rate Limiting &amp; Webhook" name="advanced">
+                            <group>
+                                <group string="Rate Limiting">
+                                    <field name="rate_limit_per_minute" />
+                                    <field name="rate_limit_exceeded_count" />
+                                </group>
+                                <group string="Webhook">
+                                    <field
+                                        name="webhook_url"
+                                        placeholder="https://example.com/hook"
+                                    />
+                                </group>
+                            </group>
+                            <separator string="Webhook Delivery Log" />
+                            <field name="webhook_event_ids" readonly="1">
+                                <list>
+                                    <field name="create_date" />
+                                    <field name="event_type" />
+                                    <field name="spreadsheet_id" />
+                                    <field name="response_status" />
+                                    <field name="retry_count" />
+                                    <field name="delivered" widget="boolean_toggle" />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="API Usage" name="usage">
+                            <div>
+                                <p>
+                                    <strong>Example API calls:</strong>
+                                </p>
+                                <pre>GET /api/spreadsheet/list
+  Authorization: Bearer YOUR_TOKEN
+
+GET /api/spreadsheet/&lt;id&gt;
+  Authorization: Bearer YOUR_TOKEN
+
+GET /api/spreadsheet/&lt;id&gt;/cells?sheet=Dashboard
+  Authorization: Bearer YOUR_TOKEN</pre>
+                                <p>
+                                    <strong>Webhook payload format:</strong>
+                                </p>
+                                <pre>{
+  "event": "update",
+  "spreadsheet_id": 1,
+  "spreadsheet_name": "Sales Q1",
+  "timestamp": "2026-01-15T10:30:00"
+}</pre>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="api_token_act_window" model="ir.actions.act_window">
+        <field name="name">API Tokens</field>
+        <field name="res_model">spreadsheet.api.token</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="menu_api_tokens" model="ir.ui.menu">
+        <field name="name">API Tokens</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="api_token_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="50" />
+    </record>
+</odoo>

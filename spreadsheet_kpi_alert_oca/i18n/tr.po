@@ -1,0 +1,157 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_kpi_alert_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: Turkish (tr)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Active"
+msgstr "Aktif"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Alert Condition"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Also send an email notification when triggered."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Cell Reference"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Cell reference (e.g., B2, C10) to monitor."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Condition"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Cooldown (hours)"
+msgstr "Bekleme (saat)"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Default KPI Alert Cooldown (hours)"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Default cooldown period between repeated alert notifications."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Group By"
+msgstr "Gruplama"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "KPI Alert: Manager Full Access"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "KPI Alert: Owner/Contributor Access"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "KPI Alerts"
+msgstr "KPI Uyarilari"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Last Known Value"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Last evaluated cell value, updated by the JS client."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Minimum hours between repeated alert notifications."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Name of the sheet containing the cell to monitor."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Notification"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Notification sent for "
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Notify Users"
+msgstr "Bildirilen Kullanicilar"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Recently Triggered"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Send Email"
+msgstr "E-posta Gonder"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Send Email by Default on KPI Alert"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Send an email alongside Discuss inbox notification by default."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Spreadsheet"
+msgstr "E-tablo"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Spreadsheet KPI Alert"
+msgstr "KPI Uyari Sistemi"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Spreadsheet: KPI Alert Threshold Check"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Status"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Test"
+msgstr "Test"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Test Alert"
+msgstr "Uyariyi Test Et"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Test Alert Sent"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Threshold"
+msgstr "Esik Degeri"
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "Users to notify when the threshold is breached."
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "e.g. B2"
+msgstr ""
+
+#. module: spreadsheet_kpi_alert_oca
+msgid "e.g. Revenue Alert"
+msgstr ""
+

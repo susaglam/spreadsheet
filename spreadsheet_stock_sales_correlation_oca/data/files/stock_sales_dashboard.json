@@ -1,0 +1,627 @@
+{
+  "version": 12,
+  "sheets": [
+    {
+      "id": "sheet1",
+      "name": "Dashboard",
+      "colNumber": 9,
+      "rowNumber": 70,
+      "rows": {
+        "6": {
+          "size": 40
+        }
+      },
+      "cols": {
+        "0": {
+          "size": 75
+        },
+        "1": {
+          "size": 75
+        },
+        "2": {
+          "size": 175
+        },
+        "3": {
+          "size": 175
+        },
+        "4": {
+          "size": 100
+        },
+        "5": {
+          "size": 50
+        },
+        "6": {
+          "size": 175
+        },
+        "7": {
+          "size": 100
+        },
+        "8": {
+          "size": 75
+        }
+      },
+      "merges": [],
+      "cells": {
+        "A7": {
+          "style": 1,
+          "content": "[Top Moving Products](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[[\"sales_count\", \">\", 0]],\"context\":{},\"modelName\":\"product.product\",\"views\":[[false,\"list\"],[false,\"form\"]]},\"threshold\":0,\"name\":\"Top Moving Products\"})",
+          "border": 1
+        },
+        "A8": {
+          "style": 2,
+          "content": "=_t(\"Product\")",
+          "border": 2
+        },
+        "B8": {
+          "style": 2,
+          "content": "=_t(\"In Stock\")",
+          "border": 2
+        },
+        "C8": {
+          "style": 2,
+          "content": "=_t(\"Sold\")",
+          "border": 2
+        },
+        "D8": {
+          "style": 2,
+          "content": "=_t(\"Price\")",
+          "border": 2
+        },
+        "A9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"name\")"
+        },
+        "B9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"qty_available\")"
+        },
+        "C9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"sales_count\")"
+        },
+        "D9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"list_price\")"
+        },
+        "A10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"name\")"
+        },
+        "B10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"qty_available\")"
+        },
+        "C10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"sales_count\")"
+        },
+        "D10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"list_price\")"
+        },
+        "A11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"name\")"
+        },
+        "B11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"qty_available\")"
+        },
+        "C11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"sales_count\")"
+        },
+        "D11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"list_price\")"
+        },
+        "A12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"name\")"
+        },
+        "B12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"qty_available\")"
+        },
+        "C12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"sales_count\")"
+        },
+        "D12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"list_price\")"
+        },
+        "A13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"name\")"
+        },
+        "B13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"qty_available\")"
+        },
+        "C13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"sales_count\")"
+        },
+        "D13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"list_price\")"
+        },
+        "A14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"name\")"
+        },
+        "B14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"qty_available\")"
+        },
+        "C14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"sales_count\")"
+        },
+        "D14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"list_price\")"
+        },
+        "A15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"name\")"
+        },
+        "B15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"qty_available\")"
+        },
+        "C15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"sales_count\")"
+        },
+        "D15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"list_price\")"
+        },
+        "A16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"name\")"
+        },
+        "B16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"qty_available\")"
+        },
+        "C16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"sales_count\")"
+        },
+        "D16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"list_price\")"
+        },
+        "A17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"name\")"
+        },
+        "B17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"qty_available\")"
+        },
+        "C17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"sales_count\")"
+        },
+        "D17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"list_price\")"
+        },
+        "A18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"name\")"
+        },
+        "B18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"qty_available\")"
+        },
+        "C18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"sales_count\")"
+        },
+        "D18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"list_price\")"
+        }
+      },
+      "figures": [
+        {
+          "id": "sc-1-stocksales",
+          "x": 0,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Products in Stock",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E2",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D2"
+          }
+        },
+        {
+          "id": "sc-2-stocksales",
+          "x": 210,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Products Sold",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E3",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D3"
+          }
+        },
+        {
+          "id": "sc-3-stocksales",
+          "x": 420,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Out of Stock",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E4",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D4"
+          }
+        },
+        {
+          "id": "sc-4-stocksales",
+          "x": 630,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Avg Turnover",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E5",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D5"
+          }
+        },
+        {
+          "id": "chart-stocksales",
+          "x": 0,
+          "y": 178,
+          "width": 1000,
+          "height": 230,
+          "tag": "chart",
+          "data": {
+            "title": "",
+            "background": "#FFFFFF",
+            "legendPosition": "none",
+            "metaData": {
+              "groupBy": ["date:week"],
+              "measure": "quantity",
+              "order": null,
+              "resModel": "stock.move"
+            },
+            "searchParams": {
+              "comparison": null,
+              "context": {},
+              "domain": [["state", "=", "done"]],
+              "groupBy": ["date:week"],
+              "orderBy": []
+            },
+            "type": "odoo_line",
+            "verticalAxisPosition": "left"
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      }
+    },
+    {
+      "id": "data-stocksales",
+      "name": "Data",
+      "colNumber": 10,
+      "rowNumber": 50,
+      "rows": {},
+      "cols": {},
+      "merges": [],
+      "cells": {
+        "A1": {
+          "style": 5,
+          "content": "=_t(\"KPI\")"
+        },
+        "B1": {
+          "style": 5,
+          "content": "=_t(\"Current\")"
+        },
+        "C1": {
+          "style": 5,
+          "content": "=_t(\"Previous\")"
+        },
+        "D1": {
+          "style": 5,
+          "content": "=_t(\"Current\")"
+        },
+        "E1": {
+          "style": 5,
+          "content": "=_t(\"Previous\")"
+        },
+        "A2": {
+          "content": "=_t(\"Products in Stock\")"
+        },
+        "B2": {
+          "content": "=ODOO.PIVOT(10,\"qty_available\")"
+        },
+        "C2": {
+          "content": "=ODOO.PIVOT(11,\"qty_available\")"
+        },
+        "D2": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B2)"
+        },
+        "E2": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C2)"
+        },
+        "A3": {
+          "content": "=_t(\"Products Sold\")"
+        },
+        "B3": {
+          "content": "=ODOO.PIVOT(10,\"sales_count\")"
+        },
+        "C3": {
+          "content": "=ODOO.PIVOT(11,\"sales_count\")"
+        },
+        "D3": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B3)"
+        },
+        "E3": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C3)"
+        },
+        "A4": {
+          "content": "=_t(\"Out of Stock\")"
+        },
+        "B4": {
+          "content": "=ODOO.PIVOT(10,\"__count\")"
+        },
+        "C4": {
+          "content": "=ODOO.PIVOT(11,\"__count\")"
+        },
+        "D4": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B4)"
+        },
+        "E4": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C4)"
+        },
+        "A5": {
+          "content": "=_t(\"Avg Turnover\")"
+        },
+        "B5": {
+          "content": "=ODOO.PIVOT(10,\"qty_available\")"
+        },
+        "C5": {
+          "content": "=ODOO.PIVOT(11,\"qty_available\")"
+        },
+        "D5": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B5)"
+        },
+        "E5": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C5)"
+        }
+      },
+      "figures": [],
+      "areGridLinesVisible": true,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      }
+    }
+  ],
+  "entities": {},
+  "styles": {
+    "1": {
+      "textColor": "#01666b",
+      "bold": true,
+      "fontSize": 16
+    },
+    "2": {
+      "bold": true,
+      "fillColor": ""
+    },
+    "3": {
+      "fillColor": "#f2f2f2",
+      "textColor": "#01666b"
+    },
+    "4": {
+      "textColor": "#01666b"
+    },
+    "5": {
+      "bold": true
+    },
+    "15": {
+      "bold": true,
+      "fontSize": 14
+    }
+  },
+  "formats": {},
+  "borders": {
+    "1": {
+      "bottom": ["thin", "#000"]
+    },
+    "2": {
+      "top": ["thin", "#000"]
+    }
+  },
+  "revisionId": "START_REVISION",
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "m/d/yyyy",
+      "timeFormat": "hh:mm:ss a",
+      "formulaArgSeparator": ","
+    }
+  },
+  "chartOdooMenusReferences": {},
+  "odooVersion": 4,
+  "lists": {
+    "1": {
+      "columns": ["name", "qty_available", "sales_count", "list_price"],
+      "domain": [["sales_count", ">", 0]],
+      "model": "product.product",
+      "context": {},
+      "orderBy": [
+        {
+          "name": "sales_count",
+          "asc": false
+        }
+      ],
+      "id": "1",
+      "name": "Top Moving Products"
+    }
+  },
+  "listNextId": 2,
+  "pivots": {
+    "1": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["state", "=", "done"]],
+      "id": "1",
+      "measures": [
+        {
+          "field": "quantity"
+        }
+      ],
+      "model": "stock.move",
+      "rowGroupBys": ["date:week"],
+      "name": "Stock vs Sales",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "quantity",
+        "order": "desc"
+      }
+    },
+    "10": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["type", "=", "consu"]],
+      "id": "10",
+      "measures": [
+        {
+          "field": "qty_available"
+        },
+        {
+          "field": "sales_count"
+        },
+        {
+          "field": "__count"
+        },
+        {
+          "field": "qty_available"
+        }
+      ],
+      "model": "product.product",
+      "rowGroupBys": [],
+      "name": "Stock vs Sales - current",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "qty_available",
+        "order": "desc"
+      }
+    },
+    "11": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["type", "=", "consu"]],
+      "id": "11",
+      "measures": [
+        {
+          "field": "qty_available"
+        },
+        {
+          "field": "sales_count"
+        },
+        {
+          "field": "__count"
+        },
+        {
+          "field": "qty_available"
+        }
+      ],
+      "model": "product.product",
+      "rowGroupBys": [],
+      "name": "Stock vs Sales - previous",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "qty_available",
+        "order": "desc"
+      }
+    }
+  },
+  "pivotNextId": 12,
+  "globalFilters": [
+    {
+      "id": "date-stocksales",
+      "type": "date",
+      "label": "Period",
+      "defaultValue": "last_three_months",
+      "rangeType": "relative",
+      "defaultsToCurrentPeriod": false,
+      "pivotFields": {
+        "1": {
+          "field": "create_date",
+          "type": "datetime",
+          "offset": 0
+        },
+        "10": {
+          "field": "create_date",
+          "type": "datetime",
+          "offset": 0
+        },
+        "11": {
+          "field": "create_date",
+          "type": "datetime",
+          "offset": -1
+        }
+      },
+      "listFields": {
+        "1": {
+          "field": "create_date",
+          "type": "datetime",
+          "offset": 0
+        }
+      }
+    }
+  ]
+}

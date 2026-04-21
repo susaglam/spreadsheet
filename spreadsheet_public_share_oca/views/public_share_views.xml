@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="public_share_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.public.share.list</field>
+        <field name="model">spreadsheet.public.share</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="view_count" />
+                <field name="last_viewed" />
+                <field name="expires_at" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="public_share_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.public.share.form</field>
+        <field name="model">spreadsheet.public.share</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_regenerate_token"
+                        type="object"
+                        string="Regenerate Link"
+                        class="btn-warning"
+                        icon="fa-refresh"
+                        confirm="The old link will stop working. Continue?"
+                    />
+                    <button
+                        name="action_copy_link"
+                        type="object"
+                        string="Show Link"
+                        class="btn-primary"
+                        icon="fa-link"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Share Settings">
+                            <field name="spreadsheet_id" />
+                            <field name="expires_at" />
+                            <field
+                                name="password"
+                                password="0"
+                                placeholder="Optional password protection"
+                            />
+                            <field name="allow_download" />
+                            <field name="active" />
+                        </group>
+                        <group string="Statistics">
+                            <field name="view_count" />
+                            <field name="last_viewed" />
+                            <field name="created_by_id" />
+                        </group>
+                    </group>
+                    <group string="Share Link">
+                        <field
+                            name="share_url"
+                            widget="CopyClipboardChar"
+                            readonly="1"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="public_share_act_window" model="ir.actions.act_window">
+        <field name="name">Public Share Links</field>
+        <field name="res_model">spreadsheet.public.share</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="menu_public_shares" model="ir.ui.menu">
+        <field name="name">Public Share Links</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="public_share_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="80" />
+    </record>
+</odoo>

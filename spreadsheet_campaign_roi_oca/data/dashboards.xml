@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="spreadsheet_dashboard_campaign_roi" model="spreadsheet.dashboard">
+        <field name="name">Campaign ROI</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_campaign_roi_oca/data/files/campaign_roi_dashboard.json"
+        />
+        <field
+            name="dashboard_group_id"
+            ref="spreadsheet_dashboard.spreadsheet_dashboard_group_sales"
+        />
+        <field
+            name="group_ids"
+            eval="[Command.link(ref('mass_mailing.group_mass_mailing_user'))]"
+        />
+        <field name="sequence">140</field>
+    </record>
+</odoo>

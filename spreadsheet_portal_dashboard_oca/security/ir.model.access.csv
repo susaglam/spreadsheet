@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_portal_dashboard_portal,spreadsheet.portal.dashboard.portal,model_spreadsheet_portal_dashboard,base.group_portal,1,0,0,0
+access_portal_dashboard_user,spreadsheet.portal.dashboard.user,model_spreadsheet_portal_dashboard,spreadsheet_oca.group_user,1,1,1,1
+access_spreadsheet_dashboard_portal,spreadsheet.dashboard.portal.read,spreadsheet_dashboard.model_spreadsheet_dashboard,base.group_portal,1,0,0,0

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- "Templates" menu under the Spreadsheets app -->
+    <record id="menu_spreadsheet_templates" model="ir.ui.menu">
+        <field name="name">Templates</field>
+        <field name="parent_id" ref="spreadsheet_oca.spreadsheet_spreadsheet_menu" />
+        <field name="action" ref="spreadsheet_template_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="17" />
+    </record>
+
+    <!-- "Template Categories" under Configuration -->
+    <record id="menu_spreadsheet_template_categories" model="ir.ui.menu">
+        <field name="name">Template Categories</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="spreadsheet_template_category_act_window" />
+        <field
+            name="group_ids"
+            eval="[(4, ref('spreadsheet_template_oca.group_template_manager'))]"
+        />
+        <field name="sequence" eval="10" />
+    </record>
+</odoo>

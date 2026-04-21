@@ -1,0 +1,105 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_api_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: Dutch (nl)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_api_oca
+msgid "API Tokens"
+msgstr "API Tokens"
+
+#. module: spreadsheet_api_oca
+msgid "API Usage"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "API calls use this user"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Allowed Spreadsheets"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Default API Rate Limit (per minute)"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Default Token Expiry (days, 0 = no expiry)"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Default expiry for new API tokens (0 = no expiry)."
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Default rate limit for new API tokens."
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "If set, this URL is called (POST) when the linked spreadsheet changes."
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Leave empty to grant access to all spreadsheets the user can read."
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Max webhook delivery attempts before giving up."
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Maximum API calls per minute. 0 = unlimited."
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Maximum Webhook Retries"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Optional token expiry date."
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Rate Limit (per minute)"
+msgstr "Snelheidslimiet (per minuut)"
+
+#. module: spreadsheet_api_oca
+msgid "Rate Limiting"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Rate Limiting &amp; Webhook"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Regenerate Token"
+msgstr "Token Opnieuw Genereren"
+
+#. module: spreadsheet_api_oca
+msgid "Spreadsheet"
+msgstr "Spreadsheet"
+
+#. module: spreadsheet_api_oca
+msgid "Spreadsheet API: Deliver Webhooks"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Webhook"
+msgstr ""
+
+#. module: spreadsheet_api_oca
+msgid "Webhook Delivery Log"
+msgstr ""
+

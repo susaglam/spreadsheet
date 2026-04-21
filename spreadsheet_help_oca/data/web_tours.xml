@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+     Register our web_tours in the DB so they appear in
+     Settings > Technical > Tours and can be launched from the UI. -->
+<odoo noupdate="1">
+    <record id="tour_quick_start" model="web_tour.tour">
+        <field name="name">spreadsheet_quick_start</field>
+        <field name="url">/odoo/spreadsheets</field>
+        <field name="sequence">100</field>
+        <field
+            name="rainbow_man_message"
+        ><![CDATA[
+<p><strong>🎉 Tebrikler!</strong> Ilk spreadsheet'inizi olusturdunuz.</p>
+<p>Simdi hucrelere veri girebilir, formuller kullanabilir,
+'File &gt; Save as Template' ile sablon yapabilirsiniz.</p>
+]]></field>
+    </record>
+
+    <record id="tour_save_template" model="web_tour.tour">
+        <field name="name">spreadsheet_save_template</field>
+        <field name="url">/odoo/spreadsheets</field>
+        <field name="sequence">110</field>
+        <field
+            name="rainbow_man_message"
+        ><![CDATA[
+<p><strong>📋 Harika!</strong> Artik bu spreadsheet'i istediginiz zaman
+template olarak yeniden kullanabilirsiniz.</p>
+]]></field>
+    </record>
+
+    <record id="tour_kpi_alert" model="web_tour.tour">
+        <field name="name">spreadsheet_kpi_alert</field>
+        <field name="url">/odoo/spreadsheets</field>
+        <field name="sequence">120</field>
+        <field
+            name="rainbow_man_message"
+        ><![CDATA[
+<p><strong>🔔 Artik KPI'larin izlenecek!</strong></p>
+<p>Cron her 15 dakikada bir esikleri kontrol edecek. Esigin asildigi
+durumda Discuss inbox'iniza bildirim gelecek.</p>
+]]></field>
+    </record>
+</odoo>

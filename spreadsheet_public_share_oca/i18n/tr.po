@@ -1,0 +1,93 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_public_share_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: Turkish (tr)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_public_share_oca
+msgid "Allow Download by Default"
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Allow download on new share links by default."
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Allow downloading the spreadsheet data."
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Default Share Link Expiry (days, 0 = no expiry)"
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Default expiry in days for new share links (0 = no expiry)."
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Enter password"
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Optional expiry date for the share link."
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Optional password protection"
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Optional password to access the shared spreadsheet."
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Public Share Links"
+msgstr "Genel Paylasim Linkleri"
+
+#. module: spreadsheet_public_share_oca
+msgid "Regenerate Link"
+msgstr "Linki Yenile"
+
+#. module: spreadsheet_public_share_oca
+msgid "Share Link"
+msgstr "Paylasim Linki"
+
+#. module: spreadsheet_public_share_oca
+msgid "Share Settings"
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Share URL"
+msgstr "Paylasim Linki"
+
+#. module: spreadsheet_public_share_oca
+msgid "Show Link"
+msgstr "Linki Goster"
+
+#. module: spreadsheet_public_share_oca
+msgid "Spreadsheet"
+msgstr "E-tablo"
+
+#. module: spreadsheet_public_share_oca
+msgid "Statistics"
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "The share link has been updated. Old links no longer work."
+msgstr ""
+
+#. module: spreadsheet_public_share_oca
+msgid "Token Regenerated"
+msgstr ""
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <!-- Pre-built guide spreadsheets — live examples user can open immediately -->
+
+    <record id="guide_forecast" model="spreadsheet.spreadsheet">
+        <field name="name">📈 Rehber: Tahminleme Fonksiyonlari</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_help_oca/data/files/guide_forecast.json"
+        />
+    </record>
+
+    <record id="guide_period" model="spreadsheet.spreadsheet">
+        <field name="name">📊 Rehber: Donem Karsilastirma</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_help_oca/data/files/guide_period.json"
+        />
+    </record>
+
+    <record id="guide_core" model="spreadsheet.spreadsheet">
+        <field name="name">🧰 Rehber: Odoo Core Formulleri</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_help_oca/data/files/guide_core.json"
+        />
+    </record>
+
+    <record id="guide_features" model="spreadsheet.spreadsheet">
+        <field name="name">✨ Rehber: Ozellikler ve Menuler</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_help_oca/data/files/guide_features.json"
+        />
+    </record>
+</odoo>

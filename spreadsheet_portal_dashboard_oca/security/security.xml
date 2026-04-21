@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Portal users can read dashboards assigned to them -->
+    <record id="rule_portal_dashboard_portal_read" model="ir.rule">
+        <field name="name">Portal Dashboard: Portal user read access</field>
+        <field name="model_id" ref="model_spreadsheet_portal_dashboard" />
+        <field name="groups" eval="[(4, ref('base.group_portal'))]" />
+        <field name="domain_force">[
+            '|',
+            ('all_portal_users', '=', True),
+            '|',
+            ('partner_ids', '=', user.partner_id.id),
+            ('partner_ids', '=', user.partner_id.commercial_partner_id.id)
+        ]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+
+    <!-- Internal users have full access to portal dashboard assignments -->
+    <record id="rule_portal_dashboard_internal" model="ir.rule">
+        <field name="name">Portal Dashboard: Internal user full access</field>
+        <field name="model_id" ref="model_spreadsheet_portal_dashboard" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+</odoo>

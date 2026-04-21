@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form_spreadsheet_kpi" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.spreadsheet.kpi</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100" />
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app
+                    data-string="Spreadsheet"
+                    string="Spreadsheet"
+                    name="spreadsheet_oca"
+                    logo="/spreadsheet_oca/static/description/icon.png"
+                >
+                    <block title="KPI Alerts" name="kpi_alert_settings_block">
+                        <setting
+                            help="Default cooldown period between repeated alert notifications."
+                        >
+                            <field name="kpi_alert_default_cooldown_hours" />
+                        </setting>
+                        <setting
+                            help="Send an email alongside Discuss inbox notification by default."
+                        >
+                            <field name="kpi_alert_default_send_email" />
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

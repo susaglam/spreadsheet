@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="tutorial_view_search" model="ir.ui.view">
+        <field name="name">spreadsheet.tutorial.search</field>
+        <field name="model">spreadsheet.tutorial</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="description" />
+                <field name="tags" />
+                <field name="module_name" />
+                <filter
+                    name="beginner"
+                    string="Beginner"
+                    domain="[('difficulty','=','beginner')]"
+                />
+                <filter
+                    name="intermediate"
+                    string="Intermediate"
+                    domain="[('difficulty','=','intermediate')]"
+                />
+                <filter
+                    name="advanced"
+                    string="Advanced"
+                    domain="[('difficulty','=','advanced')]"
+                />
+                <separator />
+                <filter
+                    name="has_tour"
+                    string="Interactive Tour Var"
+                    domain="[('tour_name','!=',False)]"
+                />
+                <filter
+                    name="has_video"
+                    string="Video Var"
+                    domain="[('video_url','!=',False)]"
+                />
+                <filter
+                    name="has_example"
+                    string="Ornek Spreadsheet Var"
+                    domain="[('guide_spreadsheet_id','!=',False)]"
+                />
+                <group>
+                    <filter
+                        name="group_by_difficulty"
+                        string="Zorluk"
+                        context="{'group_by': 'difficulty'}"
+                    />
+                    <filter
+                        name="group_by_module"
+                        string="Modul"
+                        context="{'group_by': 'module_name'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="tutorial_view_kanban" model="ir.ui.view">
+        <field name="name">spreadsheet.tutorial.kanban</field>
+        <field name="model">spreadsheet.tutorial</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <!-- Explicit field declarations so kanban record.* is always defined -->
+                <field name="name" />
+                <field name="description" />
+                <field name="module_name" />
+                <field name="difficulty" />
+                <field name="duration_minutes" />
+                <field name="tour_name" />
+                <field name="guide_spreadsheet_id" />
+                <templates>
+                    <t t-name="card" class="flex-column">
+                        <main>
+                            <div class="d-flex justify-content-between">
+                                <field class="fw-bold fs-5" name="name" />
+                                <field
+                                    name="difficulty"
+                                    widget="badge"
+                                    decoration-success="difficulty == 'beginner'"
+                                    decoration-warning="difficulty == 'intermediate'"
+                                    decoration-danger="difficulty == 'advanced'"
+                                />
+                            </div>
+                            <p
+                                class="text-muted small"
+                                t-if="record.description and record.description.raw_value"
+                            >
+                                <field name="description" />
+                            </p>
+                            <div class="small text-muted mt-2">
+                                ⏱️ <field name="duration_minutes" /> dk
+                                <t
+                                t-if="record.module_name and record.module_name.raw_value"
+                            >
+                                    · 📦 <field name="module_name" />
+                                </t>
+                            </div>
+                            <footer class="mt-2">
+                                <button
+                                    t-if="record.tour_name and record.tour_name.raw_value"
+                                    name="action_start_tour"
+                                    type="object"
+                                    class="btn btn-sm btn-primary me-1"
+                                >
+                                    🎬 Interactive Tour
+                                </button>
+                                <button
+                                    t-if="record.guide_spreadsheet_id and record.guide_spreadsheet_id.raw_value"
+                                    name="action_open_example"
+                                    type="object"
+                                    class="btn btn-sm btn-secondary me-1"
+                                >
+                                    📂 Ornegi Ac
+                                </button>
+                            </footer>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="tutorial_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.tutorial.list</field>
+        <field name="model">spreadsheet.tutorial</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="module_name" />
+                <field name="difficulty" widget="badge" />
+                <field name="duration_minutes" string="Dakika" />
+                <field name="tags" />
+                <button
+                    name="action_start_tour"
+                    type="object"
+                    string="Tour"
+                    icon="fa-play-circle"
+                />
+                <button
+                    name="action_open_example"
+                    type="object"
+                    string="Ornek"
+                    icon="fa-external-link"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="tutorial_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.tutorial.form</field>
+        <field name="model">spreadsheet.tutorial</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_start_tour"
+                        type="object"
+                        string="🎬 Interactive Tour Baslat"
+                        class="btn-primary"
+                        invisible="not tour_name"
+                    />
+                    <button
+                        name="action_open_example"
+                        type="object"
+                        string="📂 Ornek Spreadsheet'i Ac"
+                        class="btn-secondary"
+                        invisible="not guide_spreadsheet_id"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="module_name" />
+                            <field name="difficulty" />
+                            <field name="duration_minutes" />
+                            <field name="tags" />
+                        </group>
+                        <group>
+                            <field name="tour_name" />
+                            <field name="guide_spreadsheet_id" />
+                            <field name="video_url" widget="url" />
+                            <field name="sequence" />
+                        </group>
+                    </group>
+                    <group string="Aciklama">
+                        <field name="description" nolabel="1" />
+                    </group>
+                    <div
+                        class="alert alert-info"
+                        role="alert"
+                        invisible="not video_url"
+                    >
+                        <strong
+                        >📺 Video linkine tiklamak icin yukaridaki URL alanini kullanin.</strong>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="tutorial_action" model="ir.actions.act_window">
+        <field name="name">🎓 Tutorials &amp; Videos</field>
+        <field name="res_model">spreadsheet.tutorial</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tutorial yok
+            </p>
+            <p>
+                Interactive tour, video ve ornek spreadsheet'ler burada listelenir.
+                Her tutorial icin bir web_tour baslat veya ornek spreadsheet ac.
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,100 @@
+{
+  "version": 12,
+  "revisionId": "START_REVISION",
+  "sheets": [
+    {
+      "id": "sh1",
+      "name": "Formul Referansi",
+      "colNumber": 8,
+      "rowNumber": 30,
+      "rows": {},
+      "cols": {"0": {"size": 300}, "1": {"size": 400}},
+      "merges": [],
+      "cells": {
+        "A1": {
+          "content": "\ud83e\uddf0 ODOO CORE FORMULLERI \u2014 Referans ve Ornekler",
+          "style": 1
+        },
+        "A2": {
+          "content": "Odoo core ve kurulu modullerin sagladigi formuller.",
+          "style": 3
+        },
+        "A4": {"content": "MUHASEBE (spreadsheet_account core)", "style": 2},
+        "A5": {"content": "Formul", "style": 2},
+        "B5": {"content": "Aciklama", "style": 2},
+        "A6": {"content": "=ODOO.BALANCE(\"600\")", "style": 5},
+        "B6": {"content": "600 hesabinin net bakiyesi (debit - credit)"},
+        "A7": {"content": "=ODOO.CREDIT(\"600\")", "style": 5},
+        "B7": {"content": "600 hesabinin alacak toplami"},
+        "A8": {"content": "=ODOO.DEBIT(\"600\")", "style": 5},
+        "B8": {"content": "600 hesabinin borc toplami"},
+        "A9": {"content": "=ODOO.RESIDUAL(\"4000\")", "style": 5},
+        "B9": {"content": "4000 hesabinda acik kalan tutar"},
+        "A10": {"content": "=ODOO.PARTNER.BALANCE(\"4000\", 7)", "style": 5},
+        "B10": {"content": "7 numarali partner'in 4000 hesabindaki bakiyesi"},
+        "A11": {"content": "=ODOO.FISCALYEAR.START(TODAY())", "style": 5},
+        "B11": {"content": "Bugunun icinde oldugu mali yilin baslangic tarihi"},
+        "A12": {"content": "=ODOO.FISCALYEAR.END(TODAY())", "style": 5},
+        "B12": {"content": "Bugunun icinde oldugu mali yilin bitis tarihi"},
+        "A14": {"content": "VERI KAYNAKLARI (core)", "style": 2},
+        "A15": {"content": "=ODOO.PIVOT(1, \"amount_total\")", "style": 5},
+        "B15": {"content": "Pivot 1'in amount_total measure'i"},
+        "A16": {"content": "=ODOO.LIST(1, 1, \"name\")", "style": 5},
+        "B16": {"content": "List 1'in 1. satirinin name alani"},
+        "A17": {"content": "=ODOO.CURRENCY.RATE(\"USD\", \"EUR\")", "style": 5},
+        "B17": {"content": "USD\u2192EUR doviz kuru"},
+        "A19": {"content": "BIZIM CUSTOM FORMULLER (OCA)", "style": 2},
+        "A20": {"content": "Modul", "style": 2},
+        "B20": {"content": "Formuller", "style": 2},
+        "A21": {"content": "forecast_oca", "style": 5},
+        "B21": {"content": "ODOO.FORECAST, ODOO.TREND, ODOO.MOVING_AVG"},
+        "A22": {"content": "period_comparison_oca", "style": 5},
+        "B22": {
+          "content": "ODOO.PERCENT_CHANGE, ODOO.GROWTH_ARROW, ODOO.YOY, ODOO.VARIANCE"
+        },
+        "A24": {
+          "content": "\ud83d\udd17 HIZLI BAKIS ICIN BU SPREADSHEET'LERI AC",
+          "style": 1
+        },
+        "A25": {"content": "\u2022 \ud83d\udcc8 FORMUL REHBERI: Forecast (Tahminleme)"},
+        "A26": {
+          "content": "\u2022 \ud83d\udcca FORMUL REHBERI: Period Comparison (Karsilastirma)"
+        },
+        "A27": {"content": "\u2022 DEMO - Satis Ozeti Q1 2026 (canli veriyle)"}
+      },
+      "figures": [],
+      "areGridLinesVisible": true,
+      "headerGroups": {"ROW": [], "COL": []}
+    }
+  ],
+  "entities": {},
+  "styles": {
+    "1": {"bold": true, "fillColor": "#875a7b", "textColor": "#FFFFFF", "fontSize": 12},
+    "2": {"bold": true, "fillColor": "#d9d9d9"},
+    "3": {"italic": true, "textColor": "#666666"},
+    "4": {"fillColor": "#e8f5e9", "textColor": "#1b5e20", "bold": true},
+    "5": {"fillColor": "#fff3e0", "textColor": "#e65100"},
+    "6": {"textColor": "#0d47a1", "italic": true},
+    "7": {"fillColor": "#fbe9e7", "textColor": "#bf360c"}
+  },
+  "formats": {},
+  "borders": {},
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "m/d/yyyy",
+      "timeFormat": "hh:mm:ss a",
+      "formulaArgSeparator": ","
+    }
+  },
+  "chartOdooMenusReferences": {},
+  "odooVersion": 4,
+  "lists": {},
+  "listNextId": 1,
+  "pivots": {},
+  "pivotNextId": 1,
+  "globalFilters": []
+}

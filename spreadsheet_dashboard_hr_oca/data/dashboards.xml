@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="spreadsheet_dashboard_hr_overview" model="spreadsheet.dashboard">
+        <field name="name">HR Overview</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_dashboard_hr_oca/data/files/hr_dashboard.json"
+        />
+        <field
+            name="dashboard_group_id"
+            ref="spreadsheet_dashboard.spreadsheet_dashboard_group_hr"
+        />
+        <field name="group_ids" eval="[Command.link(ref('hr.group_hr_user'))]" />
+        <field name="sequence">100</field>
+    </record>
+</odoo>

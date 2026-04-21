@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="contract_expiry_email_template" model="mail.template">
+            <field name="name">Contract Expiry Reminder</field>
+            <field name="model_id" ref="model_spreadsheet_contract" />
+            <field name="subject">Contract Expiring: {{ object.name }}</field>
+            <field name="email_to">{{ object.responsible_id.email_formatted }}</field>
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <div style="background-color: #e67e22; color: white; padding: 16px 24px;">
+        <h2 style="margin: 0;">Contract Expiry Reminder</h2>
+    </div>
+    <div style="padding: 24px; border: 1px solid #ddd; border-top: none;">
+        <p>Hello {{ object.responsible_id.name }},</p>
+        <p>The following contract is expiring soon:</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Contract</td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.name }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Partner</td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.partner_id.name }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Expiry Date</td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee; color: #e67e22; font-weight: bold;">{{ object.date_end }}</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Days Remaining</td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.days_to_expiry }} days</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Value</td>
+                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.amount }} {{ object.currency_id.symbol }}</td>
+            </tr>
+        </table>
+        <p>Please review and take appropriate action for renewal.</p>
+    </div>
+</div>
+]]></field>
+        </record>
+    </data>
+</odoo>

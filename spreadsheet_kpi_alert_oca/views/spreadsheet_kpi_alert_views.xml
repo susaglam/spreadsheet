@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Search view -->
+    <record id="spreadsheet_kpi_alert_view_search" model="ir.ui.view">
+        <field name="name">spreadsheet.kpi.alert.search</field>
+        <field name="model">spreadsheet.kpi.alert</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="cell_ref" />
+                <filter
+                    name="active_alerts"
+                    string="Active"
+                    domain="[('active', '=', True)]"
+                />
+                <filter
+                    name="triggered"
+                    string="Recently Triggered"
+                    domain="[('last_triggered', '!=', False)]"
+                />
+                <group>
+                    <filter
+                        name="group_by_spreadsheet"
+                        string="Spreadsheet"
+                        context="{'group_by': 'spreadsheet_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- List view -->
+    <record id="spreadsheet_kpi_alert_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.kpi.alert.list</field>
+        <field name="model">spreadsheet.kpi.alert</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="alert_condition" string="Condition" />
+                <field name="last_value" />
+                <field name="last_checked" />
+                <field name="last_triggered" decoration-danger="last_triggered" />
+                <field name="active" widget="boolean_toggle" />
+                <button
+                    name="action_test_alert"
+                    type="object"
+                    string="Test"
+                    icon="fa-bell"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form view -->
+    <record id="spreadsheet_kpi_alert_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.kpi.alert.form</field>
+        <field name="model">spreadsheet.kpi.alert</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_test_alert"
+                        type="object"
+                        string="Test Alert"
+                        class="btn-primary"
+                        icon="fa-bell"
+                    />
+                </header>
+                <sheet>
+                    <field name="active" invisible="1" />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="text-bg-danger"
+                        invisible="active"
+                    />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g. Revenue Alert" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Alert Condition">
+                            <field name="spreadsheet_id" />
+                            <field name="sheet_name" />
+                            <field name="cell_ref" placeholder="e.g. B2" />
+                            <field name="operator" />
+                            <field name="threshold_value" />
+                        </group>
+                        <group string="Notification">
+                            <field name="notify_user_ids" widget="many2many_tags" />
+                            <field name="send_email" />
+                            <field name="cooldown_hours" />
+                        </group>
+                    </group>
+                    <group string="Status" colspan="4">
+                        <group>
+                            <field name="last_value" />
+                            <field name="alert_condition" />
+                        </group>
+                        <group>
+                            <field name="last_checked" />
+                            <field name="last_triggered" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="spreadsheet_kpi_alert_act_window" model="ir.actions.act_window">
+        <field name="name">KPI Alerts</field>
+        <field name="res_model">spreadsheet.kpi.alert</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active_alerts': 1}</field>
+    </record>
+
+    <!-- Menu under Spreadsheets > Configuration -->
+    <record id="menu_spreadsheet_kpi_alerts" model="ir.ui.menu">
+        <field name="name">KPI Alerts</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="spreadsheet_kpi_alert_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="20" />
+    </record>
+
+    <!-- Smart button on spreadsheet form -->
+    <record id="spreadsheet_form_kpi_alert_button" model="ir.ui.view">
+        <field name="name">spreadsheet.spreadsheet.form.kpi.alert</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="action"
+                    name="%(spreadsheet_kpi_alert_act_window)d"
+                    icon="fa-bell"
+                    context="{'search_default_spreadsheet_id': id, 'default_spreadsheet_id': id}"
+                >
+                    <field
+                        name="kpi_alert_count"
+                        string="KPI Alerts"
+                        widget="statinfo"
+                    />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

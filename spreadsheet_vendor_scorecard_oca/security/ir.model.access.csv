@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vendor_scorecard_user,spreadsheet.vendor.scorecard.user,model_spreadsheet_vendor_scorecard,purchase.group_purchase_user,1,0,0,0
+access_vendor_scorecard_manager,spreadsheet.vendor.scorecard.manager,model_spreadsheet_vendor_scorecard,purchase.group_purchase_manager,1,1,1,1

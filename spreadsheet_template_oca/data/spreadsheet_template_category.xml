@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record id="category_sales" model="spreadsheet.template.category">
+        <field name="name">Sales</field>
+        <field name="sequence">10</field>
+        <field name="color">1</field>
+    </record>
+    <record id="category_finance" model="spreadsheet.template.category">
+        <field name="name">Finance</field>
+        <field name="sequence">20</field>
+        <field name="color">2</field>
+    </record>
+    <record id="category_hr" model="spreadsheet.template.category">
+        <field name="name">Human Resources</field>
+        <field name="sequence">30</field>
+        <field name="color">3</field>
+    </record>
+    <record id="category_operations" model="spreadsheet.template.category">
+        <field name="name">Operations</field>
+        <field name="sequence">40</field>
+        <field name="color">4</field>
+    </record>
+    <record id="category_general" model="spreadsheet.template.category">
+        <field name="name">General</field>
+        <field name="sequence">99</field>
+        <field name="color">0</field>
+    </record>
+</odoo>

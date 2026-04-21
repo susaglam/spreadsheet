@@ -1,0 +1,121 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_template_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: Dutch (nl)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_template_oca
+msgid "Archived"
+msgstr "Gearchiveerd"
+
+#. module: spreadsheet_template_oca
+msgid "Cancel"
+msgstr "Annuleren"
+
+#. module: spreadsheet_template_oca
+msgid "Category"
+msgstr "Categorie"
+
+#. module: spreadsheet_template_oca
+msgid "Category name..."
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Create Spreadsheet"
+msgstr "Spreadsheet Aanmaken"
+
+#. module: spreadsheet_template_oca
+msgid "Create Spreadsheet from Template"
+msgstr "Spreadsheet van Sjabloon Aanmaken"
+
+#. module: spreadsheet_template_oca
+msgid "Edit"
+msgstr "Bewerken"
+
+#. module: spreadsheet_template_oca
+msgid "Edit Template"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Finance"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "General"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Group By"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Human Resources"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Operations"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Sales"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Save as Template"
+msgstr "Opslaan als Sjabloon"
+
+#. module: spreadsheet_template_oca
+msgid "Spreadsheet Template: Full access for managers"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Spreadsheet Template: Read for all users"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Template"
+msgstr "Sjabloon"
+
+#. module: spreadsheet_template_oca
+msgid "Template Categories"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Template Manager"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Templates"
+msgstr "Sjablonen"
+
+#. module: spreadsheet_template_oca
+msgid "Times Used"
+msgstr "Aantal Keer Gebruikt"
+
+#. module: spreadsheet_template_oca
+msgid "Use"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "Use Template"
+msgstr "Sjabloon Gebruiken"
+
+#. module: spreadsheet_template_oca
+msgid "Used"
+msgstr ""
+
+#. module: spreadsheet_template_oca
+msgid "e.g. Monthly Sales Report"
+msgstr ""
+

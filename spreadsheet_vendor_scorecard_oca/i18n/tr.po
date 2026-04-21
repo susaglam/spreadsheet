@@ -1,0 +1,117 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_vendor_scorecard_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: Turkish (tr)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Average number of days from PO confirmation to receipt."
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Avg Lead Time (days)"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Group By"
+msgstr "Gruplama"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "High Performers (80+)"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Lead Time (d)"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Low Performers (&lt;50)"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Month"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "On-Time %"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "On-Time Delivery (%)"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Overall Score"
+msgstr "Genel Puan"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Percentage of deliveries received on or before the expected date."
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Percentage of received items without quality issues."
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Performance"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Purchase Orders - %s"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Quality %"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Quality Rate (%)"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Score"
+msgstr "Puan"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Spreadsheet: Compute Vendor Scorecards"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Total Amount"
+msgstr "Toplam Tutar"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Total Orders"
+msgstr "Toplam Siparis"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Vendor"
+msgstr "Tedarikci"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Vendor Performance"
+msgstr "Tedarikci Performansi"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Vendor Scorecards"
+msgstr "Tedarikci Karneleri"
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "View Orders"
+msgstr ""
+
+#. module: spreadsheet_vendor_scorecard_oca
+msgid "Volume"
+msgstr ""
+

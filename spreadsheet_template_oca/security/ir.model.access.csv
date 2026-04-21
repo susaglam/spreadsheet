@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_spreadsheet_template_user,spreadsheet.template.user,model_spreadsheet_template,spreadsheet_oca.group_user,1,0,0,0
+access_spreadsheet_template_manager,spreadsheet.template.manager,model_spreadsheet_template,spreadsheet_template_oca.group_template_manager,1,1,1,1
+access_spreadsheet_template_category_user,spreadsheet.template.category.user,model_spreadsheet_template_category,spreadsheet_oca.group_user,1,0,0,0
+access_spreadsheet_template_category_manager,spreadsheet.template.category.manager,model_spreadsheet_template_category,spreadsheet_template_oca.group_template_manager,1,1,1,1
+access_spreadsheet_to_template_wizard,spreadsheet.to.template.wizard,model_spreadsheet_to_template,spreadsheet_oca.group_user,1,1,1,0
+access_spreadsheet_from_template_wizard,spreadsheet.from.template.wizard,model_spreadsheet_from_template,spreadsheet_oca.group_user,1,1,1,0

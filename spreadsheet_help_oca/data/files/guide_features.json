@@ -1,0 +1,93 @@
+{
+  "version": 12,
+  "revisionId": "START_REVISION",
+  "sheets": [
+    {
+      "id": "sh1",
+      "name": "Ozellikler",
+      "colNumber": 8,
+      "rowNumber": 30,
+      "rows": {},
+      "cols": {"0": {"size": 500}, "1": {"size": 200}},
+      "merges": [],
+      "cells": {
+        "A1": {
+          "content": "\u2728 SPREADSHEET OCA \u2014 OZELLIKLER REHBERI",
+          "style": 1
+        },
+        "A3": {"content": "1) File menusu uzerinden:", "style": 2},
+        "A4": {"content": "  \u2022 File > Download XLSX (core)", "style": 3},
+        "A5": {
+          "content": "  \u2022 File > Download PDF (bizim \u2014 UTF-8/Turkce destekli)",
+          "style": 5
+        },
+        "A6": {"content": "  \u2022 File > Save as Template (bizim)", "style": 5},
+        "A7": {
+          "content": "  \u2022 File > Add to dashboard (dashboard_oca)",
+          "style": 3
+        },
+        "A9": {"content": "2) Data menusu uzerinden:", "style": 2},
+        "A10": {"content": "  \u2022 Data > KPI Alerts (bizim)", "style": 5},
+        "A12": {"content": "3) Form view smart button'lari:", "style": 2},
+        "A13": {"content": "  \u2022 KPI Alerts sayisi", "style": 5},
+        "A14": {"content": "  \u2022 Versions (versiyon gecmisi)", "style": 5},
+        "A15": {"content": "  \u2022 New Snapshot (anlik foto cek)", "style": 5},
+        "A17": {"content": "4) Spreadsheets app menu yapisi:", "style": 2},
+        "A18": {"content": "  \u2022 Spreadsheets (ana liste)", "style": 3},
+        "A19": {"content": "  \u2022 Templates", "style": 5},
+        "A20": {"content": "  \u2022 Contracts & SLA", "style": 5},
+        "A21": {"content": "  \u2022 Consolidation (multi-company)", "style": 5},
+        "A22": {
+          "content": "  \u2022 Help & Examples (YENI \u2014 bu menu kurulduktan sonra)",
+          "style": 4
+        },
+        "A23": {"content": "  \u2022 Configuration >", "style": 3},
+        "A24": {
+          "content": "      KPI Alerts, API Tokens, Public Share Links",
+          "style": 5
+        },
+        "A25": {"content": "      Refresh Schedules, Email Reports", "style": 5},
+        "A26": {
+          "content": "      Portal Dashboards, Dashboard Data Filters",
+          "style": 5
+        },
+        "A27": {"content": "      Template Categories", "style": 5},
+        "A29": {"content": "5) Settings > Spreadsheet:", "style": 2},
+        "A30": {"content": "  Tek sekmede tum modul ayarlari", "style": 5}
+      },
+      "figures": [],
+      "areGridLinesVisible": true,
+      "headerGroups": {"ROW": [], "COL": []}
+    }
+  ],
+  "entities": {},
+  "styles": {
+    "1": {"bold": true, "fillColor": "#875a7b", "textColor": "#FFFFFF", "fontSize": 12},
+    "2": {"bold": true, "fillColor": "#d9d9d9"},
+    "3": {"italic": true, "textColor": "#666666"},
+    "4": {"fillColor": "#e8f5e9", "textColor": "#1b5e20", "bold": true},
+    "5": {"fillColor": "#fff3e0", "textColor": "#e65100"},
+    "6": {"textColor": "#0d47a1", "italic": true},
+    "7": {"fillColor": "#fbe9e7", "textColor": "#bf360c"}
+  },
+  "formats": {},
+  "borders": {},
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "m/d/yyyy",
+      "timeFormat": "hh:mm:ss a",
+      "formulaArgSeparator": ","
+    }
+  },
+  "chartOdooMenusReferences": {},
+  "odooVersion": 4,
+  "lists": {},
+  "listNextId": 1,
+  "pivots": {},
+  "pivotNextId": 1,
+  "globalFilters": []
+}

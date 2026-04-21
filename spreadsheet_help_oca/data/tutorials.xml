@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <!-- Tutorial records: pre-seeded, user can add video URLs and screenshots later -->
+
+    <record id="tutorial_quick_start" model="spreadsheet.tutorial">
+        <field name="name">🚀 Quick Start — Ilk Spreadsheet'inizi olusturun</field>
+        <field name="sequence">10</field>
+        <field
+            name="description"
+        >Odoo Spreadsheets uygulamasinin tum temelleri. Yeni bir spreadsheet olusturma, veri girme, kaydetme, template olarak kaydetme ve PDF olarak indirme. Interactive tour ile hemen baslayin!</field>
+        <field name="module_name">spreadsheet_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">beginner</field>
+        <field name="tour_name">spreadsheet_quick_start</field>
+        <field name="tags">quickstart,beginner,template,pdf</field>
+    </record>
+
+    <record id="tutorial_template_save" model="spreadsheet.tutorial">
+        <field name="name">📋 Spreadsheet'i Template olarak kaydedin</field>
+        <field name="sequence">20</field>
+        <field
+            name="description"
+        >Sik kullandiginiz bir rapor sablonunu kaydedip tek tikla yeniden olusturun. 'File &gt; Save as Template' akisini gosteren interactive tour.</field>
+        <field name="module_name">spreadsheet_template_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tour_name">spreadsheet_save_template</field>
+        <field name="tags">template,sablon</field>
+    </record>
+
+    <record id="tutorial_kpi_alert" model="spreadsheet.tutorial">
+        <field name="name">🔔 KPI Alert kurun</field>
+        <field name="sequence">30</field>
+        <field
+            name="description"
+        >Bir hucre belirli bir esigi astiginda bildirim alin. Smart button uzerinden alert olusturma, operator secimi, bildirim alicilari ayarlama. Discuss inbox ve chatter entegrasyonunu gosteren tour.</field>
+        <field name="module_name">spreadsheet_kpi_alert_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tour_name">spreadsheet_kpi_alert</field>
+        <field name="tags">alert,kpi,notification,mail</field>
+    </record>
+
+    <record id="tutorial_public_share" model="spreadsheet.tutorial">
+        <field name="name">🔗 Spreadsheet'i public link ile paylasin</field>
+        <field name="sequence">40</field>
+        <field
+            name="description"
+        >Musterilere veya dis ekibe spreadsheet'i read-only olarak paylasin. Parola korumasi, suresi dolma, indirme izni ayarlari.</field>
+        <field name="module_name">spreadsheet_public_share_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">share,link,public,password</field>
+    </record>
+
+    <record id="tutorial_forecast" model="spreadsheet.tutorial">
+        <field name="name">📈 Tahminleme fonksiyonlari</field>
+        <field name="sequence">50</field>
+        <field
+            name="description"
+        >ODOO.FORECAST, ODOO.TREND ve ODOO.MOVING_AVG ile gecmis verilerden gelecek tahminleri. Lineer regresyon ve hareketli ortalama ornekleri.</field>
+        <field name="module_name">spreadsheet_forecast_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">intermediate</field>
+        <field name="guide_spreadsheet_id" ref="spreadsheet_help_oca.guide_forecast" />
+        <field name="tags">formula,forecast,trend,moving_avg</field>
+    </record>
+
+    <record id="tutorial_period_comparison" model="spreadsheet.tutorial">
+        <field name="name">📊 Donem karsilastirma</field>
+        <field name="sequence">60</field>
+        <field
+            name="description"
+        >Bu ay vs gecen ay, YoY (year-over-year), GROWTH_ARROW ile gorsel yuzde degisim. Dashboard'larda vazgecilmez fonksiyonlar.</field>
+        <field name="module_name">spreadsheet_period_comparison_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">beginner</field>
+        <field name="guide_spreadsheet_id" ref="spreadsheet_help_oca.guide_period" />
+        <field name="tags">formula,comparison,yoy,growth</field>
+    </record>
+
+    <record id="tutorial_contract" model="spreadsheet.tutorial">
+        <field name="name">📝 Sozlesme ve SLA takibi</field>
+        <field name="sequence">70</field>
+        <field
+            name="description"
+        >Yillik sozlesmeleri takip edin, SLA metrikleri (uptime, response time) kaydedin, yaklasan bitis tarihleri icin otomatik email ve activity olusturun.</field>
+        <field name="module_name">spreadsheet_contract_sla_oca</field>
+        <field name="duration_minutes">6</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">contract,sla,renewal,calendar</field>
+    </record>
+
+    <record id="tutorial_version_history" model="spreadsheet.tutorial">
+        <field name="name">📸 Versiyon yedekleme ve geri alma</field>
+        <field name="sequence">80</field>
+        <field
+            name="description"
+        >Spreadsheet'in periyodik snapshot'lari. 'New Snapshot' butonu, versiyonlar arasi gorsel cell-level diff, rollback.</field>
+        <field name="module_name">spreadsheet_version_history_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">version,snapshot,history,rollback</field>
+    </record>
+
+    <record id="tutorial_api" model="spreadsheet.tutorial">
+        <field name="name">🔑 REST API ile entegrasyon</field>
+        <field name="sequence">90</field>
+        <field
+            name="description"
+        >Spreadsheet verisine dis sistemlerden (Power BI, Google Sheets, webhook'lar) erisim. Bearer token, rate limit, webhook delivery log.</field>
+        <field name="module_name">spreadsheet_api_oca</field>
+        <field name="duration_minutes">7</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">api,rest,integration,webhook,token</field>
+    </record>
+
+    <record id="tutorial_portal" model="spreadsheet.tutorial">
+        <field name="name">👥 Portal uzerinden bayilere dashboard</field>
+        <field name="sequence">100</field>
+        <field
+            name="description"
+        >Portal kullanicilarinin (bayi/distributor) kendi verilerine ait read-only dashboard gorebilmesi. Record rule filter ile her bayiye kendi siparislerini gosterme.</field>
+        <field name="module_name">spreadsheet_portal_dashboard_oca</field>
+        <field name="duration_minutes">6</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">portal,dealer,dashboard,record_rule</field>
+    </record>
+
+    <record id="tutorial_consolidation" model="spreadsheet.tutorial">
+        <field name="name">🏢 Multi-company konsolidasyon</field>
+        <field name="sequence">110</field>
+        <field
+            name="description"
+        >Birden cok sirketin bilancolarini tek bir konsolide rapora birlestirin. Currency conversion, inter-company elimination.</field>
+        <field name="module_name">spreadsheet_multicompany_oca</field>
+        <field name="duration_minutes">8</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">consolidation,multicompany,accounting</field>
+    </record>
+
+    <record id="tutorial_email_report" model="spreadsheet.tutorial">
+        <field name="name">📧 Zamanli email raporlari</field>
+        <field name="sequence">120</field>
+        <field
+            name="description"
+        >Haftalik/aylik otomatik XLSX raporlarini ekibinize email ile gonderin. Mail template, cron tabanli delivery, send-now butonu.</field>
+        <field name="module_name">spreadsheet_email_report_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">email,scheduled,cron,report</field>
+    </record>
+</odoo>

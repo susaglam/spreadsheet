@@ -1,0 +1,367 @@
+{
+  "version": 12,
+  "sheets": [
+    {
+      "id": "sheet1",
+      "name": "Dashboard",
+      "colNumber": 9,
+      "rowNumber": 70,
+      "rows": {"6": {"size": 40}, "18": {"size": 40}},
+      "cols": {
+        "0": {"size": 100},
+        "1": {"size": 100},
+        "2": {"size": 175},
+        "3": {"size": 175},
+        "4": {"size": 120},
+        "5": {"size": 120},
+        "6": {"size": 120},
+        "7": {"size": 100},
+        "8": {"size": 75}
+      },
+      "merges": [],
+      "cells": {
+        "A7": {
+          "style": 1,
+          "content": "[Top Vendors by Score](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[],\"context\":{},\"modelName\":\"spreadsheet.vendor.scorecard\",\"views\":[[false,\"list\"],[false,\"form\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Top Vendors by Score\"})",
+          "border": 1
+        },
+        "A8": {"style": 2, "content": "=_t(\"Vendor\")", "border": 2},
+        "B8": {"style": 2, "content": "=_t(\"Score\")", "border": 2},
+        "C8": {"style": 2, "content": "=_t(\"On-Time %\")", "border": 2},
+        "D8": {"style": 2, "content": "=_t(\"Quality %\")", "border": 2},
+        "E8": {"style": 2, "content": "=_t(\"Lead Time\")", "border": 2},
+        "F8": {"style": 2, "content": "=_t(\"Orders\")", "border": 2},
+        "G8": {"style": 2, "content": "=_t(\"Amount\")", "border": 2},
+        "A9": {"style": 3, "content": "=ODOO.LIST(1,1,\"partner_id\")"},
+        "B9": {"style": 3, "content": "=ODOO.LIST(1,1,\"score\")"},
+        "C9": {"style": 3, "content": "=ODOO.LIST(1,1,\"on_time_delivery_rate\")"},
+        "D9": {"style": 3, "content": "=ODOO.LIST(1,1,\"quality_rate\")"},
+        "E9": {"style": 3, "content": "=ODOO.LIST(1,1,\"avg_lead_time\")"},
+        "F9": {"style": 3, "content": "=ODOO.LIST(1,1,\"total_orders\")"},
+        "G9": {"style": 3, "content": "=ODOO.LIST(1,1,\"total_amount\")"},
+        "A10": {"style": 4, "content": "=ODOO.LIST(1,2,\"partner_id\")"},
+        "B10": {"style": 4, "content": "=ODOO.LIST(1,2,\"score\")"},
+        "C10": {"style": 4, "content": "=ODOO.LIST(1,2,\"on_time_delivery_rate\")"},
+        "D10": {"style": 4, "content": "=ODOO.LIST(1,2,\"quality_rate\")"},
+        "E10": {"style": 4, "content": "=ODOO.LIST(1,2,\"avg_lead_time\")"},
+        "F10": {"style": 4, "content": "=ODOO.LIST(1,2,\"total_orders\")"},
+        "G10": {"style": 4, "content": "=ODOO.LIST(1,2,\"total_amount\")"},
+        "A11": {"style": 3, "content": "=ODOO.LIST(1,3,\"partner_id\")"},
+        "B11": {"style": 3, "content": "=ODOO.LIST(1,3,\"score\")"},
+        "C11": {"style": 3, "content": "=ODOO.LIST(1,3,\"on_time_delivery_rate\")"},
+        "D11": {"style": 3, "content": "=ODOO.LIST(1,3,\"quality_rate\")"},
+        "E11": {"style": 3, "content": "=ODOO.LIST(1,3,\"avg_lead_time\")"},
+        "F11": {"style": 3, "content": "=ODOO.LIST(1,3,\"total_orders\")"},
+        "G11": {"style": 3, "content": "=ODOO.LIST(1,3,\"total_amount\")"},
+        "A12": {"style": 4, "content": "=ODOO.LIST(1,4,\"partner_id\")"},
+        "B12": {"style": 4, "content": "=ODOO.LIST(1,4,\"score\")"},
+        "C12": {"style": 4, "content": "=ODOO.LIST(1,4,\"on_time_delivery_rate\")"},
+        "D12": {"style": 4, "content": "=ODOO.LIST(1,4,\"quality_rate\")"},
+        "E12": {"style": 4, "content": "=ODOO.LIST(1,4,\"avg_lead_time\")"},
+        "F12": {"style": 4, "content": "=ODOO.LIST(1,4,\"total_orders\")"},
+        "G12": {"style": 4, "content": "=ODOO.LIST(1,4,\"total_amount\")"},
+        "A13": {"style": 3, "content": "=ODOO.LIST(1,5,\"partner_id\")"},
+        "B13": {"style": 3, "content": "=ODOO.LIST(1,5,\"score\")"},
+        "C13": {"style": 3, "content": "=ODOO.LIST(1,5,\"on_time_delivery_rate\")"},
+        "D13": {"style": 3, "content": "=ODOO.LIST(1,5,\"quality_rate\")"},
+        "E13": {"style": 3, "content": "=ODOO.LIST(1,5,\"avg_lead_time\")"},
+        "F13": {"style": 3, "content": "=ODOO.LIST(1,5,\"total_orders\")"},
+        "G13": {"style": 3, "content": "=ODOO.LIST(1,5,\"total_amount\")"},
+        "A14": {"style": 4, "content": "=ODOO.LIST(1,6,\"partner_id\")"},
+        "B14": {"style": 4, "content": "=ODOO.LIST(1,6,\"score\")"},
+        "C14": {"style": 4, "content": "=ODOO.LIST(1,6,\"on_time_delivery_rate\")"},
+        "D14": {"style": 4, "content": "=ODOO.LIST(1,6,\"quality_rate\")"},
+        "E14": {"style": 4, "content": "=ODOO.LIST(1,6,\"avg_lead_time\")"},
+        "F14": {"style": 4, "content": "=ODOO.LIST(1,6,\"total_orders\")"},
+        "G14": {"style": 4, "content": "=ODOO.LIST(1,6,\"total_amount\")"},
+        "A15": {"style": 3, "content": "=ODOO.LIST(1,7,\"partner_id\")"},
+        "B15": {"style": 3, "content": "=ODOO.LIST(1,7,\"score\")"},
+        "C15": {"style": 3, "content": "=ODOO.LIST(1,7,\"on_time_delivery_rate\")"},
+        "D15": {"style": 3, "content": "=ODOO.LIST(1,7,\"quality_rate\")"},
+        "E15": {"style": 3, "content": "=ODOO.LIST(1,7,\"avg_lead_time\")"},
+        "F15": {"style": 3, "content": "=ODOO.LIST(1,7,\"total_orders\")"},
+        "G15": {"style": 3, "content": "=ODOO.LIST(1,7,\"total_amount\")"},
+        "A16": {"style": 4, "content": "=ODOO.LIST(1,8,\"partner_id\")"},
+        "B16": {"style": 4, "content": "=ODOO.LIST(1,8,\"score\")"},
+        "C16": {"style": 4, "content": "=ODOO.LIST(1,8,\"on_time_delivery_rate\")"},
+        "D16": {"style": 4, "content": "=ODOO.LIST(1,8,\"quality_rate\")"},
+        "E16": {"style": 4, "content": "=ODOO.LIST(1,8,\"avg_lead_time\")"},
+        "F16": {"style": 4, "content": "=ODOO.LIST(1,8,\"total_orders\")"},
+        "G16": {"style": 4, "content": "=ODOO.LIST(1,8,\"total_amount\")"},
+        "A17": {"style": 3, "content": "=ODOO.LIST(1,9,\"partner_id\")"},
+        "B17": {"style": 3, "content": "=ODOO.LIST(1,9,\"score\")"},
+        "C17": {"style": 3, "content": "=ODOO.LIST(1,9,\"on_time_delivery_rate\")"},
+        "D17": {"style": 3, "content": "=ODOO.LIST(1,9,\"quality_rate\")"},
+        "E17": {"style": 3, "content": "=ODOO.LIST(1,9,\"avg_lead_time\")"},
+        "F17": {"style": 3, "content": "=ODOO.LIST(1,9,\"total_orders\")"},
+        "G17": {"style": 3, "content": "=ODOO.LIST(1,9,\"total_amount\")"},
+        "A18": {"style": 4, "content": "=ODOO.LIST(1,10,\"partner_id\")"},
+        "B18": {"style": 4, "content": "=ODOO.LIST(1,10,\"score\")"},
+        "C18": {"style": 4, "content": "=ODOO.LIST(1,10,\"on_time_delivery_rate\")"},
+        "D18": {"style": 4, "content": "=ODOO.LIST(1,10,\"quality_rate\")"},
+        "E18": {"style": 4, "content": "=ODOO.LIST(1,10,\"avg_lead_time\")"},
+        "F18": {"style": 4, "content": "=ODOO.LIST(1,10,\"total_orders\")"},
+        "G18": {"style": 4, "content": "=ODOO.LIST(1,10,\"total_amount\")"}
+      },
+      "figures": [
+        {
+          "id": "sc-1-vendor",
+          "x": 0,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Avg Score",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E2",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D2"
+          }
+        },
+        {
+          "id": "sc-2-vendor",
+          "x": 210,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "On-Time Delivery",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E3",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D3"
+          }
+        },
+        {
+          "id": "sc-3-vendor",
+          "x": 420,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Quality Rate",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E4",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D4"
+          }
+        },
+        {
+          "id": "sc-4-vendor",
+          "x": 630,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "text",
+            "title": "Avg Lead Time",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E5",
+            "baselineDescr": "last period",
+            "keyValue": "Data!D5"
+          }
+        },
+        {
+          "id": "chart-main-vendor",
+          "x": 0,
+          "y": 178,
+          "width": 1000,
+          "height": 230,
+          "tag": "chart",
+          "data": {
+            "title": "",
+            "background": "#FFFFFF",
+            "legendPosition": "none",
+            "metaData": {
+              "groupBy": ["partner_id"],
+              "measure": "score",
+              "order": null,
+              "resModel": "spreadsheet.vendor.scorecard"
+            },
+            "searchParams": {
+              "comparison": null,
+              "context": {},
+              "domain": [],
+              "groupBy": ["partner_id"],
+              "orderBy": []
+            },
+            "type": "odoo_bar",
+            "verticalAxisPosition": "left"
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "headerGroups": {"ROW": [], "COL": []}
+    },
+    {
+      "id": "data-vendor",
+      "name": "Data",
+      "colNumber": 10,
+      "rowNumber": 50,
+      "rows": {},
+      "cols": {},
+      "merges": [],
+      "cells": {
+        "A1": {"style": 5, "content": "=_t(\"KPI\")"},
+        "B1": {"style": 5, "content": "=_t(\"Current\")"},
+        "C1": {"style": 5, "content": "=_t(\"Previous\")"},
+        "D1": {"style": 5, "content": "=_t(\"Current\")"},
+        "E1": {"style": 5, "content": "=_t(\"Previous\")"},
+        "A2": {"content": "=_t(\"Avg Score\")"},
+        "B2": {"content": "=ODOO.PIVOT(10,\"score\")"},
+        "C2": {"content": "=ODOO.PIVOT(11,\"score\")"},
+        "D2": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(B2)"},
+        "E2": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(C2)"},
+        "A3": {"content": "=_t(\"On-Time Delivery\")"},
+        "B3": {"content": "=ODOO.PIVOT(10,\"on_time_delivery_rate\")"},
+        "C3": {"content": "=ODOO.PIVOT(11,\"on_time_delivery_rate\")"},
+        "D3": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(B3)"},
+        "E3": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(C3)"},
+        "A4": {"content": "=_t(\"Quality Rate\")"},
+        "B4": {"content": "=ODOO.PIVOT(10,\"quality_rate\")"},
+        "C4": {"content": "=ODOO.PIVOT(11,\"quality_rate\")"},
+        "D4": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(B4)"},
+        "E4": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(C4)"},
+        "A5": {"content": "=_t(\"Avg Lead Time\")"},
+        "B5": {"content": "=ODOO.PIVOT(10,\"avg_lead_time\")"},
+        "C5": {"content": "=ODOO.PIVOT(11,\"avg_lead_time\")"},
+        "D5": {"style": 15, "content": "=CONCATENATE(ROUNDUP(B5),_t(\" days\"))"},
+        "E5": {"style": 15, "content": "=ROUNDUP(C5)"}
+      },
+      "figures": [],
+      "areGridLinesVisible": true,
+      "headerGroups": {"ROW": [], "COL": []}
+    }
+  ],
+  "entities": {},
+  "styles": {
+    "1": {"textColor": "#01666b", "bold": true, "fontSize": 16},
+    "2": {"bold": true, "fillColor": ""},
+    "3": {"fillColor": "#f2f2f2", "textColor": "#01666b"},
+    "4": {"textColor": "#01666b"},
+    "5": {"bold": true},
+    "15": {"bold": true, "fontSize": 14}
+  },
+  "formats": {},
+  "borders": {
+    "1": {"bottom": ["thin", "#000"]},
+    "2": {"top": ["thin", "#000"]}
+  },
+  "revisionId": "START_REVISION",
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "m/d/yyyy",
+      "timeFormat": "hh:mm:ss a",
+      "formulaArgSeparator": ","
+    }
+  },
+  "chartOdooMenusReferences": {},
+  "odooVersion": 4,
+  "lists": {
+    "1": {
+      "columns": [
+        "partner_id",
+        "score",
+        "on_time_delivery_rate",
+        "quality_rate",
+        "avg_lead_time",
+        "total_orders",
+        "total_amount"
+      ],
+      "domain": [],
+      "model": "spreadsheet.vendor.scorecard",
+      "context": {},
+      "orderBy": [{"name": "score", "asc": false}],
+      "id": "1",
+      "name": "Vendor Scorecards"
+    }
+  },
+  "listNextId": 2,
+  "pivots": {
+    "1": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [],
+      "id": "1",
+      "measures": [{"field": "score"}],
+      "model": "spreadsheet.vendor.scorecard",
+      "rowGroupBys": ["partner_id"],
+      "name": "Vendor scores",
+      "sortedColumn": {"groupId": [[], []], "measure": "score", "order": "desc"}
+    },
+    "10": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [],
+      "id": "10",
+      "measures": [
+        {"field": "score"},
+        {"field": "on_time_delivery_rate"},
+        {"field": "quality_rate"},
+        {"field": "avg_lead_time"}
+      ],
+      "model": "spreadsheet.vendor.scorecard",
+      "rowGroupBys": [],
+      "name": "Vendor stats - current",
+      "sortedColumn": {"groupId": [[], []], "measure": "score", "order": "desc"}
+    },
+    "11": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [],
+      "id": "11",
+      "measures": [
+        {"field": "score"},
+        {"field": "on_time_delivery_rate"},
+        {"field": "quality_rate"},
+        {"field": "avg_lead_time"}
+      ],
+      "model": "spreadsheet.vendor.scorecard",
+      "rowGroupBys": [],
+      "name": "Vendor stats - previous",
+      "sortedColumn": {"groupId": [[], []], "measure": "score", "order": "desc"}
+    }
+  },
+  "pivotNextId": 12,
+  "globalFilters": [
+    {
+      "id": "date-filter-vendor",
+      "type": "date",
+      "label": "Period",
+      "defaultValue": "last_three_months",
+      "rangeType": "relative",
+      "defaultsToCurrentPeriod": false,
+      "pivotFields": {
+        "1": {"field": "date", "type": "date", "offset": 0},
+        "10": {"field": "date", "type": "date", "offset": 0},
+        "11": {"field": "date", "type": "date", "offset": -1}
+      },
+      "listFields": {
+        "1": {"field": "date", "type": "date", "offset": 0}
+      }
+    }
+  ]
+}

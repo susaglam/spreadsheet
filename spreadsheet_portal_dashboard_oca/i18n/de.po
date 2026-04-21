@@ -1,0 +1,61 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_portal_dashboard_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: German (de)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Access"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "All Portal Users"
+msgstr "Alle Portal-Benutzer"
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Dashboard name..."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Description shown to portal users."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "If checked, all portal users can see this dashboard."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Portal Dashboard: Internal user full access"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Portal Dashboard: Portal user read access"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Portal Dashboards"
+msgstr "Portal-Dashboards"
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Portal Partners"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+msgid "Portal partners who can view this dashboard. "
+msgstr ""
+

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Search -->
+    <record id="vendor_scorecard_view_search" model="ir.ui.view">
+        <field name="name">spreadsheet.vendor.scorecard.search</field>
+        <field name="model">spreadsheet.vendor.scorecard</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id" />
+                <field name="date" />
+                <filter
+                    name="high_score"
+                    string="High Performers (80+)"
+                    domain="[('score', '>=', 80)]"
+                />
+                <filter
+                    name="low_score"
+                    string="Low Performers (&lt;50)"
+                    domain="[('score', '&lt;', 50)]"
+                />
+                <group>
+                    <filter
+                        name="group_by_vendor"
+                        string="Vendor"
+                        context="{'group_by': 'partner_id'}"
+                    />
+                    <filter
+                        name="group_by_month"
+                        string="Month"
+                        context="{'group_by': 'date:month'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- List -->
+    <record id="vendor_scorecard_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.vendor.scorecard.list</field>
+        <field name="model">spreadsheet.vendor.scorecard</field>
+        <field name="arch" type="xml">
+            <list
+                decoration-success="score >= 80"
+                decoration-warning="score >= 50 and score &lt; 80"
+                decoration-danger="score &lt; 50"
+            >
+                <field name="partner_id" />
+                <field name="date" />
+                <field name="on_time_delivery_rate" string="On-Time %" />
+                <field name="quality_rate" string="Quality %" />
+                <field name="avg_lead_time" string="Lead Time (d)" />
+                <field name="total_orders" />
+                <field name="total_amount" />
+                <field
+                    name="score"
+                    string="Score"
+                    widget="progressbar"
+                    options="{'max_value': 100}"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="vendor_scorecard_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.vendor.scorecard.form</field>
+        <field name="model">spreadsheet.vendor.scorecard</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_open_vendor_orders"
+                        type="object"
+                        string="View Orders"
+                        icon="fa-shopping-cart"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="partner_id" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Performance">
+                            <field name="date" />
+                            <field
+                                name="score"
+                                widget="progressbar"
+                                options="{'max_value': 100}"
+                            />
+                            <field name="on_time_delivery_rate" />
+                            <field name="quality_rate" />
+                            <field name="avg_lead_time" />
+                        </group>
+                        <group string="Volume">
+                            <field name="total_orders" />
+                            <field name="total_amount" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Pivot -->
+    <record id="vendor_scorecard_view_pivot" model="ir.ui.view">
+        <field name="name">spreadsheet.vendor.scorecard.pivot</field>
+        <field name="model">spreadsheet.vendor.scorecard</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="partner_id" type="row" />
+                <field name="date" type="col" interval="month" />
+                <field name="score" type="measure" />
+                <field name="on_time_delivery_rate" type="measure" />
+                <field name="quality_rate" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <!-- Graph -->
+    <record id="vendor_scorecard_view_graph" model="ir.ui.view">
+        <field name="name">spreadsheet.vendor.scorecard.graph</field>
+        <field name="model">spreadsheet.vendor.scorecard</field>
+        <field name="arch" type="xml">
+            <graph type="bar">
+                <field name="partner_id" />
+                <field name="score" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="vendor_scorecard_act_window" model="ir.actions.act_window">
+        <field name="name">Vendor Scorecards</field>
+        <field name="res_model">spreadsheet.vendor.scorecard</field>
+        <field name="view_mode">list,form,pivot,graph</field>
+        <field name="context">{'search_default_group_by_vendor': 1}</field>
+    </record>
+
+    <!-- Menu under Purchase > Reporting -->
+    <record id="menu_vendor_scorecard" model="ir.ui.menu">
+        <field name="name">Vendor Scorecards</field>
+        <field name="parent_id" ref="purchase.purchase_report_main" />
+        <field name="action" ref="vendor_scorecard_act_window" />
+        <field name="sequence" eval="30" />
+    </record>
+
+    <!-- Cron -->
+    <record id="ir_cron_vendor_scorecard" model="ir.cron">
+        <field name="name">Spreadsheet: Compute Vendor Scorecards</field>
+        <field name="model_id" ref="model_spreadsheet_vendor_scorecard" />
+        <field name="state">code</field>
+        <field name="code">model._cron_compute_scorecards()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field>
+        <field name="active">True</field>
+        <field name="user_id" ref="base.user_root" />
+    </record>
+</odoo>

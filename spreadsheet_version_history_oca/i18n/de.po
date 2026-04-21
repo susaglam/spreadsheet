@@ -1,0 +1,93 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_version_history_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: German (de)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_version_history_oca
+msgid "Cells Added"
+msgstr "Zellen hinzugefuegt"
+
+#. module: spreadsheet_version_history_oca
+msgid "Cells Changed"
+msgstr "Zellen geaendert"
+
+#. module: spreadsheet_version_history_oca
+msgid "Cells Removed"
+msgstr "Zellen entfernt"
+
+#. module: spreadsheet_version_history_oca
+msgid "Created"
+msgstr "Erstellt"
+
+#. module: spreadsheet_version_history_oca
+msgid "New Snapshot"
+msgstr "Neuer Schnappschuss"
+
+#. module: spreadsheet_version_history_oca
+msgid "Notes"
+msgstr "Notizen"
+
+#. module: spreadsheet_version_history_oca
+msgid "Optional label (e.g., "
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#. module: spreadsheet_version_history_oca
+msgid "Restore This Version"
+msgstr "Diese Version wiederherstellen"
+
+#. module: spreadsheet_version_history_oca
+msgid "Size"
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "Snapshot %s"
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "Snapshot Data"
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "Spreadsheet "
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "Version Restored"
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "Versions"
+msgstr "Versionen"
+
+#. module: spreadsheet_version_history_oca
+msgid "Versions - %s"
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "Visual Diff vs Current"
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "What changed in this version."
+msgstr ""
+
+#. module: spreadsheet_version_history_oca
+msgid "What changed in this version..."
+msgstr ""
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Template Manager: implied by Spreadsheet Manager privilege.
+         saas-19.2: res.groups no longer has category_id/users fields —
+         use privilege_id and user_ids. -->
+    <record id="group_template_manager" model="res.groups">
+        <field name="name">Template Manager</field>
+        <field name="privilege_id" ref="spreadsheet_oca.privilege_spreadsheet" />
+        <field name="implied_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="user_ids" eval="[(4, ref('base.user_admin'))]" />
+    </record>
+
+    <!-- Spreadsheet Manager automatically gets Template Manager -->
+    <record id="spreadsheet_oca.group_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_template_manager'))]" />
+    </record>
+
+    <!-- Templates: all spreadsheet users can read -->
+    <record id="rule_spreadsheet_template_read_all" model="ir.rule">
+        <field name="name">Spreadsheet Template: Read for all users</field>
+        <field name="model_id" ref="model_spreadsheet_template" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+
+    <!-- Templates: full access for template managers -->
+    <record id="rule_spreadsheet_template_manager" model="ir.rule">
+        <field name="name">Spreadsheet Template: Full access for managers</field>
+        <field name="model_id" ref="model_spreadsheet_template" />
+        <field
+            name="groups"
+            eval="[(4, ref('spreadsheet_template_oca.group_template_manager'))]"
+        />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+</odoo>

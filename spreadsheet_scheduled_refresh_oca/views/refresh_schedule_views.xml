@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="refresh_schedule_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.refresh.schedule.list</field>
+        <field name="model">spreadsheet.refresh.schedule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="interval_number" />
+                <field name="interval_type" />
+                <field name="last_refresh" />
+                <field name="next_refresh" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="refresh_schedule_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.refresh.schedule.form</field>
+        <field name="model">spreadsheet.refresh.schedule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="spreadsheet_id" />
+                            <field name="active" />
+                        </group>
+                        <group>
+                            <label for="interval_number" />
+                            <div class="o_row">
+                                <field name="interval_number" />
+                                <field name="interval_type" />
+                            </div>
+                            <field name="last_refresh" />
+                            <field name="next_refresh" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="refresh_schedule_act_window" model="ir.actions.act_window">
+        <field name="name">Refresh Schedules</field>
+        <field name="res_model">spreadsheet.refresh.schedule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="menu_refresh_schedules" model="ir.ui.menu">
+        <field name="name">Refresh Schedules</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="refresh_schedule_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="60" />
+    </record>
+</odoo>

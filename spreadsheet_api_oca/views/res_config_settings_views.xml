@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Extends the Spreadsheet app created by spreadsheet_kpi_alert_oca.
+         This view adds a block inside the existing app instead of creating a new one. -->
+    <record id="res_config_settings_view_form_spreadsheet_api" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.spreadsheet.api</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="101" />
+        <field
+            name="inherit_id"
+            ref="spreadsheet_kpi_alert_oca.res_config_settings_view_form_spreadsheet_kpi"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='spreadsheet_oca']" position="inside">
+                <block title="REST API" name="api_settings_block">
+                    <setting help="Default rate limit for new API tokens.">
+                        <field name="api_default_rate_limit" />
+                    </setting>
+                    <setting help="Max webhook delivery attempts before giving up.">
+                        <field name="api_webhook_retry_max" />
+                    </setting>
+                    <setting help="Default expiry for new API tokens (0 = no expiry).">
+                        <field name="api_token_default_expiry_days" />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

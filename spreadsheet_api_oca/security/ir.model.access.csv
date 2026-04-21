@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_api_token_user,spreadsheet.api.token.user,model_spreadsheet_api_token,spreadsheet_oca.group_user,1,1,1,1
+access_api_token_manager,spreadsheet.api.token.manager,model_spreadsheet_api_token,spreadsheet_oca.group_manager,1,1,1,1
+access_api_webhook_user,spreadsheet.api.webhook.event.user,model_spreadsheet_api_webhook_event,spreadsheet_oca.group_user,1,0,0,0
+access_api_webhook_manager,spreadsheet.api.webhook.event.manager,model_spreadsheet_api_webhook_event,spreadsheet_oca.group_manager,1,1,1,1

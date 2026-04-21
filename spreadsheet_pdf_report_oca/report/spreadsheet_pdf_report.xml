@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Main PDF wrapper with header/footer -->
+    <template id="spreadsheet_pdf_main">
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                <style>
+                    @page {
+                        size: A4 landscape;
+                        margin: 15mm 7mm;
+                    }
+                    body {
+                        font-family: 'DejaVu Sans', 'Liberation Sans', 'Arial Unicode MS', Arial, sans-serif;
+                        font-size: 10px;
+                        color: #333;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .report-header {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border-bottom: 2px solid #333;
+                        padding-bottom: 8px;
+                        margin-bottom: 16px;
+                    }
+                    .report-header .company-info {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+                    .report-header .company-logo img {
+                        max-height: 40px;
+                        max-width: 150px;
+                    }
+                    .report-header .company-name {
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+                    .report-header .report-title {
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #555;
+                    }
+                    .report-meta {
+                        text-align: right;
+                        font-size: 9px;
+                        color: #888;
+                        margin-bottom: 12px;
+                    }
+                    .sheet-section {
+                        margin-bottom: 24px;
+                        page-break-inside: avoid;
+                    }
+                    .sheet-title {
+                        font-size: 13px;
+                        font-weight: bold;
+                        color: #444;
+                        padding: 4px 8px;
+                        background: #f0f0f0;
+                        border-left: 4px solid #875a7b;
+                        margin-bottom: 8px;
+                    }
+                    .sheet-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        table-layout: auto;
+                        font-size: 9px;
+                    }
+                    .sheet-table td, .sheet-table th {
+                        border: 1px solid #ccc;
+                        padding: 3px 5px;
+                        vertical-align: middle;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 200px;
+                    }
+                    .report-footer {
+                        margin-top: 16px;
+                        padding-top: 8px;
+                        border-top: 1px solid #ccc;
+                        font-size: 8px;
+                        color: #999;
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                </style>
+            </head>
+            <body>
+                <!-- Header -->
+                <div class="report-header">
+                    <div class="company-info">
+                        <div class="company-logo" t-if="company.logo">
+                            <img
+                                t-att-src="'data:image/png;base64,' + company.logo.decode('utf-8')"
+                                alt="Company Logo"
+                            />
+                        </div>
+                        <div class="company-name" t-out="company.name" />
+                    </div>
+                    <div class="report-title" t-out="report_name" />
+                </div>
+
+                <div class="report-meta">
+                    Generated on <t t-out="report_date" />
+                </div>
+
+                <!-- Sheet content -->
+                <t t-out="content" />
+
+                <!-- Footer -->
+                <div class="report-footer">
+                    <span t-out="company.name" />
+                    <span t-out="report_name" />
+                </div>
+            </body>
+        </html>
+    </template>
+
+    <!-- Sheet content rendering -->
+    <template id="spreadsheet_pdf_content">
+        <t t-foreach="sheets" t-as="sheet">
+            <div class="sheet-section">
+                <div class="sheet-title">
+                    <t t-out="sheet.get('name', 'Sheet')" />
+                </div>
+                <t t-if="sheet.get('rows')">
+                    <table class="sheet-table">
+                        <t t-foreach="sheet['rows']" t-as="row">
+                            <tr>
+                                <t t-foreach="row" t-as="cell">
+                                    <t t-set="cell_style" t-value="''" />
+                                    <t t-if="cell.get('bold')">
+                                        <t
+                                            t-set="cell_style"
+                                            t-value="cell_style + 'font-weight:bold;'"
+                                        />
+                                    </t>
+                                    <t t-if="cell.get('italic')">
+                                        <t
+                                            t-set="cell_style"
+                                            t-value="cell_style + 'font-style:italic;'"
+                                        />
+                                    </t>
+                                    <t t-if="cell.get('color')">
+                                        <t
+                                            t-set="cell_style"
+                                            t-value="cell_style + 'color:' + cell['color'] + ';'"
+                                        />
+                                    </t>
+                                    <t t-if="cell.get('bg')">
+                                        <t
+                                            t-set="cell_style"
+                                            t-value="cell_style + 'background-color:' + cell['bg'] + ';'"
+                                        />
+                                    </t>
+                                    <t t-if="cell.get('align')">
+                                        <t
+                                            t-set="cell_style"
+                                            t-value="cell_style + 'text-align:' + cell['align'] + ';'"
+                                        />
+                                    </t>
+                                    <t t-if="cell.get('fontSize')">
+                                        <t
+                                            t-set="cell_style"
+                                            t-value="cell_style + 'font-size:' + str(cell['fontSize']) + 'px;'"
+                                        />
+                                    </t>
+                                    <td
+                                        t-att-style="cell_style or None"
+                                        t-att-colspan="cell.get('colspan') or None"
+                                        t-att-rowspan="cell.get('rowspan') or None"
+                                    >
+                                        <t t-out="cell.get('value', '')" />
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                    </table>
+                </t>
+                <t t-else="">
+                    <p style="color: #999; font-style: italic;">Empty sheet</p>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

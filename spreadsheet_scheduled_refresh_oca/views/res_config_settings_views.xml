@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form_spreadsheet_refresh" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.spreadsheet.refresh</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="104" />
+        <field
+            name="inherit_id"
+            ref="spreadsheet_kpi_alert_oca.res_config_settings_view_form_spreadsheet_kpi"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='spreadsheet_oca']" position="inside">
+                <block title="Scheduled Refresh" name="refresh_settings_block">
+                    <setting
+                        help="Default refresh interval (hours) for new refresh schedules."
+                    >
+                        <field name="refresh_default_interval_hours" />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

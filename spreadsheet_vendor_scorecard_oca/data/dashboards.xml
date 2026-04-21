@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="spreadsheet_dashboard_vendor_scorecard" model="spreadsheet.dashboard">
+        <field name="name">Vendor Performance</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json"
+        />
+        <field
+            name="dashboard_group_id"
+            ref="spreadsheet_dashboard.spreadsheet_dashboard_group_logistics"
+        />
+        <field
+            name="group_ids"
+            eval="[Command.link(ref('purchase.group_purchase_user'))]"
+        />
+        <field name="sequence">120</field>
+    </record>
+</odoo>

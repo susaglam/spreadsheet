@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Actions that open individual guide spreadsheets -->
+    <record id="action_guide_forecast" model="ir.actions.server">
+        <field name="name">📈 Tahminleme Fonksiyonlari Rehberi</field>
+        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >action = env.ref("spreadsheet_help_oca.guide_forecast").open_spreadsheet()</field>
+    </record>
+
+    <record id="action_guide_period" model="ir.actions.server">
+        <field name="name">📊 Donem Karsilastirma Rehberi</field>
+        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >action = env.ref("spreadsheet_help_oca.guide_period").open_spreadsheet()</field>
+    </record>
+
+    <record id="action_guide_core" model="ir.actions.server">
+        <field name="name">🧰 Core Formulleri Rehberi</field>
+        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >action = env.ref("spreadsheet_help_oca.guide_core").open_spreadsheet()</field>
+    </record>
+
+    <record id="action_guide_features" model="ir.actions.server">
+        <field name="name">✨ Ozellikler ve Menuler Rehberi</field>
+        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >action = env.ref("spreadsheet_help_oca.guide_features").open_spreadsheet()</field>
+    </record>
+
+    <!-- "Help & Examples" parent menu under Spreadsheets app -->
+    <record id="menu_spreadsheet_help" model="ir.ui.menu">
+        <field name="name">Help &amp; Examples</field>
+        <field name="parent_id" ref="spreadsheet_oca.spreadsheet_spreadsheet_menu" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="90" />
+    </record>
+
+    <!-- 🎓 Tutorials (kanban with search) -->
+    <record id="menu_tutorials" model="ir.ui.menu">
+        <field name="name">🎓 Tutorials &amp; Videos</field>
+        <field name="parent_id" ref="menu_spreadsheet_help" />
+        <field name="action" ref="tutorial_action" />
+        <field name="sequence" eval="5" />
+    </record>
+
+    <!-- Formula reference sub-menus (pre-built spreadsheets) -->
+    <record id="menu_guide_features" model="ir.ui.menu">
+        <field name="name">✨ Ozellikler ve Menuler</field>
+        <field name="parent_id" ref="menu_spreadsheet_help" />
+        <field name="action" ref="action_guide_features" />
+        <field name="sequence" eval="10" />
+    </record>
+
+    <record id="menu_guide_forecast" model="ir.ui.menu">
+        <field name="name">📈 Tahminleme Formulleri</field>
+        <field name="parent_id" ref="menu_spreadsheet_help" />
+        <field name="action" ref="action_guide_forecast" />
+        <field name="sequence" eval="20" />
+    </record>
+
+    <record id="menu_guide_period" model="ir.ui.menu">
+        <field name="name">📊 Donem Karsilastirma</field>
+        <field name="parent_id" ref="menu_spreadsheet_help" />
+        <field name="action" ref="action_guide_period" />
+        <field name="sequence" eval="30" />
+    </record>
+
+    <record id="menu_guide_core" model="ir.ui.menu">
+        <field name="name">🧰 Core Formulleri</field>
+        <field name="parent_id" ref="menu_spreadsheet_help" />
+        <field name="action" ref="action_guide_core" />
+        <field name="sequence" eval="40" />
+    </record>
+
+    <!-- 📦 Sample Data Loader -->
+    <record id="menu_sample_data_loader" model="ir.ui.menu">
+        <field name="name">📦 Ornek Veri Yukle</field>
+        <field name="parent_id" ref="menu_spreadsheet_help" />
+        <field name="action" ref="sample_data_loader_action" />
+        <field name="sequence" eval="50" />
+    </record>
+</odoo>

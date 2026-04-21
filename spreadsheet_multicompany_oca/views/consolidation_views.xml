@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- List -->
+    <record id="consolidation_profile_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.consolidation.profile.list</field>
+        <field name="model">spreadsheet.consolidation.profile</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="company_ids" widget="many2many_tags" />
+                <field name="currency_id" />
+                <button
+                    name="action_generate_report"
+                    type="object"
+                    string="Generate"
+                    icon="fa-play"
+                    class="btn-primary"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="consolidation_profile_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.consolidation.profile.form</field>
+        <field name="model">spreadsheet.consolidation.profile</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_generate_report"
+                        type="object"
+                        string="Generate Consolidated Report"
+                        class="btn-primary"
+                        icon="fa-play"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field
+                                name="name"
+                                placeholder="e.g. Group Consolidation Q1"
+                            />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Companies">
+                            <field name="company_ids" widget="many2many_tags" />
+                            <field name="currency_id" />
+                        </group>
+                        <group string="Eliminations">
+                            <field
+                                name="elimination_account_ids"
+                                widget="many2many_tags"
+                            />
+                            <field
+                                name="elimination_partner_ids"
+                                widget="many2many_tags"
+                            />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="consolidation_profile_act_window" model="ir.actions.act_window">
+        <field name="name">Consolidation Profiles</field>
+        <field name="res_model">spreadsheet.consolidation.profile</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu under Spreadsheets -->
+    <record id="menu_consolidation_profiles" model="ir.ui.menu">
+        <field name="name">Consolidation</field>
+        <field name="parent_id" ref="spreadsheet_oca.spreadsheet_spreadsheet_menu" />
+        <field name="action" ref="consolidation_profile_act_window" />
+        <field name="group_ids" eval="[(4, ref('account.group_account_user'))]" />
+        <field name="sequence" eval="20" />
+    </record>
+</odoo>

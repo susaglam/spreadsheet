@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="spreadsheet_email_report_template" model="mail.template">
+            <field name="name">Spreadsheet Scheduled Report</field>
+            <field name="model_id" ref="model_spreadsheet_email_report" />
+            <field
+                name="subject"
+            >{{ object.name }} - {{ object.spreadsheet_id.name }}</field>
+            <field
+                name="body_html"
+            ><![CDATA[
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <div style="background-color: #875a7b; color: white; padding: 16px 24px;">
+        <h2 style="margin: 0;">{{ object.spreadsheet_id.name }}</h2>
+    </div>
+    <div style="padding: 24px; border: 1px solid #ddd; border-top: none;">
+        <p>Hello,</p>
+        <p>Please find attached the scheduled report <strong>{{ object.name }}</strong>.</p>
+        <p>Generated on: {{ format_datetime(ctx['object'].last_sent or ctx['object'].create_date) }}</p>
+        <p style="color: #666; font-size: 12px;">
+            This is an automated report sent by your Odoo instance.
+        </p>
+    </div>
+</div>
+]]></field>
+        </record>
+    </data>
+</odoo>

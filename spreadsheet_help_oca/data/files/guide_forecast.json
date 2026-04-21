@@ -1,0 +1,106 @@
+{
+  "version": 12,
+  "revisionId": "START_REVISION",
+  "sheets": [
+    {
+      "id": "sh1",
+      "name": "Forecast Ornekleri",
+      "colNumber": 8,
+      "rowNumber": 30,
+      "rows": {},
+      "cols": {"0": {"size": 260}, "1": {"size": 200}, "2": {"size": 320}},
+      "merges": [],
+      "cells": {
+        "A1": {
+          "content": "\ud83d\udcc8 ODOO.FORECAST, ODOO.TREND, ODOO.MOVING_AVG \u2014 Ornekler",
+          "style": 1
+        },
+        "A2": {
+          "content": "Bu spreadsheet bizim custom tahminleme fonksiyonlarimizi gosterir.",
+          "style": 3
+        },
+        "A4": {"content": "ORNEK 1: Linear Forecast (Dogrusal Tahmin)", "style": 2},
+        "A5": {"content": "Ay No (x)", "style": 2},
+        "B5": {"content": "Satis (y)", "style": 2},
+        "C5": {"content": "Notlar", "style": 2},
+        "A6": {"content": "1"},
+        "B6": {"content": "100"},
+        "A7": {"content": "2"},
+        "B7": {"content": "120"},
+        "A8": {"content": "3"},
+        "B8": {"content": "150"},
+        "A9": {"content": "4"},
+        "B9": {"content": "180"},
+        "A10": {"content": "5"},
+        "B10": {"content": "210"},
+        "A12": {"content": "Tahmin Ay 6:", "style": 4},
+        "B12": {"content": "=ODOO.FORECAST(6, B6:B10, A6:A10)", "style": 4},
+        "C12": {"content": "Beklenen: ~240 (lineer trend)", "style": 6},
+        "A13": {"content": "Tahmin Ay 12:", "style": 4},
+        "B13": {"content": "=ODOO.FORECAST(12, B6:B10, A6:A10)", "style": 4},
+        "C13": {"content": "Beklenen: ~402", "style": 6},
+        "A15": {"content": "ORNEK 2: TREND (Trend Degeri)", "style": 2},
+        "A16": {"content": "Formul", "style": 2},
+        "B16": {"content": "Sonuc", "style": 2},
+        "C16": {"content": "Aciklama", "style": 2},
+        "A17": {"content": "=ODOO.TREND(B6:B10, A6:A10, 10)"},
+        "B17": {"content": "=ODOO.TREND(B6:B10, A6:A10, 10)", "style": 4},
+        "C17": {"content": "Ay 10'un trend degeri", "style": 6},
+        "A18": {"content": "=ODOO.TREND(B6:B10, A6:A10, 15)"},
+        "B18": {"content": "=ODOO.TREND(B6:B10, A6:A10, 15)", "style": 4},
+        "C18": {"content": "Ay 15'in trend degeri", "style": 6},
+        "A20": {"content": "ORNEK 3: MOVING_AVG (Hareketli Ortalama)", "style": 2},
+        "A21": {"content": "Formul", "style": 2},
+        "B21": {"content": "Sonuc", "style": 2},
+        "C21": {"content": "Aciklama", "style": 2},
+        "A22": {"content": "=ODOO.MOVING_AVG(B6:B10, 3)"},
+        "B22": {"content": "=ODOO.MOVING_AVG(B6:B10, 3)", "style": 4},
+        "C22": {"content": "Son 3 degerin ortalamasi (150+180+210)/3", "style": 6},
+        "A23": {"content": "=ODOO.MOVING_AVG(B6:B10, 5)"},
+        "B23": {"content": "=ODOO.MOVING_AVG(B6:B10, 5)", "style": 4},
+        "C23": {"content": "Tum 5 degerin ortalamasi", "style": 6},
+        "A25": {"content": "\ud83d\udcd6 KULLANIM", "style": 1},
+        "A26": {"content": "ODOO.FORECAST(hedef_x, bilinen_y, bilinen_x)", "style": 5},
+        "A27": {"content": "ODOO.TREND(bilinen_y, bilinen_x, yeni_x)", "style": 5},
+        "A28": {"content": "ODOO.MOVING_AVG(degerler, pencere_boyutu)", "style": 5},
+        "A29": {
+          "content": "Matematiksel: y = m*x + b (en kucuk kareler regresyon)",
+          "style": 3
+        }
+      },
+      "figures": [],
+      "areGridLinesVisible": true,
+      "headerGroups": {"ROW": [], "COL": []}
+    }
+  ],
+  "entities": {},
+  "styles": {
+    "1": {"bold": true, "fillColor": "#875a7b", "textColor": "#FFFFFF", "fontSize": 12},
+    "2": {"bold": true, "fillColor": "#d9d9d9"},
+    "3": {"italic": true, "textColor": "#666666"},
+    "4": {"fillColor": "#e8f5e9", "textColor": "#1b5e20", "bold": true},
+    "5": {"fillColor": "#fff3e0", "textColor": "#e65100"},
+    "6": {"textColor": "#0d47a1", "italic": true},
+    "7": {"fillColor": "#fbe9e7", "textColor": "#bf360c"}
+  },
+  "formats": {},
+  "borders": {},
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "m/d/yyyy",
+      "timeFormat": "hh:mm:ss a",
+      "formulaArgSeparator": ","
+    }
+  },
+  "chartOdooMenusReferences": {},
+  "odooVersion": 4,
+  "lists": {},
+  "listNextId": 1,
+  "pivots": {},
+  "pivotNextId": 1,
+  "globalFilters": []
+}

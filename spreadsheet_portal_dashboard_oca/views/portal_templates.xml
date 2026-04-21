@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Portal home entry card -->
+    <template
+        id="portal_my_home_dashboard_entry"
+        name="Portal Dashboards Entry"
+        inherit_id="portal.portal_my_home"
+        priority="40"
+    >
+        <xpath expr="//div[@id='portal_common_category']/*[1]" position="before">
+            <t t-call="portal.portal_docs_entry">
+                <t
+                    t-set="icon"
+                    t-value="'/spreadsheet_oca/static/description/icon.png'"
+                />
+                <t t-set="title">Dashboards</t>
+                <t t-set="text">View your analytics dashboards.</t>
+                <t t-set="url" t-value="'/my/dashboards'" />
+                <t t-set="placeholder_count" t-value="'portal_dashboard_count'" />
+                <t t-set="config_card" t-value="True" />
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Portal breadcrumbs -->
+    <template
+        id="portal_breadcrumbs_dashboards"
+        name="Portal Dashboards Breadcrumbs"
+        inherit_id="portal.portal_breadcrumbs"
+        priority="40"
+    >
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li
+                t-if="page_name == 'dashboards' or page_name == 'dashboard_detail'"
+                t-attf-class="breadcrumb-item #{'active' if page_name == 'dashboards' else ''}"
+            >
+                <a t-if="page_name == 'dashboard_detail'" href="/my/dashboards">
+                    Dashboards
+                </a>
+                <t t-else="">Dashboards</t>
+            </li>
+            <li t-if="page_name == 'dashboard_detail'" class="breadcrumb-item active">
+                <t t-out="dashboard.name" />
+            </li>
+        </xpath>
+    </template>
+
+    <!-- Dashboard list page -->
+    <template id="portal_dashboards_list" name="Portal Dashboards List">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+
+            <t t-if="not dashboards">
+                <div class="alert alert-info text-center" role="alert">
+                    No dashboards available.
+                </div>
+            </t>
+
+            <t t-if="dashboards">
+                <div class="row mt-3">
+                    <t t-foreach="dashboards" t-as="dash">
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <i class="fa fa-bar-chart text-primary me-2" />
+                                        <t t-out="dash.name" />
+                                    </h5>
+                                    <p
+                                        class="card-text text-muted"
+                                        t-if="dash.description"
+                                    >
+                                        <t t-out="dash.description" />
+                                    </p>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <a
+                                        t-attf-href="/my/dashboards/#{dash.id}"
+                                        class="btn btn-primary btn-sm"
+                                    >
+                                        <i class="fa fa-eye me-1" />
+                                        View Dashboard
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <!-- Dashboard detail page (spreadsheet viewer) -->
+    <template id="portal_dashboard_detail" name="Portal Dashboard Detail">
+        <t t-call="portal.portal_layout">
+            <div class="container-fluid mt-3">
+                <div class="row">
+                    <div class="col-12">
+                        <div
+                            class="d-flex align-items-center justify-content-between mb-3"
+                        >
+                            <h3 class="mb-0">
+                                <i class="fa fa-bar-chart text-primary me-2" />
+                                <t t-out="dashboard.name" />
+                            </h3>
+                            <a href="/my/dashboards" class="btn btn-secondary btn-sm">
+                                <i class="fa fa-arrow-left me-1" />
+                                Back to Dashboards
+                            </a>
+                        </div>
+
+                        <p t-if="dashboard.description" class="text-muted">
+                            <t t-out="dashboard.description" />
+                        </p>
+
+                        <!-- Spreadsheet container -->
+                        <div
+                            id="portal-spreadsheet-container"
+                            class="border rounded bg-white"
+                            style="min-height: 600px; position: relative;"
+                            t-att-data-dashboard-id="dashboard.id"
+                            t-att-data-dashboard-name="dashboard.name"
+                        >
+                            <div
+                                class="d-flex align-items-center justify-content-center h-100"
+                                style="min-height: 600px;"
+                            >
+                                <div class="text-center text-muted">
+                                    <i class="fa fa-spinner fa-spin fa-3x mb-3" />
+                                    <p>Loading dashboard...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-muted small mt-2">
+                            <i class="fa fa-info-circle me-1" />
+                            This dashboard is read-only. Data is refreshed automatically.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

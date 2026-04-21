@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * spreadsheet_contract_sla_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.2\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: Dutch (nl)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Active"
+msgstr "Actief"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Actual"
+msgstr "Werkelijk"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Contract "
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Contract Details"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Contract Expiry Reminder"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Contract Value"
+msgstr "Contractwaarde"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Contract renewed until %s."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Contracts &amp; SLA"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Dates &amp; Value"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Days Left"
+msgstr "Dagen Resterend"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Days before expiry to send renewal reminder."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Default Contract Renewal Reminder (days)"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Default days before expiry to trigger renewal reminder."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Expired"
+msgstr "Verlopen"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Expiring Soon"
+msgstr "Verloopt Binnenkort"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Group By"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Notes"
+msgstr "Notities"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Partner"
+msgstr "Relatie"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Reminder Before (days)"
+msgstr "Herinnering Voor (dagen)"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Renew Contract"
+msgstr "Contract Vernieuwen"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Responsible"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "SLA Metric"
+msgstr "SLA Metriek"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "SLA Metrics"
+msgstr "SLA Metrieken"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Spreadsheet"
+msgstr "Spreadsheet"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Spreadsheet: Contract Expiry Check"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Status"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Target"
+msgstr "Doel"
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Target SLA value (e.g., 99.9 for 99.9% uptime)."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Type"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+msgid "Unit of measurement (%, hours, days, etc.)."
+msgstr ""
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Badkamertien
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="sample_data_loader_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.sample.data.loader.form</field>
+        <field name="model">spreadsheet.sample.data.loader</field>
+        <field name="arch" type="xml">
+            <form>
+                <div class="alert alert-info" role="alert">
+                    <strong>📦 Ornek Veri Yukleyici</strong><br />
+                    Secilen modullere demo kayitlari ekler. Bu kayitlar "ORNEK" prefix'i ile baslar, daha sonra silebilirsiniz.
+                </div>
+                <group>
+                    <field name="what_to_load" />
+                </group>
+                <footer>
+                    <button
+                        string="Yukle"
+                        name="action_load"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Iptal" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sample_data_loader_action" model="ir.actions.act_window">
+        <field name="name">📦 Ornek Veri Yukle</field>
+        <field name="res_model">spreadsheet.sample.data.loader</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

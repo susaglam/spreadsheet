@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_contract_user,spreadsheet.contract.user,model_spreadsheet_contract,spreadsheet_oca.group_user,1,1,1,0
+access_contract_manager,spreadsheet.contract.manager,model_spreadsheet_contract,spreadsheet_oca.group_manager,1,1,1,1
+access_contract_sla_user,spreadsheet.contract.sla.user,model_spreadsheet_contract_sla,spreadsheet_oca.group_user,1,1,1,0
+access_contract_sla_manager,spreadsheet.contract.sla.manager,model_spreadsheet_contract_sla,spreadsheet_oca.group_manager,1,1,1,1

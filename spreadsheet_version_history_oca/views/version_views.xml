@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="spreadsheet_version_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.version.list</field>
+        <field name="model">spreadsheet.version</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="create_date" string="Created" />
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="version_label" />
+                <field name="created_by_id" widget="many2one_avatar_user" />
+                <field name="size_bytes" string="Size" widget="integer" />
+                <button
+                    name="action_restore"
+                    type="object"
+                    string="Restore"
+                    icon="fa-undo"
+                    confirm="Restore this version? Current state will be overwritten."
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="spreadsheet_version_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.version.form</field>
+        <field name="model">spreadsheet.version</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_restore"
+                        type="object"
+                        string="Restore This Version"
+                        class="btn-primary"
+                        icon="fa-undo"
+                        confirm="Restore this version? Current state will be overwritten."
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="spreadsheet_id" />
+                            <field name="version_label" />
+                            <field name="created_by_id" />
+                            <field name="create_date" />
+                        </group>
+                        <group>
+                            <field name="size_bytes" />
+                            <field name="cells_added" />
+                            <field name="cells_changed" />
+                            <field name="cells_removed" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes" name="notes">
+                            <field
+                                name="note"
+                                placeholder="What changed in this version..."
+                            />
+                        </page>
+                        <page string="Visual Diff vs Current" name="diff">
+                            <field name="diff_html" nolabel="1" readonly="1" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Smart button on spreadsheet form -->
+    <record id="spreadsheet_form_versions_button" model="ir.ui.view">
+        <field name="name">spreadsheet.spreadsheet.form.versions</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_view_versions"
+                    icon="fa-history"
+                >
+                    <field name="version_count" string="Versions" widget="statinfo" />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_create_snapshot"
+                    icon="fa-camera"
+                    string="New Snapshot"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,672 @@
+{
+  "version": 12,
+  "sheets": [
+    {
+      "id": "sheet1",
+      "name": "Dashboard",
+      "colNumber": 9,
+      "rowNumber": 70,
+      "rows": {
+        "6": {
+          "size": 40
+        }
+      },
+      "cols": {
+        "0": {
+          "size": 75
+        },
+        "1": {
+          "size": 75
+        },
+        "2": {
+          "size": 175
+        },
+        "3": {
+          "size": 175
+        },
+        "4": {
+          "size": 100
+        },
+        "5": {
+          "size": 50
+        },
+        "6": {
+          "size": 175
+        },
+        "7": {
+          "size": 100
+        },
+        "8": {
+          "size": 75
+        }
+      },
+      "merges": [],
+      "cells": {
+        "A7": {
+          "style": 1,
+          "content": "[Recent Campaigns](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[[\"state\", \"=\", \"done\"]],\"context\":{},\"modelName\":\"mailing.mailing\",\"views\":[[false,\"list\"],[false,\"form\"]]},\"threshold\":0,\"name\":\"Recent Campaigns\"})",
+          "border": 1
+        },
+        "A8": {
+          "style": 2,
+          "content": "=_t(\"Campaign\")",
+          "border": 2
+        },
+        "B8": {
+          "style": 2,
+          "content": "=_t(\"Sent\")",
+          "border": 2
+        },
+        "C8": {
+          "style": 2,
+          "content": "=_t(\"Delivered\")",
+          "border": 2
+        },
+        "D8": {
+          "style": 2,
+          "content": "=_t(\"Opened\")",
+          "border": 2
+        },
+        "E8": {
+          "style": 2,
+          "content": "=_t(\"Clicked\")",
+          "border": 2
+        },
+        "A9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"subject\")"
+        },
+        "B9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"sent_date\")"
+        },
+        "C9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"delivered\")"
+        },
+        "D9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"opened\")"
+        },
+        "E9": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,1,\"clicked\")"
+        },
+        "A10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"subject\")"
+        },
+        "B10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"sent_date\")"
+        },
+        "C10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"delivered\")"
+        },
+        "D10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"opened\")"
+        },
+        "E10": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,2,\"clicked\")"
+        },
+        "A11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"subject\")"
+        },
+        "B11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"sent_date\")"
+        },
+        "C11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"delivered\")"
+        },
+        "D11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"opened\")"
+        },
+        "E11": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,3,\"clicked\")"
+        },
+        "A12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"subject\")"
+        },
+        "B12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"sent_date\")"
+        },
+        "C12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"delivered\")"
+        },
+        "D12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"opened\")"
+        },
+        "E12": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,4,\"clicked\")"
+        },
+        "A13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"subject\")"
+        },
+        "B13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"sent_date\")"
+        },
+        "C13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"delivered\")"
+        },
+        "D13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"opened\")"
+        },
+        "E13": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,5,\"clicked\")"
+        },
+        "A14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"subject\")"
+        },
+        "B14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"sent_date\")"
+        },
+        "C14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"delivered\")"
+        },
+        "D14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"opened\")"
+        },
+        "E14": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,6,\"clicked\")"
+        },
+        "A15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"subject\")"
+        },
+        "B15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"sent_date\")"
+        },
+        "C15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"delivered\")"
+        },
+        "D15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"opened\")"
+        },
+        "E15": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,7,\"clicked\")"
+        },
+        "A16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"subject\")"
+        },
+        "B16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"sent_date\")"
+        },
+        "C16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"delivered\")"
+        },
+        "D16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"opened\")"
+        },
+        "E16": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,8,\"clicked\")"
+        },
+        "A17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"subject\")"
+        },
+        "B17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"sent_date\")"
+        },
+        "C17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"delivered\")"
+        },
+        "D17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"opened\")"
+        },
+        "E17": {
+          "style": 3,
+          "content": "=ODOO.LIST(1,9,\"clicked\")"
+        },
+        "A18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"subject\")"
+        },
+        "B18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"sent_date\")"
+        },
+        "C18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"delivered\")"
+        },
+        "D18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"opened\")"
+        },
+        "E18": {
+          "style": 4,
+          "content": "=ODOO.LIST(1,10,\"clicked\")"
+        }
+      },
+      "figures": [
+        {
+          "id": "sc-1-campaign",
+          "x": 0,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Campaigns Sent",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E2",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D2"
+          }
+        },
+        {
+          "id": "sc-2-campaign",
+          "x": 210,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Delivered",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E3",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D3"
+          }
+        },
+        {
+          "id": "sc-3-campaign",
+          "x": 420,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Opened",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E4",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D4"
+          }
+        },
+        {
+          "id": "sc-4-campaign",
+          "x": 630,
+          "y": 0,
+          "width": 200,
+          "height": 120,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": "Clicked",
+            "type": "scorecard",
+            "background": "",
+            "baseline": "Data!E5",
+            "baselineDescr": "since last period",
+            "keyValue": "Data!D5"
+          }
+        },
+        {
+          "id": "chart-campaign",
+          "x": 0,
+          "y": 178,
+          "width": 1000,
+          "height": 230,
+          "tag": "chart",
+          "data": {
+            "title": "",
+            "background": "#FFFFFF",
+            "legendPosition": "none",
+            "metaData": {
+              "groupBy": ["sent_date:month"],
+              "measure": "delivered",
+              "order": null,
+              "resModel": "mailing.mailing"
+            },
+            "searchParams": {
+              "comparison": null,
+              "context": {},
+              "domain": [["state", "=", "done"]],
+              "groupBy": ["sent_date:month"],
+              "orderBy": []
+            },
+            "type": "odoo_bar",
+            "verticalAxisPosition": "left"
+          }
+        }
+      ],
+      "areGridLinesVisible": true,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      }
+    },
+    {
+      "id": "data-campaign",
+      "name": "Data",
+      "colNumber": 10,
+      "rowNumber": 50,
+      "rows": {},
+      "cols": {},
+      "merges": [],
+      "cells": {
+        "A1": {
+          "style": 5,
+          "content": "=_t(\"KPI\")"
+        },
+        "B1": {
+          "style": 5,
+          "content": "=_t(\"Current\")"
+        },
+        "C1": {
+          "style": 5,
+          "content": "=_t(\"Previous\")"
+        },
+        "D1": {
+          "style": 5,
+          "content": "=_t(\"Current\")"
+        },
+        "E1": {
+          "style": 5,
+          "content": "=_t(\"Previous\")"
+        },
+        "A2": {
+          "content": "=_t(\"Campaigns Sent\")"
+        },
+        "B2": {
+          "content": "=ODOO.PIVOT(10,\"__count\")"
+        },
+        "C2": {
+          "content": "=ODOO.PIVOT(11,\"__count\")"
+        },
+        "D2": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B2)"
+        },
+        "E2": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C2)"
+        },
+        "A3": {
+          "content": "=_t(\"Delivered\")"
+        },
+        "B3": {
+          "content": "=ODOO.PIVOT(10,\"delivered\")"
+        },
+        "C3": {
+          "content": "=ODOO.PIVOT(11,\"delivered\")"
+        },
+        "D3": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B3)"
+        },
+        "E3": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C3)"
+        },
+        "A4": {
+          "content": "=_t(\"Opened\")"
+        },
+        "B4": {
+          "content": "=ODOO.PIVOT(10,\"opened\")"
+        },
+        "C4": {
+          "content": "=ODOO.PIVOT(11,\"opened\")"
+        },
+        "D4": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B4)"
+        },
+        "E4": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C4)"
+        },
+        "A5": {
+          "content": "=_t(\"Clicked\")"
+        },
+        "B5": {
+          "content": "=ODOO.PIVOT(10,\"clicked\")"
+        },
+        "C5": {
+          "content": "=ODOO.PIVOT(11,\"clicked\")"
+        },
+        "D5": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(B5)"
+        },
+        "E5": {
+          "style": 15,
+          "content": "=FORMAT.LARGE.NUMBER(C5)"
+        }
+      },
+      "figures": [],
+      "areGridLinesVisible": true,
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      }
+    }
+  ],
+  "entities": {},
+  "styles": {
+    "1": {
+      "textColor": "#01666b",
+      "bold": true,
+      "fontSize": 16
+    },
+    "2": {
+      "bold": true,
+      "fillColor": ""
+    },
+    "3": {
+      "fillColor": "#f2f2f2",
+      "textColor": "#01666b"
+    },
+    "4": {
+      "textColor": "#01666b"
+    },
+    "5": {
+      "bold": true
+    },
+    "15": {
+      "bold": true,
+      "fontSize": 14
+    }
+  },
+  "formats": {},
+  "borders": {
+    "1": {
+      "bottom": ["thin", "#000"]
+    },
+    "2": {
+      "top": ["thin", "#000"]
+    }
+  },
+  "revisionId": "START_REVISION",
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "m/d/yyyy",
+      "timeFormat": "hh:mm:ss a",
+      "formulaArgSeparator": ","
+    }
+  },
+  "chartOdooMenusReferences": {},
+  "odooVersion": 4,
+  "lists": {
+    "1": {
+      "columns": ["subject", "sent_date", "delivered", "opened", "clicked"],
+      "domain": [["state", "=", "done"]],
+      "model": "mailing.mailing",
+      "context": {},
+      "orderBy": [
+        {
+          "name": "sent_date",
+          "asc": false
+        }
+      ],
+      "id": "1",
+      "name": "Recent Campaigns"
+    }
+  },
+  "listNextId": 2,
+  "pivots": {
+    "1": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["state", "=", "done"]],
+      "id": "1",
+      "measures": [
+        {
+          "field": "delivered"
+        }
+      ],
+      "model": "mailing.mailing",
+      "rowGroupBys": ["sent_date:month"],
+      "name": "Campaign ROI",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "delivered",
+        "order": "desc"
+      }
+    },
+    "10": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["state", "=", "done"]],
+      "id": "10",
+      "measures": [
+        {
+          "field": "__count"
+        },
+        {
+          "field": "delivered"
+        },
+        {
+          "field": "opened"
+        },
+        {
+          "field": "clicked"
+        }
+      ],
+      "model": "mailing.mailing",
+      "rowGroupBys": [],
+      "name": "Campaign ROI - current",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "11": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["state", "=", "done"]],
+      "id": "11",
+      "measures": [
+        {
+          "field": "__count"
+        },
+        {
+          "field": "delivered"
+        },
+        {
+          "field": "opened"
+        },
+        {
+          "field": "clicked"
+        }
+      ],
+      "model": "mailing.mailing",
+      "rowGroupBys": [],
+      "name": "Campaign ROI - previous",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    }
+  },
+  "pivotNextId": 12,
+  "globalFilters": [
+    {
+      "id": "date-campaign",
+      "type": "date",
+      "label": "Period",
+      "defaultValue": "last_three_months",
+      "rangeType": "relative",
+      "defaultsToCurrentPeriod": false,
+      "pivotFields": {
+        "1": {
+          "field": "sent_date",
+          "type": "datetime",
+          "offset": 0
+        },
+        "10": {
+          "field": "sent_date",
+          "type": "datetime",
+          "offset": 0
+        },
+        "11": {
+          "field": "sent_date",
+          "type": "datetime",
+          "offset": -1
+        }
+      },
+      "listFields": {
+        "1": {
+          "field": "sent_date",
+          "type": "datetime",
+          "offset": 0
+        }
+      }
+    }
+  ]
+}

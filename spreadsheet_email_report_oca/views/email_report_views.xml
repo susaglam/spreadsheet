@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="email_report_view_list" model="ir.ui.view">
+        <field name="name">spreadsheet.email.report.list</field>
+        <field name="model">spreadsheet.email.report</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="format" />
+                <field name="interval_number" />
+                <field name="interval_type" />
+                <field name="last_sent" />
+                <field name="next_send" />
+                <field name="send_count" />
+                <field name="active" widget="boolean_toggle" />
+                <button
+                    name="action_send_now"
+                    type="object"
+                    string="Send Now"
+                    icon="fa-paper-plane"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="email_report_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.email.report.form</field>
+        <field name="model">spreadsheet.email.report</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_send_now"
+                        type="object"
+                        string="Send Now"
+                        class="btn-primary"
+                        icon="fa-paper-plane"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Source">
+                            <field name="spreadsheet_id" />
+                            <field name="format" />
+                        </group>
+                        <group string="Schedule">
+                            <label for="interval_number" />
+                            <div class="o_row">
+                                <field name="interval_number" />
+                                <field name="interval_type" />
+                            </div>
+                            <field name="last_sent" />
+                            <field name="next_send" />
+                            <field name="send_count" />
+                            <field name="active" />
+                        </group>
+                    </group>
+                    <group string="Recipients">
+                        <field name="recipient_ids" widget="many2many_tags" />
+                        <field
+                            name="extra_emails"
+                            placeholder="email1@example.com, email2@example.com"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="email_report_act_window" model="ir.actions.act_window">
+        <field name="name">Email Reports</field>
+        <field name="res_model">spreadsheet.email.report</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="menu_email_reports" model="ir.ui.menu">
+        <field name="name">Email Reports</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="email_report_act_window" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="70" />
+    </record>
+</odoo>

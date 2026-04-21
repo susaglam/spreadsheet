@@ -1,0 +1,30 @@
+// Copyright 2026 Badkamertien
+// License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+
+.portal-sheet-section {
+    &:not(:last-child) {
+        border-bottom: 1px solid #dee2e6;
+    }
+}
+
+.portal-sheet-title {
+    color: #495057;
+    border-left: 4px solid #875a7b;
+    padding-left: 8px;
+}
+
+.portal-sheet-table {
+    font-size: 0.85rem;
+
+    td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+        padding: 0.25rem 0.5rem;
+    }
+}
+
+.portal-figures-info {
+    background-color: #f8f9fa;
+}

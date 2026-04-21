@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Public spreadsheet view -->
+    <template id="public_spreadsheet_view" name="Public Spreadsheet View">
+        <t t-call="web.frontend_layout">
+            <t t-set="no_header" t-value="True" />
+            <t t-set="no_footer" t-value="True" />
+            <div class="container-fluid mt-4">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div
+                            class="d-flex align-items-center justify-content-between flex-wrap"
+                        >
+                            <h3>
+                                <i class="fa fa-table me-2 text-primary" />
+                                <t t-out="spreadsheet.name" />
+                            </h3>
+                            <div>
+                                <a
+                                    t-if="share.allow_download"
+                                    t-attf-href="/spreadsheet/public/{{ share.token }}/download"
+                                    class="btn btn-sm btn-primary"
+                                >
+                                    <i class="fa fa-download me-1" />Download XLSX
+                                </a>
+                            </div>
+                        </div>
+                        <p class="text-muted small">
+                            <i class="fa fa-eye me-1" />
+                            Read-only shared view. <t t-out="share.view_count" /> views.
+                        </p>
+                    </div>
+                </div>
+
+                <t t-foreach="sheets" t-as="sheet">
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h5 class="mb-0">
+                                <i class="fa fa-file-text-o me-2 text-muted" />
+                                <t t-out="sheet['name']" />
+                            </h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-sm mb-0 public-sheet-table">
+                                    <colgroup>
+                                        <t
+                                            t-foreach="sheet.get('col_widths', [])"
+                                            t-as="w"
+                                        >
+                                            <col t-attf-style="width:{{ w }}px" />
+                                        </t>
+                                    </colgroup>
+                                    <tbody>
+                                        <t t-foreach="sheet['rows']" t-as="row">
+                                            <tr
+                                                t-attf-style="#{row.get('height') and 'height:' + str(row['height']) + 'px' or ''}"
+                                            >
+                                                <t t-foreach="row['cells']" t-as="cell">
+                                                    <td
+                                                        t-att-colspan="cell['colspan'] if cell['colspan'] &gt; 1 else None"
+                                                        t-att-rowspan="cell['rowspan'] if cell['rowspan'] &gt; 1 else None"
+                                                        t-attf-style="#{cell['style_css']}"
+                                                    >
+                                                        <t t-if="cell['is_formula']">
+                                                            <span
+                                                                class="text-muted fst-italic small"
+                                                            >
+                                                                f(x)
+                                                            </span>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t
+                                                                t-out="cell['content']"
+                                                            />
+                                                        </t>
+                                                    </td>
+                                                </t>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <style>
+                    .public-sheet-table td {
+                        padding: 4px 8px;
+                        border: 1px solid #dee2e6;
+                        font-size: 0.9rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                </style>
+            </div>
+        </t>
+    </template>
+
+    <!-- Password prompt -->
+    <template id="public_password_prompt" name="Public Share Password">
+        <t t-call="web.frontend_layout">
+            <t t-set="no_header" t-value="True" />
+            <t t-set="no_footer" t-value="True" />
+            <div class="container mt-5" style="max-width: 400px;">
+                <div class="card">
+                    <div class="card-body">
+                        <h4><i class="fa fa-lock me-2" />Password Required</h4>
+                        <p
+                            class="text-muted"
+                        >This shared spreadsheet is password-protected.</p>
+                        <form
+                            method="get"
+                            t-attf-action="/spreadsheet/public/{{ token }}"
+                        >
+                            <div class="mb-3">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="Enter password"
+                                    required="required"
+                                />
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-unlock me-1" />Access
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Invalid link -->
+    <template id="public_share_invalid" name="Public Share Invalid">
+        <t t-call="web.frontend_layout">
+            <t t-set="no_header" t-value="True" />
+            <t t-set="no_footer" t-value="True" />
+            <div class="container mt-5" style="max-width: 500px;">
+                <div class="alert alert-danger text-center">
+                    <h4><i
+                        class="fa fa-exclamation-triangle me-2"
+                    />Invalid or Expired Link</h4>
+                    <p
+                    >This share link is no longer valid. Please contact the sender for a new link.</p>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
