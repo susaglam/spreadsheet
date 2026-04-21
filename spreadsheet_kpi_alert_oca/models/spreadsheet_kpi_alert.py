@@ -105,8 +105,16 @@ class SpreadsheetKpiAlert(models.Model):
         Args:
             values: dict of {alert_id: float_value}
         """
-        for alert in self.browse(list(values.keys())):
-            val = values.get(alert.id)
+        # JS sends dict keys as strings; cast to int so Odoo's bulk-update
+        # SQL generator doesn't emit text='integer comparisons (Postgres
+        # rejects them with "operator does not exist: integer = text").
+        try:
+            id_value_map = {int(k): v for k, v in values.items()}
+        except (TypeError, ValueError) as exc:
+            _logger.debug("Invalid alert id in update_cell_values payload: %s", exc)
+            return
+        for alert in self.browse(list(id_value_map.keys())):
+            val = id_value_map.get(alert.id)
             if val is not None:
                 try:
                     alert.sudo().write({"last_value": float(val)})
