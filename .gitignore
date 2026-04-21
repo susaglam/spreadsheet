@@ -86,3 +86,12 @@ docs/_build/
 
 # OCA rules
 !static/lib/
+
+# Node
+node_modules/
+
+# Environment / secrets
+.env
+.env.local
+*.pgdump
+*.pem
