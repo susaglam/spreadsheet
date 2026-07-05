@@ -4,7 +4,7 @@
 {
     "name": "Spreadsheet Public Share OCA",
     "summary": "Token-based read-only public share links for external users",
-    "version": "saas~19.4.1.0.1",
+    "version": "saas~19.4.1.1.0",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

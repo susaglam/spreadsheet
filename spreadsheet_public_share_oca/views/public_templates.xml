@@ -21,7 +21,9 @@
                                     t-attf-href="/spreadsheet/public/{{ share.token }}/download"
                                     class="btn btn-sm btn-primary"
                                 >
-                                    <i class="fa fa-download me-1" />Download XLSX
+                                    <i
+                                    class="fa fa-download me-1"
+                                />Download data (JSON)
                                 </a>
                             </div>
                         </div>
@@ -29,6 +31,15 @@
                             <i class="fa fa-eye me-1" />
                             Read-only shared view. <t t-out="share.view_count" /> views.
                         </p>
+                        <div
+                            class="alert alert-info d-flex align-items-center"
+                            role="alert"
+                        >
+                            <i class="fa fa-info-circle me-2" />
+                            <span>This is a lightweight preview showing the sheet
+                            layout and labels. Live formula results are calculated
+                            when you open the full spreadsheet in Odoo.</span>
+                        </div>
                     </div>
                 </div>
 
@@ -62,16 +73,15 @@
                                                         t-att-rowspan="cell['rowspan'] if cell['rowspan'] &gt; 1 else None"
                                                         t-attf-style="#{cell['style_css']}"
                                                     >
-                                                        <t t-if="cell['is_formula']">
+                                                        <t t-if="cell['computed']">
                                                             <span
-                                                                class="text-muted fst-italic small"
-                                                            >
-                                                                f(x)
-                                                            </span>
+                                                                class="text-muted"
+                                                                title="Live value — open the full spreadsheet to see computed figures"
+                                                            >—</span>
                                                         </t>
                                                         <t t-else="">
                                                             <t
-                                                                t-out="cell['content']"
+                                                                t-out="cell['display']"
                                                             />
                                                         </t>
                                                     </td>

@@ -1,6 +1,8 @@
 # Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import json
+
 from odoo import http
 from odoo.http import request
 
@@ -57,21 +59,18 @@ class SpreadsheetPublicShareController(http.Controller):
             return request.not_found()
 
         spreadsheet = share.spreadsheet_id.sudo()
-        # saas-19.4: Binary(attachment=True) read -> BinaryValueAttachment
-        # wrapper; make_response needs raw bytes -> bytes(wrapper).
-        bin_data = spreadsheet.spreadsheet_binary_data
-        if not bin_data:
-            return request.not_found()
-        content = bytes(bin_data)
+        # The server has no o-spreadsheet engine, so it cannot render a real
+        # .xlsx (the old code streamed the JSON binary under a .xlsx name, which
+        # Excel refused to open). Serve the o-spreadsheet JSON honestly instead;
+        # it re-imports into Odoo / o-spreadsheet losslessly.
+        raw = spreadsheet.spreadsheet_raw or {}
+        content = json.dumps(raw).encode("utf-8")
 
-        filename = f"{spreadsheet.name}.xlsx"
+        filename = f"{spreadsheet.name}.json"
         return request.make_response(
             content,
             headers=[
-                (
-                    "Content-Type",
-                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                ),
+                ("Content-Type", "application/json"),
                 ("Content-Disposition", f'attachment; filename="{filename}"'),
             ],
         )

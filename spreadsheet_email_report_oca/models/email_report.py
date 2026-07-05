@@ -34,11 +34,15 @@ class SpreadsheetEmailReport(models.Model):
     )
     format = fields.Selection(
         [
-            ("xlsx", "Excel (XLSX)"),
-            ("json", "JSON Data"),
+            ("json", "Spreadsheet data (JSON)"),
         ],
-        default="xlsx",
+        default="json",
         required=True,
+        help="Attachment format. The scheduler runs server-side with no "
+        "o-spreadsheet JS engine, so it can only export the workbook as its "
+        "native JSON; open the file in the Spreadsheets app to view it. "
+        "(The old 'Excel (XLSX)' option was mislabelled — it attached JSON "
+        "with a .xlsx extension that Excel could not open.)",
     )
     interval_number = fields.Integer(default=1)
     interval_type = fields.Selection(
@@ -115,22 +119,16 @@ class SpreadsheetEmailReport(models.Model):
 
     def _build_attachment(self):
         self.ensure_one()
-        if self.format == "json":
-            data = self.spreadsheet_id.spreadsheet_raw or {}
-            content = base64.b64encode(
-                json.dumps(data, indent=2, default=str).encode("utf-8")
-            )
-            filename = f"{self.spreadsheet_id.name}.json"
-            mimetype = "application/json"
-        else:
-            # saas-19.4: Binary(attachment=True) read -> BinaryValueAttachment
-            # wrapper; ir.attachment.datas expects base64, so use to_base64().
-            bin_data = self.spreadsheet_id.spreadsheet_binary_data
-            content = bin_data.to_base64() if bin_data else b""
-            filename = f"{self.spreadsheet_id.name}.xlsx"
-            mimetype = (
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
+        # The scheduler runs server-side with no o-spreadsheet JS engine, so the
+        # only artifact it can truthfully produce is the workbook JSON. (The old
+        # "xlsx" branch attached base64-encoded JSON with a .xlsx name + OOXML
+        # mimetype — a file Excel could not open. Removed; JSON is honest.)
+        data = self.spreadsheet_id.spreadsheet_raw or {}
+        content = base64.b64encode(
+            json.dumps(data, indent=2, default=str).encode("utf-8")
+        )
+        filename = f"{self.spreadsheet_id.name}.json"
+        mimetype = "application/json"
 
         return self.env["ir.attachment"].create(
             {

@@ -237,14 +237,9 @@
           "height": 120,
           "tag": "chart",
           "data": {
-            "baselineColorDown": "#DC6965",
-            "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
-            "title": "Active Customers",
+            "title": "Total Customers",
             "type": "scorecard",
             "background": "",
-            "baseline": "Data!E2",
-            "baselineDescr": "since last period",
             "keyValue": "Data!D2"
           }
         },
@@ -256,14 +251,9 @@
           "height": 120,
           "tag": "chart",
           "data": {
-            "baselineColorDown": "#DC6965",
-            "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
-            "title": "VIP Customers",
+            "title": "Companies",
             "type": "scorecard",
             "background": "",
-            "baseline": "Data!E3",
-            "baselineDescr": "since last period",
             "keyValue": "Data!D3"
           }
         },
@@ -282,7 +272,7 @@
             "type": "scorecard",
             "background": "",
             "baseline": "Data!E4",
-            "baselineDescr": "since last period",
+            "baselineDescr": "vs previous period",
             "keyValue": "Data!D4"
           }
         },
@@ -294,14 +284,9 @@
           "height": 120,
           "tag": "chart",
           "data": {
-            "baselineColorDown": "#DC6965",
-            "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
-            "title": "At Risk",
+            "title": "Individual Buyers",
             "type": "scorecard",
             "background": "",
-            "baseline": "Data!E5",
-            "baselineDescr": "since last period",
             "keyValue": "Data!D5"
           }
         },
@@ -370,38 +355,24 @@
           "content": "=_t(\"Previous\")"
         },
         "A2": {
-          "content": "=_t(\"Active Customers\")"
+          "content": "=_t(\"Total Customers\")"
         },
         "B2": {
-          "content": "=ODOO.PIVOT(10,\"__count\")"
-        },
-        "C2": {
-          "content": "=ODOO.PIVOT(11,\"__count\")"
+          "content": "=ODOO.PIVOT(12,\"__count\")"
         },
         "D2": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(B2)"
         },
-        "E2": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C2)"
-        },
         "A3": {
-          "content": "=_t(\"VIP Customers\")"
+          "content": "=_t(\"Companies\")"
         },
         "B3": {
-          "content": "=ODOO.PIVOT(10,\"__count\")"
-        },
-        "C3": {
-          "content": "=ODOO.PIVOT(11,\"__count\")"
+          "content": "=ODOO.PIVOT(13,\"__count\")"
         },
         "D3": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(B3)"
-        },
-        "E3": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C3)"
         },
         "A4": {
           "content": "=_t(\"New Customers\")"
@@ -421,21 +392,14 @@
           "content": "=FORMAT.LARGE.NUMBER(C4)"
         },
         "A5": {
-          "content": "=_t(\"At Risk\")"
+          "content": "=_t(\"Individual Buyers\")"
         },
         "B5": {
-          "content": "=ODOO.PIVOT(10,\"__count\")"
-        },
-        "C5": {
-          "content": "=ODOO.PIVOT(11,\"__count\")"
+          "content": "=ODOO.PIVOT(14,\"__count\")"
         },
         "D5": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(B5)"
-        },
-        "E5": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C5)"
         }
       },
       "figures": [],
@@ -540,20 +504,11 @@
       "measures": [
         {
           "field": "__count"
-        },
-        {
-          "field": "__count"
-        },
-        {
-          "field": "__count"
-        },
-        {
-          "field": "__count"
         }
       ],
       "model": "res.partner",
       "rowGroupBys": [],
-      "name": "Customer Segmentation - current",
+      "name": "New Customers - current period",
       "sortedColumn": {
         "groupId": [[], []],
         "measure": "__count",
@@ -568,20 +523,68 @@
       "measures": [
         {
           "field": "__count"
-        },
-        {
-          "field": "__count"
-        },
-        {
-          "field": "__count"
-        },
+        }
+      ],
+      "model": "res.partner",
+      "rowGroupBys": [],
+      "name": "New Customers - previous period",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "12": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["customer_rank", ">", 0]],
+      "id": "12",
+      "measures": [
         {
           "field": "__count"
         }
       ],
       "model": "res.partner",
       "rowGroupBys": [],
-      "name": "Customer Segmentation - previous",
+      "name": "Total Customers",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "13": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["customer_rank", ">", 0], ["is_company", "=", true]],
+      "id": "13",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "res.partner",
+      "rowGroupBys": [],
+      "name": "Company Customers",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "14": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["customer_rank", ">", 0], ["is_company", "=", false]],
+      "id": "14",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "res.partner",
+      "rowGroupBys": [],
+      "name": "Individual Customers",
       "sortedColumn": {
         "groupId": [[], []],
         "measure": "__count",
@@ -589,7 +592,7 @@
       }
     }
   },
-  "pivotNextId": 12,
+  "pivotNextId": 15,
   "globalFilters": [
     {
       "id": "date-segment",

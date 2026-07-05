@@ -3,9 +3,10 @@
 
 {
     "name": "Spreadsheet Customer Segmentation Dashboard",
-    "summary": "RFM, CLV, churn and cohort analysis for customer segmentation",
+    "summary": "Customer overview: total customers, companies vs individuals, "
+    "and new-customer trend",
     "category": "Hidden",
-    "version": "saas~19.4.1.0.0",
+    "version": "saas~19.4.1.1.0",
     "license": "LGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

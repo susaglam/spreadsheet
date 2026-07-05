@@ -3,8 +3,8 @@
 
 {
     "name": "Spreadsheet Email Report OCA",
-    "summary": "Scheduled email delivery of spreadsheet reports (XLSX/PDF attached)",
-    "version": "saas~19.4.1.0.0",
+    "summary": "Scheduled email delivery of spreadsheet reports (JSON attached)",
+    "version": "saas~19.4.1.1.0",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
@@ -14,6 +14,5 @@
         "data/ir_cron.xml",
         "data/mail_template.xml",
         "views/email_report_views.xml",
-        "views/res_config_settings_views.xml",
     ],
 }

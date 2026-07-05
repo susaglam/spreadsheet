@@ -109,10 +109,15 @@ function renderDashboard(container, data) {
 
                 if (cell) {
                     const content = cell.content || "";
-                    if (content.startsWith("=")) {
-                        value = `<span class="text-muted fst-italic" title="${escapeHtml(content)}">f(x)</span>`;
+                    const resolved = resolveCellDisplay(content);
+                    if (resolved.computed) {
+                        // Honest placeholder: this lightweight viewer has no
+                        // o-spreadsheet engine, so a computed value cannot be
+                        // shown here. An em dash says "no value" without the
+                        // old "f(x)" masquerading as content.
+                        value = `<span class="text-muted" title="Live value — open the full dashboard to see computed figures">—</span>`;
                     } else {
-                        value = escapeHtml(content);
+                        value = escapeHtml(resolved.text);
                     }
                     if (cell.style && styles[cell.style]) {
                         style += styleToCss(styles[cell.style]);
@@ -144,14 +149,15 @@ function renderDashboard(container, data) {
             html += `<div class="row">`;
             for (const fig of figures) {
                 if (fig.data && fig.data.type === "scorecard") {
+                    // Show the KPI's real title, but an honest em dash instead
+                    // of a chart icon that implied a value we cannot compute in
+                    // this preview.
                     html += `
                         <div class="col-md-3 col-sm-6 mb-2">
                             <div class="card text-center p-2">
                                 <div class="card-body p-2">
                                     <div class="text-muted small">${escapeHtml(fig.data.title || "KPI")}</div>
-                                    <div class="h5 mb-0 text-primary">
-                                        <i class="fa fa-line-chart"></i>
-                                    </div>
+                                    <div class="h5 mb-0 text-muted" title="Live value — open the full dashboard to see computed figures">—</div>
                                 </div>
                             </div>
                         </div>`;
@@ -161,13 +167,44 @@ function renderDashboard(container, data) {
         }
     }
 
-    container.innerHTML =
-        html ||
-        `
+    // A one-line notice so the preview never misrepresents itself: it shows
+    // layout + labels; live figures come from the full dashboard.
+    const banner = `
+        <div class="alert alert-info d-flex align-items-center m-3" role="alert">
+            <i class="fa fa-info-circle me-2"></i>
+            <span>This is a lightweight preview showing the dashboard layout and
+            labels. Live KPI and pivot figures are calculated when you open the
+            full dashboard.</span>
+        </div>`;
+    container.innerHTML = html
+        ? banner + html
+        : `
         <div class="alert alert-info m-3">
             <i class="fa fa-info-circle me-2"></i>
             Dashboard loaded but no displayable content found.
         </div>`;
+}
+
+/**
+ * Resolve what a cell should display in the engine-less portal preview.
+ *
+ * Returns {text, computed}:
+ *  - Plain (non-formula) content -> shown verbatim.
+ *  - A pure translation label =_t("...") -> its literal text (headers stay
+ *    meaningful instead of collapsing to "f(x)").
+ *  - Any other formula -> computed:true, so the caller shows an honest em dash
+ *    rather than faking a value the frontend cannot evaluate.
+ */
+const T_LITERAL_RE = /^=_t\(\s*(["'])([\s\S]*?)\1\s*\)$/;
+function resolveCellDisplay(content) {
+    if (!content || !content.startsWith("=")) {
+        return {text: content || "", computed: false};
+    }
+    const match = content.match(T_LITERAL_RE);
+    if (match) {
+        return {text: match[2], computed: false};
+    }
+    return {text: "", computed: true};
 }
 
 /**

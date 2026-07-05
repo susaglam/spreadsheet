@@ -42,6 +42,7 @@
                 <field name="spreadsheet_id" />
                 <field name="alert_condition" string="Condition" />
                 <field name="last_value" />
+                <field name="value_synced_at" optional="hide" />
                 <field name="last_checked" />
                 <field name="last_triggered" decoration-danger="last_triggered" />
                 <field name="active" widget="boolean_toggle" />
@@ -100,6 +101,7 @@
                     <group string="Status" colspan="4">
                         <group>
                             <field name="last_value" />
+                            <field name="value_synced_at" />
                             <field name="alert_condition" />
                         </group>
                         <group>

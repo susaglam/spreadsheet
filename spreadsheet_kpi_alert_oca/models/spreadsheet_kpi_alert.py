@@ -8,6 +8,10 @@ from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
+# A JS-synced last_value older than this is treated as stale (the cron ignores
+# it) so alerts never fire on data a browser last evaluated days ago.
+KPI_VALUE_MAX_AGE_HOURS = 24
+
 OPERATOR_MAP = {
     ">": op.gt,
     "<": op.lt,
@@ -61,7 +65,17 @@ class SpreadsheetKpiAlert(models.Model):
     last_value = fields.Float(
         string="Last Known Value",
         readonly=True,
-        help="Last evaluated cell value, updated by the JS client.",
+        help="Last evaluated cell value, pushed by the JS client while a "
+        "browser has the spreadsheet open.",
+    )
+    value_synced_at = fields.Datetime(
+        string="Value Synced At",
+        readonly=True,
+        help="When the JS client last pushed an evaluated value for this cell. "
+        "Distinguishes a never-synced cell from a genuine 0, and lets the cron "
+        "ignore values older than the staleness window so alerts don't fire on "
+        "data a browser evaluated days ago. Not needed for cells holding a "
+        "literal number — those the cron reads directly from the stored sheet.",
     )
     last_checked = fields.Datetime(
         readonly=True,
@@ -117,13 +131,70 @@ class SpreadsheetKpiAlert(models.Model):
             val = id_value_map.get(alert.id)
             if val is not None:
                 try:
-                    alert.sudo().write({"last_value": float(val)})
+                    alert.sudo().write(
+                        {
+                            "last_value": float(val),
+                            "value_synced_at": fields.Datetime.now(),
+                        }
+                    )
                 except (ValueError, TypeError) as exc:
                     _logger.debug(
                         "Skipping non-numeric KPI value for alert %s: %s",
                         alert.id,
                         exc,
                     )
+
+    def _resolve_current_value(self):
+        """Return a trustworthy current value for the watched cell, or None.
+
+        The server has no o-spreadsheet JS engine, so it cannot evaluate
+        formulas. Strategy:
+          (a) LITERAL read — if the watched cell holds a plain number in the
+              stored spreadsheet_raw, read it directly (works fully unattended,
+              the common KPI case).
+          (b) FRESH SYNC — else, if the JS client pushed a value recently
+              (value_synced_at within the staleness window), trust last_value.
+          (c) None — otherwise (formula cell never synced, or a stale sync):
+              the caller skips, so the cron never fires on 0.0-default or old
+              data.
+        Any parse failure degrades gracefully to (b)/(c) — never crashes the
+        cron batch.
+        """
+        self.ensure_one()
+        # (a) server-side literal read
+        try:
+            raw = self.spreadsheet_id.spreadsheet_raw or {}
+            sheets = raw.get("sheets") or []
+            sheet = next((s for s in sheets if s.get("name") == self.sheet_name), None)
+            # The empty-sheet default name _('Sheet1') is translated on write
+            # (Blad1 / Sayfa1), so a name mismatch with a single-sheet workbook
+            # still points at the only sheet.
+            if sheet is None and len(sheets) == 1:
+                sheet = sheets[0]
+            if sheet is not None:
+                cell = (sheet.get("cells") or {}).get(self.cell_ref)
+                # Cells are bare strings in the current native format and
+                # {"content": ...} objects in the legacy format — handle both.
+                content = cell.get("content") if isinstance(cell, dict) else cell
+                if content is not None:
+                    content = str(content).strip()
+                    if content and not content.startswith("="):
+                        return float(content)
+        except Exception as exc:  # noqa: BLE001 - never let the cron crash
+            _logger.debug(
+                "Alert %s: literal cell read failed (%s); falling back to sync",
+                self.id,
+                exc,
+            )
+        # (b) fresh JS-synced value
+        if self.value_synced_at:
+            age_hours = (
+                fields.Datetime.now() - self.value_synced_at
+            ).total_seconds() / 3600
+            if age_hours <= KPI_VALUE_MAX_AGE_HOURS:
+                return self.last_value
+        # (c) nothing trustworthy
+        return None
 
     @api.model
     def _cron_check_kpi_thresholds(self):
@@ -145,13 +216,32 @@ class SpreadsheetKpiAlert(models.Model):
             if not compare_fn:
                 continue
 
-            if compare_fn(alert.last_value, alert.threshold_value):
-                alert._trigger_alert(now)
+            # Resolve a TRUSTWORTHY current value: prefer a server-side literal
+            # read from the stored sheet (works fully unattended), else a fresh
+            # JS-synced value; skip when neither exists. This removes both the
+            # 0.0-default false positive AND the stale-synced false trigger.
+            current_value = alert._resolve_current_value()
+            if current_value is None:
+                _logger.debug(
+                    "Alert %s: no fresh KPI value (cell is a formula and no "
+                    "recent client sync); skipping",
+                    alert.id,
+                )
+                continue
 
-    def _trigger_alert(self, now):
-        """Send notifications for a breached threshold."""
+            if compare_fn(current_value, alert.threshold_value):
+                alert._trigger_alert(now, current_value)
+
+    def _trigger_alert(self, now, value=None):
+        """Send notifications for a breached threshold.
+
+        `value` is the value the cron actually compared (a server-side literal
+        read or a fresh sync); it falls back to last_value for manual test
+        triggers so the message never shows a misleading stale number.
+        """
         self.ensure_one()
         self.last_triggered = now
+        current = value if value is not None else self.last_value
 
         # Build notification message
         body = self.env._(
@@ -162,7 +252,7 @@ class SpreadsheetKpiAlert(models.Model):
             name=self.name,
             sheet=self.sheet_name,
             cell=self.cell_ref,
-            value=self.last_value,
+            value=current,
             operator=self.operator,
             threshold=self.threshold_value,
         )
@@ -190,7 +280,7 @@ class SpreadsheetKpiAlert(models.Model):
             self.name,
             self.sheet_name,
             self.cell_ref,
-            self.last_value,
+            current,
             self.operator,
             self.threshold_value,
         )

@@ -28,6 +28,25 @@ def _col_letter(col):
     return result
 
 
+_T_LITERAL_RE = re.compile(r'^=_t\(\s*(["\'])(.*?)\1\s*\)$', re.DOTALL)
+
+
+def _resolve_display(content):
+    """Return (display_text, is_computed) for the engine-less HTML preview.
+
+    Plain content shows verbatim; a pure translation label =_t("...") shows its
+    literal text so header rows stay meaningful; any other formula is a value we
+    cannot evaluate server-side (no o-spreadsheet engine), flagged so the
+    template shows an honest em dash instead of a fake "f(x)".
+    """
+    if not content or not content.startswith("="):
+        return content or "", False
+    match = _T_LITERAL_RE.match(content)
+    if match:
+        return match.group(2), False
+    return "", True
+
+
 class SpreadsheetPublicShare(models.Model):
     _name = "spreadsheet.public.share"
     _description = "Public Spreadsheet Share Link"
@@ -204,7 +223,7 @@ class SpreadsheetPublicShare(models.Model):
                     ref = _col_letter(col) + str(row + 1)
                     cell = cells.get(ref, {})
                     content = cell.get("content", "") or ""
-                    is_formula = content.startswith("=")
+                    display, computed = _resolve_display(content)
 
                     style_css = ""
                     s = (
@@ -244,7 +263,8 @@ class SpreadsheetPublicShare(models.Model):
                     row_cells.append(
                         {
                             "content": content,
-                            "is_formula": is_formula,
+                            "display": display,
+                            "computed": computed,
                             "style_css": style_css,
                             "colspan": span["colspan"] if span else 1,
                             "rowspan": span["rowspan"] if span else 1,
