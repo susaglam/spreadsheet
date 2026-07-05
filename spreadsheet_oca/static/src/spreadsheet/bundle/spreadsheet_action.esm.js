@@ -11,7 +11,7 @@ import {useService} from "@web/core/utils/hooks";
 
 const {load} = spreadsheet;
 
-const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
+const uuidGenerator = spreadsheet.helpers.UuidGenerator;
 const actionRegistry = registry.category("actions");
 const {Component, onWillStart, useSubEnv} = owl;
 const {parseDimension, isDateOrDatetimeField} = helpers;
@@ -37,21 +37,32 @@ export class ActionSpreadsheetOca extends Component {
         this.model = params.model || "spreadsheet.spreadsheet";
         this.import_data = params.import_data || {};
         onWillStart(async () => {
-            // We need to load in case the data comes from an XLSX
+            // get_spreadsheet_data returns {name, spreadsheet_raw, revisions,
+            // mode, default_currency, ...}; keep it AS-IS so the control panel
+            // can read record.name. The renderer applies o-spreadsheet load()
+            // to record.spreadsheet_raw itself, so wrapping the whole dict in
+            // load() here was redundant and stripped .name (empty title).
             this.record =
-                load(
-                    await this.orm.call(
-                        this.model,
-                        "get_spreadsheet_data",
-                        [[this.spreadsheetId]],
-                        {context: {bin_size: false}}
-                    )
-                ) || {};
+                (await this.orm.call(
+                    this.model,
+                    "get_spreadsheet_data",
+                    [[this.spreadsheetId]],
+                    {context: {bin_size: false}}
+                )) || {};
         });
         useSubEnv({
             saveRecord: this.saveRecord.bind(this),
             importData: this.importData.bind(this),
             notifyUser: this.notifyUser.bind(this),
+            // Expose the loaded record to descendants (the breadcrumb name) via
+            // the sub-env instead of prop-drilling it through the subclassed
+            // core ControlPanel. In saas-19.4 the core ControlPanel declares
+            // its props via a schema helper (`props = props({...})`); spreading
+            // that into a plain `{...ControlPanel.props, record: Object}` loses
+            // the schema, so OWL falls back to the core schema and silently
+            // drops our `record` prop -> the file name never reaches
+            // SpreadsheetName. A getter keeps it correct after onWillStart.
+            getSpreadsheetRecord: () => this.record,
         });
     }
 
@@ -93,7 +104,7 @@ export class ActionSpreadsheetOca extends Component {
     async importDataGraph(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
         if (this.import_data.new === undefined && this.import_data.new_sheet) {
-            sheetId = uuidGenerator.uuidv4();
+            sheetId = uuidGenerator.smallUuid();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
                 position: spreadsheet_model.getters.getSheetIds().length,
@@ -107,7 +118,7 @@ export class ActionSpreadsheetOca extends Component {
         } else if (this.import_data.new === undefined) {
             // TODO: Add a way to detect the last row total height
         }
-        const dataSourceId = uuidGenerator.uuidv4();
+        const dataSourceId = uuidGenerator.smallUuid();
         const chartType = `odoo_${this.import_data.metaData.mode}`;
         const definition = {
             title: {text: this.import_data.name},
@@ -118,7 +129,7 @@ export class ActionSpreadsheetOca extends Component {
             metaData: this.import_data.metaData,
             searchParams: this.cleanSearchParams(),
             dataSourceId: dataSourceId,
-            id: uuidGenerator.uuidv4(),
+            id: uuidGenerator.smallUuid(),
             cumulative: this.import_data.metaData.cumulated,
             cumulatedStart: this.import_data.metaData.cumulatedStart,
             legendPosition: "top",
@@ -138,7 +149,7 @@ export class ActionSpreadsheetOca extends Component {
     importCreateOrReuseSheet(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
         if (this.import_data.new === undefined) {
-            sheetId = uuidGenerator.uuidv4();
+            sheetId = uuidGenerator.smallUuid();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
                 position: spreadsheet_model.getters.getSheetIds().length,
@@ -156,7 +167,7 @@ export class ActionSpreadsheetOca extends Component {
         var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
         if (!sheetId) {
             const sheetIds = spreadsheet_model.getters.getSheetIds();
-            sheetId = sheetIds.length ? sheetIds[0] : uuidGenerator.uuidv4();
+            sheetId = sheetIds.length ? sheetIds[0] : uuidGenerator.smallUuid();
         }
         const listId = spreadsheet_model.getters.getNextListId();
         const list_info = {
@@ -195,7 +206,7 @@ export class ActionSpreadsheetOca extends Component {
     }
     async importDataPivot(spreadsheet_model) {
         var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
-        const pivotId = uuidGenerator.uuidv4();
+        const pivotId = uuidGenerator.smallUuid();
         const fields = this.import_data.metaData.fields || {};
         const activeMeasures = this.import_data.metaData.activeMeasures;
         const measures = activeMeasures.map((measure) => ({

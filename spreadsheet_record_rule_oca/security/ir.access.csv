@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_dashboard_rule_user,spreadsheet.dashboard.rule.user,spreadsheet.dashboard.rule,spreadsheet_oca.group_user,r,
+access_dashboard_rule_manager,spreadsheet.dashboard.rule.manager,spreadsheet.dashboard.rule,spreadsheet_oca.group_manager,crud,

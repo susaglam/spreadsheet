@@ -6,7 +6,7 @@
         t-inherit-mode="extension"
     >
         <xpath expr="//button[hasclass('o_list_button_add')]" position="after">
-            <t t-if="!env.isSmall">
+            <t t-if="!this.env.isSmall">
                 <button
                     type="button"
                     class="btn btn-secondary o_list_export_spreadsheet"

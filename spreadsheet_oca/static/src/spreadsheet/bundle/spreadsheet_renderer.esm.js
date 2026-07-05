@@ -14,7 +14,7 @@ const {Model, load} = spreadsheet;
 
 const {useSubEnv, onWillStart} = owl;
 const {useStoreProvider, ModelStore} = spreadsheet.stores;
-const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
+const uuidGenerator = spreadsheet.helpers.UuidGenerator;
 
 class SpreadsheetTransportService {
     constructor(orm, bus_service, model, res_id) {
@@ -48,13 +48,25 @@ class SpreadsheetTransportService {
         }
     }
     async sendMessage(message) {
-        const isAccepted = await this.orm.call(this.model, "send_spreadsheet_message", [
-            [this.res_id],
-            message,
-            this.accessToken,
-        ]);
-        if (isAccepted) {
-            this._handleNotification(message);
+        try {
+            const isAccepted = await this.orm.call(
+                this.model,
+                "send_spreadsheet_message",
+                [[this.res_id], message, this.accessToken]
+            );
+            if (isAccepted) {
+                this._handleNotification(message);
+            }
+        } catch (err) {
+            // The o-spreadsheet Session debounces _move and may fire after
+            // the parent SpreadsheetRenderer is destroyed (e.g. user
+            // navigated to a dashboard right after Add-to-dashboard). The
+            // lifecycle-bound ORM rejects with "Component is destroyed" —
+            // expected during teardown, swallow it. Re-throw anything else.
+            if (err && err.message === "Component is destroyed") {
+                return;
+            }
+            throw err;
         }
     }
     onNewMessage(id, callback) {
@@ -153,7 +165,7 @@ export class SpreadsheetRenderer extends Component {
                     this.props.res_id
                 ),
                 client: {
-                    id: uuidGenerator.uuidv4(),
+                    id: uuidGenerator.smallUuid(),
                     name: user.name,
                     userId: user.userId,
                 },

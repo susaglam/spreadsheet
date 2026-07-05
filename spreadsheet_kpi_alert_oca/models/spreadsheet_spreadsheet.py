@@ -1,4 +1,4 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
@@ -14,7 +14,7 @@ class SpreadsheetSpreadsheet(models.Model):
     )
     kpi_alert_count = fields.Integer(
         compute="_compute_kpi_alert_count",
-        string="KPI Alerts",
+        string="KPI Alert Count",
     )
 
     def _compute_kpi_alert_count(self):

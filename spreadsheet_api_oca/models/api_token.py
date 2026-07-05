@@ -1,4 +1,4 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import secrets
@@ -54,9 +54,10 @@ class SpreadsheetApiToken(models.Model):
         string="Webhook Delivery Log",
     )
 
-    _sql_constraints = [
-        ("token_unique", "unique(token)", "Token must be unique."),
-    ]
+    _token_unique = models.Constraint(
+        "unique(token)",
+        "Token must be unique.",
+    )
 
     # In-memory rate limiter (per-process) keyed by token ID
     _rate_buckets = defaultdict(list)

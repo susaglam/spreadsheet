@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_contract_user,spreadsheet.contract.user,spreadsheet.contract,spreadsheet_oca.group_user,cru,
+access_contract_manager,spreadsheet.contract.manager,spreadsheet.contract,spreadsheet_oca.group_manager,crud,
+access_contract_sla_user,spreadsheet.contract.sla.user,spreadsheet.contract.sla,spreadsheet_oca.group_user,cru,
+access_contract_sla_manager,spreadsheet.contract.sla.manager,spreadsheet.contract.sla,spreadsheet_oca.group_manager,crud,

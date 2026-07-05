@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2026 Badkamertien
+<!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
     <!-- Tutorial records: pre-seeded, user can add video URLs and screenshots later -->
@@ -151,5 +151,175 @@
         <field name="duration_minutes">4</field>
         <field name="difficulty">intermediate</field>
         <field name="tags">email,scheduled,cron,report</field>
+    </record>
+
+    <!-- 2026-07-05: kalan 14 custom modul icin senaryo kayitlari eklendi,
+         boylece her modulun "neden var" bilgisi yardim menusunde kalici. -->
+    <record id="tutorial_dashboard_sale" model="spreadsheet.tutorial">
+        <field name="name">📈 Satis analiz dashboard'u</field>
+        <field name="sequence">130</field>
+        <field
+            name="description"
+        >Satis ekibi performansini tek bakista gorun: Ciro, Siparis, Satilan Adet, Ortalama Siparis Degeri (onceki donemle karsilastirmali), aylik ciro trendi ve son siparisler. Satis temsilcisi ve urun kategorisi filtreleri. Dashboards > Sales altinda otomatik cikar.</field>
+        <field name="module_name">spreadsheet_dashboard_sale_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,sales,revenue,kpi</field>
+    </record>
+
+    <record id="tutorial_dashboard_crm" model="spreadsheet.tutorial">
+        <field name="name">📊 CRM pipeline dashboard'u</field>
+        <field name="sequence">140</field>
+        <field
+            name="description"
+        >Acik firsatlar, beklenen ve prorate ciro, kazanilan anlasmalar; satis temsilcisi ve satis ekibi filtreleriyle. Satis yoneticisinin ceyreklik pipeline'i izlemesi icin. Dashboards > Sales.</field>
+        <field name="module_name">spreadsheet_dashboard_crm_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,crm,pipeline</field>
+    </record>
+
+    <record id="tutorial_dashboard_stock" model="spreadsheet.tutorial">
+        <field name="name">📦 Stok / envanter dashboard'u</field>
+        <field name="sequence">150</field>
+        <field
+            name="description"
+        >Stok hareketleri: tamamlanan transferler, hareket eden adet, ortalama tedarik suresi, aylik hareket trendi ve son transferler; depo ve urun kategorisi filtreleriyle. Dashboards > Logistics.</field>
+        <field name="module_name">spreadsheet_dashboard_stock_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,stock,inventory,warehouse</field>
+    </record>
+
+    <record id="tutorial_dashboard_ecommerce" model="spreadsheet.tutorial">
+        <field name="name">🛒 E-ticaret dashboard'u</field>
+        <field name="sequence">160</field>
+        <field
+            name="description"
+        >Web magazasi (website) satis KPI'lari: ciro, siparis sayisi, ortalama sepet, musteri; onceki donemle karsilastirma ve gunluk ciro trendi. NOT: yalnizca website siparislerini gosterir, bayi/toptan siparisleri haric.</field>
+        <field name="module_name">spreadsheet_dashboard_ecommerce_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,ecommerce,website</field>
+    </record>
+
+    <record id="tutorial_dashboard_hr" model="spreadsheet.tutorial">
+        <field name="name">👤 Insan Kaynaklari dashboard'u</field>
+        <field name="sequence">170</field>
+        <field
+            name="description"
+        >Toplam calisan, yeni ise alim, departman ve pozisyon dagilimi, calisan rehberi; donem/departman/sirket filtreleriyle. Yalnizca Odoo IK modulu kullaniliyorsa anlamli. Dashboards > HR.</field>
+        <field name="module_name">spreadsheet_dashboard_hr_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,hr,employee</field>
+    </record>
+
+    <record id="tutorial_quote_conversion" model="spreadsheet.tutorial">
+        <field name="name">🎯 Teklif → siparis donusum dashboard'u</field>
+        <field name="sequence">180</field>
+        <field
+            name="description"
+        >Kac teklifin siparise dondugunu ve donusum yuzdesini gorun. Satis hunisini ve teklif basari oranini izlemek icin bayi-satis odakli bir gosterge.</field>
+        <field name="module_name">spreadsheet_quote_conversion_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">dashboard,quote,conversion,funnel</field>
+    </record>
+
+    <record id="tutorial_vendor_scorecard" model="spreadsheet.tutorial">
+        <field name="name">🏭 Tedarikci performans karnesi</field>
+        <field name="sequence">190</field>
+        <field
+            name="description"
+        >Tedarikcileri teslimat, kalite ve fiyat metrikleriyle puanlayin ve karsilastirin. Toptanci/bayi tedarik zincirinde hangi tedarikcinin iyi performans gosterdigini gormek icin.</field>
+        <field name="module_name">spreadsheet_vendor_scorecard_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">vendor,supplier,scorecard,purchase</field>
+    </record>
+
+    <record id="tutorial_stock_sales_correlation" model="spreadsheet.tutorial">
+        <field name="name">🔗 Stok - satis korelasyonu</field>
+        <field name="sequence">200</field>
+        <field
+            name="description"
+        >Stok seviyesi ile satis hizini yan yana koyarak hangi urunlerde stok fazlasi veya eksigi oldugunu gorun — yeniden siparis (reorder) kararlari icin.</field>
+        <field name="module_name">spreadsheet_stock_sales_correlation_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">stock,sales,correlation,reorder</field>
+    </record>
+
+    <record id="tutorial_customer_segmentation" model="spreadsheet.tutorial">
+        <field name="name">🧩 Musteri segmentasyonu</field>
+        <field name="sequence">210</field>
+        <field
+            name="description"
+        >Son donemde kazanilan musteri sayilari ve onceki donemle karsilastirma, en iyi musteriler listesi. NOT: VIP/Yeni/Risk altinda tile'lari su an ayni sayiyi gosteriyor — gercek RFM/CLV segmentasyonu henuz gelistirme bekliyor.</field>
+        <field name="module_name">spreadsheet_customer_segmentation_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">dashboard,customer,segmentation</field>
+    </record>
+
+    <record id="tutorial_campaign_roi" model="spreadsheet.tutorial">
+        <field name="name">📣 E-posta kampanya performansi</field>
+        <field name="sequence">220</field>
+        <field
+            name="description"
+        >Tamamlanan e-posta kampanyalarinin gonderilen/iletilen/acilan/tiklanan sayilari ve aylik iletim trendi. NOT: isim 'ROI' olsa da su an gercek ciro/kupon atifi yok — sadece e-posta etkilesimini olcer.</field>
+        <field name="module_name">spreadsheet_campaign_roi_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,marketing,campaign,mailing</field>
+    </record>
+
+    <record id="tutorial_loyalty_dashboard" model="spreadsheet.tutorial">
+        <field name="name">🎁 Sadakat programi dashboard'u</field>
+        <field name="sequence">230</field>
+        <field
+            name="description"
+        >Sadakat programi analizi: puan, kupon ve uye metrikleri. Yalnizca Odoo Loyalty modulu aktif kullaniliyorsa anlamli.</field>
+        <field name="module_name">spreadsheet_loyalty_dashboard_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,loyalty</field>
+    </record>
+
+    <record id="tutorial_pdf_report" model="spreadsheet.tutorial">
+        <field name="name">📄 Profesyonel PDF export</field>
+        <field name="sequence">240</field>
+        <field
+            name="description"
+        >Bir spreadsheet'i sirket logolu, profesyonel bir PDF olarak disa aktarin — musteri veya yonetim sunumlari icin.</field>
+        <field name="module_name">spreadsheet_pdf_report_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">pdf,export,report</field>
+    </record>
+
+    <record id="tutorial_record_rule" model="spreadsheet.tutorial">
+        <field name="name">🔒 Dashboard'a kullanici bazli kayit kurallari</field>
+        <field name="sequence">250</field>
+        <field
+            name="description"
+        >Dashboard verisine kullanici bazli kayit kurallari (record rule) uygulayin — her kullanici yalnizca kendi verisini gorsun. Ozellikle bayi izolasyonu (her bayi kendi siparislerini) icin.</field>
+        <field name="module_name">spreadsheet_record_rule_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">security,record_rule,dashboard,dealer</field>
+    </record>
+
+    <record id="tutorial_scheduled_refresh" model="spreadsheet.tutorial">
+        <field name="name">🔄 Zamanli veri yenileme</field>
+        <field name="sequence">260</field>
+        <field
+            name="description"
+        >Spreadsheet revizyonunu periyodik olarak artirarak dashboard verilerini otomatik tazeleyin (cron ile) — acilista her zaman guncel veri.</field>
+        <field name="module_name">spreadsheet_scheduled_refresh_oca</field>
+        <field name="duration_minutes">2</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">refresh,cron,scheduled</field>
     </record>
 </odoo>

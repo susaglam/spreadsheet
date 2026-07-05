@@ -1,4 +1,4 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from random import randint
@@ -22,9 +22,10 @@ class SpreadsheetTemplateCategory(models.Model):
     )
     template_count = fields.Integer(compute="_compute_template_count")
 
-    _sql_constraints = [
-        ("name_uniq", "unique (name)", "A category with the same name already exists."),
-    ]
+    _name_uniq = models.Constraint(
+        "unique (name)",
+        "A category with the same name already exists.",
+    )
 
     def _compute_template_count(self):
         for rec in self:

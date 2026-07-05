@@ -1,7 +1,7 @@
 /** @odoo-module **/
 
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {useState, useSubEnv} from "@odoo/owl";
+import {proxy, useSubEnv} from "@odoo/owl";
 import {SpreadsheetRenderer} from "@spreadsheet_oca/spreadsheet/bundle/spreadsheet_renderer.esm";
 import {_t} from "@web/core/l10n/translation";
 import {patch} from "@web/core/utils/patch";
@@ -20,7 +20,7 @@ topbarMenuRegistry.addChild("save_as_template", ["file"], {
 patch(SpreadsheetRenderer.prototype, {
     setup() {
         super.setup();
-        this.templateState = useState({canSaveAsTemplate: false});
+        this.templateState = proxy({canSaveAsTemplate: false});
         this._checkTemplatePermission();
         useSubEnv({
             saveAsTemplate: this._saveAsTemplate.bind(this),

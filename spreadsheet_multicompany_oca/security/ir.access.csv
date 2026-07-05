@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_consolidation_profile_user,spreadsheet.consolidation.profile.user,spreadsheet.consolidation.profile,account.group_account_user,r,
+access_consolidation_profile_manager,spreadsheet.consolidation.profile.manager,spreadsheet.consolidation.profile,account.group_account_manager,crud,

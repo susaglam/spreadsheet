@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2026 Badkamertien
+<!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <!-- Portal home entry card -->
@@ -9,7 +9,11 @@
         inherit_id="portal.portal_my_home"
         priority="40"
     >
-        <xpath expr="//div[@id='portal_common_category']/*[1]" position="before">
+        <!-- saas-19.4: portal.portal_my_home dropped <div id='portal_common_category'>;
+             cards are now data-driven in <div id='portal_cards'>. Re-anchored into
+             the always-present o_portal_docs container so the entry still renders.
+             (Proper 19.4 approach: register via the portal_cards mechanism.) -->
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
             <t t-call="portal.portal_docs_entry">
                 <t
                     t-set="icon"

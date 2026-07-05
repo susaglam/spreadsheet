@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_api_token_user,spreadsheet.api.token.user,spreadsheet.api.token,spreadsheet_oca.group_user,crud,
+access_api_token_manager,spreadsheet.api.token.manager,spreadsheet.api.token,spreadsheet_oca.group_manager,crud,
+access_api_webhook_user,spreadsheet.api.webhook.event.user,spreadsheet.api.webhook.event,spreadsheet_oca.group_user,r,
+access_api_webhook_manager,spreadsheet.api.webhook.event.manager,spreadsheet.api.webhook.event,spreadsheet_oca.group_manager,crud,

@@ -1,4 +1,4 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
@@ -6,6 +6,17 @@ import json
 from html import escape as html_escape
 
 from odoo import api, fields, models
+
+
+def _bin_content(value):
+    """saas-19.4: reading a Binary(attachment=True) field returns a
+    BinaryValueAttachment wrapper whose bytes() is the raw (already
+    base64-decoded) content. Fall back to base64-decoding a legacy str/bytes."""
+    if not value:
+        return b""
+    if isinstance(value, (bytes, bytearray, str)):
+        return base64.b64decode(value)
+    return bytes(value)
 
 
 class SpreadsheetVersion(models.Model):
@@ -52,11 +63,7 @@ class SpreadsheetVersion(models.Model):
     @api.depends("spreadsheet_data")
     def _compute_size_bytes(self):
         for rec in self:
-            rec.size_bytes = (
-                len(base64.b64decode(rec.spreadsheet_data))
-                if rec.spreadsheet_data
-                else 0
-            )
+            rec.size_bytes = len(_bin_content(rec.spreadsheet_data))
 
     def _compute_diff(self):
         for rec in self:
@@ -68,7 +75,7 @@ class SpreadsheetVersion(models.Model):
                 continue
             try:
                 version_data = json.loads(
-                    base64.b64decode(rec.spreadsheet_data).decode("utf-8")
+                    _bin_content(rec.spreadsheet_data).decode("utf-8")
                 )
             except Exception:
                 rec.diff_html = "<p>Unable to decode version data.</p>"
@@ -161,7 +168,7 @@ class SpreadsheetVersion(models.Model):
 
     def action_restore(self):
         self.ensure_one()
-        data = base64.b64decode(self.spreadsheet_data).decode("utf-8")
+        data = _bin_content(self.spreadsheet_data).decode("utf-8")
         self.spreadsheet_id.write(
             {
                 "spreadsheet_raw": json.loads(data),

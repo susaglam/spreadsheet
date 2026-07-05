@@ -1,5 +1,5 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Component, onWillStart, useState} from "@odoo/owl";
+import {Component, onWillStart, proxy} from "@odoo/owl";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
@@ -16,7 +16,7 @@ import {globalFiltersFieldMatchers} from "@spreadsheet/global_filters/plugins/gl
 import {useService} from "@web/core/utils/hooks";
 
 const {topbarMenuRegistry} = spreadsheet.registries;
-const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
+const uuidGenerator = spreadsheet.helpers.UuidGenerator;
 
 // "file" menu is already registered by o-spreadsheet core in Odoo 19
 topbarMenuRegistry.addChild("filters", ["file"], {
@@ -69,7 +69,7 @@ export class EditFilterPanel extends Component {
         this.orm = useService("orm");
         this.nameService = useService("name");
         this.dialog = useService("dialog");
-        this.state = useState({
+        this.state = proxy({
             label: this.props.filter.label,
             type: this.props.filter.type,
             defaultValue: this.props.filter.defaultValue || [],
@@ -202,7 +202,7 @@ export class EditFilterPanel extends Component {
             : "ADD_GLOBAL_FILTER";
 
         const filter = {
-            id: this.props.filter.id || uuidGenerator.uuidv4(),
+            id: this.props.filter.id || uuidGenerator.smallUuid(),
             type: this.state.type,
             label: this.state.label || "",
             defaultValue: this.state.defaultValue,

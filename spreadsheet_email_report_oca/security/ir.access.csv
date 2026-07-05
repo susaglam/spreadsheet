@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_email_report_user,spreadsheet.email.report.user,spreadsheet.email.report,spreadsheet_oca.group_user,crud,
+access_email_report_manager,spreadsheet.email.report.manager,spreadsheet.email.report,spreadsheet_oca.group_manager,crud,

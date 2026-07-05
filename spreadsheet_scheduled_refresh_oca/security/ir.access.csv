@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_refresh_schedule_user,spreadsheet.refresh.schedule.user,spreadsheet.refresh.schedule,spreadsheet_oca.group_user,crud,
+access_refresh_schedule_manager,spreadsheet.refresh.schedule.manager,spreadsheet.refresh.schedule,spreadsheet_oca.group_manager,crud,

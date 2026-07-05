@@ -1,4 +1,4 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
@@ -123,7 +123,10 @@ class SpreadsheetEmailReport(models.Model):
             filename = f"{self.spreadsheet_id.name}.json"
             mimetype = "application/json"
         else:
-            content = self.spreadsheet_id.spreadsheet_binary_data or b""
+            # saas-19.4: Binary(attachment=True) read -> BinaryValueAttachment
+            # wrapper; ir.attachment.datas expects base64, so use to_base64().
+            bin_data = self.spreadsheet_id.spreadsheet_binary_data
+            content = bin_data.to_base64() if bin_data else b""
             filename = f"{self.spreadsheet_id.name}.xlsx"
             mimetype = (
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"

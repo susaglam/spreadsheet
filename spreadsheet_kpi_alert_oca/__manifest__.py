@@ -1,12 +1,12 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
     "name": "Spreadsheet KPI Alert OCA",
     "summary": "Set threshold alerts on spreadsheet cells with cron-based notifications",
-    "version": "saas~19.2.1.0.0",
+    "version": "saas~19.4.1.0.1",
     "license": "AGPL-3",
-    "author": "Badkamertien,Odoo Community Association (OCA)",
+    "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
     "depends": [
         "spreadsheet_oca",
@@ -14,7 +14,7 @@
     ],
     "data": [
         "security/security.xml",
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "data/ir_cron.xml",
         "data/mail_template.xml",
         "views/spreadsheet_kpi_alert_views.xml",

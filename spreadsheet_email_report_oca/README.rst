@@ -60,12 +60,12 @@ Credits
 Authors
 ~~~~~~~
 
-* Badkamertien
+* Codesnap
 
 Contributors
 ~~~~~~~~~~~~
 
-* Sukru Saglam <developer1@badkamertien.nl>
+* Sukru Saglam <info@codesnap.nl>
 
 Maintainers
 ~~~~~~~~~~~

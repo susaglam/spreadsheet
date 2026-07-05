@@ -1,5 +1,5 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {useState, useSubEnv} from "@odoo/owl";
+import {proxy, useSubEnv} from "@odoo/owl";
 import {SpreadsheetRenderer} from "@spreadsheet_oca/spreadsheet/bundle/spreadsheet_renderer.esm";
 import {_t} from "@web/core/l10n/translation";
 import {patch} from "@web/core/utils/patch";
@@ -17,7 +17,7 @@ topbarMenuRegistry.addChild("add_to_dashboard", ["file"], {
 patch(SpreadsheetRenderer.prototype, {
     setup() {
         super.setup();
-        this.state = useState({canAddToDashboard: false});
+        this.state = proxy({canAddToDashboard: false});
         this._checkDashboardPermission();
         useSubEnv({
             addToDashboard: this._addToDashboard.bind(this),
@@ -34,7 +34,11 @@ patch(SpreadsheetRenderer.prototype, {
         const record = this.props.record;
         const resId = this.props.res_id;
         const name = record.name;
-        this.onSpreadsheetSaved();
+        // Await the save+leaveSession so the wizard's follow-up doAction does
+        // not destroy this SpreadsheetRenderer while the session is still
+        // flushing revisions — that race surfaces as a "Component is
+        // destroyed" uncaught promise (Session._move → orm.call).
+        await this.onSpreadsheetSaved();
         this.env.services.action.doAction(
             {
                 name: _t("Add to dashboard"),

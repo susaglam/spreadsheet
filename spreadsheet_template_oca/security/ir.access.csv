@@ -1,0 +1,7 @@
+id,name,model_id,group_id/id,operation,domain
+access_spreadsheet_template_user,spreadsheet.template.user,spreadsheet.template,spreadsheet_oca.group_user,r,
+access_spreadsheet_template_manager,spreadsheet.template.manager,spreadsheet.template,spreadsheet_template_oca.group_template_manager,crud,
+access_spreadsheet_template_category_user,spreadsheet.template.category.user,spreadsheet.template.category,spreadsheet_oca.group_user,r,
+access_spreadsheet_template_category_manager,spreadsheet.template.category.manager,spreadsheet.template.category,spreadsheet_template_oca.group_template_manager,crud,
+access_spreadsheet_to_template_wizard,spreadsheet.to.template.wizard,spreadsheet.to.template,spreadsheet_oca.group_user,cru,
+access_spreadsheet_from_template_wizard,spreadsheet.from.template.wizard,spreadsheet.from.template,spreadsheet_oca.group_user,cru,

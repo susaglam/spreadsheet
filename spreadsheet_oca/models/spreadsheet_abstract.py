@@ -36,20 +36,27 @@ class SpreadsheetAbstract(models.AbstractModel):
     @api.depends("spreadsheet_binary_data")
     def _compute_spreadsheet_raw(self):
         for dashboard in self:
-            if dashboard.spreadsheet_binary_data:
-                dashboard.spreadsheet_raw = json.loads(
-                    base64.decodebytes(dashboard.spreadsheet_binary_data).decode(
-                        "UTF-8"
-                    )
-                )
-            else:
+            data = dashboard.spreadsheet_binary_data
+            if not data:
                 dashboard.spreadsheet_raw = {}
+                continue
+            # saas-19.4: reading a Binary(attachment=True) field returns a
+            # BinaryValueAttachment wrapper, and bytes(wrapper) is the raw
+            # (already base64-decoded) content — decode the JSON directly.
+            # Older Odoo returned a base64 str/bytes, so keep a fallback.
+            if isinstance(data, (bytes, bytearray, str)):
+                raw = base64.b64decode(data)
+            else:
+                raw = bytes(data)
+            dashboard.spreadsheet_raw = json.loads(raw.decode("UTF-8"))
 
     def _inverse_spreadsheet_raw(self):
         for record in self:
-            record.spreadsheet_binary_data = base64.encodebytes(
+            # Store a clean base64 string (canonical Binary write format in
+            # saas-19.4; base64.encodebytes' newline-wrapped bytes are avoided).
+            record.spreadsheet_binary_data = base64.b64encode(
                 json.dumps(record.spreadsheet_raw).encode("UTF-8")
-            )
+            ).decode("ascii")
 
     def _empty_spreadsheet_data_bin(self):
         """Create an empty spreadsheet workbook.

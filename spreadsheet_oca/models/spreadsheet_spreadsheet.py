@@ -67,7 +67,7 @@ class SpreadsheetSpreadsheet(models.Model):
         for attachment in attachments:
             extracted = {}
             with zipfile.ZipFile(
-                BytesIO(base64.b64decode(attachment.datas)), "r"
+                BytesIO(attachment.raw), "r"
             ) as xlsx:
                 # List and filter for XML and REL files
                 xml_files = [

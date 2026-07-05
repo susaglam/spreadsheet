@@ -18,7 +18,7 @@
         }
     }
     .o_spreadsheet_oca_name_warning {
-        font-size: 0.8em;
+        font-size: 1.0em;
     }
 
     .o_spreadsheet_oca_datasource_panel {
@@ -61,5 +61,36 @@
         .o_field_many2one_selection {
             width: 100%;
         }
+    }
+}
+
+// Compact control panel (breadcrumb + name row) above the spreadsheet grid,
+// so the editor gets more vertical space. Requested 2026-07-05.
+.o_spreadsheet_oca_compact_cp.o_control_panel {
+    min-height: 0 !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    .o_control_panel_breadcrumbs,
+    .o_breadcrumb {
+        min-height: 0;
+        font-size: 1.0em;
+        align-items: center;
+    }
+    // slight gap so the breadcrumb path + spreadsheet name sit nicely
+    // side-by-side on one line (requested 2026-07-05)
+    .o_last_breadcrumb_item {
+        margin-left: 0.5rem;
+    }
+    // The editable spreadsheet-name input IS the current-file name shown in the
+    // breadcrumb (SpreadsheetName component). It MUST stay visible — when the
+    // editor is opened directly from the kanban (no parent form in the stack)
+    // this is the ONLY place the file name appears. It previously rendered
+    // empty because of the load()-wrap bug (now fixed); with record.name
+    // populated it shows the real name. The "name is required" hint only
+    // appears for a genuinely unnamed sheet, which is the correct prompt.
+    .o_spreadsheet_oca_name {
+        // keep it looking like a breadcrumb label, not a form input
+        font-weight: 500;
+        font-size: 1.0em;
     }
 }

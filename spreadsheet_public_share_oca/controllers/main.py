@@ -1,4 +1,4 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import http
@@ -57,9 +57,12 @@ class SpreadsheetPublicShareController(http.Controller):
             return request.not_found()
 
         spreadsheet = share.spreadsheet_id.sudo()
-        content = spreadsheet.spreadsheet_binary_data
-        if not content:
+        # saas-19.4: Binary(attachment=True) read -> BinaryValueAttachment
+        # wrapper; make_response needs raw bytes -> bytes(wrapper).
+        bin_data = spreadsheet.spreadsheet_binary_data
+        if not bin_data:
             return request.not_found()
+        content = bytes(bin_data)
 
         filename = f"{spreadsheet.name}.xlsx"
         return request.make_response(

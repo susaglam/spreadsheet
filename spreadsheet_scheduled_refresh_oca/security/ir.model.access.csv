@@ -1,3 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_refresh_schedule_user,spreadsheet.refresh.schedule.user,model_spreadsheet_refresh_schedule,spreadsheet_oca.group_user,1,1,1,1
-access_refresh_schedule_manager,spreadsheet.refresh.schedule.manager,model_spreadsheet_refresh_schedule,spreadsheet_oca.group_manager,1,1,1,1

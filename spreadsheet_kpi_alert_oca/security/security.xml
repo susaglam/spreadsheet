@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2026 Badkamertien
+<!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <!-- saas-19.4: ir.rule -> ir.access permissions (group_id set). The
+         no-domain group_user crud grant on spreadsheet.kpi.alert was removed
+         from ir.access.csv so this owner permission is the sole scope. -->
     <!-- Users can manage alerts on spreadsheets they have access to -->
-    <record id="rule_kpi_alert_owner" model="ir.rule">
+    <record id="rule_kpi_alert_owner" model="ir.access">
         <field name="name">KPI Alert: Owner/Contributor Access</field>
         <field name="model_id" ref="model_spreadsheet_kpi_alert" />
-        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
-        <field name="domain_force">[
+        <field name="group_id" ref="spreadsheet_oca.group_user" />
+        <field name="operation">crud</field>
+        <field name="domain">[
             '|', '|',
             ('spreadsheet_id.owner_id', '=', user.id),
             ('spreadsheet_id.contributor_ids', '=', user.id),
@@ -16,10 +20,11 @@
     </record>
 
     <!-- Managers have full access to all alerts -->
-    <record id="rule_kpi_alert_manager" model="ir.rule">
+    <record id="rule_kpi_alert_manager" model="ir.access">
         <field name="name">KPI Alert: Manager Full Access</field>
         <field name="model_id" ref="model_spreadsheet_kpi_alert" />
-        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
-        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="group_id" ref="spreadsheet_oca.group_manager" />
+        <field name="operation">crud</field>
+        <field name="domain">[(1, '=', 1)]</field>
     </record>
 </odoo>

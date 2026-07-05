@@ -1,5 +1,5 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Component, onWillStart, onWillUpdateProps, useRef, useState} from "@odoo/owl";
+import {Component, onWillStart, onWillUpdateProps, useRef, proxy} from "@odoo/owl";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
@@ -173,7 +173,7 @@ try {
 
 export class ListPanelDisplay extends Component {
     setup() {
-        this.state = useState({listRows: undefined});
+        this.state = proxy({listRows: undefined});
         this.dialog = useService("dialog");
         onWillStart(this.modelData.bind(this));
         onWillUpdateProps(this.modelData.bind(this));

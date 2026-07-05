@@ -1,4 +1,4 @@
-# Copyright 2026 Badkamertien
+# Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import re
@@ -67,9 +67,10 @@ class SpreadsheetPublicShare(models.Model):
         string="Share URL",
     )
 
-    _sql_constraints = [
-        ("token_unique", "unique(token)", "Token must be unique."),
-    ]
+    _token_unique = models.Constraint(
+        "unique(token)",
+        "Token must be unique.",
+    )
 
     @api.depends("token")
     def _compute_share_url(self):

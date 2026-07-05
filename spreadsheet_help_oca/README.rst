@@ -25,7 +25,7 @@ Credits
 Authors
 ~~~~~~~
 
-* Badkamertien
+* Codesnap
 
 Maintainers
 ~~~~~~~~~~~
