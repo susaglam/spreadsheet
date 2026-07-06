@@ -4,7 +4,8 @@
 import base64
 import json
 
-from odoo import fields, models
+from odoo import api, fields, models
+from odoo.exceptions import UserError
 
 
 class SpreadsheetSpreadsheet(models.Model):
@@ -17,6 +18,7 @@ class SpreadsheetSpreadsheet(models.Model):
     )
     version_count = fields.Integer(compute="_compute_version_count")
 
+    @api.depends("version_ids")
     def _compute_version_count(self):
         for rec in self:
             rec.version_count = len(rec.version_ids)
@@ -26,11 +28,20 @@ class SpreadsheetSpreadsheet(models.Model):
         self.ensure_one()
         raw = self.spreadsheet_raw
         if not raw:
-            return False
+            raise UserError(
+                self.env._(
+                    "This spreadsheet has no content to snapshot yet "
+                    "— add some data first."
+                )
+            )
 
-        encoded = base64.b64encode(json.dumps(raw, default=str).encode("utf-8"))
+        # Binary(attachment=True) expects a base64 *str* on write (matching
+        # spreadsheet_oca's canonical saas-19.4 format); b64encode returns bytes.
+        encoded = base64.b64encode(json.dumps(raw, default=str).encode("utf-8")).decode(
+            "ascii"
+        )
 
-        return self.env["spreadsheet.version"].create(
+        version = self.env["spreadsheet.version"].create(
             {
                 "name": label
                 or self.env._("Snapshot %(ts)s", ts=fields.Datetime.now()),
@@ -41,6 +52,20 @@ class SpreadsheetSpreadsheet(models.Model):
             }
         )
 
+        return {
+            "type": "ir.actions.client",
+            "tag": "display_notification",
+            "params": {
+                "title": self.env._("Snapshot Created"),
+                "message": self.env._(
+                    "Snapshot '%(version)s' captured for '%(sheet)s'.",
+                    version=version.name,
+                    sheet=self.name,
+                ),
+                "type": "success",
+            },
+        }
+
     def action_view_versions(self):
         self.ensure_one()
         return {
@@ -50,4 +75,9 @@ class SpreadsheetSpreadsheet(models.Model):
             "view_mode": "list,form",
             "domain": [("spreadsheet_id", "=", self.id)],
             "context": {"default_spreadsheet_id": self.id},
+            "help": self.env._(
+                "<p class='o_view_nocontent_smiling_face'>No snapshots yet</p>"
+                "<p>Use 'New Snapshot' on the spreadsheet form to capture its "
+                "current state, then diff or restore it from here.</p>"
+            ),
         }

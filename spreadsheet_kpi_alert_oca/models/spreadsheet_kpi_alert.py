@@ -57,10 +57,15 @@ class SpreadsheetKpiAlert(models.Model):
         ],
         required=True,
         default=">",
+        help="How the cell value is compared to the threshold. Example: "
+        "'Less than (<)' fires when the value falls below the threshold.",
     )
     threshold_value = fields.Float(
         string="Threshold",
         required=True,
+        help="The number the cell value is compared against. Example: with "
+        "operator '<' and threshold 1000, the alert fires when the cell drops "
+        "below 1000.",
     )
     last_value = fields.Float(
         string="Last Known Value",
@@ -85,7 +90,11 @@ class SpreadsheetKpiAlert(models.Model):
     )
     cooldown_hours = fields.Integer(
         string="Cooldown (hours)",
-        default=24,
+        default=lambda self: (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_int("spreadsheet_kpi_alert_oca.default_cooldown_hours", 24)
+        ),
         help="Minimum hours between repeated alert notifications.",
     )
     notify_user_ids = fields.Many2many(
@@ -94,7 +103,11 @@ class SpreadsheetKpiAlert(models.Model):
         help="Users to notify when the threshold is breached.",
     )
     send_email = fields.Boolean(
-        default=False,
+        default=lambda self: (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_bool("spreadsheet_kpi_alert_oca.default_send_email", False)
+        ),
         help="Also send an email notification when triggered.",
     )
 
@@ -104,6 +117,7 @@ class SpreadsheetKpiAlert(models.Model):
         string="Condition",
     )
 
+    @api.depends("sheet_name", "cell_ref", "operator", "threshold_value")
     def _compute_alert_condition(self):
         for rec in self:
             rec.alert_condition = (
@@ -127,11 +141,13 @@ class SpreadsheetKpiAlert(models.Model):
         except (TypeError, ValueError) as exc:
             _logger.debug("Invalid alert id in update_cell_values payload: %s", exc)
             return
-        for alert in self.browse(list(id_value_map.keys())):
+        # search() applies the ir.access owner/contributor domain, so a user can
+        # only sync values for alerts they are actually allowed to see — no sudo.
+        for alert in self.search([("id", "in", list(id_value_map))]):
             val = id_value_map.get(alert.id)
             if val is not None:
                 try:
-                    alert.sudo().write(
+                    alert.write(
                         {
                             "last_value": float(val),
                             "value_synced_at": fields.Datetime.now(),
@@ -203,6 +219,8 @@ class SpreadsheetKpiAlert(models.Model):
         now = fields.Datetime.now()
 
         for alert in alerts:
+            # Keep the check timestamp outside the savepoint so it records even
+            # if the compare/trigger below fails for this one alert.
             alert.last_checked = now
 
             # Check cooldown
@@ -216,21 +234,29 @@ class SpreadsheetKpiAlert(models.Model):
             if not compare_fn:
                 continue
 
-            # Resolve a TRUSTWORTHY current value: prefer a server-side literal
-            # read from the stored sheet (works fully unattended), else a fresh
-            # JS-synced value; skip when neither exists. This removes both the
-            # 0.0-default false positive AND the stale-synced false trigger.
-            current_value = alert._resolve_current_value()
-            if current_value is None:
-                _logger.debug(
-                    "Alert %s: no fresh KPI value (cell is a formula and no "
-                    "recent client sync); skipping",
-                    alert.id,
-                )
-                continue
+            # Per-alert savepoint: one bad alert (e.g. an SMTP error on a
+            # force_send email) must not roll back the whole batch or block the
+            # remaining alerts — graceful degradation.
+            try:
+                with self.env.cr.savepoint():
+                    # Resolve a TRUSTWORTHY current value: prefer a server-side
+                    # literal read from the stored sheet (works fully
+                    # unattended), else a fresh JS-synced value; skip when
+                    # neither exists. This removes both the 0.0-default false
+                    # positive AND the stale-synced false trigger.
+                    current_value = alert._resolve_current_value()
+                    if current_value is None:
+                        _logger.debug(
+                            "Alert %s: no fresh KPI value (cell is a formula and "
+                            "no recent client sync); skipping",
+                            alert.id,
+                        )
+                        continue
 
-            if compare_fn(current_value, alert.threshold_value):
-                alert._trigger_alert(now, current_value)
+                    if compare_fn(current_value, alert.threshold_value):
+                        alert._trigger_alert(now, current_value)
+            except Exception as exc:  # noqa: BLE001 - never cascade a batch fail
+                _logger.warning("KPI alert %s failed: %s", alert.id, exc)
 
     def _trigger_alert(self, now, value=None):
         """Send notifications for a breached threshold.
@@ -242,6 +268,12 @@ class SpreadsheetKpiAlert(models.Model):
         self.ensure_one()
         self.last_triggered = now
         current = value if value is not None else self.last_value
+        # Persist the compared value so an unattended (literal-read) trigger
+        # emails/renders the real triggering number instead of a stale 0.0.
+        # Deliberately NOT touching value_synced_at: that timestamp governs the
+        # formula-cell staleness window and must not be advanced by a literal read.
+        if value is not None:
+            self.last_value = value
 
         # Build notification message
         body = self.env._(

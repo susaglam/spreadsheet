@@ -97,7 +97,7 @@
                     <div class="company-info">
                         <div class="company-logo" t-if="company.logo">
                             <img
-                                t-att-src="'data:image/png;base64,' + company.logo.decode('utf-8')"
+                                t-att-src="image_data_uri(company.logo)"
                                 alt="Company Logo"
                             />
                         </div>
@@ -107,7 +107,8 @@
                 </div>
 
                 <div class="report-meta">
-                    Generated on <t t-out="report_date" />
+                    <span>Generated on</span>
+                    <t t-out="report_date" />
                 </div>
 
                 <!-- Sheet content -->
@@ -184,7 +185,9 @@
                     </table>
                 </t>
                 <t t-else="">
-                    <p style="color: #999; font-style: italic;">Empty sheet</p>
+                    <p style="color: #999; font-style: italic;">
+                        <span>Empty sheet</span>
+                    </p>
                 </t>
             </div>
         </t>

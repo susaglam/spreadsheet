@@ -301,17 +301,6 @@
   },
   "listNextId": 2,
   "pivots": {
-    "1": {
-      "colGroupBys": [],
-      "context": {},
-      "domain": [],
-      "id": "1",
-      "measures": [{"field": "score"}],
-      "model": "spreadsheet.vendor.scorecard",
-      "rowGroupBys": ["partner_id"],
-      "name": "Vendor scores",
-      "sortedColumn": {"groupId": [[], []], "measure": "score", "order": "desc"}
-    },
     "10": {
       "colGroupBys": [],
       "context": {},
@@ -355,7 +344,6 @@
       "rangeType": "relative",
       "defaultsToCurrentPeriod": false,
       "pivotFields": {
-        "1": {"field": "date", "type": "date", "offset": 0},
         "10": {"field": "date", "type": "date", "offset": 0},
         "11": {"field": "date", "type": "date", "offset": -1}
       },

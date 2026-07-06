@@ -4,8 +4,8 @@
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/version-saas~19.2-blue.png
-   :target: https://github.com/OCA/spreadsheet/tree/saas-19.2/spreadsheet_contract_sla_oca
+.. |badge3| image:: https://img.shields.io/badge/version-saas~19.4-blue.png
+   :target: https://github.com/OCA/spreadsheet/tree/saas-19.4/spreadsheet_contract_sla_oca
    :alt: OCA/spreadsheet
 
 Contract & SLA Tracker
@@ -49,7 +49,8 @@ Dependencies
 ============
 
 * ``spreadsheet_oca``
-* ``sale``, ``purchase``, ``mail``
+* ``spreadsheet_kpi_alert_oca``
+* ``mail``
 
 Known issues / Roadmap
 ======================

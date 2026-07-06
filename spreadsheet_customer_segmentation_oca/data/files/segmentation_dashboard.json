@@ -328,6 +328,7 @@
     {
       "id": "data-segment",
       "name": "Data",
+      "isVisible": false,
       "colNumber": 10,
       "rowNumber": 50,
       "rows": {},
@@ -477,25 +478,6 @@
   },
   "listNextId": 2,
   "pivots": {
-    "1": {
-      "colGroupBys": [],
-      "context": {},
-      "domain": [["customer_rank", ">", 0]],
-      "id": "1",
-      "measures": [
-        {
-          "field": "__count"
-        }
-      ],
-      "model": "res.partner",
-      "rowGroupBys": ["create_date:month"],
-      "name": "Customer Segmentation",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "__count",
-        "order": "desc"
-      }
-    },
     "10": {
       "colGroupBys": [],
       "context": {},
@@ -556,7 +538,10 @@
     "13": {
       "colGroupBys": [],
       "context": {},
-      "domain": [["customer_rank", ">", 0], ["is_company", "=", true]],
+      "domain": [
+        ["customer_rank", ">", 0],
+        ["is_company", "=", true]
+      ],
       "id": "13",
       "measures": [
         {
@@ -575,7 +560,10 @@
     "14": {
       "colGroupBys": [],
       "context": {},
-      "domain": [["customer_rank", ">", 0], ["is_company", "=", false]],
+      "domain": [
+        ["customer_rank", ">", 0],
+        ["is_company", "=", false]
+      ],
       "id": "14",
       "measures": [
         {
@@ -602,11 +590,6 @@
       "rangeType": "relative",
       "defaultsToCurrentPeriod": false,
       "pivotFields": {
-        "1": {
-          "field": "create_date",
-          "type": "datetime",
-          "offset": 0
-        },
         "10": {
           "field": "create_date",
           "type": "datetime",

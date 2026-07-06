@@ -140,7 +140,7 @@
           "data": {
             "baselineColorDown": "#DC6965",
             "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
+            "baselineMode": "text",
             "title": "Conversion Rate",
             "type": "scorecard",
             "background": "",
@@ -225,8 +225,8 @@
         "D3": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(B3)"},
         "E3": {"style": 15, "content": "=FORMAT.LARGE.NUMBER(C3)"},
         "A4": {"content": "=_t(\"Conversion Rate\")"},
-        "B4": {"content": "=IFERROR(B3/B2*100,0)"},
-        "C4": {"content": "=IFERROR(C3/C2*100,0)"},
+        "B4": {"content": "=IFERROR(B3/(B2+B3)*100,0)"},
+        "C4": {"content": "=IFERROR(C3/(C2+C3)*100,0)"},
         "D4": {"style": 15, "content": "=CONCATENATE(ROUND(B4,1),\"%\")"},
         "E4": {"style": 15, "content": "=CONCATENATE(ROUND(C4,1),\"%\")"},
         "A5": {"content": "=_t(\"Revenue\")"},
@@ -350,6 +350,9 @@
       "listFields": {
         "1": {"field": "date_order", "type": "datetime", "offset": 0},
         "2": {"field": "date_order", "type": "datetime", "offset": 0}
+      },
+      "graphFields": {
+        "chart-main-conv": {"field": "date_order", "type": "datetime", "offset": 0}
       }
     },
     {
@@ -367,6 +370,9 @@
       "listFields": {
         "1": {"field": "user_id", "type": "many2one"},
         "2": {"field": "user_id", "type": "many2one"}
+      },
+      "graphFields": {
+        "chart-main-conv": {"field": "user_id", "type": "many2one"}
       }
     }
   ]

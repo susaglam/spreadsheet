@@ -27,7 +27,7 @@
                     </div>
                     <group>
                         <field name="sequence" />
-                        <field name="color" />
+                        <field name="color" widget="color_picker" />
                     </group>
                 </sheet>
             </form>
@@ -38,5 +38,13 @@
         <field name="name">Template Categories</field>
         <field name="res_model">spreadsheet.template.category</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No categories yet</p>
+            <p>
+                Create categories such as Sales, Finance or HR to group your
+                spreadsheet templates. Categories appear in the template
+                gallery's search panel so users can filter by theme.
+            </p>
+        </field>
     </record>
 </odoo>

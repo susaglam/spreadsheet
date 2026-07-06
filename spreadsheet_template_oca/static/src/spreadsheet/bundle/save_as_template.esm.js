@@ -37,7 +37,12 @@ patch(SpreadsheetRenderer.prototype, {
         const record = this.props.record;
         const resId = this.props.res_id;
         const name = record.name;
-        this.onSpreadsheetSaved();
+        // Persist current state so the wizard's create_template reads fresh
+        // spreadsheet_raw, but do NOT call onSpreadsheetSaved() — that tears
+        // down the collaborative session (leaveSession + off('update')) and
+        // would silently kill live sync for the rest of the editing session.
+        const data = this.spreadsheet_model.exportData();
+        await this.env.saveRecord({spreadsheet_raw: data});
         this.env.services.action.doAction(
             {
                 name: _t("Save as Template"),

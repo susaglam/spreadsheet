@@ -120,6 +120,12 @@
         <field name="res_model">spreadsheet.kpi.alert</field>
         <field name="view_mode">list,form</field>
         <field name="context">{'search_default_active_alerts': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first KPI alert</p>
+            <p>Watch a spreadsheet cell and get notified in Discuss (and
+                optionally by email) when it crosses a threshold. Open a
+                spreadsheet and use Data &gt; KPI Alerts, or create one here.</p>
+        </field>
     </record>
 
     <!-- Menu under Spreadsheets > Configuration -->

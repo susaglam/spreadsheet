@@ -141,6 +141,14 @@
         <field name="res_model">spreadsheet.vendor.scorecard</field>
         <field name="view_mode">list,form,pivot,graph</field>
         <field name="context">{'search_default_group_by_vendor': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No vendor scorecards yet</p>
+            <p>
+                Scorecards are generated monthly by a scheduled action
+                (Settings &gt; Technical &gt; Scheduled Actions) and can also be
+                created manually here.
+            </p>
+        </field>
     </record>
 
     <!-- Menu under Purchase > Reporting -->

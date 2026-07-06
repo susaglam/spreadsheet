@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!-- Copyright 2026 Codesnap
-     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
-<!-- The email_report_default_format setting was removed (dead: unread
-     config_parameter, and it offered the removed 'xlsx' format). This file is
-     intentionally empty and no longer listed in the manifest. -->
-<odoo />

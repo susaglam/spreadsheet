@@ -15,16 +15,26 @@ class SpreadsheetToTemplate(models.TransientModel):
         store=True,
         readonly=False,
         precompute=True,
+        help="Name of the template as it will appear in the template gallery. "
+        "Defaults to the current spreadsheet name.",
     )
     spreadsheet_id = fields.Many2one(
         "spreadsheet.spreadsheet",
         readonly=True,
         required=True,
+        help="The spreadsheet whose current contents will be saved as a "
+        "reusable template.",
     )
-    description = fields.Text("Description")
+    description = fields.Text(
+        "Description",
+        help="What this template is for and when to use it — shown on the "
+        "template's kanban card.",
+    )
     category_id = fields.Many2one(
         "spreadsheet.template.category",
         string="Category",
+        help="Optional grouping (Sales, Finance, HR...) used to organise "
+        "templates in the gallery search panel.",
     )
 
     @api.depends("spreadsheet_id.name")
@@ -49,7 +59,7 @@ class SpreadsheetToTemplate(models.TransientModel):
             "tag": "display_notification",
             "params": {
                 "title": self.name,
-                "message": "Template created successfully.",
+                "message": self.env._("Template created successfully."),
                 "type": "success",
                 "next": template.open_spreadsheet(),
             },

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="spreadsheet_dashboard_campaign_roi" model="spreadsheet.dashboard">
-        <field name="name">Campaign ROI</field>
+        <field name="name">Campaign Performance</field>
         <field
             name="spreadsheet_binary_data"
             type="base64"

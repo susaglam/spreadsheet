@@ -3,7 +3,7 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {_t} from "@web/core/l10n/translation";
 
-// Saas-19.2: arg is in spreadsheet.helpers, not registries
+// o-spreadsheet: arg/toNumber live in spreadsheet.helpers; functionRegistry in spreadsheet.registries
 const {functionRegistry} = spreadsheet.registries;
 const {arg, toNumber} = spreadsheet.helpers;
 
@@ -21,7 +21,12 @@ functionRegistry.add("ODOO.PERCENT_CHANGE", {
     compute: function (current, previous) {
         const curr = toNumber(current);
         const prev = toNumber(previous);
-        if (prev === 0) return 0;
+        if (prev === 0) {
+            if (curr === 0) return 0;
+            throw new Error(
+                _t("Cannot compute percentage change from a previous value of zero.")
+            );
+        }
         return ((curr - prev) / Math.abs(prev)) * 100;
     },
 });
@@ -77,7 +82,14 @@ functionRegistry.add("ODOO.YOY", {
     compute: function (current, lastYear) {
         const curr = toNumber(current);
         const prev = toNumber(lastYear);
-        if (prev === 0) return 0;
+        if (prev === 0) {
+            if (curr === 0) return 0;
+            throw new Error(
+                _t(
+                    "Cannot compute year-over-year change from a previous value of zero."
+                )
+            );
+        }
         return ((curr - prev) / Math.abs(prev)) * 100;
     },
 });

@@ -288,8 +288,7 @@
             "title": "Total Employees",
             "type": "scorecard",
             "background": "",
-            "baseline": "Data!E2",
-            "baselineDescr": "since last period",
+            "baseline": "",
             "keyValue": "Data!D2"
           }
         },
@@ -418,18 +417,11 @@
           "content": "=_t(\"Total Employees\")"
         },
         "B2": {
-          "content": "=ODOO.PIVOT(10,\"__count\")"
-        },
-        "C2": {
-          "content": "=ODOO.PIVOT(11,\"__count\")"
+          "content": "=ODOO.PIVOT(12,\"__count\")"
         },
         "D2": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(B2)"
-        },
-        "E2": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C2)"
         },
         "A3": {
           "content": "=_t(\"New Employees\")"
@@ -587,13 +579,12 @@
           "field": "__count"
         },
         {
-          "field": "__count"
+          "field": "department_id",
+          "aggregator": "count_distinct"
         },
         {
-          "field": "department_id"
-        },
-        {
-          "field": "job_id"
+          "field": "job_id",
+          "aggregator": "count_distinct"
         }
       ],
       "model": "hr.employee",
@@ -615,13 +606,12 @@
           "field": "__count"
         },
         {
-          "field": "__count"
+          "field": "department_id",
+          "aggregator": "count_distinct"
         },
         {
-          "field": "department_id"
-        },
-        {
-          "field": "job_id"
+          "field": "job_id",
+          "aggregator": "count_distinct"
         }
       ],
       "model": "hr.employee",
@@ -632,9 +622,28 @@
         "measure": "__count",
         "order": "desc"
       }
+    },
+    "12": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [],
+      "id": "12",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "hr.employee",
+      "rowGroupBys": [],
+      "name": "HR Overview total headcount",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
     }
   },
-  "pivotNextId": 12,
+  "pivotNextId": 13,
   "globalFilters": [
     {
       "id": "date-filter-hr",
@@ -686,6 +695,10 @@
         "11": {
           "field": "department_id",
           "type": "many2one"
+        },
+        "12": {
+          "field": "department_id",
+          "type": "many2one"
         }
       },
       "listFields": {
@@ -711,6 +724,10 @@
           "type": "many2one"
         },
         "11": {
+          "field": "company_id",
+          "type": "many2one"
+        },
+        "12": {
           "field": "company_id",
           "type": "many2one"
         }

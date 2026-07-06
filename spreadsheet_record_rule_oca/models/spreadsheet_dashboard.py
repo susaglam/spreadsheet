@@ -4,6 +4,7 @@
 import copy
 
 from odoo import fields, models
+from odoo.fields import Domain
 
 
 class SpreadsheetDashboard(models.Model):
@@ -14,11 +15,6 @@ class SpreadsheetDashboard(models.Model):
         "dashboard_id",
         string="Data Filter Rules",
     )
-    rule_count = fields.Integer(compute="_compute_rule_count")
-
-    def _compute_rule_count(self):
-        for rec in self:
-            rec.rule_count = len(rec.rule_ids)
 
     def get_spreadsheet_data(self):
         """Inject user-specific domain filters based on applicable rules."""
@@ -31,7 +27,7 @@ class SpreadsheetDashboard(models.Model):
         Rule = self.env["spreadsheet.dashboard.rule"]
 
         for source_type in ("pivots", "lists"):
-            for source_id, source in raw.get(source_type, {}).items():
+            for _source_id, source in raw.get(source_type, {}).items():
                 model = source.get("model")
                 if not model:
                     continue
@@ -46,13 +42,5 @@ class SpreadsheetDashboard(models.Model):
 
     @staticmethod
     def _merge_domains(d1, d2):
-        """AND-combine two domains."""
-        if not d1:
-            return d2
-        if not d2:
-            return d1
-        # Wrap with '&' for each additional term from d2
-        result = list(d1)
-        for term in d2:
-            result = ["&"] + result + [term]
-        return result
+        """AND-combine two domains, normalizing operators correctly."""
+        return list(Domain.AND([d1 or [], d2 or []]))

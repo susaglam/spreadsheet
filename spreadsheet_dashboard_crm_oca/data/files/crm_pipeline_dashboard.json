@@ -469,10 +469,10 @@
           "content": "=_t(\"Won\")"
         },
         "B5": {
-          "content": "=ODOO.PIVOT(10,\"won_count\")"
+          "content": "=ODOO.PIVOT(12,\"__count\")"
         },
         "C5": {
-          "content": "=ODOO.PIVOT(11,\"won_count\")"
+          "content": "=ODOO.PIVOT(13,\"__count\")"
         },
         "D5": {
           "style": 15,
@@ -561,25 +561,6 @@
   },
   "listNextId": 2,
   "pivots": {
-    "1": {
-      "colGroupBys": [],
-      "context": {},
-      "domain": [["type", "=", "opportunity"]],
-      "id": "1",
-      "measures": [
-        {
-          "field": "expected_revenue"
-        }
-      ],
-      "model": "crm.lead",
-      "rowGroupBys": ["create_date:month"],
-      "name": "CRM Pipeline by create_date:month",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "expected_revenue",
-        "order": "desc"
-      }
-    },
     "10": {
       "colGroupBys": [],
       "context": {},
@@ -594,9 +575,6 @@
         },
         {
           "field": "prorated_revenue"
-        },
-        {
-          "field": "won_count"
         }
       ],
       "model": "crm.lead",
@@ -622,9 +600,6 @@
         },
         {
           "field": "prorated_revenue"
-        },
-        {
-          "field": "won_count"
         }
       ],
       "model": "crm.lead",
@@ -635,9 +610,53 @@
         "measure": "__count",
         "order": "desc"
       }
+    },
+    "12": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [
+        ["type", "=", "opportunity"],
+        ["stage_id.is_won", "=", true]
+      ],
+      "id": "12",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "crm.lead",
+      "rowGroupBys": [],
+      "name": "CRM Won stats - current",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "13": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [
+        ["type", "=", "opportunity"],
+        ["stage_id.is_won", "=", true]
+      ],
+      "id": "13",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "crm.lead",
+      "rowGroupBys": [],
+      "name": "CRM Won stats - previous",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
     }
   },
-  "pivotNextId": 12,
+  "pivotNextId": 14,
   "globalFilters": [
     {
       "id": "date-filter-crm",
@@ -647,11 +666,6 @@
       "rangeType": "relative",
       "defaultsToCurrentPeriod": false,
       "pivotFields": {
-        "1": {
-          "field": "create_date",
-          "type": "datetime",
-          "offset": 0
-        },
         "10": {
           "field": "create_date",
           "type": "datetime",
@@ -661,10 +675,27 @@
           "field": "create_date",
           "type": "datetime",
           "offset": -1
+        },
+        "12": {
+          "field": "create_date",
+          "type": "datetime",
+          "offset": 0
+        },
+        "13": {
+          "field": "create_date",
+          "type": "datetime",
+          "offset": -1
         }
       },
       "listFields": {
         "1": {
+          "field": "create_date",
+          "type": "datetime",
+          "offset": 0
+        }
+      },
+      "graphFields": {
+        "chart-main-crm": {
           "field": "create_date",
           "type": "datetime",
           "offset": 0
@@ -678,10 +709,6 @@
       "modelName": "res.users",
       "defaultValue": [],
       "pivotFields": {
-        "1": {
-          "field": "user_id",
-          "type": "many2one"
-        },
         "10": {
           "field": "user_id",
           "type": "many2one"
@@ -689,10 +716,24 @@
         "11": {
           "field": "user_id",
           "type": "many2one"
+        },
+        "12": {
+          "field": "user_id",
+          "type": "many2one"
+        },
+        "13": {
+          "field": "user_id",
+          "type": "many2one"
         }
       },
       "listFields": {
         "1": {
+          "field": "user_id",
+          "type": "many2one"
+        }
+      },
+      "graphFields": {
+        "chart-main-crm": {
           "field": "user_id",
           "type": "many2one"
         }
@@ -705,10 +746,6 @@
       "modelName": "crm.team",
       "defaultValue": [],
       "pivotFields": {
-        "1": {
-          "field": "team_id",
-          "type": "many2one"
-        },
         "10": {
           "field": "team_id",
           "type": "many2one"
@@ -716,10 +753,24 @@
         "11": {
           "field": "team_id",
           "type": "many2one"
+        },
+        "12": {
+          "field": "team_id",
+          "type": "many2one"
+        },
+        "13": {
+          "field": "team_id",
+          "type": "many2one"
         }
       },
       "listFields": {
         "1": {
+          "field": "team_id",
+          "type": "many2one"
+        }
+      },
+      "graphFields": {
+        "chart-main-crm": {
           "field": "team_id",
           "type": "many2one"
         }

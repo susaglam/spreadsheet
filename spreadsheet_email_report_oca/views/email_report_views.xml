@@ -77,6 +77,15 @@
         <field name="name">Email Reports</field>
         <field name="res_model">spreadsheet.email.report</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first scheduled email report
+            </p>
+            <p>
+                It emails a spreadsheet exported as JSON to your chosen
+                recipients on a recurring schedule.
+            </p>
+        </field>
     </record>
 
     <record id="menu_email_reports" model="ir.ui.menu">

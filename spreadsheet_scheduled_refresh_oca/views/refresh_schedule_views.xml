@@ -51,6 +51,16 @@
         <field name="name">Refresh Schedules</field>
         <field name="res_model">spreadsheet.refresh.schedule</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first refresh schedule
+            </p>
+            <p>
+                A schedule ties a spreadsheet to an interval. The hourly cron
+                pushes a live refresh signal to anyone who has that sheet open,
+                so their data sources reload without a manual refresh.
+            </p>
+        </field>
     </record>
 
     <record id="menu_refresh_schedules" model="ir.ui.menu">

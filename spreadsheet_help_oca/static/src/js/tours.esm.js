@@ -1,6 +1,7 @@
 /** @odoo-module **/
 
 import {registry} from "@web/core/registry";
+import {_t} from "@web/core/l10n/translation";
 
 /**
  * Interactive tours for the Spreadsheets app ("video tutorial" equivalent).
@@ -114,7 +115,8 @@ registry.category("web_tour.tours").add("spreadsheet_save_template", {
         },
         {
             trigger: ".o-menu-item:contains(Save as Template)",
-            content: "💾 ADIM 3: 'Save as Template' seçeneğini tıklayın. Dialog açılacak.",
+            content:
+                "💾 ADIM 3: 'Save as Template' seçeneğini tıklayın. Dialog açılacak.",
             position: "right",
             run: "click",
         },
@@ -212,7 +214,7 @@ registry.category("web_tour.tours").add("spreadsheet_kpi_alert", {
 registry.category("actions").add("spreadsheet_help_start_tour", async (env, action) => {
     const tourName = action.params?.tour_name;
     if (!tourName) {
-        env.services.notification.add("Tour name not provided", {type: "danger"});
+        env.services.notification.add(_t("Tour name not provided"), {type: "danger"});
         return;
     }
     try {
@@ -227,11 +229,11 @@ registry.category("actions").add("spreadsheet_help_start_tour", async (env, acti
             }
         }
         env.services.notification.add(
-            `Tour başlatıldı: ${tourName}. Ekranda beliren yönergeleri takip edin.`,
+            _t("Tour started: %s. Follow the on-screen steps.", tourName),
             {type: "info"}
         );
     } catch (e) {
-        env.services.notification.add(`Tour başlatılamadı: ${e.message}`, {
+        env.services.notification.add(_t("Could not start tour: %s", e.message), {
             type: "danger",
         });
     }

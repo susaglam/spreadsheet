@@ -17,10 +17,14 @@ class SpreadsheetTutorial(models.Model):
         string="Related Module",
         help="Which module does this tutorial cover? (e.g., spreadsheet_template_oca)",
     )
-    duration_minutes = fields.Integer(default=5)
+    duration_minutes = fields.Integer(
+        default=5,
+        help="Estimated time to complete this tutorial, in minutes (e.g. 5).",
+    )
     video_url = fields.Char(
         string="Video URL",
-        help="YouTube, Vimeo or any embeddable video URL. Leave empty for text-only tutorials.",
+        help="YouTube, Vimeo or any embeddable video URL. "
+        "Leave empty for text-only tutorials.",
     )
     tour_name = fields.Char(
         string="Interactive Tour Name",
@@ -38,6 +42,8 @@ class SpreadsheetTutorial(models.Model):
             ("advanced", "Advanced"),
         ],
         default="beginner",
+        help="Skill level shown as a badge so users can pick tutorials matching "
+        "their experience (e.g. 'Beginner' for first-time users).",
     )
     tags = fields.Char(
         help="Comma-separated tags for search (e.g., 'formula,forecast,template').",

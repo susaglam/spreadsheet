@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import fields, models
+from odoo.exceptions import UserError
 
 
 class SpreadsheetConsolidationProfile(models.Model):
@@ -9,12 +10,18 @@ class SpreadsheetConsolidationProfile(models.Model):
     _description = "Multi-Company Consolidation Profile"
     _order = "name"
 
-    name = fields.Char(required=True)
+    name = fields.Char(
+        required=True,
+        help="A label for this consolidation setup. Example: Group Consolidation Q1.",
+    )
     active = fields.Boolean(default=True)
     company_ids = fields.Many2many(
         "res.company",
         string="Companies to Consolidate",
         required=True,
+        help="The legal entities whose account balances are summed into this "
+        "consolidation. Example: pick the parent plus each subsidiary in the "
+        "group report.",
     )
     elimination_account_ids = fields.Many2many(
         "account.account",
@@ -22,22 +29,26 @@ class SpreadsheetConsolidationProfile(models.Model):
         help="Accounts used for inter-company transactions. "
         "Balances on these accounts will be eliminated in the consolidated report.",
     )
-    elimination_partner_ids = fields.Many2many(
-        "res.partner",
-        string="Inter-Company Partners",
-        help="Partner records representing inter-company entities. "
-        "Transactions between these partners are eliminated.",
-    )
     currency_id = fields.Many2one(
         "res.currency",
         string="Consolidation Currency",
         required=True,
         default=lambda self: self.env.company.currency_id,
+        help="All company balances are converted to this currency before "
+        "consolidating. Example: set EUR to report a mixed EUR/USD group in euros.",
     )
 
     def action_generate_report(self):
         """Generate a consolidated report and open it in a new spreadsheet."""
         self.ensure_one()
+        if not self.env["spreadsheet.spreadsheet"].has_access("create"):
+            raise UserError(
+                self.env._(
+                    "You need Spreadsheet access to generate a consolidated "
+                    "report. Ask an administrator to add you to the Spreadsheet "
+                    "users group."
+                )
+            )
         data = self._compute_consolidation_data()
 
         # Create a spreadsheet with the consolidated data
@@ -107,9 +118,21 @@ class SpreadsheetConsolidationProfile(models.Model):
                     "code": account.code,
                     "balance": -result["consolidated"][key]["balance"],
                 }
-                result["consolidated"][key]["balance"] = 0
 
         return result
+
+    def _col_letter(self, n):
+        """Convert a 0-based column index to an A1 column reference.
+
+        Handles indices beyond 25 (A..Z, AA, AB, ...) so consolidations with
+        more than 26 companies still produce valid cell references.
+        """
+        s = ""
+        n += 1
+        while n:
+            n, r = divmod(n - 1, 26)
+            s = chr(65 + r) + s
+        return s
 
     def _build_spreadsheet_data(self, data):
         """Build o-spreadsheet JSON from consolidation data."""
@@ -121,18 +144,17 @@ class SpreadsheetConsolidationProfile(models.Model):
         }
 
         # Header row
-        col = 0
-        cells["A1"] = {"style": 1, "content": "Account"}
-        cells["B1"] = {"style": 1, "content": "Code"}
+        cells["A1"] = {"style": 1, "content": self.env._("Account")}
+        cells["B1"] = {"style": 1, "content": self.env._("Code")}
         col = 2
         for comp in data["companies"]:
-            col_letter = chr(65 + col)
+            col_letter = self._col_letter(col)
             cells[f"{col_letter}1"] = {"style": 1, "content": comp["name"]}
             col += 1
-        elim_col = chr(65 + col)
-        cells[f"{elim_col}1"] = {"style": 1, "content": "Eliminations"}
-        cons_col = chr(65 + col + 1)
-        cells[f"{cons_col}1"] = {"style": 1, "content": "Consolidated"}
+        elim_col = self._col_letter(col)
+        cells[f"{elim_col}1"] = {"style": 1, "content": self.env._("Eliminations")}
+        cons_col = self._col_letter(col + 1)
+        cells[f"{cons_col}1"] = {"style": 1, "content": self.env._("Consolidated")}
 
         # Data rows
         row = 2
@@ -149,7 +171,7 @@ class SpreadsheetConsolidationProfile(models.Model):
 
             col = 2
             for comp in data["companies"]:
-                col_letter = chr(65 + col)
+                col_letter = self._col_letter(col)
                 comp_balance = comp["accounts"].get(code, {}).get("balance", 0)
                 cells[f"{col_letter}{row}"] = {"content": str(round(comp_balance, 2))}
                 if style_id:
@@ -173,7 +195,7 @@ class SpreadsheetConsolidationProfile(models.Model):
             "sheets": [
                 {
                     "id": "sheet1",
-                    "name": "Consolidated",
+                    "name": self.env._("Consolidated"),
                     "colNumber": col + 3,
                     "rowNumber": row + 10,
                     "rows": {},

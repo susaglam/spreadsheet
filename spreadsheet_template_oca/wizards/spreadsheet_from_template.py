@@ -13,6 +13,7 @@ class SpreadsheetFromTemplate(models.TransientModel):
         string="Template",
         required=True,
         readonly=True,
+        help="The template whose contents will be copied into the new spreadsheet.",
     )
     name = fields.Char(
         "Spreadsheet Name",
@@ -21,6 +22,9 @@ class SpreadsheetFromTemplate(models.TransientModel):
         store=True,
         readonly=False,
         precompute=True,
+        help="Name of the spreadsheet that will be created. Defaults to the "
+        "template name; change it to something specific like "
+        "'Sales Report - March 2026'.",
     )
 
     @api.depends("template_id.name")
@@ -38,5 +42,12 @@ class SpreadsheetFromTemplate(models.TransientModel):
                 "spreadsheet_raw": spreadsheet_raw,
             }
         )
-        self.template_id.sudo().write({"usage_count": self.template_id.usage_count + 1})
+        # Atomic increment so concurrent uses of the same template don't lose
+        # counts via a read-modify-write race.
+        self.env.cr.execute(
+            "UPDATE spreadsheet_template "
+            "SET usage_count = COALESCE(usage_count, 0) + 1 WHERE id = %s",
+            (self.template_id.id,),
+        )
+        self.template_id.invalidate_recordset(["usage_count"])
         return spreadsheet.open_spreadsheet()

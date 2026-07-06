@@ -25,16 +25,22 @@ patch(SpreadsheetRenderer.prototype, {
         super.setup();
         this._kpiAlerts = [];
         this._kpiSyncTimer = null;
+        this._kpiStartTimer = null;
+        this._destroyed = false;
         useSubEnv({
             openKpiAlerts: this._openKpiAlerts.bind(this),
         });
 
         // Start KPI value sync after data is loaded
         const originalOnMounted = this._startKpiSync.bind(this);
-        // Use a small delay to let the spreadsheet fully initialize
-        setTimeout(() => originalOnMounted(), 3000);
+        // Use a small delay to let the spreadsheet fully initialize. Track the
+        // timer so an early unmount cancels it instead of firing on a destroyed
+        // component (which would leave an orphaned 5-min RPC interval).
+        this._kpiStartTimer = setTimeout(() => originalOnMounted(), 3000);
 
         onWillUnmount(() => {
+            this._destroyed = true;
+            clearTimeout(this._kpiStartTimer);
             if (this._kpiSyncTimer) {
                 clearInterval(this._kpiSyncTimer);
                 this._kpiSyncTimer = null;
@@ -43,10 +49,18 @@ patch(SpreadsheetRenderer.prototype, {
     },
 
     async _startKpiSync() {
+        if (this._destroyed) {
+            return;
+        }
         if (this.props.model !== "spreadsheet.spreadsheet") {
             return;
         }
         await this._syncKpiValues();
+        // The component may have unmounted during the await; don't arm a timer
+        // that would call into a destroyed component.
+        if (this._destroyed) {
+            return;
+        }
         this._kpiSyncTimer = setInterval(
             () => this._syncKpiValues(),
             KPI_SYNC_INTERVAL

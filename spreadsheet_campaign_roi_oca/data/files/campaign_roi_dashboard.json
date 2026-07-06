@@ -358,20 +358,20 @@
           "height": 230,
           "tag": "chart",
           "data": {
-            "title": "",
+            "title": "Delivered per Month",
             "background": "#FFFFFF",
             "legendPosition": "none",
             "metaData": {
-              "groupBy": ["sent_date:month"],
-              "measure": "delivered",
+              "groupBy": ["sent_datetime:month"],
+              "measure": "__count",
               "order": null,
-              "resModel": "mailing.mailing"
+              "resModel": "mailing.trace"
             },
             "searchParams": {
               "comparison": null,
               "context": {},
-              "domain": [["state", "=", "done"]],
-              "groupBy": ["sent_date:month"],
+              "domain": [["trace_status", "in", ["sent", "open", "reply"]]],
+              "groupBy": ["sent_datetime:month"],
               "orderBy": []
             },
             "type": "odoo_bar",
@@ -435,10 +435,10 @@
           "content": "=_t(\"Delivered\")"
         },
         "B3": {
-          "content": "=ODOO.PIVOT(10,\"delivered\")"
+          "content": "=ODOO.PIVOT(12,\"__count\")"
         },
         "C3": {
-          "content": "=ODOO.PIVOT(11,\"delivered\")"
+          "content": "=ODOO.PIVOT(13,\"__count\")"
         },
         "D3": {
           "style": 15,
@@ -452,10 +452,10 @@
           "content": "=_t(\"Opened\")"
         },
         "B4": {
-          "content": "=ODOO.PIVOT(10,\"opened\")"
+          "content": "=ODOO.PIVOT(14,\"__count\")"
         },
         "C4": {
-          "content": "=ODOO.PIVOT(11,\"opened\")"
+          "content": "=ODOO.PIVOT(15,\"__count\")"
         },
         "D4": {
           "style": 15,
@@ -469,10 +469,10 @@
           "content": "=_t(\"Clicked\")"
         },
         "B5": {
-          "content": "=ODOO.PIVOT(10,\"clicked\")"
+          "content": "=ODOO.PIVOT(16,\"__count\")"
         },
         "C5": {
-          "content": "=ODOO.PIVOT(11,\"clicked\")"
+          "content": "=ODOO.PIVOT(17,\"__count\")"
         },
         "D5": {
           "style": 15,
@@ -558,25 +558,6 @@
   },
   "listNextId": 2,
   "pivots": {
-    "1": {
-      "colGroupBys": [],
-      "context": {},
-      "domain": [["state", "=", "done"]],
-      "id": "1",
-      "measures": [
-        {
-          "field": "delivered"
-        }
-      ],
-      "model": "mailing.mailing",
-      "rowGroupBys": ["sent_date:month"],
-      "name": "Campaign ROI",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "delivered",
-        "order": "desc"
-      }
-    },
     "10": {
       "colGroupBys": [],
       "context": {},
@@ -585,20 +566,11 @@
       "measures": [
         {
           "field": "__count"
-        },
-        {
-          "field": "delivered"
-        },
-        {
-          "field": "opened"
-        },
-        {
-          "field": "clicked"
         }
       ],
       "model": "mailing.mailing",
       "rowGroupBys": [],
-      "name": "Campaign ROI - current",
+      "name": "Campaigns Sent - current",
       "sortedColumn": {
         "groupId": [[], []],
         "measure": "__count",
@@ -613,20 +585,125 @@
       "measures": [
         {
           "field": "__count"
-        },
-        {
-          "field": "delivered"
-        },
-        {
-          "field": "opened"
-        },
-        {
-          "field": "clicked"
         }
       ],
       "model": "mailing.mailing",
       "rowGroupBys": [],
-      "name": "Campaign ROI - previous",
+      "name": "Campaigns Sent - previous",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "12": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["trace_status", "in", ["sent", "open", "reply"]]],
+      "id": "12",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "mailing.trace",
+      "rowGroupBys": [],
+      "name": "Delivered - current",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "13": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["trace_status", "in", ["sent", "open", "reply"]]],
+      "id": "13",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "mailing.trace",
+      "rowGroupBys": [],
+      "name": "Delivered - previous",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "14": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["trace_status", "in", ["open", "reply"]]],
+      "id": "14",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "mailing.trace",
+      "rowGroupBys": [],
+      "name": "Opened - current",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "15": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["trace_status", "in", ["open", "reply"]]],
+      "id": "15",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "mailing.trace",
+      "rowGroupBys": [],
+      "name": "Opened - previous",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "16": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["links_click_datetime", "!=", false]],
+      "id": "16",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "mailing.trace",
+      "rowGroupBys": [],
+      "name": "Clicked - current",
+      "sortedColumn": {
+        "groupId": [[], []],
+        "measure": "__count",
+        "order": "desc"
+      }
+    },
+    "17": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [["links_click_datetime", "!=", false]],
+      "id": "17",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "mailing.trace",
+      "rowGroupBys": [],
+      "name": "Clicked - previous",
       "sortedColumn": {
         "groupId": [[], []],
         "measure": "__count",
@@ -634,7 +711,7 @@
       }
     }
   },
-  "pivotNextId": 12,
+  "pivotNextId": 18,
   "globalFilters": [
     {
       "id": "date-campaign",
@@ -644,11 +721,6 @@
       "rangeType": "relative",
       "defaultsToCurrentPeriod": false,
       "pivotFields": {
-        "1": {
-          "field": "sent_date",
-          "type": "datetime",
-          "offset": 0
-        },
         "10": {
           "field": "sent_date",
           "type": "datetime",
@@ -656,6 +728,36 @@
         },
         "11": {
           "field": "sent_date",
+          "type": "datetime",
+          "offset": -1
+        },
+        "12": {
+          "field": "sent_datetime",
+          "type": "datetime",
+          "offset": 0
+        },
+        "13": {
+          "field": "sent_datetime",
+          "type": "datetime",
+          "offset": -1
+        },
+        "14": {
+          "field": "sent_datetime",
+          "type": "datetime",
+          "offset": 0
+        },
+        "15": {
+          "field": "sent_datetime",
+          "type": "datetime",
+          "offset": -1
+        },
+        "16": {
+          "field": "sent_datetime",
+          "type": "datetime",
+          "offset": 0
+        },
+        "17": {
+          "field": "sent_datetime",
           "type": "datetime",
           "offset": -1
         }

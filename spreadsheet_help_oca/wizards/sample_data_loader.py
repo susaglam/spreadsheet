@@ -1,6 +1,8 @@
 # Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+from dateutil.relativedelta import relativedelta
+
 from odoo import _, fields, models
 
 
@@ -19,6 +21,9 @@ class SampleDataLoader(models.TransientModel):
         required=True,
         default="all",
         string="Ne yuklensin?",
+        help="Which demo records to create. 'All' loads examples for every "
+        "installed spreadsheet module; every record is prefixed 'ORNEK' and "
+        "can be deleted afterwards.",
     )
 
     def action_load(self):
@@ -45,6 +50,8 @@ class SampleDataLoader(models.TransientModel):
         }
 
     def _load_templates(self):
+        if "spreadsheet.template" not in self.env:
+            return ""
         Template = self.env["spreadsheet.template"]
         if Template.search_count([("name", "like", "ORNEK%")]) > 0:
             return ""
@@ -61,6 +68,8 @@ class SampleDataLoader(models.TransientModel):
         return _("1 sablon eklendi")
 
     def _load_kpi_alerts(self):
+        if "spreadsheet.kpi.alert" not in self.env:
+            return ""
         Alert = self.env["spreadsheet.kpi.alert"]
         if Alert.search_count([("name", "like", "ORNEK%")]) > 0:
             return ""
@@ -97,7 +106,7 @@ class SampleDataLoader(models.TransientModel):
                 "partner_id": partner.id,
                 "contract_type": "service",
                 "date_start": today,
-                "date_end": today.replace(year=today.year + 1),
+                "date_end": today + relativedelta(years=1),
                 "amount": 5000,
                 "responsible_id": self.env.uid,
             }

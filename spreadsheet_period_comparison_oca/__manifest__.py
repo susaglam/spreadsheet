@@ -3,8 +3,8 @@
 
 {
     "name": "Spreadsheet Period Comparison OCA",
-    "summary": "Period-over-period comparison functions (ODOO.COMPARE_PERIOD, ODOO.PERCENT_CHANGE)",
-    "version": "saas~19.4.1.0.0",
+    "summary": "Period-over-period comparison spreadsheet functions",
+    "version": "saas~19.4.1.0.1",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

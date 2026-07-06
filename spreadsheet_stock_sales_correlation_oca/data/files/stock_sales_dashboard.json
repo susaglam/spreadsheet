@@ -44,7 +44,7 @@
       "cells": {
         "A7": {
           "style": 1,
-          "content": "[Top Moving Products](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[[\"sales_count\", \">\", 0]],\"context\":{},\"modelName\":\"product.product\",\"views\":[[false,\"list\"],[false,\"form\"]]},\"threshold\":0,\"name\":\"Top Moving Products\"})",
+          "content": "[Products in Stock](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[[\"type\", \"=\", \"consu\"], [\"qty_available\", \">\", 0]],\"context\":{},\"modelName\":\"product.product\",\"views\":[[false,\"list\"],[false,\"form\"]]},\"threshold\":0,\"name\":\"Products in Stock\"})",
           "border": 1
         },
         "A8": {
@@ -239,12 +239,10 @@
           "data": {
             "baselineColorDown": "#DC6965",
             "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
+            "baselineMode": "text",
             "title": "Products in Stock",
             "type": "scorecard",
             "background": "",
-            "baseline": "Data!E2",
-            "baselineDescr": "since last period",
             "keyValue": "Data!D2"
           }
         },
@@ -258,12 +256,10 @@
           "data": {
             "baselineColorDown": "#DC6965",
             "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
-            "title": "Products Sold",
+            "baselineMode": "text",
+            "title": "Out of Stock",
             "type": "scorecard",
             "background": "",
-            "baseline": "Data!E3",
-            "baselineDescr": "since last period",
             "keyValue": "Data!D3"
           }
         },
@@ -278,7 +274,7 @@
             "baselineColorDown": "#DC6965",
             "baselineColorUp": "#00A04A",
             "baselineMode": "percentage",
-            "title": "Out of Stock",
+            "title": "Units Sold",
             "type": "scorecard",
             "background": "",
             "baseline": "Data!E4",
@@ -296,12 +292,10 @@
           "data": {
             "baselineColorDown": "#DC6965",
             "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
-            "title": "Avg Turnover",
+            "baselineMode": "text",
+            "title": "Sold per SKU",
             "type": "scorecard",
             "background": "",
-            "baseline": "Data!E5",
-            "baselineDescr": "since last period",
             "keyValue": "Data!D5"
           }
         },
@@ -373,44 +367,30 @@
           "content": "=_t(\"Products in Stock\")"
         },
         "B2": {
-          "content": "=ODOO.PIVOT(10,\"qty_available\")"
-        },
-        "C2": {
-          "content": "=ODOO.PIVOT(11,\"qty_available\")"
+          "content": "=ODOO.PIVOT(10,\"__count\")"
         },
         "D2": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(B2)"
         },
-        "E2": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C2)"
-        },
         "A3": {
-          "content": "=_t(\"Products Sold\")"
+          "content": "=_t(\"Out of Stock\")"
         },
         "B3": {
-          "content": "=ODOO.PIVOT(10,\"sales_count\")"
-        },
-        "C3": {
-          "content": "=ODOO.PIVOT(11,\"sales_count\")"
+          "content": "=ODOO.PIVOT(11,\"__count\")"
         },
         "D3": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(B3)"
         },
-        "E3": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C3)"
-        },
         "A4": {
-          "content": "=_t(\"Out of Stock\")"
+          "content": "=_t(\"Units Sold\")"
         },
         "B4": {
-          "content": "=ODOO.PIVOT(10,\"__count\")"
+          "content": "=ODOO.PIVOT(12,\"quantity\")"
         },
         "C4": {
-          "content": "=ODOO.PIVOT(11,\"__count\")"
+          "content": "=ODOO.PIVOT(13,\"quantity\")"
         },
         "D4": {
           "style": 15,
@@ -421,21 +401,14 @@
           "content": "=FORMAT.LARGE.NUMBER(C4)"
         },
         "A5": {
-          "content": "=_t(\"Avg Turnover\")"
+          "content": "=_t(\"Sold per SKU\")"
         },
         "B5": {
-          "content": "=ODOO.PIVOT(10,\"qty_available\")"
-        },
-        "C5": {
-          "content": "=ODOO.PIVOT(11,\"qty_available\")"
+          "content": "=IFERROR(B4/B2,0)"
         },
         "D5": {
           "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(B5)"
-        },
-        "E5": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C5)"
+          "content": "=ROUND(B5,2)"
         }
       },
       "figures": [],
@@ -498,98 +471,98 @@
   "lists": {
     "1": {
       "columns": ["name", "qty_available", "sales_count", "list_price"],
-      "domain": [["sales_count", ">", 0]],
+      "domain": [
+        ["type", "=", "consu"],
+        ["qty_available", ">", 0]
+      ],
       "model": "product.product",
       "context": {},
       "orderBy": [
         {
-          "name": "sales_count",
-          "asc": false
+          "name": "name",
+          "asc": true
         }
       ],
       "id": "1",
-      "name": "Top Moving Products"
+      "name": "Products in Stock"
     }
   },
   "listNextId": 2,
   "pivots": {
-    "1": {
+    "10": {
       "colGroupBys": [],
       "context": {},
-      "domain": [["state", "=", "done"]],
-      "id": "1",
+      "domain": [
+        ["type", "=", "consu"],
+        ["qty_available", ">", 0]
+      ],
+      "id": "10",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "product.product",
+      "rowGroupBys": [],
+      "name": "Products in stock",
+      "sortedColumn": null
+    },
+    "11": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [
+        ["type", "=", "consu"],
+        ["qty_available", "<=", 0]
+      ],
+      "id": "11",
+      "measures": [
+        {
+          "field": "__count"
+        }
+      ],
+      "model": "product.product",
+      "rowGroupBys": [],
+      "name": "Products out of stock",
+      "sortedColumn": null
+    },
+    "12": {
+      "colGroupBys": [],
+      "context": {},
+      "domain": [
+        ["state", "=", "done"],
+        ["location_dest_id.usage", "=", "customer"]
+      ],
+      "id": "12",
       "measures": [
         {
           "field": "quantity"
         }
       ],
       "model": "stock.move",
-      "rowGroupBys": ["date:week"],
-      "name": "Stock vs Sales",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "quantity",
-        "order": "desc"
-      }
+      "rowGroupBys": [],
+      "name": "Units sold - current",
+      "sortedColumn": null
     },
-    "10": {
+    "13": {
       "colGroupBys": [],
       "context": {},
-      "domain": [["type", "=", "consu"]],
-      "id": "10",
+      "domain": [
+        ["state", "=", "done"],
+        ["location_dest_id.usage", "=", "customer"]
+      ],
+      "id": "13",
       "measures": [
         {
-          "field": "qty_available"
-        },
-        {
-          "field": "sales_count"
-        },
-        {
-          "field": "__count"
-        },
-        {
-          "field": "qty_available"
+          "field": "quantity"
         }
       ],
-      "model": "product.product",
+      "model": "stock.move",
       "rowGroupBys": [],
-      "name": "Stock vs Sales - current",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "qty_available",
-        "order": "desc"
-      }
-    },
-    "11": {
-      "colGroupBys": [],
-      "context": {},
-      "domain": [["type", "=", "consu"]],
-      "id": "11",
-      "measures": [
-        {
-          "field": "qty_available"
-        },
-        {
-          "field": "sales_count"
-        },
-        {
-          "field": "__count"
-        },
-        {
-          "field": "qty_available"
-        }
-      ],
-      "model": "product.product",
-      "rowGroupBys": [],
-      "name": "Stock vs Sales - previous",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "qty_available",
-        "order": "desc"
-      }
+      "name": "Units sold - previous",
+      "sortedColumn": null
     }
   },
-  "pivotNextId": 12,
+  "pivotNextId": 14,
   "globalFilters": [
     {
       "id": "date-stocksales",
@@ -599,29 +572,18 @@
       "rangeType": "relative",
       "defaultsToCurrentPeriod": false,
       "pivotFields": {
-        "1": {
-          "field": "create_date",
+        "12": {
+          "field": "date",
           "type": "datetime",
           "offset": 0
         },
-        "10": {
-          "field": "create_date",
-          "type": "datetime",
-          "offset": 0
-        },
-        "11": {
-          "field": "create_date",
+        "13": {
+          "field": "date",
           "type": "datetime",
           "offset": -1
         }
       },
-      "listFields": {
-        "1": {
-          "field": "create_date",
-          "type": "datetime",
-          "offset": 0
-        }
-      }
+      "listFields": {}
     }
   ]
 }

@@ -3,8 +3,8 @@
 
 {
     "name": "Spreadsheet Vendor Scorecard OCA",
-    "summary": "Supplier performance scorecard with delivery, quality and lead time metrics",
-    "version": "saas~19.4.1.0.0",
+    "summary": "Supplier scorecard: delivery, lead time and quality metrics",
+    "version": "saas~19.4.1.0.1",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

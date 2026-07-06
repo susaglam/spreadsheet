@@ -3,8 +3,8 @@
 
 {
     "name": "Spreadsheet KPI Alert OCA",
-    "summary": "Set threshold alerts on spreadsheet cells with cron-based notifications",
-    "version": "saas~19.4.1.0.1",
+    "summary": "Threshold alerts on spreadsheet cells with cron notifications",
+    "version": "saas~19.4.1.0.2",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

@@ -4,7 +4,7 @@
 {
     "name": "Spreadsheet Template OCA",
     "summary": "Create and use spreadsheet templates",
-    "version": "saas~19.4.1.0.1",
+    "version": "saas~19.4.1.0.2",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

@@ -9,11 +9,11 @@ class ResConfigSettings(models.TransientModel):
 
     kpi_alert_default_cooldown_hours = fields.Integer(
         string="Default KPI Alert Cooldown (hours)",
-        config_parameter="spreadsheet_kpi_alert.default_cooldown_hours",
+        config_parameter="spreadsheet_kpi_alert_oca.default_cooldown_hours",
         default=24,
     )
     kpi_alert_default_send_email = fields.Boolean(
         string="Send Email by Default on KPI Alert",
-        config_parameter="spreadsheet_kpi_alert.default_send_email",
+        config_parameter="spreadsheet_kpi_alert_oca.default_send_email",
         default=False,
     )

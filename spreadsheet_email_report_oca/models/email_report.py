@@ -16,17 +16,29 @@ class SpreadsheetEmailReport(models.Model):
     _name = "spreadsheet.email.report"
     _description = "Scheduled Spreadsheet Email Report"
 
-    name = fields.Char(required=True)
-    active = fields.Boolean(default=True)
+    name = fields.Char(
+        required=True,
+        help="A label for this scheduled report, e.g. 'Weekly Sales Dashboard'. "
+        "It appears in the email subject.",
+    )
+    active = fields.Boolean(
+        default=True,
+        help="Untick to pause this schedule without deleting it; the cron "
+        "ignores inactive reports.",
+    )
     spreadsheet_id = fields.Many2one(
         "spreadsheet.spreadsheet",
         required=True,
         ondelete="cascade",
+        help="The spreadsheet whose data is exported as JSON and attached to "
+        "each email.",
     )
     recipient_ids = fields.Many2many(
         "res.partner",
         string="Recipients",
         required=True,
+        help="Partners who receive the email; only partners that have an email "
+        "address are used. Add addresses without a partner via Extra Emails.",
     )
     extra_emails = fields.Char(
         string="Extra Emails",
@@ -44,7 +56,11 @@ class SpreadsheetEmailReport(models.Model):
         "(The old 'Excel (XLSX)' option was mislabelled — it attached JSON "
         "with a .xlsx extension that Excel could not open.)",
     )
-    interval_number = fields.Integer(default=1)
+    interval_number = fields.Integer(
+        default=1,
+        help="How often to resend, combined with the interval unit. "
+        "Example: 2 + Weeks = every two weeks.",
+    )
     interval_type = fields.Selection(
         [
             ("days", "Days"),
@@ -53,10 +69,23 @@ class SpreadsheetEmailReport(models.Model):
         ],
         default="weeks",
         required=True,
+        help="The unit for the interval. Example: 2 + Weeks = every two weeks.",
     )
-    last_sent = fields.Datetime(readonly=True)
-    next_send = fields.Datetime()
-    send_count = fields.Integer(readonly=True, default=0)
+    last_sent = fields.Datetime(
+        readonly=True,
+        help="Read-only. When the last successful send happened. Empty until "
+        "the first email goes out.",
+    )
+    next_send = fields.Datetime(
+        help="When the next automatic send is due. Editable: set it in the "
+        "future to pause, or to now to send on the next hourly cron run.",
+    )
+    send_count = fields.Integer(
+        readonly=True,
+        default=0,
+        help="Read-only counter of how many times this report has been sent "
+        "successfully.",
+    )
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -84,29 +113,52 @@ class SpreadsheetEmailReport(models.Model):
         )
         for report in reports:
             try:
-                report._send_report()
+                # Isolate each report in a savepoint so a DB-level error in one
+                # send cannot poison the shared cursor and abort the whole batch.
+                with self.env.cr.savepoint():
+                    report._send_report()
             except Exception as e:
                 _logger.error(
                     "Failed to send spreadsheet email report '%s': %s", report.name, e
                 )
 
     def _send_report(self):
+        """Send the report to all resolved recipients.
+
+        Returns the number of email addresses the report was actually sent to.
+        Returns 0 (without advancing the schedule counters) when there is no
+        valid recipient or the mail template is missing, so the report retries
+        on the next cron run.
+        """
         self.ensure_one()
         emails = self._get_all_email_addresses()
         if not emails:
-            return
+            return 0
 
-        attachment = self._build_attachment()
         template = self.env.ref(
             "spreadsheet_email_report_oca.spreadsheet_email_report_template",
             raise_if_not_found=False,
         )
-        if template:
-            mail_values = template.generate_email(self.id, ["subject", "body_html"])
-            mail_values["email_to"] = ",".join(emails)
-            mail_values["attachment_ids"] = [(4, attachment.id)]
-            mail = self.env["mail.mail"].sudo().create(mail_values)
-            mail.send()
+        if not template:
+            _logger.warning(
+                "Spreadsheet email report '%s': mail template missing; skipping "
+                "send, will retry on the next cron run.",
+                self.name,
+            )
+            return 0
+
+        attachment = self._build_attachment()
+        # saas-19.4: mail.template.generate_email() was removed. send_mail
+        # renders subject/body_html from the template on res_id=self.id and
+        # sends immediately; email_values overrides the recipients + attachment.
+        template.send_mail(
+            self.id,
+            force_send=True,
+            email_values={
+                "email_to": ",".join(emails),
+                "attachment_ids": [(4, attachment.id)],
+            },
+        )
 
         delta = {self.interval_type: self.interval_number}
         self.write(
@@ -116,6 +168,7 @@ class SpreadsheetEmailReport(models.Model):
                 "send_count": self.send_count + 1,
             }
         )
+        return len(emails)
 
     def _build_attachment(self):
         self.ensure_one()
@@ -143,13 +196,29 @@ class SpreadsheetEmailReport(models.Model):
     def action_send_now(self):
         """Trigger an immediate send."""
         self.ensure_one()
-        self._send_report()
+        sent = self._send_report()
+        if sent:
+            return {
+                "type": "ir.actions.client",
+                "tag": "display_notification",
+                "params": {
+                    "title": _("Report Sent"),
+                    "message": _("Report '%s' has been sent to recipients.")
+                    % self.name,
+                    "type": "success",
+                },
+            }
         return {
             "type": "ir.actions.client",
             "tag": "display_notification",
             "params": {
-                "title": _("Report Sent"),
-                "message": _("Report '%s' has been sent to recipients.") % self.name,
-                "type": "success",
+                "title": _("Report Not Sent"),
+                "message": _(
+                    "Report '%s' was not sent: no recipient has a valid email "
+                    "address, or the mail template is missing. Add an email to a "
+                    "recipient partner or fill Extra Emails."
+                )
+                % self.name,
+                "type": "warning",
             },
         }

@@ -52,6 +52,21 @@
         <field name="name">Dashboard Data Filters</field>
         <field name="res_model">spreadsheet.dashboard.rule</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first dashboard data filter
+            </p>
+            <p>
+                A data filter rule narrows the records a spreadsheet dashboard
+                shows to a specific group of users. For example, let each
+                salesperson see only their own orders.
+            </p>
+            <p>
+                To get started, pick a dashboard, enter the model to filter
+                (e.g. sale.order), choose the groups it applies to, and add an
+                additional domain such as [('user_id', '=', user.id)].
+            </p>
+        </field>
     </record>
 
     <record id="menu_dashboard_rules" model="ir.ui.menu">

@@ -4,15 +4,13 @@
 {
     "name": "Spreadsheet Contract & SLA Tracker OCA",
     "summary": "Contract renewal calendar and SLA compliance tracking in spreadsheets",
-    "version": "saas~19.4.1.0.0",
+    "version": "saas~19.4.1.0.1",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
     "depends": [
         "spreadsheet_oca",
         "spreadsheet_kpi_alert_oca",
-        "sale",
-        "purchase",
         "mail",
     ],
     "data": [

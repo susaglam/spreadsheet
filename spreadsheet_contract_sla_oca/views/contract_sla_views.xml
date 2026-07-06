@@ -71,7 +71,6 @@
                     decoration-success="state == 'active'"
                     decoration-warning="state == 'expiring'"
                     decoration-danger="state == 'expired'"
-                    decoration-info="state == 'renewed'"
                 />
             </list>
         </field>
@@ -179,6 +178,13 @@
         <field name="res_model">spreadsheet.contract</field>
         <field name="view_mode">list,form,calendar</field>
         <field name="context">{'search_default_active_contracts': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first contract</p>
+            <p>
+                Track contract periods, SLA metrics and renewal reminders. Add a
+                partner, start/end dates and value to get started.
+            </p>
+        </field>
     </record>
 
     <!-- Menu under Spreadsheets -->

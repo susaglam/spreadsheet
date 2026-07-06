@@ -4,8 +4,8 @@
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/version-saas~19.2-blue.png
-   :target: https://github.com/OCA/spreadsheet/tree/saas-19.2/spreadsheet_record_rule_oca
+.. |badge3| image:: https://img.shields.io/badge/version-saas~19.4-blue.png
+   :target: https://github.com/OCA/spreadsheet/tree/saas-19.4/spreadsheet_record_rule_oca
    :alt: OCA/spreadsheet
 
 Dashboard Record Rule Filter

@@ -3,8 +3,8 @@
 
 {
     "name": "Spreadsheet Help & Examples OCA",
-    "summary": "In-app help, formula reference, tutorials, sample data loader, interactive tour",
-    "version": "saas~19.4.1.0.0",
+    "summary": "In-app help, formula reference, tutorials and sample data",
+    "version": "saas~19.4.1.0.1",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

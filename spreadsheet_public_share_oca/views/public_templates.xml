@@ -21,15 +21,16 @@
                                     t-attf-href="/spreadsheet/public/{{ share.token }}/download"
                                     class="btn btn-sm btn-primary"
                                 >
-                                    <i
-                                    class="fa fa-download me-1"
-                                />Download data (JSON)
+                                    <i class="fa fa-download me-1" />
+                                    <span>Download data (JSON)</span>
                                 </a>
                             </div>
                         </div>
                         <p class="text-muted small">
                             <i class="fa fa-eye me-1" />
-                            Read-only shared view. <t t-out="share.view_count" /> views.
+                            <span>Read-only shared view.</span>
+                            <t t-out="share.view_count" />
+                            <span>views.</span>
                         </p>
                         <div
                             class="alert alert-info d-flex align-items-center"
@@ -91,6 +92,16 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div
+                                t-if="sheet.get('truncated')"
+                                class="alert alert-warning small mb-0 rounded-0 border-0"
+                                role="alert"
+                            >
+                                <i class="fa fa-scissors me-1" />
+                                <span>Preview limited to the first 100 rows and 26
+                                columns. Download the data for the full
+                                sheet.</span>
+                            </div>
                         </div>
                     </div>
                 </t>
@@ -117,12 +128,19 @@
             <div class="container mt-5" style="max-width: 400px;">
                 <div class="card">
                     <div class="card-body">
-                        <h4><i class="fa fa-lock me-2" />Password Required</h4>
+                        <h4>
+                            <i class="fa fa-lock me-2" />
+                            <span>Password Required</span>
+                        </h4>
                         <p
                             class="text-muted"
                         >This shared spreadsheet is password-protected.</p>
+                        <div t-if="error" class="alert alert-danger py-2" role="alert">
+                            <i class="fa fa-exclamation-circle me-1" />
+                            <span>Incorrect password. Please try again.</span>
+                        </div>
                         <form
-                            method="get"
+                            method="post"
                             t-attf-action="/spreadsheet/public/{{ token }}"
                         >
                             <div class="mb-3">
@@ -135,7 +153,8 @@
                                 />
                             </div>
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-unlock me-1" />Access
+                                <i class="fa fa-unlock me-1" />
+                                <span>Access</span>
                             </button>
                         </form>
                     </div>

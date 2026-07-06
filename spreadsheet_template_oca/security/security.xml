@@ -17,24 +17,8 @@
         <field name="implied_ids" eval="[(4, ref('group_template_manager'))]" />
     </record>
 
-    <!-- saas-19.4: ir.rule -> ir.access permissions. read_all = group_user read
-         (matches the read-only ir.access.csv grant; no create/unlink so
-         operation="r"); manager = full crud. Both domains are (1=1) = all. -->
-    <!-- Templates: all spreadsheet users can read -->
-    <record id="rule_spreadsheet_template_read_all" model="ir.access">
-        <field name="name">Spreadsheet Template: Read for all users</field>
-        <field name="model_id" ref="model_spreadsheet_template" />
-        <field name="group_id" ref="spreadsheet_oca.group_user" />
-        <field name="operation">r</field>
-        <field name="domain">[(1, '=', 1)]</field>
-    </record>
-
-    <!-- Templates: full access for template managers -->
-    <record id="rule_spreadsheet_template_manager" model="ir.access">
-        <field name="name">Spreadsheet Template: Full access for managers</field>
-        <field name="model_id" ref="model_spreadsheet_template" />
-        <field name="group_id" ref="spreadsheet_template_oca.group_template_manager" />
-        <field name="operation">crud</field>
-        <field name="domain">[(1, '=', 1)]</field>
-    </record>
+    <!-- Model access is granted entirely via security/ir.access.csv:
+         group_user gets read, group_template_manager gets full crud on
+         spreadsheet.template. No additional ir.access records are needed here —
+         a second all-records (1=1) grant would only duplicate the CSV rows. -->
 </odoo>

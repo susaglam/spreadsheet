@@ -7,7 +7,9 @@
 <odoo noupdate="1">
     <record id="tour_quick_start" model="web_tour.tour">
         <field name="name">spreadsheet_quick_start</field>
-        <field name="url">/odoo/spreadsheets</field>
+        <field
+            name="url"
+        >/odoo/action-spreadsheet_oca.spreadsheet_spreadsheet_act_window</field>
         <field name="sequence">100</field>
         <field
             name="rainbow_man_message"
@@ -20,7 +22,9 @@
 
     <record id="tour_save_template" model="web_tour.tour">
         <field name="name">spreadsheet_save_template</field>
-        <field name="url">/odoo/spreadsheets</field>
+        <field
+            name="url"
+        >/odoo/action-spreadsheet_oca.spreadsheet_spreadsheet_act_window</field>
         <field name="sequence">110</field>
         <field
             name="rainbow_man_message"
@@ -32,7 +36,9 @@ template olarak yeniden kullanabilirsiniz.</p>
 
     <record id="tour_kpi_alert" model="web_tour.tour">
         <field name="name">spreadsheet_kpi_alert</field>
-        <field name="url">/odoo/spreadsheets</field>
+        <field
+            name="url"
+        >/odoo/action-spreadsheet_oca.spreadsheet_spreadsheet_act_window</field>
         <field name="sequence">120</field>
         <field
             name="rainbow_man_message"

@@ -1,6 +1,7 @@
 /** @odoo-module **/
 
 import {rpc} from "@web/core/network/rpc";
+import {_t} from "@web/core/l10n/translation";
 
 /**
  * Portal Spreadsheet Dashboard Viewer
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         container.innerHTML = `
             <div class="alert alert-warning m-3">
                 <i class="fa fa-exclamation-triangle me-2"></i>
-                Unable to load dashboard data. Please try again later.
+                ${_t("Unable to load dashboard data. Please try again later.")}
             </div>`;
         console.error("Portal dashboard load error:", e);
     }
@@ -45,7 +46,7 @@ function renderDashboard(container, data) {
         container.innerHTML = `
             <div class="alert alert-info m-3">
                 <i class="fa fa-info-circle me-2"></i>
-                This dashboard has no data yet.
+                ${_t("This dashboard has no data yet.")}
             </div>`;
         return;
     }
@@ -68,7 +69,7 @@ function renderDashboard(container, data) {
         const merges = parseMerges(sheet.merges || []);
 
         if (Object.keys(cells).length === 0) {
-            html += `<p class="text-muted">Empty sheet</p></div>`;
+            html += `<p class="text-muted">${_t("Empty sheet")}</p></div>`;
             continue;
         }
 
@@ -144,7 +145,7 @@ function renderDashboard(container, data) {
         if (figures.length > 0 && sheet.name !== "Data") {
             html += `<div class="portal-figures-info p-3 border-top">`;
             html += `<h6 class="text-muted mb-2">
-                        <i class="fa fa-pie-chart me-2"></i>Charts &amp; KPIs
+                        <i class="fa fa-pie-chart me-2"></i>${_t("Charts & KPIs")}
                      </h6>`;
             html += `<div class="row">`;
             for (const fig of figures) {
@@ -156,7 +157,7 @@ function renderDashboard(container, data) {
                         <div class="col-md-3 col-sm-6 mb-2">
                             <div class="card text-center p-2">
                                 <div class="card-body p-2">
-                                    <div class="text-muted small">${escapeHtml(fig.data.title || "KPI")}</div>
+                                    <div class="text-muted small">${escapeHtml(fig.data.title || _t("KPI"))}</div>
                                     <div class="h5 mb-0 text-muted" title="Live value — open the full dashboard to see computed figures">—</div>
                                 </div>
                             </div>
@@ -172,16 +173,14 @@ function renderDashboard(container, data) {
     const banner = `
         <div class="alert alert-info d-flex align-items-center m-3" role="alert">
             <i class="fa fa-info-circle me-2"></i>
-            <span>This is a lightweight preview showing the dashboard layout and
-            labels. Live KPI and pivot figures are calculated when you open the
-            full dashboard.</span>
+            <span>${_t("This is a lightweight preview showing the dashboard layout and labels. Live KPI and pivot figures are calculated when you open the full dashboard.")}</span>
         </div>`;
     container.innerHTML = html
         ? banner + html
         : `
         <div class="alert alert-info m-3">
             <i class="fa fa-info-circle me-2"></i>
-            Dashboard loaded but no displayable content found.
+            ${_t("Dashboard loaded but no displayable content found.")}
         </div>`;
 }
 

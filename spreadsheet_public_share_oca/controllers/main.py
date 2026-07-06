@@ -3,7 +3,7 @@
 
 import json
 
-from odoo import http
+from odoo import fields, http
 from odoo.http import request
 
 
@@ -26,10 +26,21 @@ class SpreadsheetPublicShareController(http.Controller):
                 .sudo()
                 .search([("token", "=", token), ("active", "=", True)], limit=1)
             )
-            if raw_share and raw_share.password and not password:
+            # A still-valid, password-protected link must keep re-prompting
+            # (with an error banner on a wrong attempt) instead of dead-ending
+            # on the "Invalid or Expired Link" page. Only unknown / inactive /
+            # expired tokens fall through to public_share_invalid.
+            if (
+                raw_share
+                and raw_share.password
+                and (
+                    not raw_share.expires_at
+                    or raw_share.expires_at >= fields.Datetime.now()
+                )
+            ):
                 return request.render(
                     "spreadsheet_public_share_oca.public_password_prompt",
-                    {"token": token},
+                    {"token": token, "error": bool(password)},
                 )
             return request.render(
                 "spreadsheet_public_share_oca.public_share_invalid", {}
@@ -52,8 +63,11 @@ class SpreadsheetPublicShareController(http.Controller):
         csrf=False,
     )
     def public_spreadsheet_download(self, token, password=None, **kw):
+        # count=False: a file download must not inflate the page view_count.
         share = (
-            request.env["spreadsheet.public.share"].sudo().verify_token(token, password)
+            request.env["spreadsheet.public.share"]
+            .sudo()
+            .verify_token(token, password, count=False)
         )
         if not share or not share.allow_download:
             return request.not_found()

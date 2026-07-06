@@ -44,7 +44,7 @@
       "cells": {
         "A7": {
           "style": 1,
-          "content": "[Recent Orders](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[[\"state\", \"in\", [\"sale\", \"done\"]], [\"website_id\", \"!=\", false]],\"context\":{},\"modelName\":\"sale.order\",\"views\":[[false,\"list\"],[false,\"form\"]]},\"threshold\":0,\"name\":\"Recent Orders\"})",
+          "content": "[Recent Orders](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[[\"state\", \"=\", \"sale\"], [\"website_id\", \"!=\", false]],\"context\":{},\"modelName\":\"sale.order\",\"views\":[[false,\"list\"],[false,\"form\"]]},\"threshold\":0,\"name\":\"Recent Orders\"})",
           "border": 1
         },
         "A8": {
@@ -371,7 +371,7 @@
               "comparison": null,
               "context": {},
               "domain": [
-                ["state", "in", ["sale", "done"]],
+                ["state", "=", "sale"],
                 ["website_id", "!=", false]
               ],
               "groupBy": ["date_order:day"],
@@ -455,10 +455,10 @@
           "content": "=_t(\"Avg Basket\")"
         },
         "B4": {
-          "content": "=ODOO.PIVOT(10,\"amount_total\")"
+          "content": "=IFERROR(B2/B3,0)"
         },
         "C4": {
-          "content": "=ODOO.PIVOT(11,\"amount_total\")"
+          "content": "=IFERROR(C2/C3,0)"
         },
         "D4": {
           "style": 15,
@@ -547,7 +547,7 @@
     "1": {
       "columns": ["name", "partner_id", "date_order", "amount_total", "state"],
       "domain": [
-        ["state", "in", ["sale", "done"]],
+        ["state", "=", "sale"],
         ["website_id", "!=", false]
       ],
       "model": "sale.order",
@@ -568,7 +568,7 @@
       "colGroupBys": [],
       "context": {},
       "domain": [
-        ["state", "in", ["sale", "done"]],
+        ["state", "=", "sale"],
         ["website_id", "!=", false]
       ],
       "id": "1",
@@ -590,7 +590,7 @@
       "colGroupBys": [],
       "context": {},
       "domain": [
-        ["state", "in", ["sale", "done"]],
+        ["state", "=", "sale"],
         ["website_id", "!=", false]
       ],
       "id": "10",
@@ -602,10 +602,8 @@
           "field": "__count"
         },
         {
-          "field": "amount_total"
-        },
-        {
-          "field": "partner_id"
+          "field": "partner_id",
+          "aggregator": "count_distinct"
         }
       ],
       "model": "sale.order",
@@ -621,7 +619,7 @@
       "colGroupBys": [],
       "context": {},
       "domain": [
-        ["state", "in", ["sale", "done"]],
+        ["state", "=", "sale"],
         ["website_id", "!=", false]
       ],
       "id": "11",
@@ -633,10 +631,8 @@
           "field": "__count"
         },
         {
-          "field": "amount_total"
-        },
-        {
-          "field": "partner_id"
+          "field": "partner_id",
+          "aggregator": "count_distinct"
         }
       ],
       "model": "sale.order",

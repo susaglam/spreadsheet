@@ -332,25 +332,6 @@
           }
         },
         {
-          "id": "sc-4-stock",
-          "x": 630,
-          "y": 0,
-          "width": 200,
-          "height": 120,
-          "tag": "chart",
-          "data": {
-            "baselineColorDown": "#DC6965",
-            "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
-            "title": "Avg Lead Time",
-            "type": "scorecard",
-            "background": "",
-            "baseline": "Data!E5",
-            "baselineDescr": "since last period",
-            "keyValue": "Data!D5"
-          }
-        },
-        {
           "id": "chart-main-stock",
           "x": 0,
           "y": 178,
@@ -464,23 +445,6 @@
         "E4": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(C4)"
-        },
-        "A5": {
-          "content": "=_t(\"Avg Lead Time\")"
-        },
-        "B5": {
-          "content": "=ODOO.PIVOT(10,\"__count\")"
-        },
-        "C5": {
-          "content": "=ODOO.PIVOT(11,\"__count\")"
-        },
-        "D5": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(B5)"
-        },
-        "E5": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C5)"
         }
       },
       "figures": [],
@@ -558,25 +522,6 @@
   },
   "listNextId": 2,
   "pivots": {
-    "1": {
-      "colGroupBys": [],
-      "context": {},
-      "domain": [["state", "=", "done"]],
-      "id": "1",
-      "measures": [
-        {
-          "field": "quantity"
-        }
-      ],
-      "model": "stock.move",
-      "rowGroupBys": ["date:month"],
-      "name": "Inventory by date:month",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "quantity",
-        "order": "desc"
-      }
-    },
     "10": {
       "colGroupBys": [],
       "context": {},
@@ -591,9 +536,6 @@
         },
         {
           "field": "product_id"
-        },
-        {
-          "field": "__count"
         }
       ],
       "model": "stock.move",
@@ -619,9 +561,6 @@
         },
         {
           "field": "product_id"
-        },
-        {
-          "field": "__count"
         }
       ],
       "model": "stock.move",
@@ -644,11 +583,6 @@
       "rangeType": "relative",
       "defaultsToCurrentPeriod": false,
       "pivotFields": {
-        "1": {
-          "field": "date",
-          "type": "datetime",
-          "offset": 0
-        },
         "10": {
           "field": "date",
           "type": "datetime",
@@ -662,7 +596,7 @@
       },
       "listFields": {
         "1": {
-          "field": "date",
+          "field": "scheduled_date",
           "type": "datetime",
           "offset": 0
         }
@@ -675,25 +609,16 @@
       "modelName": "product.category",
       "defaultValue": [],
       "pivotFields": {
-        "1": {
-          "field": "categ_id",
-          "type": "many2one"
-        },
         "10": {
-          "field": "categ_id",
+          "field": "product_category_id",
           "type": "many2one"
         },
         "11": {
-          "field": "categ_id",
+          "field": "product_category_id",
           "type": "many2one"
         }
       },
-      "listFields": {
-        "1": {
-          "field": "product_id",
-          "type": "many2one"
-        }
-      }
+      "listFields": {}
     },
     {
       "id": "rel-filter-warehouse_id-stock",
@@ -702,10 +627,6 @@
       "modelName": "stock.warehouse",
       "defaultValue": [],
       "pivotFields": {
-        "1": {
-          "field": "warehouse_id",
-          "type": "many2one"
-        },
         "10": {
           "field": "warehouse_id",
           "type": "many2one"
@@ -715,12 +636,7 @@
           "type": "many2one"
         }
       },
-      "listFields": {
-        "1": {
-          "field": "picking_type_id",
-          "type": "many2one"
-        }
-      }
+      "listFields": {}
     }
   ]
 }

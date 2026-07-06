@@ -14,43 +14,52 @@ class IrWebsocket(models.AbstractModel):
         for dashboards that have been explicitly assigned to them via
         spreadsheet.portal.dashboard.
         """
-        if self.env.uid and not self.env.user._is_internal():
-            channels = list(channels)
+        # Only PORTAL users get the relaxed dashboard subscription. Public
+        # users (also non-internal) must NOT — they fall through to the parent,
+        # which correctly denies them. Internal users use the normal path too.
+        if self.env.uid and self.env.user._is_portal():
+            partner = self.env.user.partner_id
+            new_channels = []
             for channel in channels:
-                if isinstance(channel, str):
-                    match = re.match(r"spreadsheet_oca;(\w+(?:\.\w+)*);(\d+)", channel)
-                    if match:
-                        model_name = match[1]
-                        res_id = int(match[2])
+                match = (
+                    re.match(r"spreadsheet_oca;(\w+(?:\.\w+)*);(\d+)", channel)
+                    if isinstance(channel, str)
+                    else None
+                )
+                if not match:
+                    # Non-spreadsheet_oca channels pass through untouched.
+                    new_channels.append(channel)
+                    continue
 
-                        if model_name != "spreadsheet.dashboard":
-                            # Only allow portal access to dashboards
-                            continue
+                # Drop the raw spreadsheet_oca string entirely so the parent
+                # override never sees it and never raises AccessDenied. For an
+                # accessible dashboard we substitute a resolved bus tuple; for
+                # anything else the channel is silently removed.
+                model_name = match[1]
+                res_id = int(match[2])
+                if model_name != "spreadsheet.dashboard":
+                    continue
 
-                        # Check if this dashboard is assigned to the portal user
-                        partner = self.env.user.partner_id
-                        portal_dash = (
-                            self.env["spreadsheet.portal.dashboard"]
-                            .sudo()
-                            .search(
-                                [
-                                    ("dashboard_id", "=", res_id),
-                                    ("active", "=", True),
-                                ],
-                                limit=1,
-                            )
+                portal_dash = (
+                    self.env["spreadsheet.portal.dashboard"]
+                    .sudo()
+                    .search(
+                        [
+                            ("dashboard_id", "=", res_id),
+                            ("active", "=", True),
+                        ],
+                        limit=1,
+                    )
+                )
+                if portal_dash and portal_dash._is_accessible_by_partner(partner):
+                    new_channels.append(
+                        (
+                            self.env.registry.db_name,
+                            model_name,
+                            res_id,
+                            "spreadsheet_oca",
                         )
-                        if portal_dash and portal_dash._is_accessible_by_partner(
-                            partner
-                        ):
-                            channels.append(
-                                (
-                                    self.env.registry.db_name,
-                                    model_name,
-                                    res_id,
-                                    "spreadsheet_oca",
-                                )
-                            )
-                        # Don't raise AccessDenied — just skip silently
+                    )
+            return super()._build_bus_channel_list(new_channels)
 
         return super()._build_bus_channel_list(channels)

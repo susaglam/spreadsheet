@@ -16,13 +16,20 @@ class SpreadsheetPortalDashboard(models.Model):
         readonly=False,
         precompute=True,
     )
-    sequence = fields.Integer(default=10)
+    sequence = fields.Integer(
+        default=10,
+        help="Display order of this dashboard in the portal list; "
+        "lower numbers appear first.",
+    )
     active = fields.Boolean(default=True)
     dashboard_id = fields.Many2one(
         "spreadsheet.dashboard",
         string="Dashboard",
         required=True,
         ondelete="cascade",
+        help="The internal spreadsheet dashboard whose read-only view is "
+        "shared with the selected portal partners. Example: a 'Monthly "
+        "Sales' dashboard shared with dealers.",
     )
     partner_ids = fields.Many2many(
         "res.partner",

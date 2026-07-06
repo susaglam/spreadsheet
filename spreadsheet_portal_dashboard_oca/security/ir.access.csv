@@ -1,3 +1,2 @@
 id,name,model_id,group_id/id,operation,domain
 access_portal_dashboard_user,spreadsheet.portal.dashboard.user,spreadsheet.portal.dashboard,spreadsheet_oca.group_user,crud,
-access_spreadsheet_dashboard_portal,spreadsheet.dashboard.portal.read,spreadsheet.dashboard,base.group_portal,r,

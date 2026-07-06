@@ -287,25 +287,6 @@
           }
         },
         {
-          "id": "sc-4-loyalty",
-          "x": 630,
-          "y": 0,
-          "width": 200,
-          "height": 120,
-          "tag": "chart",
-          "data": {
-            "baselineColorDown": "#DC6965",
-            "baselineColorUp": "#00A04A",
-            "baselineMode": "percentage",
-            "title": "Programs",
-            "type": "scorecard",
-            "background": "",
-            "baseline": "Data!E5",
-            "baselineDescr": "since last period",
-            "keyValue": "Data!D5"
-          }
-        },
-        {
           "id": "chart-loyalty",
           "x": 0,
           "y": 178,
@@ -407,10 +388,10 @@
           "content": "=_t(\"Active Cards\")"
         },
         "B4": {
-          "content": "=ODOO.PIVOT(10,\"points\")"
+          "content": "=ODOO.PIVOT(10,\"__count\")"
         },
         "C4": {
-          "content": "=ODOO.PIVOT(11,\"points\")"
+          "content": "=ODOO.PIVOT(11,\"__count\")"
         },
         "D4": {
           "style": 15,
@@ -419,23 +400,6 @@
         "E4": {
           "style": 15,
           "content": "=FORMAT.LARGE.NUMBER(C4)"
-        },
-        "A5": {
-          "content": "=_t(\"Programs\")"
-        },
-        "B5": {
-          "content": "=ODOO.PIVOT(10,\"program_id\")"
-        },
-        "C5": {
-          "content": "=ODOO.PIVOT(11,\"program_id\")"
-        },
-        "D5": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(B5)"
-        },
-        "E5": {
-          "style": 15,
-          "content": "=FORMAT.LARGE.NUMBER(C5)"
         }
       },
       "figures": [],
@@ -513,25 +477,6 @@
   },
   "listNextId": 2,
   "pivots": {
-    "1": {
-      "colGroupBys": [],
-      "context": {},
-      "domain": [],
-      "id": "1",
-      "measures": [
-        {
-          "field": "__count"
-        }
-      ],
-      "model": "loyalty.card",
-      "rowGroupBys": ["create_date:month"],
-      "name": "Loyalty Program",
-      "sortedColumn": {
-        "groupId": [[], []],
-        "measure": "__count",
-        "order": "desc"
-      }
-    },
     "10": {
       "colGroupBys": [],
       "context": {},
@@ -543,12 +488,6 @@
         },
         {
           "field": "points"
-        },
-        {
-          "field": "points"
-        },
-        {
-          "field": "program_id"
         }
       ],
       "model": "loyalty.card",
@@ -571,12 +510,6 @@
         },
         {
           "field": "points"
-        },
-        {
-          "field": "points"
-        },
-        {
-          "field": "program_id"
         }
       ],
       "model": "loyalty.card",
@@ -599,11 +532,6 @@
       "rangeType": "relative",
       "defaultsToCurrentPeriod": false,
       "pivotFields": {
-        "1": {
-          "field": "create_date",
-          "type": "datetime",
-          "offset": 0
-        },
         "10": {
           "field": "create_date",
           "type": "datetime",

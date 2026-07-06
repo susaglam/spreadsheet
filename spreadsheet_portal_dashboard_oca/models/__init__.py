@@ -3,3 +3,4 @@
 
 from . import spreadsheet_portal_dashboard
 from . import ir_websocket
+from . import ir_http

@@ -57,8 +57,13 @@ class SpreadsheetApiController(http.Controller):
             return err
 
         env = request.env(user=token_rec.user_id)
+        # Resolve the scoped set under the user's env so record rules apply,
+        # keeping list consistent with get/cells (which already 404 on
+        # unreadable sheets) instead of leaking id/name/company_id.
         if token_rec.spreadsheet_ids:
-            sheets = token_rec.spreadsheet_ids
+            sheets = env["spreadsheet.spreadsheet"].search(
+                [("id", "in", token_rec.spreadsheet_ids.ids)]
+            )
         else:
             sheets = env["spreadsheet.spreadsheet"].search([])
 

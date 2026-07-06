@@ -4,8 +4,8 @@
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/version-saas~19.2-blue.png
-   :target: https://github.com/OCA/spreadsheet/tree/saas-19.2/spreadsheet_public_share_oca
+.. |badge3| image:: https://img.shields.io/badge/version-saas~19.4-blue.png
+   :target: https://github.com/OCA/spreadsheet/tree/saas-19.4/spreadsheet_public_share_oca
    :alt: OCA/spreadsheet
 
 Spreadsheet Public Share
@@ -26,7 +26,7 @@ Features
 * Secure token generation (URL-safe, 32-byte)
 * Optional password protection
 * Optional expiry date
-* Optional XLSX download
+* Optional JSON download (re-imports losslessly)
 * View count and last-viewed tracking
 * HTML rendering with merge cells, styles, borders
 
@@ -48,6 +48,7 @@ Dependencies
 ============
 
 * ``spreadsheet_oca``
+* ``spreadsheet_kpi_alert_oca``
 * ``portal``
 
 Known issues / Roadmap

@@ -14,9 +14,25 @@ class SpreadsheetTemplateCategory(models.Model):
     def _get_default_color(self):
         return randint(1, 11)
 
-    name = fields.Char(required=True, translate=True)
-    sequence = fields.Integer(default=10)
-    color = fields.Integer(default=lambda self: self._get_default_color())
+    # NOT translate=True: a translatable Char is stored as a JSONB blob in
+    # Odoo, so the SQL UNIQUE(name) constraint would compare whole blobs and
+    # treat two categories with the same en_US name but different translation
+    # sets as distinct, defeating uniqueness. Category labels are short
+    # grouping tags and are kept untranslated so the constraint works.
+    name = fields.Char(
+        required=True,
+        help="Short grouping label for templates, e.g. 'Sales', 'Finance', "
+        "'HR'. Must be unique.",
+    )
+    sequence = fields.Integer(
+        default=10,
+        help="Lower numbers sort first in lists and the kanban.",
+    )
+    color = fields.Integer(
+        default=lambda self: self._get_default_color(),
+        help="Color tag for this category chip, shown wherever the category "
+        "is displayed.",
+    )
     template_ids = fields.One2many(
         "spreadsheet.template", "category_id", string="Templates"
     )

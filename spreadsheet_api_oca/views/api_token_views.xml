@@ -118,6 +118,15 @@ GET /api/spreadsheet/&lt;id&gt;/cells?sheet=Dashboard
         <field name="name">API Tokens</field>
         <field name="res_model">spreadsheet.api.token</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first API token</p>
+            <p>
+                A token lets an external tool call the spreadsheet REST API.
+                Create one, then call
+                <code>/api/spreadsheet/list</code> with an
+                <code>Authorization: Bearer &lt;token&gt;</code> header.
+            </p>
+        </field>
     </record>
 
     <record id="menu_api_tokens" model="ir.ui.menu">

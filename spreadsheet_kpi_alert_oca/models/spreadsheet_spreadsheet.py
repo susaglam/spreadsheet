@@ -1,7 +1,7 @@
 # Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class SpreadsheetSpreadsheet(models.Model):
@@ -17,6 +17,7 @@ class SpreadsheetSpreadsheet(models.Model):
         string="KPI Alert Count",
     )
 
+    @api.depends("kpi_alert_ids")
     def _compute_kpi_alert_count(self):
         for rec in self:
             rec.kpi_alert_count = len(rec.kpi_alert_ids)

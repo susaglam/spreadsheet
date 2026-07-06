@@ -1,8 +1,10 @@
 # Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import hmac
 import re
 import secrets
+from datetime import timedelta
 
 from odoo import api, fields, models
 
@@ -51,35 +53,60 @@ class SpreadsheetPublicShare(models.Model):
     _name = "spreadsheet.public.share"
     _description = "Public Spreadsheet Share Link"
 
-    name = fields.Char(required=True)
-    active = fields.Boolean(default=True)
+    name = fields.Char(
+        required=True,
+        help="Internal label for this link, e.g. 'Q3 board deck - external'.",
+    )
+    active = fields.Boolean(
+        default=True,
+        help="Untick to instantly revoke the link; the public URL then "
+        "shows 'Invalid or Expired Link'.",
+    )
     spreadsheet_id = fields.Many2one(
         "spreadsheet.spreadsheet",
         required=True,
         ondelete="cascade",
+        help="Spreadsheet whose read-only preview is exposed at the public URL.",
     )
     token = fields.Char(
         required=True,
         readonly=True,
         default=lambda self: secrets.token_urlsafe(32),
         copy=False,
+        help="Random secret embedded in the share URL; regenerate it to "
+        "invalidate every previously distributed link.",
     )
     expires_at = fields.Datetime(
-        help="Optional expiry date for the share link.",
+        default=lambda self: self._default_expires_at(),
+        help="Optional expiry date for the share link. Defaults come from "
+        "Settings > Spreadsheet > Default Share Link Expiry.",
     )
-    view_count = fields.Integer(readonly=True, default=0)
-    last_viewed = fields.Datetime(readonly=True)
+    view_count = fields.Integer(
+        readonly=True,
+        default=0,
+        help="How many times the public link has been opened so far.",
+    )
+    last_viewed = fields.Datetime(
+        readonly=True,
+        help="Timestamp of the most recent time the public link was opened.",
+    )
     password = fields.Char(
         help="Optional password to access the shared spreadsheet.",
     )
     allow_download = fields.Boolean(
-        default=False,
-        help="Allow downloading the spreadsheet data.",
+        default=lambda self: (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_bool("spreadsheet_public_share.allow_download_default")
+        ),
+        help="Allow downloading the spreadsheet data as a JSON file from the "
+        "public page. The default comes from Settings > Spreadsheet.",
     )
     created_by_id = fields.Many2one(
         "res.users",
         default=lambda self: self.env.user,
         readonly=True,
+        help="User who created this share link.",
     )
     share_url = fields.Char(
         compute="_compute_share_url",
@@ -91,9 +118,20 @@ class SpreadsheetPublicShare(models.Model):
         "Token must be unique.",
     )
 
+    @api.model
+    def _default_expires_at(self):
+        days = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_int("spreadsheet_public_share.default_expiry_days")
+        )
+        if days and days > 0:
+            return fields.Datetime.now() + timedelta(days=days)
+        return False
+
     @api.depends("token")
     def _compute_share_url(self):
-        # saas-19.2: ir.config_parameter.get_param() kaldirildi, get_str kullanilmali
+        # get_param removed; use get_str
         base_url = self.env["ir.config_parameter"].sudo().get_str("web.base.url")
         for rec in self:
             rec.share_url = (
@@ -129,7 +167,7 @@ class SpreadsheetPublicShare(models.Model):
         }
 
     @api.model
-    def verify_token(self, token, password=None):
+    def verify_token(self, token, password=None, count=True):
         if not token:
             return False
         rec = self.sudo().search(
@@ -143,14 +181,19 @@ class SpreadsheetPublicShare(models.Model):
             return False
         if rec.expires_at and rec.expires_at < fields.Datetime.now():
             return False
-        if rec.password and rec.password != (password or ""):
+        # hmac.compare_digest rejects non-ASCII str; compare on UTF-8 bytes so a
+        # password with accented/non-latin characters doesn't raise.
+        if rec.password and not hmac.compare_digest(
+            rec.password.encode("utf-8"), (password or "").encode("utf-8")
+        ):
             return False
-        rec.sudo().write(
-            {
-                "view_count": rec.view_count + 1,
-                "last_viewed": fields.Datetime.now(),
-            }
-        )
+        if count:
+            rec.sudo().write(
+                {
+                    "view_count": rec.view_count + 1,
+                    "last_viewed": fields.Datetime.now(),
+                }
+            )
         return rec
 
     def get_rendered_sheets(self):  # noqa: C901
@@ -166,6 +209,10 @@ class SpreadsheetPublicShare(models.Model):
 
         result = []
         for sheet in raw.get("sheets", []):
+            # Dashboard exports keep their pivot source data on a sheet named
+            # "Data" that feeds the scorecards; it must never reach the public
+            # preview. Its `isVisible` flag is unreliable across exports (False /
+            # True / absent), so the sheet name is the only stable marker.
             if sheet.get("name") == "Data":
                 continue
 
@@ -180,8 +227,9 @@ class SpreadsheetPublicShare(models.Model):
                 c, r = _parse_ref(ref)
                 max_col = max(max_col, c)
                 max_row = max(max_row, r)
+            truncated = max_col > 25 or max_row > 99
             max_col = min(max_col, 25)
-            max_row = min(max_row, 100)
+            max_row = min(max_row, 99)
 
             # Parse merges
             spans = {}
@@ -277,6 +325,7 @@ class SpreadsheetPublicShare(models.Model):
                     "name": sheet.get("name"),
                     "rows": rows_out,
                     "col_widths": col_widths,
+                    "truncated": truncated,
                 }
             )
         return result

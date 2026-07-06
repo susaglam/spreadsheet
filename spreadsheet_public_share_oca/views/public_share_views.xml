@@ -77,6 +77,17 @@
         <field name="name">Public Share Links</field>
         <field name="res_model">spreadsheet.public.share</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first public share link
+            </p>
+            <p>
+                A public share link exposes a read-only preview of a spreadsheet
+                at a token URL that external users can open without logging in.
+                Click Create, pick a spreadsheet (optionally set a password,
+                expiry, or allow download), then use Show Link to copy the URL.
+            </p>
+        </field>
     </record>
 
     <record id="menu_public_shares" model="ir.ui.menu">

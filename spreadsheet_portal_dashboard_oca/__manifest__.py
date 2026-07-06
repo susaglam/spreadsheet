@@ -4,7 +4,7 @@
 {
     "name": "Spreadsheet Portal Dashboard OCA",
     "summary": "Share spreadsheet dashboards with portal users (dealers/distributors)",
-    "version": "saas~19.4.1.1.0",
+    "version": "saas~19.4.1.1.1",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

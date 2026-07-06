@@ -1,7 +1,12 @@
 # Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import logging
+from datetime import timedelta
+
 from odoo import api, fields, models
+
+_logger = logging.getLogger(__name__)
 
 
 class VendorScorecard(models.Model):
@@ -19,6 +24,7 @@ class VendorScorecard(models.Model):
     date = fields.Date(
         default=fields.Date.context_today,
         required=True,
+        help="First day of the period this scorecard summarises.",
     )
     on_time_delivery_rate = fields.Float(
         string="On-Time Delivery (%)",
@@ -26,27 +32,41 @@ class VendorScorecard(models.Model):
     )
     quality_rate = fields.Float(
         string="Quality Rate (%)",
-        help="Percentage of received items without quality issues.",
+        help="Manual quality override; defaults to 100 pending QC integration. "
+        "Percentage of received items without quality issues.",
     )
     avg_lead_time = fields.Float(
         string="Avg Lead Time (days)",
         help="Average number of days from PO confirmation to receipt.",
     )
-    total_orders = fields.Integer()
-    total_amount = fields.Float()
+    total_orders = fields.Integer(
+        string="Total Orders",
+        help="Number of confirmed purchase orders in the period.",
+    )
+    total_amount = fields.Float(
+        string="Total Amount",
+        help="Untaxed purchase total for the period.",
+    )
     score = fields.Float(
         string="Overall Score",
         compute="_compute_score",
         store=True,
+        help="Weighted 0-100 rating: 40% on-time delivery + 40% quality + "
+        "20% lead-time efficiency. Example: 90% on-time, 100% quality, "
+        "5-day lead time -> ~89.",
     )
-    notes = fields.Text()
+    notes = fields.Text(
+        help="Free-text manual remarks, e.g. reason for a low score.",
+    )
 
     @api.depends("on_time_delivery_rate", "quality_rate", "avg_lead_time")
     def _compute_score(self):
         """Weighted score: 40% delivery, 40% quality, 20% lead time efficiency."""
         for rec in self:
             # Lead time score: lower is better, cap at 30 days = 0%
-            lead_time_score = max(0, (30 - rec.avg_lead_time) / 30 * 100)
+            # Clamp both ends: early receipts (negative lead time) must not
+            # push the score above 100 and break the progressbar max_value.
+            lead_time_score = min(100, max(0, (30 - rec.avg_lead_time) / 30 * 100))
             rec.score = (
                 rec.on_time_delivery_rate * 0.4
                 + rec.quality_rate * 0.4
@@ -57,82 +77,96 @@ class VendorScorecard(models.Model):
     def _cron_compute_scorecards(self):
         """Cron: compute monthly scorecards for all active vendors."""
         today = fields.Date.context_today(self)
-        first_of_month = today.replace(day=1)
+        # Target the previous complete month so the run on the 1st is not an
+        # empty window. period_start = first day of last month,
+        # period_end = first day of this month (exclusive upper bound).
+        period_end = today.replace(day=1)
+        period_start = (period_end - timedelta(days=1)).replace(day=1)
 
         vendors = self.env["res.partner"].search([("supplier_rank", ">", 0)])
 
         for vendor in vendors:
-            # Count orders confirmed in this month
-            orders = self.env["purchase.order"].search(
-                [
-                    ("partner_id", "=", vendor.id),
-                    ("state", "in", ["purchase", "done"]),
-                    ("date_approve", ">=", first_of_month),
-                    ("date_approve", "<", today),
-                ]
-            )
-            if not orders:
+            try:
+                self._compute_vendor_scorecard(vendor, period_start, period_end)
+            except Exception as e:  # noqa: BLE001 - isolate one vendor's failure
+                _logger.warning("Scorecard skipped for vendor %s: %s", vendor.id, e)
                 continue
 
-            # Calculate metrics from purchase.report
-            report_data = self.env["purchase.report"]._read_group(
-                domain=[
-                    ("partner_id", "=", vendor.id),
-                    ("state", "in", ["purchase", "done"]),
-                    ("date_order", ">=", first_of_month),
-                ],
-                groupby=[],
-                aggregates=[
-                    "order_id:count_distinct",
-                    "untaxed_total:sum",
-                    "delay:avg",
-                ],
-            )
+    def _compute_vendor_scorecard(self, vendor, period_start, period_end):
+        """Compute and upsert one vendor's scorecard for a single period."""
+        # Count orders confirmed in the target period
+        orders = self.env["purchase.order"].search(
+            [
+                ("partner_id", "=", vendor.id),
+                ("state", "in", ["purchase", "done"]),
+                ("date_approve", ">=", period_start),
+                ("date_approve", "<", period_end),
+            ]
+        )
+        if not orders:
+            return
 
-            if not report_data:
-                continue
+        # Calculate metrics from purchase.report over the same window
+        report_data = self.env["purchase.report"]._read_group(
+            domain=[
+                ("partner_id", "=", vendor.id),
+                ("state", "in", ["purchase", "done"]),
+                ("date_order", ">=", period_start),
+                ("date_order", "<", period_end),
+            ],
+            groupby=[],
+            aggregates=[
+                "order_id:count_distinct",
+                "untaxed_total:sum",
+                "delay_pass:avg",
+            ],
+        )
 
-            order_count, total_amount, avg_delay = report_data[0]
+        if not report_data:
+            return
 
-            # On-time delivery: pickings received within expected date
-            pickings = self.env["stock.picking"].search(
-                [
-                    ("partner_id", "=", vendor.id),
-                    ("picking_type_code", "=", "incoming"),
-                    ("state", "=", "done"),
-                    ("date_done", ">=", first_of_month),
-                ]
-            )
-            on_time = sum(
-                1
-                for p in pickings
-                if p.date_done and p.scheduled_date and p.date_done <= p.scheduled_date
-            )
-            on_time_rate = (on_time / len(pickings) * 100) if pickings else 100.0
+        order_count, total_amount, avg_delay = report_data[0]
 
-            # Update or create scorecard
-            existing = self.search(
-                [
-                    ("partner_id", "=", vendor.id),
-                    ("date", "=", first_of_month),
-                ],
-                limit=1,
-            )
+        # On-time delivery: pickings received within expected date
+        pickings = self.env["stock.picking"].search(
+            [
+                ("partner_id", "=", vendor.id),
+                ("picking_type_code", "=", "incoming"),
+                ("state", "=", "done"),
+                ("date_done", ">=", period_start),
+                ("date_done", "<", period_end),
+            ]
+        )
+        on_time = sum(
+            1
+            for p in pickings
+            if p.date_done and p.scheduled_date and p.date_done <= p.scheduled_date
+        )
+        on_time_rate = (on_time / len(pickings) * 100) if pickings else 100.0
 
-            vals = {
-                "partner_id": vendor.id,
-                "date": first_of_month,
-                "on_time_delivery_rate": on_time_rate,
-                "quality_rate": 100.0,  # Default; can be extended with quality module
-                "avg_lead_time": avg_delay or 0,
-                "total_orders": order_count,
-                "total_amount": total_amount,
-            }
+        # Update or create scorecard
+        existing = self.search(
+            [
+                ("partner_id", "=", vendor.id),
+                ("date", "=", period_start),
+            ],
+            limit=1,
+        )
 
-            if existing:
-                existing.write(vals)
-            else:
-                self.create(vals)
+        vals = {
+            "partner_id": vendor.id,
+            "date": period_start,
+            "on_time_delivery_rate": on_time_rate,
+            "quality_rate": 100.0,  # Default; can be extended with quality module
+            "avg_lead_time": avg_delay or 0,
+            "total_orders": order_count,
+            "total_amount": total_amount,
+        }
+
+        if existing:
+            existing.write(vals)
+        else:
+            self.create(vals)
 
     def action_open_vendor_orders(self):
         """Open purchase orders for this vendor in this period."""

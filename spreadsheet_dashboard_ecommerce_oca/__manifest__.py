@@ -3,10 +3,10 @@
 
 {
     "name": "Spreadsheet Dashboard for E-commerce",
-    "summary": "Pre-built e-commerce analytics dashboard (cart, conversion, revenue)",
+    "summary": "E-commerce analytics dashboard (revenue, orders, basket)",
     "category": "Hidden",
-    "version": "saas~19.4.1.0.0",
-    "license": "LGPL-3",
+    "version": "saas~19.4.1.0.1",
+    "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
     "depends": ["spreadsheet_dashboard", "website_sale"],

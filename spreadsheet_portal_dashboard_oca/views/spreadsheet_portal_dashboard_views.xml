@@ -80,6 +80,15 @@
         <field name="name">Portal Dashboards</field>
         <field name="res_model">spreadsheet.portal.dashboard</field>
         <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Assign your first portal dashboard
+            </p>
+            <p>
+                Pick a dashboard and choose which portal partners can view it
+                at /my/dashboards.
+            </p>
+        </field>
     </record>
 
     <!-- Menu under Spreadsheets > Configuration -->
