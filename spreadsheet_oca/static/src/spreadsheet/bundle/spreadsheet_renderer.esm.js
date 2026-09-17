@@ -1,18 +1,18 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 
-import {Component} from "@odoo/owl";
+import {Component, onWillStart} from "@odoo/owl";
 import {ImageFileStore} from "./image_file_store.esm";
 import {OdooDataProvider} from "@spreadsheet/data_sources/odoo_data_provider";
 import {SpreadsheetComponent} from "@spreadsheet/actions/spreadsheet_component";
 import {_t} from "@web/core/l10n/translation";
 import {useService} from "@web/core/utils/hooks";
 import {useSetupAction} from "@web/search/action_hook";
+import {useSubEnv} from "@web/owl2/utils";
 import {user} from "@web/core/user";
 import {waitForDataLoaded} from "@spreadsheet/helpers/model";
 
 const {Model, load} = spreadsheet;
 
-const {useSubEnv, onWillStart} = owl;
 const {useStoreProvider, ModelStore} = spreadsheet.stores;
 const uuidGenerator = spreadsheet.helpers.UuidGenerator;
 
@@ -80,10 +80,10 @@ class SpreadsheetTransportService {
         this.listeners = this.listeners.filter((listener) => listener.id !== id);
     }
     _handleNotification(payload) {
-        if (!this._listener) {
-            this.listeners.push(payload);
-        } else {
+        if (this._listener) {
             this._listener(payload);
+        } else {
+            this.listeners.push(payload);
         }
     }
 }
@@ -128,6 +128,51 @@ export class SpreadsheetRenderer extends Component {
             });
         };
     }
+    /**
+     * Extension point: extra entries for the `custom` config of the
+     * o-spreadsheet Model, which every plugin receives as `config.custom`.
+     * Add-on modules patch this method instead of setup() to hand a service or
+     * a setting to their plugins:
+     *
+     *     patch(SpreadsheetRenderer.prototype, {
+     *         getExtraModelCustom() {
+     *             return {...super.getExtraModelCustom(), myKey: myValue};
+     *         },
+     *     });
+     *
+     * It is called during setup(), before the Model is created, so hooks such
+     * as useService() are allowed. The entries are merged after env, orm and
+     * odooDataProvider and may therefore replace them.
+     *
+     * @returns {Object}
+     */
+    getExtraModelCustom() {
+        return {};
+    }
+    /**
+     * GetExtraModelCustom() of the installed add-ons, without letting a broken
+     * one prevent the spreadsheet from opening.
+     *
+     * @returns {Object}
+     */
+    loadExtraModelCustom() {
+        try {
+            return this.getExtraModelCustom() || {};
+        } catch (error) {
+            console.warn(
+                "spreadsheet_oca: getExtraModelCustom() failed, the spreadsheet is opened without the extra model config",
+                error
+            );
+            this.notifications.add(
+                _t(
+                    "A spreadsheet add-on could not prepare its settings: %(error)s. The spreadsheet is open without the features of that add-on; update or reinstall the add-on, or ask your administrator to check the browser console.",
+                    {error: error?.message || String(error)}
+                ),
+                {type: "warning"}
+            );
+            return {};
+        }
+    }
     setup() {
         this.orm = useService("orm");
         this.http = useService("http");
@@ -151,7 +196,12 @@ export class SpreadsheetRenderer extends Component {
         this.spreadsheet_model = new Model(
             load(this.props.record.spreadsheet_raw),
             {
-                custom: {env: this.env, orm: this.orm, odooDataProvider},
+                custom: {
+                    env: this.env,
+                    orm: this.orm,
+                    odooDataProvider,
+                    ...this.loadExtraModelCustom(),
+                },
                 defaultCurrency: this.createDefaultCurrency(defaultCurrency),
                 external: {
                     loadCurrencies: this.loadCurrencies,

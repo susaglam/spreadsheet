@@ -3,186 +3,253 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {_t} from "@web/core/l10n/translation";
 
-// o-spreadsheet: arg lives in spreadsheet.helpers, not registries
+// In o-spreadsheet, arg lives in spreadsheet.helpers, not registries
+const {EvaluationError} = spreadsheet;
 const {functionRegistry} = spreadsheet.registries;
-const {arg, toNumber} = spreadsheet.helpers;
+const {arg, isEvaluationError, isNumber, toNumber} = spreadsheet.helpers;
+
+// ---------------------------------------------------------------------------
+// Helpers (defined before the registrations that use them)
+// ---------------------------------------------------------------------------
 
 /**
- * Simple linear regression forecast.
- * ODOO.FORECAST(target_x, known_y, known_x)
- * Predicts the y value at target_x based on linear regression of known points.
+ * Convert one evaluated range cell to a number.
+ *
+ * Blank and non-numeric cells become NaN so the callers can skip them. Text
+ * that looks like a number is parsed with the spreadsheet locale ("10,5" is
+ * 10.5 in a locale whose decimal separator is a comma). An error cell is
+ * re-thrown, like core o-spreadsheet functions do, so the formula shows the
+ * source error (e.g. "Loading..." while an Odoo pivot loads) instead of
+ * silently computing on partial data.
+ *
+ * @param {Object} cell evaluated cell ({value, format}) or a raw value
+ * @param {Object} locale spreadsheet locale
+ * @returns {Number}
  */
-functionRegistry.add("ODOO.FORECAST", {
-    description: _t("Forecast future value using linear regression."),
-    args: [
-        arg("target_x (number)", _t("The x value to predict y for.")),
-        arg("known_y (range<number>)", _t("Known y values.")),
-        arg("known_x (range<number>)", _t("Known x values.")),
-    ],
-    returns: ["NUMBER"],
-    compute: function (targetX, knownYRange, knownXRange) {
-        const x = toNumber(targetX);
-        const {xs, ys} = alignedPairs(knownXRange, knownYRange);
-
-        if (ys.length !== xs.length || ys.length < 2) {
-            throw new Error(_t("Known x and y must have the same non-empty length."));
-        }
-
-        const n = ys.length;
-        const sumX = xs.reduce((a, b) => a + b, 0);
-        const sumY = ys.reduce((a, b) => a + b, 0);
-        const sumXY = xs.reduce((s, xi, i) => s + xi * ys[i], 0);
-        const sumX2 = xs.reduce((s, xi) => s + xi * xi, 0);
-
-        const denom = n * sumX2 - sumX * sumX;
-        if (denom === 0) {
-            throw new Error(_t("Cannot compute forecast: x values are identical."));
-        }
-
-        const slope = (n * sumXY - sumX * sumY) / denom;
-        const intercept = (sumY - slope * sumX) / n;
-        return slope * x + intercept;
-    },
-});
-
-/**
- * ODOO.TREND(known_y, known_x, new_x)
- * Returns the trend value at new_x.
- */
-functionRegistry.add("ODOO.TREND", {
-    description: _t("Compute trend value using linear regression."),
-    args: [
-        arg("known_y (range<number>)", _t("Known y values.")),
-        arg("known_x (range<number>)", _t("Known x values.")),
-        arg("new_x (number)", _t("New x value to compute trend for.")),
-    ],
-    returns: ["NUMBER"],
-    compute: function (knownYRange, knownXRange, newX) {
-        const {xs, ys} = alignedPairs(knownXRange, knownYRange);
-
-        const x = toNumber(newX);
-        const n = ys.length;
-        if (xs.length !== ys.length || n < 2) {
-            throw new Error(_t("Need at least 2 data points."));
-        }
-
-        const sumX = xs.reduce((a, b) => a + b, 0);
-        const sumY = ys.reduce((a, b) => a + b, 0);
-        const sumXY = xs.reduce((s, xi, i) => s + xi * ys[i], 0);
-        const sumX2 = xs.reduce((s, xi) => s + xi * xi, 0);
-
-        const denom = n * sumX2 - sumX * sumX;
-        if (denom === 0) return sumY / n;
-
-        const slope = (n * sumXY - sumX * sumY) / denom;
-        const intercept = (sumY - slope * sumX) / n;
-        return slope * x + intercept;
-    },
-});
-
-/**
- * ODOO.MOVING_AVG(range, window)
- * Returns the moving average of the last `window` values.
- */
-functionRegistry.add("ODOO.MOVING_AVG", {
-    description: _t("Simple moving average over a window of values."),
-    args: [
-        arg("values (range<number>)", _t("Numeric values.")),
-        arg("window (number)", _t("Window size.")),
-    ],
-    returns: ["NUMBER"],
-    compute: function (valuesRange, windowSize) {
-        const values = flattenNumbers(valuesRange);
-        if (values.length === 0) {
-            throw new Error(_t("ODOO.MOVING_AVG needs at least one numeric value."));
-        }
-        const size = Math.max(1, Math.min(toNumber(windowSize), values.length));
-        const slice = values.slice(-size);
-        return slice.reduce((a, b) => a + b, 0) / slice.length;
-    },
-});
-
-function flattenNumbers(range) {
-    // saas-19.4 o-spreadsheet: range args are matrices [col][row] of {value, format} cells
-    const result = [];
-    if (!Array.isArray(range)) {
-        // Single scalar or a single cell-like {value}
-        const v =
-            range && typeof range === "object" && "value" in range
-                ? range.value
-                : range;
-        const n = Number(v);
-        if (!isNaN(n)) result.push(n);
-        return result;
+function cellToNumber(cell, locale) {
+    const isCellObject = cell !== null && typeof cell === "object" && "value" in cell;
+    const value = isCellObject ? cell.value : cell;
+    if (isEvaluationError(value)) {
+        throw isCellObject ? cell : new EvaluationError("", value);
     }
+    switch (typeof value) {
+        case "number":
+            return value;
+        case "boolean":
+            return value ? 1 : 0;
+        case "string":
+            return isNumber(value, locale) ? toNumber(value, locale) : NaN;
+        default:
+            // Null / undefined: blank cell
+            return NaN;
+    }
+}
+
+/**
+ * Flatten a range (matrix [col][row] of cells) or a single value to a
+ * positional array of numbers, NaN for blank / non-numeric cells. Every cell
+ * position is kept so that two ranges of the same size stay row-aligned.
+ *
+ * @param {Array|Object} range
+ * @param {Object} locale
+ * @returns {Number[]}
+ */
+function flattenRange(range, locale) {
+    if (!Array.isArray(range)) {
+        return [cellToNumber(range, locale)];
+    }
+    const result = [];
     for (const col of range) {
-        if (Array.isArray(col)) {
-            for (const cell of col) {
-                const v =
-                    cell && typeof cell === "object" && "value" in cell
-                        ? cell.value
-                        : cell;
-                const n = Number(v);
-                if (!isNaN(n)) result.push(n);
-            }
-        } else {
-            const v =
-                col && typeof col === "object" && "value" in col ? col.value : col;
-            const n = Number(v);
-            if (!isNaN(n)) result.push(n);
+        for (const cell of col) {
+            result.push(cellToNumber(cell, locale));
         }
     }
     return result;
 }
 
-function flattenRaw(range) {
-    // Flatten a range/scalar to a positional array of Numbers (NaN for non-numeric cells),
-    // preserving every cell position so paired ranges stay row-aligned.
-    const toNum = (cell) => {
-        const v =
-            cell && typeof cell === "object" && "value" in cell ? cell.value : cell;
-        // Empty cells (o-spreadsheet blanks) must be NaN, not Number("")===0,
-        // so alignedPairs drops the whole row instead of injecting a fake 0.
-        return v === null || v === undefined || v === "" ? NaN : Number(v);
-    };
-    const result = [];
-    if (!Array.isArray(range)) {
-        result.push(toNum(range));
-        return result;
-    }
-    for (const col of range) {
-        if (Array.isArray(col)) {
-            for (const cell of col) {
-                result.push(toNum(cell));
-            }
-        } else {
-            result.push(toNum(col));
-        }
-    }
-    return result;
+/**
+ * Numeric values of a range, blank and non-numeric cells skipped.
+ *
+ * @param {Array|Object} range
+ * @param {Object} locale
+ * @returns {Number[]}
+ */
+function flattenNumbers(range, locale) {
+    return flattenRange(range, locale).filter((n) => !isNaN(n));
 }
 
-function alignedPairs(knownXRange, knownYRange) {
-    // Walk known_x and known_y positionally, keeping only rows where BOTH cells are
-    // numeric. A non-numeric cell drops the whole row for both ranges, so x<->y pairing
-    // stays intact and xs.length === ys.length is guaranteed.
-    const rawX = flattenRaw(knownXRange);
-    const rawY = flattenRaw(knownYRange);
+/**
+ * Walk known_x and known_y positionally, keeping only rows where BOTH cells
+ * are numeric. A non-numeric cell drops the whole row for both ranges, so the
+ * x<->y pairing stays intact and xs.length === ys.length is guaranteed.
+ *
+ * @param {Array|Object} knownXRange
+ * @param {Array|Object} knownYRange
+ * @param {Object} locale
+ * @returns {{xs: Number[], ys: Number[]}}
+ */
+function alignedPairs(knownXRange, knownYRange, locale) {
+    const rawX = flattenRange(knownXRange, locale);
+    const rawY = flattenRange(knownYRange, locale);
     // Mismatched range sizes are a user error, not something to silently
     // truncate to the shorter one (which would mis-pair x<->y).
     if (rawX.length !== rawY.length) {
-        throw new Error(
-            _t("known_x and known_y must contain the same number of cells.")
+        throw new EvaluationError(
+            _t(
+                "[[FUNCTION_NAME]]: known_x has %(x_count)s cells but known_y has %(y_count)s. Select two ranges of the same size so every x value is paired with its y value.",
+                {x_count: rawX.length, y_count: rawY.length}
+            )
         );
     }
-    const len = rawX.length;
     const xs = [];
     const ys = [];
-    for (let i = 0; i < len; i++) {
+    for (let i = 0; i < rawX.length; i++) {
         if (!isNaN(rawX[i]) && !isNaN(rawY[i])) {
             xs.push(rawX[i]);
             ys.push(rawY[i]);
         }
     }
+    if (xs.length < 2) {
+        throw new EvaluationError(
+            _t(
+                "[[FUNCTION_NAME]] needs at least 2 rows where both known_x and known_y are numbers. Blank and non-numeric cells are skipped."
+            )
+        );
+    }
     return {xs, ys};
 }
+
+/**
+ * Least-squares straight line through the given points.
+ *
+ * @param {Number[]} xs
+ * @param {Number[]} ys
+ * @returns {{slope: Number, intercept: Number}|null} null when every x value
+ *     is identical (vertical line: the slope is undefined)
+ */
+function fitLine(xs, ys) {
+    const n = ys.length;
+    const sumX = xs.reduce((a, b) => a + b, 0);
+    const sumY = ys.reduce((a, b) => a + b, 0);
+    const sumXY = xs.reduce((s, xi, i) => s + xi * ys[i], 0);
+    const sumX2 = xs.reduce((s, xi) => s + xi * xi, 0);
+    const denom = n * sumX2 - sumX * sumX;
+    if (denom === 0) {
+        return null;
+    }
+    const slope = (n * sumXY - sumX * sumY) / denom;
+    return {slope, intercept: (sumY - slope * sumX) / n};
+}
+
+// ---------------------------------------------------------------------------
+// Functions
+// ---------------------------------------------------------------------------
+
+/**
+ * ODOO.FORECAST(target_x, known_y, known_x)
+ * Predicts the y value at target_x based on linear regression of known points.
+ */
+functionRegistry.add("ODOO.FORECAST", {
+    description: _t(
+        "Predicts the y value at a given x from a least-squares linear regression of known data."
+    ),
+    args: [
+        arg(
+            "target_x (number)",
+            _t("The x value to predict y for, e.g. the next month number.")
+        ),
+        arg("known_y (range<number>)", _t("The known values, e.g. past sales.")),
+        arg(
+            "known_x (range<number>)",
+            _t("The x values paired row by row with known_y, e.g. the month numbers.")
+        ),
+    ],
+    returns: ["NUMBER"],
+    compute: function (targetX, knownYRange, knownXRange) {
+        const x = toNumber(targetX, this.locale);
+        const {xs, ys} = alignedPairs(knownXRange, knownYRange, this.locale);
+        const line = fitLine(xs, ys);
+        if (!line) {
+            throw new EvaluationError(
+                _t(
+                    "[[FUNCTION_NAME]] cannot fit a trend line because all known_x values are identical. Use at least two different x values."
+                )
+            );
+        }
+        return line.slope * x + line.intercept;
+    },
+});
+
+/**
+ * ODOO.TREND(known_y, known_x, new_x)
+ * Returns the trend value at new_x (the average of known_y when every known_x
+ * is identical).
+ */
+functionRegistry.add("ODOO.TREND", {
+    description: _t(
+        "Returns the value of the least-squares trend line at a new x. When all known_x values are identical, returns the average of known_y."
+    ),
+    args: [
+        arg("known_y (range<number>)", _t("The known values, e.g. past sales.")),
+        arg(
+            "known_x (range<number>)",
+            _t("The x values paired row by row with known_y, e.g. the month numbers.")
+        ),
+        arg("new_x (number)", _t("The x value to evaluate the trend line at.")),
+    ],
+    returns: ["NUMBER"],
+    compute: function (knownYRange, knownXRange, newX) {
+        const {xs, ys} = alignedPairs(knownXRange, knownYRange, this.locale);
+        const x = toNumber(newX, this.locale);
+        const line = fitLine(xs, ys);
+        if (!line) {
+            return ys.reduce((a, b) => a + b, 0) / ys.length;
+        }
+        return line.slope * x + line.intercept;
+    },
+});
+
+/**
+ * ODOO.MOVING_AVG(values, window)
+ * Returns the average of the last `window` numeric values.
+ */
+functionRegistry.add("ODOO.MOVING_AVG", {
+    description: _t(
+        "Averages the most recent numeric values of a range (simple moving average)."
+    ),
+    args: [
+        arg(
+            "values (range<number>)",
+            _t("The values to average. Blank and non-numeric cells are skipped.")
+        ),
+        arg(
+            "window (number)",
+            _t(
+                "How many of the last values to average, e.g. 3. A window larger than the number of values averages all of them."
+            )
+        ),
+    ],
+    returns: ["NUMBER"],
+    compute: function (valuesRange, windowSize) {
+        const rawWindow = toNumber(windowSize, this.locale);
+        const size = Math.trunc(rawWindow);
+        if (size < 1) {
+            throw new EvaluationError(
+                _t(
+                    "[[FUNCTION_NAME]] expects a window of at least 1, but got %s.",
+                    String(rawWindow)
+                )
+            );
+        }
+        const values = flattenNumbers(valuesRange, this.locale);
+        if (values.length === 0) {
+            throw new EvaluationError(
+                _t(
+                    "[[FUNCTION_NAME]] needs at least one numeric value in the range. Blank and non-numeric cells are skipped."
+                )
+            );
+        }
+        const slice = values.slice(-Math.min(size, values.length));
+        return slice.reduce((a, b) => a + b, 0) / slice.length;
+    },
+});

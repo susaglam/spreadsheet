@@ -37,6 +37,14 @@ Usage
     =ODOO.GROWTH_ARROW(B2, B1)
     =ODOO.YOY(Sales!B12, Sales_2025!B12)
 
+The functions are listed under **Insert > Function > Odoo**.
+
+When the previous value is 0, ``ODOO.PERCENT_CHANGE`` and ``ODOO.YOY`` return
+``#DIV/0!`` (both values 0 give 0) and ``ODOO.GROWTH_ARROW`` shows ``—``. Use
+``=IFERROR(ODOO.PERCENT_CHANGE(B2, B1), "n/a")`` to show a fallback value.
+Numbers typed as text (``"1,5"``) and the percentage of ``ODOO.GROWTH_ARROW``
+follow the spreadsheet locale (File > Settings).
+
 Configuration
 =============
 

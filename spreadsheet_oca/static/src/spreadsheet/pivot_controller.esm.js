@@ -51,7 +51,9 @@ patch(PivotRenderer.prototype, {
                 additionalContext: {
                     default_name: this.model.metaData.title,
                     default_datasource_name: this.model.metaData.title,
-                    default_can_be_dynamic: false,
+                    // Dynamic (=PIVOT) by default, static values on request.
+                    default_can_be_dynamic: true,
+                    default_dynamic: true,
                     default_import_data: {
                         mode: "pivot",
                         metaData: this.model.metaData,

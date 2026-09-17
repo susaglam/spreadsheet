@@ -3,8 +3,8 @@
 
 {
     "name": "Spreadsheet Forecast Functions OCA",
-    "summary": "ODOO.FORECAST() and ODOO.TREND() spreadsheet functions",
-    "version": "saas~19.4.1.0.1",
+    "summary": "ODOO.FORECAST, ODOO.TREND and ODOO.MOVING_AVG spreadsheet functions",
+    "version": "saas~19.4.1.0.2",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
@@ -17,6 +17,9 @@
                 "spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js",
                 "spreadsheet_forecast_oca/static/src/spreadsheet/bundle/*.js",
             ),
+        ],
+        "web.assets_unit_tests": [
+            "spreadsheet_forecast_oca/static/tests/**/*",
         ],
     },
 }

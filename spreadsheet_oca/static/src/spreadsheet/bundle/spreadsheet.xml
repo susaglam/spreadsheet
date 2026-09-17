@@ -3,7 +3,7 @@
 
     <t t-name="spreadsheet_oca.ActionSpreadsheetOca" owl="1">
         <div class="o_spreadsheet_oca_container">
-            <SpreadsheetControlPanel record="this.record" />
+            <SpreadsheetControlPanel />
             <SpreadsheetRenderer
                 record="this.record"
                 res_id="this.spreadsheetId"
@@ -53,13 +53,10 @@
                 datetimeGranularities="this.store.datetimeGranularities"
                 definition="definition"
                 onDimensionsUpdated.bind="this.updateDimensions"
+                onFiltersUpdated.bind="this.updateDimensions"
                 getScrollableContainerEl.bind="this.getScrollableContainerEl"
                 pivotId="this.props.pivotId"
             />
-            <div class="o-section" t-if="definition.sortedColumn">
-                <div class="o-section-title">Sorting</div>
-                <div t-out="this.sortInformation" />
-            </div>
             <div class="o-section o_spreadsheet_oca_pivot_panel_info">
                 Last updated at <t t-out="this.lastUpdate" />
             </div>
@@ -68,7 +65,10 @@
 
     <t t-name="spreadsheet_oca.ListPanel" owl="1">
         <t t-if="this.listId">
-            <ListPanelDisplay listId="this.listId" listDefinition="this.listDefinition" />
+            <ListPanelDisplay
+                listId="this.listId"
+                listDefinition="this.listDefinition"
+            />
         </t>
         <t t-else="1" />
     </t>
@@ -78,7 +78,9 @@
                 <div
                     class="o_spreadsheet_oca_datasource_panel_field_title"
                 >List name</div>
-                <span t-out="this.env.model.getters.getListDisplayName(this.props.listId)" />
+                <span
+                    t-out="this.env.model.getters.getListDisplayName(this.props.listId)"
+                />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
@@ -131,14 +133,22 @@
             t-as="filter"
             t-key="filter.id"
             class="o_spreadsheet_oca_filter"
+            t-att-data-filter-type="filter.type"
         >
             <div class="spreadsheet_oca_filter_label">
                 <span t-out="filter.label" />
             </div>
             <div class="spreadsheet_oca_filter_value">
-                <FilterValue filter="filter" model="this.env.model" />
+                <FilterValue
+                    filter="filter"
+                    model="this.env.model"
+                    globalFilterValue="this.getGlobalFilterValue(filter.id)"
+                    setGlobalFilterValue="(id, value) => this.setGlobalFilterValue(filter.id, value)"
+                    showClear="true"
+                />
                 <i
                     class="fa fa-cog btn btn-link text-muted spreadsheet_oca_filter_value_edit"
+                    title="Edit filter"
                     t-on-click="() =&gt; this.onEditFilter(filter)"
                 />
             </div>
@@ -146,15 +156,15 @@
         <div class="o-sidePanelButtons">
             <button
                 t-on-click="() => this.onAddFilter('date')"
-                class="btn"
+                class="btn o_spreadsheet_oca_add_date_filter"
             >Add date</button>
             <button
                 t-on-click="() => this.onAddFilter('relation')"
-                class="btn"
+                class="btn o_spreadsheet_oca_add_relation_filter"
             >Add relation</button>
             <button
                 t-on-click="() => this.onAddFilter('text')"
-                class="btn"
+                class="btn o_spreadsheet_oca_add_text_filter"
             >Add text</button>
         </div>
     </t>
@@ -164,84 +174,40 @@
                 <span>Label</span>
             </div>
             <div class="spreadsheet_oca_filter_value">
-                <input type="text" t-custom-model="this.state.label" class="o_input" />
-            </div>
-        </div>
-        <div class="o_spreadsheet_oca_filter" t-if="this.state.type == 'date'">
-            <div class="spreadsheet_oca_filter_label">Time range</div>
-            <div class="spreadsheet_oca_filter_value">
-                <select
-                    t-custom-model="this.state.rangeType"
-                    t-on-change="this.onDateRangeChange"
-                    class="o_input"
-                >
-                    <t t-foreach="this.dateRangeTypes" t-as="range" t-key="range.type">
-                        <option
-                            t-att-selected="this.state.rangeType === range.type ? 1 : 0"
-                            t-att-value="range.type"
-                        >
-                            <t t-out="range.description" />
-                        </option>
-                    </t>
-                </select>
+                <input
+                    type="text"
+                    t-custom-model="this.state.label"
+                    class="o_input o_global_filter_label"
+                />
             </div>
         </div>
         <div
-            class="o_spreadsheet_oca_filter"
-            t-if="this.state.type !== 'relation' and this.state.rangeType !== 'from_to'"
+            class="o_spreadsheet_oca_filter o_spreadsheet_oca_filter_default_date"
+            t-if="this.state.type === 'date'"
         >
             <div class="spreadsheet_oca_filter_label">Default value</div>
-            <div
-                t-if="this.state.type === 'date' and this.state.rangeType !== 'relative'"
-                class="spreadsheet_oca_filter_value"
-            >
-                <input
-                    type="checkbox"
-                    class="me-2"
-                    id="default_to_current_period"
-                    t-att-checked="this.state.defaultValue"
-                    t-on-change="this.toggleDateDefaultValue"
+            <div class="spreadsheet_oca_filter_value">
+                <DefaultDateValue
+                    value="this.dateDefaultValue"
+                    update="(value) => this.onDateDefaultValueChanged(value)"
                 />
-                <label
-                    for="default_to_current_period"
-                > Automatically filter on the current period </label>
             </div>
-            <div
-                class="pt-3"
-                t-if="this.state.defaultValue and this.state.type === 'date' and this.state.rangeType !== 'relative'"
-            >
-                <select t-custom-model="this.state.defaultValue" class="o_input">
-                    <option value="this_month">Month</option>
-                    <option value="this_quarter">Quarter</option>
-                    <option value="this_year">Year</option>
-                </select>
+        </div>
+        <div
+            class="o_spreadsheet_oca_filter o_spreadsheet_oca_filter_default_text"
+            t-if="this.state.type === 'text'"
+        >
+            <div class="spreadsheet_oca_filter_label">Default value</div>
+            <div class="spreadsheet_oca_filter_value">
+                <div class="w-100">
+                    <TextFilterValue
+                        value="this.textDefaultStrings"
+                        options="[]"
+                        onValueChanged="(strings) => this.onTextDefaultValueChanged(strings)"
+                        placeholder.translate="Type a value and press Enter"
+                    />
+                </div>
             </div>
-            <div
-                t-if="this.state.type === 'date' and this.state.rangeType === 'relative'"
-                class="spreadsheet_oca_filter_value"
-            >
-                <select t-custom-model="this.state.defaultValue" class="o_input">
-                    <option value="" />
-                    <t
-                        t-foreach="this.relativeDateRangeTypes"
-                        t-as="range"
-                        t-key="range.type"
-                    >
-                        <option
-                            t-att-selected="range.type === this.state.defaultValue ? 1 : 0"
-                            t-att-value="range.type"
-                        >
-                            <t t-out="range.description" />
-                        </option>
-                    </t>
-                </select>
-            </div>
-            <input
-                t-if="this.state.type === 'text'"
-                type="text"
-                class="o_input o_global_filter_default_value"
-                t-custom-model="this.state.defaultValue"
-            />
         </div>
         <t t-if="this.state.type === 'relation'">
             <div class="o_spreadsheet_oca_filter">
@@ -262,15 +228,17 @@
                 />
             </div>
             <t t-if="this.state.modelData.technical">
-                <div class="o_spreadsheet_oca_filter">
+                <div
+                    class="o_spreadsheet_oca_filter o_spreadsheet_oca_filter_default_relation"
+                >
                     <div class="spreadsheet_oca_filter_label">Default value</div>
                     <div
                         class="spreadsheet_oca_filter_value"
-                        t-if="!(this.state.modelData.technical === 'res.users' and this.state.defaultValue === 'current_user')"
+                        t-if="!this.isCurrentUserDefault"
                     >
                         <MultiRecordSelector
                             resModel="this.state.modelData.technical"
-                            resIds="this.state.defaultValue || []"
+                            resIds="this.relationDefaultIds"
                             t-key="this.state.modelData.technical"
                             placeholder="''"
                             domain="this.getCorrectDomain()"
@@ -284,8 +252,8 @@
                         <Checkbox
                             className="'mb-1'"
                             label.translate="Automatically filter on the current user"
-                            onChange="(value) => this.state.defaultValue = value ? 'current_user' : []"
-                            value="this.state.defaultValue === 'current_user'"
+                            onChange="(value) => this.onCurrentUserDefaultChanged(value)"
+                            value="this.isCurrentUserDefault"
                         />
                     </div>
                 </div>
@@ -302,7 +270,7 @@
                     <t t-if="this.state.valuesRestricted">
                         <DomainSelector
                             resModel="this.state.modelData.technical"
-                            domain="this.getCorrectDomain()"
+                            domain="this.allowedValuesDomain"
                             t-key="'filter_' + this.filterId"
                         />
                         <div class="btn btn-link" t-on-click="this.editDomain">
@@ -313,11 +281,12 @@
             </t>
         </t>
         <div
-            class="o_spreadsheet_oca_filter"
+            class="o_spreadsheet_oca_filter o_spreadsheet_oca_filter_field_matching"
             t-foreach="Object.values(this.state.objects)"
             t-as="object"
             t-key="object.id"
             t-if="object.model"
+            t-att-data-id="object.id"
         >
             <div class="spreadsheet_oca_filter_label">
                 <span t-out="object.name" /> - <span t-out="object.tag" />
@@ -332,20 +301,19 @@
                         isDebugMode="!!this.env.debug"
                         update="(path, fieldInfo) => this.onFieldMatchUpdate(object, path, fieldInfo)"
                         filter.bind="this.filterModelFieldSelectorField"
-                        t-key="object_index"
+                        t-key="object.id"
                     />
                 </div>
             </div>
 
             <div class="spreadsheet_oca_filter_value" t-if="this.state.type === 'date'">
                 <select
-                    t-custom-model="object.fieldMatch.offset"
                     t-on-change="(ev) => this.onChangeFieldMatchOffset(object, ev)"
                     class="o_input"
                 >
                     <t t-foreach="this.dateOffset" t-as="offset" t-key="offset.value">
                         <option
-                            t-att-selected="offset.value === object.fieldMatch.offset ? 1 : 0"
+                            t-att-selected="offset.value === (object.fieldMatch.offset || 0)"
                             t-att-value="offset.value"
                         >
                             <t t-out="offset.name" />
@@ -355,9 +323,16 @@
             </div>
         </div>
         <div class="o-sidePanelButtons justify-content-center">
-            <button t-on-click="this.onRemove" class="btn btn-danger">Remove</button>
+            <button
+                t-if="this.filterId"
+                t-on-click="this.onRemove"
+                class="btn btn-danger"
+            >Remove</button>
             <button t-on-click="this.onCancel" class="btn btn-warning">Cancel</button>
-            <button t-on-click="this.onSave" class="btn btn-primary">Save</button>
+            <button
+                t-on-click="this.onSave"
+                class="btn btn-primary o_spreadsheet_oca_filter_save"
+            >Save</button>
         </div>
     </t>
     <t t-name="spreadsheet_oca.SpreadsheetRenderer" owl="1">
@@ -380,104 +355,99 @@
         > name is required</span>
     </t>
 
-    <t t-name="spreadsheet_oca.Breadcrumbs.Small" owl="1">
-        <ol class="breadcrumb">
-            <t t-if="this.breadcrumbs.length > 1">
-                <t t-set="breadcrumb" t-value="this.breadcrumbs[this.breadcrumbs.length - 2]" />
-                <li
-                    class="breadcrumb-item o_back_button btn btn-secondary"
-                    t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
-                />
+    <!-- Derived from web.Breadcrumbs (saas-19.4). It is t-called from
+         SpreadsheetControlPanel, so the entries come from this.breadcrumbs and
+         the current (last) entry is the editable spreadsheet name. The
+         breadcrumbs stay in this control panel on small screens as well (core
+         moves them to the navbar there), and the collapsed dropdown is offered
+         next to the back button so every parent page stays reachable. -->
+    <t t-name="spreadsheet_oca.Breadcrumbs.Collapsed" owl="1">
+        <Dropdown>
+            <button class="btn btn-light btn-sm px-1 p-0">
+                <i class="oi oi-ellipsis-h align-middle" />
+            </button>
+            <t t-set-slot="content">
+                <t
+                    t-foreach="collapsedBreadcrumbs"
+                    t-as="breadcrumb"
+                    t-key="breadcrumb.jsId"
+                >
+                    <DropdownItem
+                        onSelected="breadcrumb.onSelected"
+                        attrs="{ href: breadcrumb.url, 'data-tooltip': this.getBreadcrumbTooltip(breadcrumb) }"
+                    >
+                        <t t-call="web.Breadcrumb.Name" />
+                    </DropdownItem>
+                </t>
             </t>
-            <li t-if="this.breadcrumbs.length > 0" class="breadcrumb-item active">
-                <SpreadsheetName
-                    name="this.props.record ? this.props.record.name : ''"
-                    isReadonly="false"
-                    onChanged="this.onSpreadsheetNameChanged"
-                />
-            </li>
-        </ol>
+        </Dropdown>
     </t>
 
+    <t t-name="spreadsheet_oca.Breadcrumbs.Actions" owl="1">
+        <div class="o_control_panel_breadcrumbs_actions d-inline-flex d-print-none">
+            <t t-call-slot="control-panel-additional-actions" />
+        </div>
+    </t>
 
     <t t-name="spreadsheet_oca.Breadcrumbs" owl="1">
-        <t t-set="currentBreadcrumbs" t-value="this.breadcrumbs.slice(-1)" />
-        <t t-set="visiblePathBreadcrumbs" t-value="this.breadcrumbs.slice(-3, -1)" />
-        <t t-set="collapsedBreadcrumbs" t-value="this.breadcrumbs.slice(0, -3).reverse()" />
-        <t t-set="breadcrumb" t-value="currentBreadcrumbs[0] || {}" />
+        <t t-set="previousBreadcrumb" t-value="this.breadcrumbs.at(-2)" />
+        <t
+            t-set="collapsedBreadcrumbs"
+            t-value="this.breadcrumbs.slice(0, -2).reverse()"
+        />
 
         <div
-            t-if="collapsedBreadcrumbs.length || visiblePathBreadcrumbs.length"
+            t-if="previousBreadcrumb"
             class="o_breadcrumb d-flex flex-row align-self-stretch justify-content-between min-w-0"
         >
             <t t-if="this.env.isSmall">
-                <t
-                    t-set="previousBreadcrumb"
-                    t-value="visiblePathBreadcrumbs.slice(-1)"
-                />
                 <button
-                    class="o_back_button btn btn-link px-1"
-                    t-on-click.prevent="() => this.onBreadcrumbClicked(previousBreadcrumb.jsId)"
+                    class="o_back_button btn btn-link d-print-none px-1 py-0"
+                    t-att-title="this.getBreadcrumbTooltip(previousBreadcrumb)"
+                    t-on-click.prevent="previousBreadcrumb.onSelected"
                 >
                     <i class="oi oi-fw oi-arrow-left" />
                 </button>
+                <div
+                    t-if="collapsedBreadcrumbs.length"
+                    class="d-inline-flex align-items-center d-print-none"
+                >
+                    <t t-call="spreadsheet_oca.Breadcrumbs.Collapsed" />
+                </div>
             </t>
             <t t-else="">
-                <ol class="breadcrumb flex-nowrap text-nowrap small lh-sm">
+                <ol class="breadcrumb flex-nowrap text-nowrap lh-sm">
                     <li
                         t-if="collapsedBreadcrumbs.length"
-                        class="breadcrumb-item d-inline-flex min-w-0"
+                        class="breadcrumb-item d-inline-flex"
                     >
-                        <Dropdown togglerClass="'btn btn-light btn-sm px-1 p-0'">
-                            <t t-set-slot="toggler">
-                                <i class="fa fa-ellipsis-h" />
-                            </t>
-                            <t
-                                t-foreach="collapsedBreadcrumbs"
-                                t-as="breadcrumb"
-                                t-key="breadcrumb.jsId"
-                            >
-                                <DropdownItem
-                                    onSelected="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
-                                >
-                                    <t t-call="web.Breadcrumb.Name" />
-                                </DropdownItem>
-                            </t>
-                        </Dropdown>
+                        <t t-call="spreadsheet_oca.Breadcrumbs.Collapsed" />
                     </li>
-                    <t
-                        t-foreach="visiblePathBreadcrumbs"
-                        t-as="breadcrumb"
-                        t-key="breadcrumb.jsId"
+                    <li
+                        class="breadcrumb-item d-inline-flex min-w-0 o_back_button"
+                        data-hotkey="b"
+                        t-on-click.prevent="previousBreadcrumb.onSelected"
                     >
-                        <li
-                            class="breadcrumb-item d-inline-flex min-w-0"
-                            t-att-class="{ o_back_button: breadcrumb_last }"
-                            t-att-data-hotkey="breadcrumb_last and 'b'"
-                            t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
+                        <a
+                            t-att-href="previousBreadcrumb.url"
+                            class="fw-bold text-truncate"
+                            t-att-data-tooltip="this.getBreadcrumbTooltip(previousBreadcrumb)"
                         >
-                            <a
-                                href="#"
-                                class="fw-bold text-truncate"
-                                t-att-data-tooltip="'Back to &quot;' + breadcrumb.name + '&quot;'"
-                            >
-                                <t t-call="web.Breadcrumb.Name" />
-                            </a>
-                        </li>
-                    </t>
+                            <t
+                                t-call="web.Breadcrumb.Name"
+                                breadcrumb="previousBreadcrumb"
+                            />
+                        </a>
+                    </li>
                 </ol>
             </t>
             <div class="d-flex gap-1 text-truncate">
                 <div
                     class="o_last_breadcrumb_item active d-flex gap-2 align-items-center min-w-0 lh-sm"
                 >
-                    <SpreadsheetName
-                        name="this.props.record ? this.props.record.name : ''"
-                        isReadonly="false"
-                        onChanged="this.onSpreadsheetNameChanged"
-                    />
+                    <SpreadsheetName isReadonly="false" />
                 </div>
-                <t t-call="web.Breadcrumb.Actions" />
+                <t t-call="spreadsheet_oca.Breadcrumbs.Actions" />
             </div>
         </div>
 
@@ -485,16 +455,12 @@
             <div
                 class="o_last_breadcrumb_item active d-flex fs-4 min-w-0 align-items-center"
             >
-                <SpreadsheetName
-                    name="this.props.record ? this.props.record.name : ''"
-                    isReadonly="false"
-                    onChanged="this.onSpreadsheetNameChanged"
-                />
+                <SpreadsheetName isReadonly="false" />
             </div>
-            <t t-call="web.Breadcrumb.Actions" />
+            <t t-call="spreadsheet_oca.Breadcrumbs.Actions" />
         </div>
 
-        <t t-slot="control-panel-status-indicator" />
+        <t t-call-slot="control-panel-status-indicator" />
     </t>
     <t t-name="spreadsheet_oca.PivotIcon" owl="1">
         <i class="fa fa-table" />
@@ -502,6 +468,10 @@
     <t t-name="spreadsheet_oca.ListIcon" owl="1">
         <i class="fa fa-list" />
     </t>
+    <!-- Derived from web.ControlPanel (saas-19.4) in a compact layout. The
+         spreadsheet client action has no embedded actions, so that panel is
+         left out, and the breadcrumbs are rendered in place on every screen
+         size (see spreadsheet_oca.Breadcrumbs). -->
     <t t-name="spreadsheet_oca.SpreadsheetControlPanel" owl="1">
         <div
             class="o_control_panel o_spreadsheet_oca_compact_cp d-flex flex-column gap-0 px-2 pt-1 pb-1"
@@ -509,64 +479,45 @@
             data-command-category="actions"
         >
             <div
-                class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-3 flex-grow-1"
+                class="o_control_panel_main d-flex flex-wrap flex-lg-nowrap justify-content-between align-items-lg-start gap-2 gap-lg-3 flex-grow-1"
             >
                 <div
-                    class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100"
+                    class="o_control_panel_breadcrumbs d-flex align-items-center gap-1 order-0 h-lg-100 min-w-0"
                 >
                     <div
-                        class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none"
-                        t-custom-ref="mainButtons"
+                        class="o_control_panel_main_buttons d-flex gap-1 d-empty-none d-print-none text-nowrap"
                         t-on-keydown="this.onMainButtonsKeydown"
                     >
-                        <div
-                            class="btn-group d-xl-none o_control_panel_collapsed_create"
-                        >
-                            <t t-slot="control-panel-create-button" />
-                            <button
-                                t-att-class="{invisible: this.display.disableDropdown}"
-                                type="button"
-                                class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                <span class="visually-hidden">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu o_control_panel_collapsed_create">
-                                <t t-slot="layout-buttons" />
-                                <t t-slot="control-panel-always-buttons" />
-                            </ul>
-                        </div>
-                        <div class="d-none d-xl-inline-flex gap-1">
-                            <t t-slot="control-panel-create-button" />
-                            <t t-slot="layout-buttons" />
-                            <t t-slot="control-panel-always-buttons" />
-                        </div>
+                        <t
+                            t-if="this.display.buttons"
+                            t-call-slot="control-panel-buttons"
+                        />
                     </div>
                     <t t-if="this.env.config.noBreadcrumbs">
-                        <section class="o_control_panel_breadcrumbs_actions d-contents">
-                            <t t-slot="control-panel-additional-actions" />
-                            <t t-slot="control-panel-status-indicator" />
+                        <section
+                            class="o_control_panel_breadcrumbs_actions d-contents d-print-none"
+                        >
+                            <t t-call-slot="control-panel-additional-actions" />
+                            <t t-call-slot="control-panel-status-indicator" />
                         </section>
                     </t>
-                    <t t-else="">
-                        <t t-slot="control-panel-breadcrumb">
-                            <t t-call="spreadsheet_oca.Breadcrumbs" />
-                        </t>
-                    </t>
-                    <span class="d-none d-xl-block me-auto" />
+                    <t t-else="" t-call="spreadsheet_oca.Breadcrumbs" />
+                    <div t-if="!this.env.isSmall" class="me-auto" />
                     <!-- Spacer -->
                 </div>
 
                 <div
-                    class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 w-lg-auto"
+                    class="o_control_panel_actions d-empty-none d-flex align-items-center justify-content-start justify-content-lg-around order-2 order-lg-1 w-100 mw-100 w-lg-auto"
                 >
-                    <t t-if="this.display.layoutActions" t-slot="layout-actions" />
-                    <t t-slot="control-panel-selection-actions" />
+                    <t
+                        t-if="this.display.actions"
+                        t-call-slot="control-panel-actions"
+                    />
+                    <t t-call-slot="control-panel-selection-actions" />
                 </div>
 
                 <div
-                    class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-3 gap-lg-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"
+                    class="o_control_panel_navigation d-flex flex-wrap flex-md-nowrap justify-content-end gap-1 gap-xl-3 order-1 order-lg-2 flex-grow-1"
                 >
                     <div
                         t-if="this.pagerProps and this.pagerProps.total > 0"
@@ -576,34 +527,45 @@
                         <Pager t-props="this.pagerProps" />
                     </div>
                     <t t-if="this.env.config.viewSwitcherEntries?.length > 1">
-                        <Dropdown
-                            class="'o_cp_switch_buttons d-xl-none btn-group'"
-                            togglerClass="'btn btn-secondary'"
-                            showCaret="true"
+                        <div
+                            t-if="this.env.isSmall"
+                            class="o_cp_switch_buttons btn-group d-print-none"
                         >
-                            <t t-set-slot="toggler">
-                                <t
-                                    t-set="activeView"
-                                    t-value="this.env.config.viewSwitcherEntries.find((view) => view.active)"
-                                />
-                                <i class="oi-fw" t-att-class="activeView.icon" />
-                            </t>
-                            <t
-                                t-foreach="this.env.config.viewSwitcherEntries"
-                                t-as="view"
-                                t-key="view.type"
+                            <Dropdown
+                                menuClass="{o_cp_switch_buttons: true, o_custom_bottom_sheet: true }"
                             >
-                                <DropdownItem
-                                    onSelected="() => this.onViewClicked(view.type)"
-                                    class="view.active ? 'selected' : ''"
+                                <button
+                                    class="btn btn-secondary"
+                                    data-available-offline=""
                                 >
-                                    <i class="oi-fw" t-att-class="view.icon" />
-                                    <span class="ms-1" t-out="view.name" />
-                                </DropdownItem>
-                            </t>
-                        </Dropdown>
+                                    <t
+                                        t-set="activeView"
+                                        t-value="this.env.config.viewSwitcherEntries.find((view) => view.active)"
+                                    />
+                                    <i class="oi-fw" t-att-class="activeView.icon" />
+                                </button>
+                                <t t-set-slot="content">
+                                    <t
+                                        t-foreach="this.env.config.viewSwitcherEntries"
+                                        t-as="view"
+                                        t-key="view.type"
+                                    >
+                                        <DropdownItem
+                                            tag="'button'"
+                                            attrs="{ 'data-available-offline': this.isViewAvailable(view)}"
+                                            onSelected="() => this.switchView(view.type)"
+                                            class="{ 'selected': view.active }"
+                                        >
+                                            <i class="oi-fw" t-att-class="view.icon" />
+                                            <span class="ms-1" t-out="view.name" />
+                                        </DropdownItem>
+                                    </t>
+                                </t>
+                            </Dropdown>
+                        </div>
                         <nav
-                            class="o_cp_switch_buttons d-print-none d-none d-xl-inline-flex btn-group"
+                            t-else=""
+                            class="o_cp_switch_buttons d-print-none d-inline-flex btn-group"
                         >
                             <t
                                 t-foreach="this.env.config.viewSwitcherEntries"
@@ -612,98 +574,91 @@
                             >
                                 <button
                                     class="btn btn-secondary o_switch_view "
-                                    t-attf-class="o_{{view.type}} {{view.active ? 'active' : ''}}"
+                                    t-att-class="{ 'active': view.active }"
+                                    t-attf-class="o_{{view.type}}"
+                                    t-att-data-available-offline="this.isViewAvailable(view)"
                                     t-att-data-tooltip="view.name"
-                                    t-on-click="() => this.onViewClicked(view.type)"
+                                    t-custom-click="(ev, isMiddleClick) => this.switchView(view.type, isMiddleClick)"
+                                    t-att-aria-label="view.name"
                                 >
-                                    <i t-att-class="view.icon" />
+                                    <i class="oi-fw" t-att-class="view.icon" />
                                 </button>
                             </t>
                         </nav>
                     </t>
-                    <t t-slot="control-panel-navigation-additional" />
+                    <t t-call-slot="control-panel-navigation-additional" />
                 </div>
             </div>
         </div>
     </t>
-    <t t-name="spreadsheet_oca.OdooPanel" owl="1">
-        <div class="o-section">
+    <t t-name="spreadsheet_oca.OdooChartDataSourcePanel" owl="1">
+        <div class="o_spreadsheet_oca_chart_odoo_datasource">
+            <div class="o-section o_spreadsheet_oca_chart_model">
+                <div class="o-section-title">Model</div>
+                <div class="text-break">
+                    <t t-if="this.state.modelLabel"><t
+                        t-out="this.state.modelLabel"
+                    /> (<t t-out="this.resModel" />)</t>
+                    <t t-else="" t-out="this.resModel" />
+                </div>
+            </div>
+            <div class="o-section o_spreadsheet_oca_chart_measure">
+                <div class="o-section-title">Measure</div>
+                <div class="text-break" t-out="this.measureLabel" />
+            </div>
+            <div class="o-section o_spreadsheet_oca_chart_group_by">
+                <div class="o-section-title">Group by</div>
+                <t t-if="this.groupByLabels.length">
+                    <div
+                        t-foreach="this.groupByLabels"
+                        t-as="groupByLabel"
+                        t-key="groupByLabel_index"
+                        class="text-break"
+                        t-out="groupByLabel"
+                    />
+                </t>
+                <div t-else="" class="text-muted">None</div>
+            </div>
+            <div class="o-section o_spreadsheet_oca_chart_domain">
+                <div class="o-section-title">Domain</div>
+                <DomainSelector
+                    t-if="this.state.fields"
+                    resModel="this.resModel"
+                    domain="this.domain"
+                    t-key="'chart_' + this.props.chartId + '_' + this.domain"
+                />
+                <code t-else="" class="text-break" t-out="this.domain" />
+            </div>
+            <div
+                t-if="this.state.loadError"
+                class="o-section pt-0 text-danger small o_spreadsheet_oca_chart_load_error"
+                t-out="this.state.loadError"
+            />
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.ChartOdooMenuLink" owl="1">
+        <div class="o-section o_spreadsheet_oca_chart_odoo_link">
             <div class="o-section-title">Link to Odoo menu</div>
             <div class="o-section-value">
                 <Many2XAutocomplete t-props="this.menuProps" />
             </div>
+            <div class="text-muted small mt-1">
+                In a dashboard, clicking the chart opens this menu.
+            </div>
         </div>
     </t>
-    <t
-        t-name="spreadsheet_oca.OdooStackablePanel"
-        t-inherit="spreadsheet_oca.OdooPanel"
-        t-inherit-mode="primary"
-        owl="1"
-    >
-        <xpath expr="div[hasclass('o-section')]" position="before">
-            <div class="o-section">
-                <label>
-                    <div class="o_checkbox">
-                        <input
-                        type="checkbox"
-                        name="stacked"
-                        t-att-checked="this.props.definition.stacked"
-                        t-on-change="this.onChangeStacked"
-                    />
-                        Stacked
-                    </div>
-                </label>
-            </div>
+    <t t-inherit="o-spreadsheet-ChartPanel" t-inherit-mode="extension">
+        <!-- The side panel stays open when another chart is selected: rebuild
+             the type picker, which lists the chart types supported by the data
+             source of the chart once, in its setup. -->
+        <xpath expr="//ChartTypePicker" position="attributes">
+            <attribute name="t-key">this.chartId</attribute>
         </xpath>
-    </t>
-    <t t-inherit="o-spreadsheet-GenericChartConfigPanel" t-inherit-mode="extension">
-        <xpath expr="//div" position="inside">
-            <div class="o-section">
-                <div class="o-section-title">Link to Odoo menu</div>
-                <div class="o-section-value">
-                    <Many2XAutocomplete t-props="this.menuProps" />
-                </div>
-            </div>
-        </xpath>
-    </t>
-    <t t-inherit="o-spreadsheet-BarConfigPanel" t-inherit-mode="extension">
-        <xpath expr="//div" position="inside">
-            <div class="o-section">
-                <div class="o-section-title">Link to Odoo menu</div>
-                <div class="o-section-value">
-                    <Many2XAutocomplete t-props="this.menuProps" />
-                </div>
-            </div>
-        </xpath>
-    </t>
-    <t t-inherit="o-spreadsheet-LineConfigPanel" t-inherit-mode="extension">
-        <xpath expr="//div" position="inside">
-            <div class="o-section">
-                <div class="o-section-title">Link to Odoo menu</div>
-                <div class="o-section-value">
-                    <Many2XAutocomplete t-props="this.menuProps" />
-                </div>
-            </div>
-        </xpath>
-    </t>
-    <t t-inherit="o-spreadsheet-GaugeChartConfigPanel" t-inherit-mode="extension">
-        <xpath expr="//div" position="inside">
-            <div class="o-section">
-                <div class="o-section-title">Link to Odoo menu</div>
-                <div class="o-section-value">
-                    <Many2XAutocomplete t-props="this.menuProps" />
-                </div>
-            </div>
-        </xpath>
-    </t>
-    <t t-inherit="o-spreadsheet-ScorecardChartConfigPanel" t-inherit-mode="extension">
-        <xpath expr="//div" position="inside">
-            <div class="o-section">
-                <div class="o-section-title">Link to Odoo menu</div>
-                <div class="o-section-value">
-                    <Many2XAutocomplete t-props="this.menuProps" />
-                </div>
-            </div>
+        <xpath
+            expr="//t[@t-component='this.chartPanel.configuration']"
+            position="after"
+        >
+            <ChartOdooMenuLink chartId="this.chartId" t-key="this.chartId" />
         </xpath>
     </t>
 

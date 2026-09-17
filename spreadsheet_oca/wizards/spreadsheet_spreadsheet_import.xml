@@ -11,7 +11,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="mode_id" widget="selection_badge" />
+                        <field name="mode_id" widget="badges_many2one" />
                         <field
                             name="name"
                             invisible="mode != 'new'"
@@ -37,8 +37,8 @@
                         />
                         <field
                             name="number_of_rows"
-                            invisible='not dynamic'
-                            required='dynamic'
+                            invisible='not dynamic or not is_tree'
+                            required='dynamic and is_tree'
                         />
                     </group>
                 </sheet>

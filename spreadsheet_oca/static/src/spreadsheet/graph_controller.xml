@@ -11,7 +11,7 @@
                 t-on-click="this.onSpreadsheetButtonClicked"
                 data-tooltip="Add to spreadsheet"
                 aria-label="Add to spreadsheet"
-                t-attf-disabled="{{this.noDataDisplayed ? 'disabled' : false}}"
+                t-att-disabled="this.disableSpreadsheetInsertion()"
                 data-hotkey="t"
             />
         </xpath>

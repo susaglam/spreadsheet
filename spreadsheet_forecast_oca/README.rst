@@ -36,6 +36,20 @@ Use the functions directly in any spreadsheet cell::
     =ODOO.TREND(B2:B12, A2:A12, 13)
     =ODOO.MOVING_AVG(B2:B12, 3)
 
+How the input ranges are read:
+
+* Blank and non-numeric cells are skipped. For ``ODOO.FORECAST`` and
+  ``ODOO.TREND`` the whole row is skipped, so every x value stays paired
+  with its y value; both ranges must have the same number of cells.
+  Open-ended ranges such as ``B2:B100`` are therefore safe.
+* Text that looks like a number is read with the spreadsheet locale
+  (``"10,5"`` is 10.5 when the decimal separator is a comma).
+* An error in an input cell (for example ``#DIV/0!``, or an Odoo pivot
+  value that is still loading) is shown by the formula instead of being
+  silently ignored.
+* ``ODOO.MOVING_AVG`` needs a window of at least 1; a window larger than
+  the number of values averages all of them.
+
 Configuration
 =============
 

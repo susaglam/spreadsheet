@@ -15,6 +15,30 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid ""
+"A date offset is set on a data source without a matched field. Pick the "
+"field to filter on, or reset the offset, then save."
+msgstr ""
+"Für eine Datenquelle ohne zugeordnetes Feld ist ein Datumsversatz gesetzt. "
+"Wählen Sie das zu filternde Feld oder setzen Sie den Versatz zurück und "
+"speichern Sie dann."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
+msgid ""
+"A spreadsheet add-on could not prepare its settings: %(error)s. The "
+"spreadsheet is open without the features of that add-on; update or reinstall"
+" the add-on, or ask your administrator to check the browser console."
+msgstr ""
+"Ein Tabellen-Add-on konnte seine Einstellungen nicht vorbereiten: %(error)s."
+" Die Tabelle ist ohne die Funktionen dieses Add-ons geöffnet; aktualisieren "
+"oder installieren Sie das Add-on neu, oder bitten Sie Ihren Administrator, "
+"die Browserkonsole zu prüfen."
+
+#. module: spreadsheet_oca
 #: model:ir.model.constraint,message:spreadsheet_oca.constraint_spreadsheet_spreadsheet_tag_name_uniq
 msgid "A tag with the same name already exists."
 msgstr "Ein Schlagwort mit diesem Namen existiert bereits."
@@ -85,6 +109,16 @@ msgid "After next"
 msgstr "Übernächste"
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid ""
+"Another filter is already labelled \"%(label)s\". Choose a unique label so "
+"formulas can tell the filters apart."
+msgstr ""
+"Ein anderer Filter trägt bereits die Bezeichnung \"%(label)s\". Wählen Sie "
+"eine eindeutige Bezeichnung, damit Formeln die Filter unterscheiden können."
+
+#. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
@@ -98,21 +132,9 @@ msgid "Are you sure you want to delete this list?"
 msgstr "Möchten Sie diese Liste wirklich löschen?"
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Area"
-msgstr "Fläche"
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_attachment_count
 msgid "Attachment Count"
 msgstr "Anzahl Anhänge"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Automatically filter on the current period"
-msgstr "Automatisch nach dem aktuellen Zeitraum filtern"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -150,6 +172,22 @@ msgid "Change name"
 msgstr "Namen ändern"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid ""
+"Checked: insert a single formula (=PIVOT or =ODOO.LIST) whose rows and "
+"columns follow new records and the spreadsheet filters. Unchecked: insert "
+"one formula per cell, so the table layout stays exactly as it is now. "
+"Example: keep it checked for a monthly sales pivot that must show new "
+"salespeople automatically."
+msgstr ""
+"Aktiviert: fügt eine einzige Formel (=PIVOT oder =ODOO.LIST) ein, deren "
+"Zeilen und Spalten neuen Datensätzen und den Tabellenfiltern folgen. "
+"Deaktiviert: fügt eine Formel pro Zelle ein, sodass das Layout der Tabelle "
+"genau so bleibt, wie es jetzt ist. Beispiel: Lassen Sie es für eine "
+"monatliche Verkaufs-Pivot-Tabelle aktiviert, die neue Verkäufer automatisch "
+"anzeigen soll."
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__client_id
 msgid "Client"
 msgstr "Client"
@@ -164,12 +202,6 @@ msgstr "Code"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
 msgid "Color"
 msgstr "Farbe"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Column"
-msgstr "Säule"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
@@ -206,6 +238,12 @@ msgstr "Mitwirkende"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
 msgid "Contributors Groups"
 msgstr "Gruppen der Mitwirkenden"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid "Count"
+msgstr "Anzahl"
 
 #. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
@@ -299,9 +337,31 @@ msgstr "Bearbeiten"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Edit Filter"
+msgstr "Filter bearbeiten"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Edit domain"
 msgstr "Domain bearbeiten"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Edit filter"
+msgstr "Filter bearbeiten"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid ""
+"Enter the number of rows to insert (1 or more) in Rows, then click Insert "
+"list again."
+msgstr ""
+"Geben Sie unter Zeilen die Anzahl der einzufügenden Zeilen ein (1 oder mehr)"
+" und klicken Sie erneut auf Liste einfügen."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
@@ -360,8 +420,12 @@ msgstr "Font-Awesome-Symbol, z. B. fa-tasks"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-msgid "From / To"
-msgstr "Von / Bis"
+msgid ""
+"Give the filter a label before saving it: the label identifies the filter in"
+" the Filters panel and in ODOO.FILTER.VALUE formulas."
+msgstr ""
+"Geben Sie dem Filter vor dem Speichern eine Bezeichnung: Sie identifiziert "
+"den Filter im Bereich „Filter“ und in ODOO.FILTER.VALUE-Formeln."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__group_ids
@@ -369,9 +433,24 @@ msgid "Group"
 msgstr "Gruppe"
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Group by"
+msgstr "Gruppieren nach"
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__has_message
 msgid "Has Message"
 msgstr "Hat eine Nachricht"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
+msgid ""
+"How many records the inserted list shows, starting from the first one in the"
+" list order. Example: 20 for a top-20 of the latest orders."
+msgstr ""
+"Wie viele Datensätze die eingefügte Liste anzeigt, beginnend mit dem ersten "
+"in der Listenreihenfolge. Beispiel: 20 für die Top 20 der neuesten Aufträge."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__id
@@ -435,6 +514,12 @@ msgstr "Daten in Tabelle importieren"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "In a dashboard, clicking the chart opens this menu."
+msgstr "In einem Dashboard öffnet ein Klick auf das Diagramm dieses Menü."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Include children"
 msgstr "Untergeordnete einschließen"
 
@@ -488,15 +573,15 @@ msgstr "Zuletzt aktualisiert um"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Line"
-msgstr "Linie"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Link to Odoo menu"
 msgstr "Mit Odoo-Menü verknüpfen"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "List information"
+msgstr "Listeninformationen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -511,8 +596,13 @@ msgstr "Manager"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Measure"
+msgstr "Kennzahl"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Menu Items"
 msgstr "Menüpunkte"
 
@@ -544,18 +634,6 @@ msgid "Models"
 msgstr "Modelle"
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Month"
-msgstr "Monat"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-msgid "Month / Quarter"
-msgstr "Monat / Quartal"
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__my_activity_date_deadline
 msgid "My Activity Deadline"
 msgstr "Frist meiner Aktivitäten"
@@ -573,6 +651,31 @@ msgstr "Meine Tabellen"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__name
 msgid "Name"
 msgstr "Name"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
+msgid ""
+"Name of the inserted pivot, list or chart inside the spreadsheet. It also "
+"titles the chart, and names the new sheet when adding to an existing "
+"spreadsheet. Example: Sales by salesperson."
+msgstr ""
+"Name der eingefügten Pivot-Tabelle, Liste oder des Diagramms in der Tabelle."
+" Er dient auch als Diagrammtitel und benennt das neue Blatt beim Hinzufügen "
+"zu einer bestehenden Tabelle. Beispiel: Verkäufe nach Verkäufer."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__name
+msgid ""
+"Name of the spreadsheet created for this data. Example: Sales analysis 2026."
+msgstr ""
+"Name der Tabelle, die für diese Daten erstellt wird. Beispiel: "
+"Verkaufsanalyse 2026."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "New Filter"
+msgstr "Neuer Filter"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -599,6 +702,12 @@ msgstr "Nächster Aktivitätstyp"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
 msgid "Next Revision"
 msgstr "Nächste Revision"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "None"
+msgstr "Keine"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
@@ -643,12 +752,6 @@ msgstr "Eigentümerschaft"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Pie"
-msgstr "Kreis"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Possible values"
 msgstr "Mögliche Werte"
@@ -658,12 +761,6 @@ msgstr "Mögliche Werte"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Previous"
 msgstr "Vorherige"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Quarter"
-msgstr "Quartal"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -706,12 +803,6 @@ msgstr "Verknüpftes Modell"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-msgid "Relative Period"
-msgstr "Relativer Zeitraum"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Remove"
 msgstr "Entfernen"
@@ -748,7 +839,6 @@ msgstr "Speichern"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Select a menu..."
 msgstr "Menü auswählen ..."
 
@@ -772,12 +862,6 @@ msgstr "Server-Revision"
 #: code:addons/spreadsheet_oca/models/spreadsheet_abstract.py:0
 msgid "Sheet1"
 msgstr "Blatt1"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Sorting"
-msgstr "Sortierung"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet
@@ -838,30 +922,6 @@ msgid "Spreasheet Image"
 msgstr "Tabellenbild"
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Stacked"
-msgstr "Gestapelt"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Stacked Area"
-msgstr "Gestapelte Fläche"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Stacked Column"
-msgstr "Gestapelte Säule"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Stacked Line"
-msgstr "Gestapelte Linie"
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
 msgid ""
 "Status based on activities\n"
@@ -893,6 +953,50 @@ msgstr ""
 "sie die Tabelle öffnen."
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_action.esm.js:0
+msgid ""
+"The data could not be inserted in the spreadsheet: %(error)s. The "
+"spreadsheet is still open; check the view you inserted from (model, filters,"
+" measures) and try again."
+msgstr ""
+"Die Daten konnten nicht in die Tabelle eingefügt werden: %(error)s. Die "
+"Tabelle bleibt geöffnet; prüfen Sie die Ansicht, aus der Sie eingefügt haben"
+" (Modell, Filter, Kennzahlen), und versuchen Sie es erneut."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid ""
+"The default value does not fit this filter type. Clear the default value or "
+"pick it again, then save."
+msgstr ""
+"Der Standardwert passt nicht zu diesem Filtertyp. Leeren Sie den "
+"Standardwert oder wählen Sie ihn erneut und speichern Sie dann."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
+msgid ""
+"The existing spreadsheet receiving the data on a new sheet. Only "
+"spreadsheets you own or contribute to are listed."
+msgstr ""
+"Die bestehende Tabelle, die die Daten in einem neuen Blatt erhält. Es werden"
+" nur Tabellen aufgeführt, deren Eigentümer oder Mitwirkender Sie sind."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid ""
+"The fields of these data sources could not be loaded, so this filter cannot "
+"be matched with them: %(names)s. Their model may have been renamed or "
+"uninstalled; fix or delete these data sources, then open the filter again."
+msgstr ""
+"Die Felder dieser Datenquellen konnten nicht geladen werden, daher kann "
+"dieser Filter ihnen nicht zugeordnet werden: %(names)s. Ihr Modell wurde "
+"möglicherweise umbenannt oder deinstalliert; korrigieren oder löschen Sie "
+"diese Datenquellen und öffnen Sie den Filter dann erneut."
+
+#. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
 msgid ""
@@ -906,6 +1010,42 @@ msgstr ""
 "Arbeitsmappe (.xlsx)\" und laden Sie sie erneut hoch."
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid ""
+"The filter could not be saved (%(reasons)s). Close this panel, open the "
+"filter again and retry."
+msgstr ""
+"Der Filter konnte nicht gespeichert werden (%(reasons)s). Schließen Sie "
+"diesen Bereich, öffnen Sie den Filter erneut und versuchen Sie es noch "
+"einmal."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/image_file_store.esm.js:0
+msgid ""
+"The image could not be loaded (HTTP %(status)s), so it was not copied. "
+"Reload the spreadsheet and try again; if the image was deleted, insert it "
+"again."
+msgstr ""
+"Das Bild konnte nicht geladen werden (HTTP %(status)s) und wurde daher nicht"
+" kopiert. Laden Sie die Tabelle neu und versuchen Sie es erneut; falls das "
+"Bild gelöscht wurde, fügen Sie es erneut ein."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid ""
+"The model %(model)s of this chart could not be loaded, so its technical "
+"names are shown. Check that the module providing this model is still "
+"installed, or insert the chart again from its graph view."
+msgstr ""
+"Das Modell %(model)s dieses Diagramms konnte nicht geladen werden, daher "
+"werden die technischen Namen angezeigt. Prüfen Sie, ob das Modul, das dieses"
+" Modell bereitstellt, noch installiert ist, oder fügen Sie das Diagramm "
+"erneut aus seiner Grafikansicht ein."
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
 msgid ""
 "The user who owns this spreadsheet. The owner can always open, edit, share "
@@ -915,25 +1055,28 @@ msgstr ""
 "öffnen, bearbeiten, teilen und löschen, ebenso wie Tabellen-Manager."
 
 #. module: spreadsheet_oca
-#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_action.esm.js:0
 msgid ""
-"This field allows you to generate tables that its rows are updated with the "
-"filters set in the spreadsheets."
+"This pivot has %(cells)s cells, too many to insert as static values, so it "
+"was inserted as a dynamic pivot. Remove row or column groups before re-"
+"inserting it as static."
 msgstr ""
-"Mit diesem Feld können Sie Tabellen erzeugen, deren Zeilen mit den in den "
-"Tabellen gesetzten Filtern aktualisiert werden."
+"Diese Pivot-Tabelle hat %(cells)s Zellen, zu viele, um sie als statische "
+"Werte einzufügen, daher wurde sie als dynamische Pivot-Tabelle eingefügt. "
+"Entfernen Sie Zeilen- oder Spaltengruppen, bevor Sie sie statisch erneut "
+"einfügen."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Time range"
-msgstr "Zeitraum"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Toggle Dropdown"
-msgstr "Dropdown umschalten"
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid ""
+"This pivot has %(cells)s cells, too many to insert as static values. Re-"
+"insert it as dynamic, or remove row or column groups first."
+msgstr ""
+"Diese Pivot-Tabelle hat %(cells)s Zellen, zu viele, um sie als statische "
+"Werte einzufügen. Fügen Sie sie dynamisch erneut ein oder entfernen Sie "
+"zuerst Zeilen- oder Spaltengruppen."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -950,6 +1093,12 @@ msgstr "Transparente Schlagwörter sind in der Kanban-Ansicht nicht sichtbar"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
 msgid "Type"
 msgstr "Typ"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Type a value and press Enter"
+msgstr "Wert eingeben und Eingabetaste drücken"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
@@ -1011,27 +1160,19 @@ msgid "Website communication history"
 msgstr "Website-Kommunikationsverlauf"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode_id
+msgid ""
+"Where the data goes: a new spreadsheet created for it, or a new sheet of an "
+"existing spreadsheet, whose current sheets stay untouched."
+msgstr ""
+"Wohin die Daten gehen: in eine dafür erstellte neue Tabelle oder in ein "
+"neues Blatt einer bestehenden Tabelle, deren vorhandene Blätter unverändert "
+"bleiben."
+
+#. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Write Access"
 msgstr "Schreibzugriff"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Year"
-msgstr "Jahr"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-msgid "ascending"
-msgstr "aufsteigend"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-msgid "descending"
-msgstr "absteigend"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view

@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 13:52+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish (tr)\n"
 "Language: tr\n"
@@ -15,3 +15,120 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"Averages the most recent numeric values of a range (simple moving average)."
+msgstr ""
+"Bir aralığın en son sayısal değerlerinin ortalamasını alır (basit hareketli "
+"ortalama)."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"How many of the last values to average, e.g. 3. A window larger than the "
+"number of values averages all of them."
+msgstr ""
+"Ortalaması alınacak son değer sayısı, ör. 3. Değer sayısından büyük bir "
+"pencere tüm değerlerin ortalamasını alır."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"Predicts the y value at a given x from a least-squares linear regression of "
+"known data."
+msgstr ""
+"Bilinen verilerin en küçük kareler doğrusal regresyonuna göre verilen bir x "
+"için y değerini tahmin eder."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"Returns the value of the least-squares trend line at a new x. When all "
+"known_x values are identical, returns the average of known_y."
+msgstr ""
+"En küçük kareler eğilim çizgisinin yeni bir x için değerini döndürür. Tüm "
+"known_x değerleri aynıysa known_y ortalamasını döndürür."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid "The known values, e.g. past sales."
+msgstr "Bilinen değerler, ör. geçmiş satışlar."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid "The values to average. Blank and non-numeric cells are skipped."
+msgstr ""
+"Ortalaması alınacak değerler. Boş ve sayısal olmayan hücreler atlanır."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid "The x value to evaluate the trend line at."
+msgstr "Eğilim çizgisinin hesaplanacağı x değeri."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid "The x value to predict y for, e.g. the next month number."
+msgstr "y değerinin tahmin edileceği x değeri, ör. bir sonraki ayın numarası."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid "The x values paired row by row with known_y, e.g. the month numbers."
+msgstr "known_y ile satır satır eşleşen x değerleri, ör. ay numaraları."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"[[FUNCTION_NAME]] cannot fit a trend line because all known_x values are "
+"identical. Use at least two different x values."
+msgstr ""
+"Tüm known_x değerleri aynı olduğu için [[FUNCTION_NAME]] bir eğilim çizgisi "
+"oluşturamıyor. En az iki farklı x değeri kullanın."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid "[[FUNCTION_NAME]] expects a window of at least 1, but got %s."
+msgstr "[[FUNCTION_NAME]] en az 1 olan bir pencere bekliyor, ancak %s aldı."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"[[FUNCTION_NAME]] needs at least 2 rows where both known_x and known_y are "
+"numbers. Blank and non-numeric cells are skipped."
+msgstr ""
+"[[FUNCTION_NAME]], hem known_x hem de known_y değerinin sayı olduğu en az 2 "
+"satıra ihtiyaç duyar. Boş ve sayısal olmayan hücreler atlanır."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"[[FUNCTION_NAME]] needs at least one numeric value in the range. Blank and "
+"non-numeric cells are skipped."
+msgstr ""
+"[[FUNCTION_NAME]] aralıkta en az bir sayısal değere ihtiyaç duyar. Boş ve "
+"sayısal olmayan hücreler atlanır."
+
+#. module: spreadsheet_forecast_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_forecast_oca/static/src/spreadsheet/bundle/forecast_functions.esm.js:0
+msgid ""
+"[[FUNCTION_NAME]]: known_x has %(x_count)s cells but known_y has "
+"%(y_count)s. Select two ranges of the same size so every x value is paired "
+"with its y value."
+msgstr ""
+"[[FUNCTION_NAME]]: known_x %(x_count)s hücre içeriyor, ancak known_y "
+"%(y_count)s hücre içeriyor. Her x değerinin kendi y değeriyle eşleşmesi için"
+" aynı boyutta iki aralık seçin."

@@ -1,12 +1,13 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Component, onWillStart, onWillUpdateProps, useRef, proxy} from "@odoo/owl";
+import {Component, onWillStart, onWillUpdateProps, proxy} from "@odoo/owl";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
+import {ODOO_AGGREGATORS} from "@spreadsheet/pivot/pivot_helpers";
 import {_t} from "@web/core/l10n/translation";
 import {formatDate} from "@web/core/l10n/dates";
+import {useRef} from "@web/owl2/utils";
 import {useService} from "@web/core/utils/hooks";
-import {ODOO_AGGREGATORS} from "@spreadsheet/pivot/pivot_helpers";
 
 const {DateTime} = luxon;
 const {PivotTitleSection, PivotLayoutConfigurator} = spreadsheet.components;
@@ -14,16 +15,23 @@ const {useLocalStore, PivotSidePanelStore} = spreadsheet.stores;
 const {sidePanelRegistry, topbarMenuRegistry, pivotSidePanelRegistry} =
     spreadsheet.registries;
 
+/**
+ * Largest pivot (rows x data columns) inserted as static values, the limit
+ * o-spreadsheet itself applies to "Data > Re-insert static pivot": beyond it,
+ * writing one formula per cell freezes the browser.
+ */
+export const MAX_STATIC_PIVOT_CELLS = 500000;
+
+/** Rows proposed by the list panel for a list no cell shows yet: a list view page. */
+const DEFAULT_LIST_ROWS = 80;
+
 topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
     let sequence = 53;
     const lists = env.model.getters.getListIds().map((listId, index) => ({
         id: `data_source_list_${listId}`,
         name: env.model.getters.getListDisplayName(listId),
         sequence: sequence++,
-        execute: (child_env) => {
-            child_env.model.dispatch("SELECT_ODOO_LIST", {listId: listId});
-            child_env.openSidePanel("ListPanel", {listId});
-        },
+        execute: (child_env) => child_env.openSidePanel("ListPanel", {listId}),
         icon: "spreadsheet_oca.ListIcon",
         separator: index === env.model.getters.getListIds().length - 1,
     }));
@@ -49,36 +57,66 @@ export class PivotLayoutConfiguratorWithAggregators extends PivotLayoutConfigura
 
 export class PivotTitleSectionInsertion extends PivotTitleSection {
     get cogWheelMenuItems() {
-        const res = super.cogWheelMenuItems;
-        res.push(
+        // Like core "Data > Re-insert pivot": a pivot in error has no table.
+        const isValid = (env) =>
+            env.model.getters.getPivot(this.props.pivotId).isValid();
+        return [
+            ...super.cogWheelMenuItems,
             {
+                id: "pivot_panel_reinsert_dynamic",
                 name: _t("Re-insert Dynamic"),
                 icon: "o-spreadsheet-Icon.INSERT_PIVOT",
                 execute: (env) => this.reinsertTable(env, "dynamic"),
+                isVisible: isValid,
             },
             {
+                id: "pivot_panel_reinsert_static",
                 name: _t("Re-insert Static"),
                 icon: "o-spreadsheet-Icon.INSERT_PIVOT",
                 execute: (env) => this.reinsertTable(env, "static"),
-            }
-        );
-        return res;
+                isVisible: isValid,
+            },
+        ];
     }
+    /**
+     * Insert the pivot at the selected cell.
+     *
+     * Dynamic: a single =PIVOT() formula spilling the collapsed layout, which
+     * follows the data and the global filters. Static: one PIVOT.HEADER /
+     * PIVOT.VALUE formula per cell of the fully expanded layout.
+     *
+     * @param {Object} env spreadsheet env
+     * @param {"dynamic"|"static"} mode
+     */
     reinsertTable(env, mode) {
-        const zone = env.model.getters.getSelectedZone();
-        const table = env.model.getters
-            .getPivot(this.props.pivotId)
-            .getTableStructure()
-            .export();
+        const {getters} = env.model;
+        const pivotId = this.props.pivotId;
+        const pivot = getters.getPivot(pivotId);
+        const table =
+            mode === "dynamic"
+                ? pivot.getCollapsedTableStructure()
+                : pivot.getExpandedTableStructure();
+        if (mode === "static" && table.numberOfCells > MAX_STATIC_PIVOT_CELLS) {
+            env.notifyUser({
+                type: "warning",
+                sticky: true,
+                text: _t(
+                    "This pivot has %(cells)s cells, too many to insert as static values. Re-insert it as dynamic, or remove row or column groups first.",
+                    {cells: table.numberOfCells}
+                ),
+            });
+            return;
+        }
+        const zone = getters.getSelectedZone();
         env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
-            pivotId: this.props.pivotId,
-            table,
+            pivotId,
+            table: table.export(),
             col: zone.left,
             row: zone.top,
-            sheetId: env.model.getters.getActiveSheetId(),
+            sheetId: getters.getActiveSheetId(),
             pivotMode: mode,
         });
-        env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
+        env.model.dispatch("REFRESH_PIVOT", {id: pivotId});
     }
 }
 
@@ -87,25 +125,22 @@ export class PivotPanelDisplay extends Component {
         this.dialog = useService("dialog");
         this.store = useLocalStore(PivotSidePanelStore, this.props.pivotId);
         this.pivotPanelRef = useRef("pivotPanel");
-        onWillStart(this.modelData.bind(this));
-        onWillUpdateProps(this.modelData.bind(this));
+        // Owl 3 calls onWillStart callbacks with the component scope as first
+        // argument (and onWillUpdateProps ones with the next props): never
+        // hand them a method whose first parameter means something else.
+        onWillStart(() => this.modelData(this.props));
+        onWillUpdateProps((nextProps) => this.modelData(nextProps));
     }
-    async modelData() {
-        this.PivotDataSource = this.env.model.getters.getPivot(this.props.pivotId);
+    /**
+     * @param {Object} props the next props when the panel switches to another
+     *   pivot, the current ones on start
+     */
+    async modelData(props) {
+        this.PivotDataSource = this.env.model.getters.getPivot(props.pivotId);
         this.modelLabel = await this.PivotDataSource.getModelLabel();
     }
     get domain() {
         return new Domain(this.store.definition.domain).toString();
-    }
-    get sortInformation() {
-        const sortedColumn = this.store.definition.sortedColumn;
-        const orderTranslate =
-            sortedColumn.order === "asc" ? _t("ascending") : _t("descending");
-        const measure = this.store.definition.measures.find(
-            (m) => m.fieldName === sortedColumn.measure
-        );
-        const label = this.PivotDataSource.getMeasure(measure.id).displayName;
-        return `${label} (${orderTranslate})`;
     }
     get lastUpdate() {
         const lastUpdate = this.PivotDataSource.lastUpdate;
@@ -126,8 +161,15 @@ export class PivotPanelDisplay extends Component {
     updateDimensions(dimensions) {
         this.store.update(dimensions);
     }
+    /**
+     * @param {String} domain the domain confirmed in DomainSelectorDialog,
+     *   which is always a string
+     */
     onSelectDomain(domain) {
-        this.store.update({domain});
+        // Stored like the pivots inserted from a pivot view (and like core
+        // export): a list when the domain can be evaluated without a context,
+        // the string otherwise so uid / context_today() stay dynamic.
+        this.store.update({domain: new Domain(domain).toJson()});
     }
     getScrollableContainerEl() {
         return this.pivotPanelRef.el;
@@ -147,7 +189,7 @@ PivotPanelDisplay.components = {
     PivotTitleSectionInsertion,
     PivotLayoutConfiguratorWithAggregators,
 };
-PivotPanelDisplay.properties = {
+PivotPanelDisplay.props = {
     pivotId: String,
 };
 
@@ -175,14 +217,45 @@ export class ListPanelDisplay extends Component {
     setup() {
         this.state = proxy({listRows: undefined});
         this.dialog = useService("dialog");
-        onWillStart(this.modelData.bind(this));
-        onWillUpdateProps(this.modelData.bind(this));
+        // Owl 3 calls onWillStart callbacks with the component scope as first
+        // argument: a bound modelData received that scope as its props and
+        // asked the list plugin for the data source of list "undefined".
+        onWillStart(() => this.modelData(this.props));
+        onWillUpdateProps((nextProps) => this.modelData(nextProps));
     }
-    async modelData() {
+    /**
+     * @param {Object} props the next props when the panel switches to another
+     *   list, the current ones on start
+     */
+    async modelData(props) {
         this.ListDataSource = await this.env.model.getters.getAsyncListDataSource(
-            this.props.listId
+            props.listId
         );
         this.modelLabel = await this.ListDataSource.getModelLabel();
+        if (this.rowsListId !== props.listId) {
+            this.rowsListId = props.listId;
+            this.state.listRows = String(await this.getDefaultListRows());
+        }
+    }
+    /**
+     * Rows proposed for "Insert list": as many as the spreadsheet already
+     * shows for this list, otherwise one list view page of its records.
+     *
+     * @returns {Promise<Number>}
+     */
+    async getDefaultListRows() {
+        if (this.ListDataSource.maxPosition > 0) {
+            return this.ListDataSource.maxPosition;
+        }
+        try {
+            const count = await this.ListDataSource.getRecordsCount();
+            return Math.min(count, DEFAULT_LIST_ROWS) || DEFAULT_LIST_ROWS;
+        } catch (error) {
+            // An invalid model or domain: the panel still opens, the user
+            // picks the number of rows.
+            console.warn("spreadsheet_oca: could not count the list records", error);
+            return DEFAULT_LIST_ROWS;
+        }
     }
     get domain() {
         return new Domain(this.props.listDefinition.domain).toString();
@@ -203,30 +276,48 @@ export class ListPanelDisplay extends Component {
             onConfirm: this.onSelectDomain.bind(this),
         });
     }
+    /**
+     * @param {String} domain the domain confirmed in DomainSelectorDialog
+     */
     onSelectDomain(domain) {
         this.env.model.dispatch("UPDATE_ODOO_LIST_DOMAIN", {
             listId: this.props.listId,
-            domain: new Domain(domain).toList(),
+            // Not toList(): evaluated without a context it throws on uid and
+            // freezes context_today() to today's date. The list data source
+            // evaluates the stored domain with the user context on each load.
+            domain: new Domain(domain).toJson(),
         });
     }
-    async insertList() {
+    /**
+     * Insert the list at the selected cell as one dynamic =ODOO.LIST() formula,
+     * the same form "Add to spreadsheet" uses from a list view.
+     */
+    insertList() {
         const listId = this.props.listId;
-        const zone = this.env.model.getters.getSelectedZone();
-        const dataSource = await this.env.model.getters.getAsyncListDataSource(listId);
-        const totalRows = parseInt(this.state.listRows, 10) || dataSource.maxPosition;
-        const list = this.env.model.getters.getListDefinition(listId);
-        const sheetId = this.env.model.getters.getActiveSheetId();
-        const columns = list.columns.map((name) => ({
-            name,
-            type: dataSource.getField(name).type,
-        }));
+        const {getters} = this.env.model;
+        const linesNumber = parseInt(this.state.listRows, 10);
+        if (!(linesNumber > 0)) {
+            // Without a size, =ODOO.LIST() would spill every record under a
+            // header-only table: ask for the number instead.
+            this.env.notifyUser({
+                type: "warning",
+                sticky: false,
+                text: _t(
+                    "Enter the number of rows to insert (1 or more) in Rows, then click Insert list again."
+                ),
+            });
+            return;
+        }
+        const zone = getters.getSelectedZone();
         this.env.model.dispatch("RE_INSERT_ODOO_LIST_WITH_TABLE", {
-            sheetId: sheetId,
+            sheetId: getters.getActiveSheetId(),
             col: zone.left,
             row: zone.top,
-            id: listId,
-            linesNumber: totalRows,
-            columns: columns,
+            listId,
+            linesNumber,
+            // Columns are {name, string?} objects since saas-19.3.
+            columns: getters.getListDefinition(listId).columns,
+            mode: "dynamic",
         });
     }
     delete() {
@@ -265,11 +356,9 @@ ListPanel.components = {
     ListPanelDisplay,
 };
 
+const LIST_PANEL = {title: _t("List information"), Body: ListPanel};
 try {
-    sidePanelRegistry.add("ListPanel", {title: "List information", Body: ListPanel});
+    sidePanelRegistry.add("ListPanel", LIST_PANEL);
 } catch {
-    sidePanelRegistry.replace("ListPanel", {
-        title: "List information",
-        Body: ListPanel,
-    });
+    sidePanelRegistry.replace("ListPanel", LIST_PANEL);
 }

@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Dutch (nl)\n"
 "Language: nl\n"
@@ -15,3 +15,75 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Absolute variance between current and previous."
+msgstr "Absoluut verschil tussen de huidige en de vorige waarde."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Arrow + percentage showing growth direction."
+msgstr "Pijl + percentage die de groeirichting aangeeft."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Current value."
+msgstr "Huidige waarde."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Current year value."
+msgstr "Waarde van dit jaar."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Last year value."
+msgstr "Waarde van vorig jaar."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Percentage change between current and previous values."
+msgstr "Procentuele verandering tussen de huidige en de vorige waarde."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Previous value."
+msgstr "Vorige waarde."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid "Year-over-year growth percentage."
+msgstr "Groeipercentage ten opzichte van vorig jaar."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid ""
+"[[FUNCTION_NAME]] cannot compute a percentage change because the previous "
+"value is 0. Use ODOO.VARIANCE for the absolute difference, or wrap the "
+"formula in IFERROR to show a fallback value."
+msgstr ""
+"[[FUNCTION_NAME]] kan geen procentuele verandering berekenen omdat de vorige"
+" waarde 0 is. Gebruik ODOO.VARIANCE voor het absolute verschil, of zet de "
+"formule in IFERROR om een alternatieve waarde te tonen."
+
+#. module: spreadsheet_period_comparison_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_period_comparison_oca/static/src/spreadsheet/bundle/period_comparison.esm.js:0
+msgid ""
+"[[FUNCTION_NAME]] cannot compute a year-over-year change because last year's"
+" value is 0. Use ODOO.VARIANCE for the absolute difference, or wrap the "
+"formula in IFERROR to show a fallback value."
+msgstr ""
+"[[FUNCTION_NAME]] kan geen verandering ten opzichte van vorig jaar berekenen"
+" omdat de waarde van vorig jaar 0 is. Gebruik ODOO.VARIANCE voor het "
+"absolute verschil, of zet de formule in IFERROR om een alternatieve waarde "
+"te tonen."

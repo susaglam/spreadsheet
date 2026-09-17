@@ -3,9 +3,13 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {_t} from "@web/core/l10n/translation";
 
-// o-spreadsheet: arg/toNumber live in spreadsheet.helpers; functionRegistry in spreadsheet.registries
+// In o-spreadsheet, error classes are top-level exports, arg/formatValue/toNumber live in
+// spreadsheet.helpers and functionRegistry in spreadsheet.registries.
+// Errors are returned as EvaluationError subclasses (like core DIVIDE): a plain Error
+// is reported as "An unexpected error occurred" and logged as a crash.
+const {DivisionByZeroError} = spreadsheet;
 const {functionRegistry} = spreadsheet.registries;
-const {arg, toNumber} = spreadsheet.helpers;
+const {arg, formatValue, toNumber} = spreadsheet.helpers;
 
 /**
  * ODOO.PERCENT_CHANGE(current, previous)
@@ -17,14 +21,18 @@ functionRegistry.add("ODOO.PERCENT_CHANGE", {
         arg("current (number)", _t("Current value.")),
         arg("previous (number)", _t("Previous value.")),
     ],
+    category: "Odoo",
     returns: ["NUMBER"],
     compute: function (current, previous) {
-        const curr = toNumber(current);
-        const prev = toNumber(previous);
+        // Text arguments such as "1,5" are parsed with the spreadsheet locale.
+        const curr = toNumber(current, this.locale);
+        const prev = toNumber(previous, this.locale);
         if (prev === 0) {
             if (curr === 0) return 0;
-            throw new Error(
-                _t("Cannot compute percentage change from a previous value of zero.")
+            return new DivisionByZeroError(
+                _t(
+                    "[[FUNCTION_NAME]] cannot compute a percentage change because the previous value is 0. Use ODOO.VARIANCE for the absolute difference, or wrap the formula in IFERROR to show a fallback value."
+                )
             );
         }
         return ((curr - prev) / Math.abs(prev)) * 100;
@@ -41,9 +49,10 @@ functionRegistry.add("ODOO.VARIANCE", {
         arg("current (number)", _t("Current value.")),
         arg("previous (number)", _t("Previous value.")),
     ],
+    category: "Odoo",
     returns: ["NUMBER"],
     compute: function (current, previous) {
-        return toNumber(current) - toNumber(previous);
+        return toNumber(current, this.locale) - toNumber(previous, this.locale);
     },
 });
 
@@ -57,14 +66,20 @@ functionRegistry.add("ODOO.GROWTH_ARROW", {
         arg("current (number)", _t("Current value.")),
         arg("previous (number)", _t("Previous value.")),
     ],
+    category: "Odoo",
     returns: ["STRING"],
     compute: function (current, previous) {
-        const curr = toNumber(current);
-        const prev = toNumber(previous);
+        const curr = toNumber(current, this.locale);
+        const prev = toNumber(previous, this.locale);
         if (prev === 0) return "—";
-        const change = ((curr - prev) / Math.abs(prev)) * 100;
+        const change = (curr - prev) / Math.abs(prev);
         const arrow = change > 0 ? "▲" : change < 0 ? "▼" : "—";
-        return `${arrow} ${Math.abs(change).toFixed(1)}%`;
+        // The percentage uses the spreadsheet decimal separator (▲ 12,5% in nl/tr/de).
+        const percentage = formatValue(Math.abs(change), {
+            format: "0.0%",
+            locale: this.locale,
+        });
+        return `${arrow} ${percentage}`;
     },
 });
 
@@ -78,15 +93,16 @@ functionRegistry.add("ODOO.YOY", {
         arg("current (number)", _t("Current year value.")),
         arg("last_year (number)", _t("Last year value.")),
     ],
+    category: "Odoo",
     returns: ["NUMBER"],
     compute: function (current, lastYear) {
-        const curr = toNumber(current);
-        const prev = toNumber(lastYear);
+        const curr = toNumber(current, this.locale);
+        const prev = toNumber(lastYear, this.locale);
         if (prev === 0) {
             if (curr === 0) return 0;
-            throw new Error(
+            return new DivisionByZeroError(
                 _t(
-                    "Cannot compute year-over-year change from a previous value of zero."
+                    "[[FUNCTION_NAME]] cannot compute a year-over-year change because last year's value is 0. Use ODOO.VARIANCE for the absolute difference, or wrap the formula in IFERROR to show a fallback value."
                 )
             );
         }
