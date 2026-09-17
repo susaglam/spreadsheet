@@ -18,7 +18,7 @@
         }
     }
     .o_spreadsheet_oca_name_warning {
-        font-size: 1.0em;
+        font-size: 1em;
     }
 
     .o_spreadsheet_oca_datasource_panel {
@@ -73,7 +73,7 @@
     .o_control_panel_breadcrumbs,
     .o_breadcrumb {
         min-height: 0;
-        font-size: 1.0em;
+        font-size: 1em;
         align-items: center;
     }
     // slight gap so the breadcrumb path + spreadsheet name sit nicely
@@ -91,6 +91,6 @@
     .o_spreadsheet_oca_name {
         // keep it looking like a breadcrumb label, not a form input
         font-weight: 500;
-        font-size: 1.0em;
+        font-size: 1em;
     }
 }

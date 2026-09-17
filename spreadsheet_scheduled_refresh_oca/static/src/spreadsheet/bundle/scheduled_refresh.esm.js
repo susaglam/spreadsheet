@@ -19,7 +19,7 @@ patch(SpreadsheetRenderer.prototype, {
         }
         // Stable reference so unsubscribe() removes exactly this handler.
         this._onScheduledRefresh = (payload) => {
-            // subscribe() keys by TYPE, so every open sheet gets this event;
+            // The bus subscription is keyed by TYPE, so every open sheet gets this event;
             // only react when the record id matches (payload.id is an int from
             // Python; this.props.res_id is a Number → === matches).
             if (payload && payload.id === this.props.res_id) {

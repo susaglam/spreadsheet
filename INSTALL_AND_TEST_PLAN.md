@@ -1,7 +1,8 @@
 # Kurulum ve Test Plani — 26 Modul
 
-Bu doküman Odoo saas-19.2 üzerinde modülleri sırayla kurup test etmek için
-adım adım talimatları içerir. Her modül için:
+Bu doküman Odoo saas-19.2 üzerinde modülleri sırayla kurup test etmek için adım adım
+talimatları içerir. Her modül için:
+
 - **Durum**: ⬜ bekliyor / 🟡 devam ediyor / ✅ başarılı / ❌ başarısız
 - **Senaryo**: örnek bir kullanım akışı
 - **Adımlar**: test için tıklanacak butonlar/girilecek değerler
@@ -12,15 +13,19 @@ adım adım talimatları içerir. Her modül için:
 ## Hazırlık — Kurulum Öncesi
 
 ### A. Modülleri Addons Path'e Ekle
-1. Odoo `odoo.conf` dosyasında `addons_path` içine `e:/Odoo-2026-modules/spreadsheet` yolunu ekle
+
+1. Odoo `odoo.conf` dosyasında `addons_path` içine `e:/Odoo-2026-modules/spreadsheet`
+   yolunu ekle
 2. Odoo sunucusunu yeniden başlat: `./odoo-bin -c odoo.conf --dev=all`
 
 ### B. Apps Listesini Güncelle
+
 3. Odoo arayüzünde **Uygulamalar** menüsüne gir
 4. Arama kutusuna tıkla, filtreleri temizle
 5. **Uygulamalar listesini güncelle** butonuna tıkla (dev mode aktifse)
 
 ### C. Python Bağımlılıkları
+
 6. Terminal: `pip install requests` (webhook için)
 7. wkhtmltopdf kurulu olmalı (`wkhtmltopdf --version` ile kontrol)
 
@@ -31,11 +36,13 @@ adım adım talimatları içerir. Her modül için:
 ### 1. ⬜ `spreadsheet_template_oca` — Şablon Sistemi
 
 **Install**:
+
 - Uygulamalar > "Spreadsheet Template" ara > **Kur**
 
 **Senaryo**: Satış için bir şablon oluştur, ondan yeni spreadsheet üret.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **New** ile yeni e-tablo oluştur, adını "Aylık Satış Şablonu" yap
 2. Bir kaç hücreye veri gir (A1="Müşteri", B1="Tutar", vs.)
 3. E-tabloyu aç, topbar'da **File** > **Save as Template** tıkla
@@ -46,6 +53,7 @@ adım adım talimatları içerir. Her modül için:
 8. Dialog açılır, **Create Spreadsheet** tıkla
 
 **Beklenen**:
+
 - ✅ Yeni e-tablo açılır, içinde aynı veriler var
 - ✅ Şablon kartında `usage_count` arttı (1)
 - ✅ Template Manager olmayan kullanıcı sadece görebilir, düzenleyemez
@@ -55,11 +63,13 @@ adım adım talimatları içerir. Her modül için:
 ### 2. ⬜ `spreadsheet_forecast_oca` — Tahmin Fonksiyonları
 
 **Install**:
+
 - Uygulamalar > "Spreadsheet Forecast" ara > **Kur**
 
 **Senaryo**: Geçmiş aylık satış verisinden gelecek ayı tahmin et.
 
 **Test Adımları**:
+
 1. Yeni bir e-tablo aç
 2. A sütununa 1-5 (aylar), B sütununa satışlar: 100, 120, 150, 180, 210 gir
 3. C1'e formül: `=ODOO.FORECAST(6, B1:B5, A1:A5)` — Ay 6'nın tahmini
@@ -67,6 +77,7 @@ adım adım talimatları içerir. Her modül için:
 5. C3'e formül: `=ODOO.MOVING_AVG(B1:B5, 3)` — Son 3 ayın ortalaması
 
 **Beklenen**:
+
 - ✅ C1 ≈ 240 (linear trend devamı)
 - ✅ C2 ≈ 360 (Ay 10 tahmini)
 - ✅ C3 = 180 (150+180+210)/3
@@ -76,11 +87,13 @@ adım adım talimatları içerir. Her modül için:
 ### 3. ⬜ `spreadsheet_period_comparison_oca` — Dönem Karşılaştırma
 
 **Install**:
+
 - Uygulamalar > "Period Comparison" ara > **Kur**
 
 **Senaryo**: Bu ay vs geçen ay karşılaştır.
 
 **Test Adımları**:
+
 1. Yeni e-tablo aç
 2. A1=1500 (bu ay), A2=1200 (geçen ay)
 3. B1'e: `=ODOO.PERCENT_CHANGE(A1, A2)` — % değişim
@@ -89,6 +102,7 @@ adım adım talimatları içerir. Her modül için:
 6. B4'e: `=ODOO.YOY(A1, A2)` — yıllık büyüme
 
 **Beklenen**:
+
 - ✅ B1 = 25 (yüzde 25 artış)
 - ✅ B2 = 300
 - ✅ B3 = "▲ 25.0%"
@@ -101,6 +115,7 @@ adım adım talimatları içerir. Her modül için:
 ### 4. ⬜ `spreadsheet_pdf_report_oca` — PDF Raporu
 
 **Install**:
+
 - Uygulamalar > "Spreadsheet PDF" ara > **Kur**
 
 **Ön-koşul**: wkhtmltopdf kurulu olmalı.
@@ -108,6 +123,7 @@ adım adım talimatları içerir. Her modül için:
 **Senaryo**: Türkçe karakterli bir e-tabloyu PDF olarak indir.
 
 **Test Adımları**:
+
 1. Yeni e-tablo aç, adını "Satış Raporu Mart" yap
 2. Hücrelere Türkçe içerik gir:
    - A1="Müşteri" (kalın yap)
@@ -121,6 +137,7 @@ adım adım talimatları içerir. Her modül için:
 6. **File** > **Download PDF** tıkla
 
 **Beklenen**:
+
 - ✅ PDF indirir
 - ✅ PDF'te Türkçe karakterler doğru görünür (ç,ğ,ı,ö,ş,ü,Ç,Ğ,İ,Ö,Ş,Ü)
 - ✅ Formül sonucu (3800) PDF'te görünür, formül metni değil
@@ -135,11 +152,13 @@ adım adım talimatları içerir. Her modül için:
 ### 5. ⬜ `spreadsheet_kpi_alert_oca` — KPI Uyarı
 
 **Install**:
+
 - Uygulamalar > "Spreadsheet KPI Alert" ara > **Kur**
 
 **Senaryo**: Satış hedefi aşıldığında uyarı al.
 
 **Test Adımları**:
+
 1. Yeni e-tablo aç, B2 hücresine `1500` gir (literal değer)
 2. E-tabloyu kaydet
 3. Spreadsheet form görünümünde **KPI Alerts** smart button'a tıkla (0 göstermeli)
@@ -155,9 +174,11 @@ adım adım talimatları içerir. Her modül için:
 7. Discuss inbox'u aç
 8. E-tablo chatter'ını kontrol et
 9. B2'yi 500'e değiştir ve tekrar kaydet
-10. **Settings > Technical > Scheduled Actions** > "KPI Alert Threshold Check" > **Run Manually**
+10. **Settings > Technical > Scheduled Actions** > "KPI Alert Threshold Check" > **Run
+    Manually**
 
 **Beklenen**:
+
 - ✅ Test Alert sonrası bildirim geldi (Discuss ve chatter)
 - ✅ Cron çalıştıktan sonra, B2=500 için uyarı çıkmadı (cooldown)
 - ✅ `last_value` alanı 500'e güncellendi (JS sync)
@@ -167,11 +188,13 @@ adım adım talimatları içerir. Her modül için:
 ### 6. ⬜ `spreadsheet_version_history_oca` — Versiyon Geçmişi
 
 **Install**:
+
 - Uygulamalar > "Version History" ara > **Kur**
 
 **Senaryo**: E-tabloyu kaydet, değiştir, geri al.
 
 **Test Adımları**:
+
 1. Yeni e-tablo aç, A1="Version 1", B1=100 gir, kaydet
 2. Form view'da **New Snapshot** smart button'a tıkla
 3. Spreadsheet'i aç, A1'i "Version 2" yap, B1'i 200 yap, kaydet
@@ -185,6 +208,7 @@ adım adım talimatları içerir. Her modül için:
 11. Spreadsheet'i aç
 
 **Beklenen**:
+
 - ✅ 2 snapshot oluştu
 - ✅ Visual Diff doğru görünüyor (A1: Version 2 → Version 1, B1: 200 → 100)
 - ✅ Restore sonrası A1="Version 1", B1=100
@@ -196,21 +220,25 @@ adım adım talimatları içerir. Her modül için:
 ### 7. ⬜ `spreadsheet_scheduled_refresh_oca` — Zamanlı Yenileme
 
 **Install**:
+
 - Uygulamalar > "Scheduled Refresh" ara > **Kur**
 
 **Senaryo**: E-tabloyu saatlik otomatik yenile.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **Configuration** > **Refresh Schedules** > **New**
 2. Name: "Saatlik Yenileme"
 3. Spreadsheet: bir dashboard seç (örn. CRM dashboard varsa)
 4. Interval: 1 Hours
 5. Kaydet — `next_refresh` otomatik hesaplandı
 6. Başka bir tarayıcı sekmesinde o spreadsheet'i aç (devtools açık, Network > WS)
-7. Odoo'da **Settings > Technical > Scheduled Actions** > "Scheduled Data Refresh" > **Run Manually**
+7. Odoo'da **Settings > Technical > Scheduled Actions** > "Scheduled Data Refresh" >
+   **Run Manually**
 8. Devtools'ta WS frame'i kontrol et
 
 **Beklenen**:
+
 - ✅ `last_refresh` güncellendi
 - ✅ `next_refresh` +1 saat ileriye kaydı
 - ✅ Açık browser'da WebSocket üzerinden `refresh_data` notification geldi
@@ -220,6 +248,7 @@ adım adım talimatları içerir. Her modül için:
 ### 8. ⬜ `spreadsheet_email_report_oca` — E-posta Raporu
 
 **Install**:
+
 - Uygulamalar > "Email Report" ara > **Kur**
 
 **Ön-koşul**: Odoo'da outgoing mail server ayarlanmış olmalı.
@@ -227,6 +256,7 @@ adım adım talimatları içerir. Her modül için:
 **Senaryo**: Haftalık e-tablo raporu e-posta ile gönder.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **Configuration** > **Email Reports** > **New**
 2. Name: "Haftalık Satış Raporu"
 3. Spreadsheet: herhangi bir e-tablo
@@ -240,6 +270,7 @@ adım adım talimatları içerir. Her modül için:
 11. **Settings > Technical > Email > Emails** > son mesajı kontrol et
 
 **Beklenen**:
+
 - ✅ `last_sent` doldu, `send_count = 1`
 - ✅ E-posta ekinde `<spreadsheet-adı>.xlsx` dosyası var
 - ✅ `next_send` 1 hafta ileriye kaydırıldı
@@ -251,11 +282,13 @@ adım adım talimatları içerir. Her modül için:
 ### 9. ⬜ `spreadsheet_public_share_oca` — Genel Paylaşım
 
 **Install**:
+
 - Uygulamalar > "Public Share" ara > **Kur**
 
 **Senaryo**: Parola korumalı bir paylaşım linki oluştur.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **Configuration** > **Public Share Links** > **New**
 2. Name: "Müşteri Raporu"
 3. Spreadsheet: Veri içeren bir e-tablo seç
@@ -270,6 +303,7 @@ adım adım talimatları içerir. Her modül için:
 12. Download butonuna tıkla
 
 **Beklenen**:
+
 - ✅ Parola yanlış girilirse erişim verilmedi
 - ✅ Doğru parola ile HTML render göründü (stiller, merge'ler, renkler)
 - ✅ XLSX indirdi
@@ -281,6 +315,7 @@ adım adım talimatları içerir. Her modül için:
 ### 10. ⬜ `spreadsheet_api_oca` — REST API
 
 **Install**:
+
 - Uygulamalar > "Spreadsheet REST API" ara > **Kur**
 
 **Ön-koşul**: `pip install requests`
@@ -288,6 +323,7 @@ adım adım talimatları içerir. Her modül için:
 **Senaryo**: API token oluştur, curl ile dış erişim test et, webhook tetikle.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **Configuration** > **API Tokens** > **New**
 2. Name: "Test Integration"
 3. User: Admin
@@ -311,6 +347,7 @@ adım adım talimatları içerir. Her modül için:
 13. webhook.site'de POST isteği görünmeli
 
 **Beklenen**:
+
 - ✅ İlk 5 istek 200 dönüyor, JSON ile spreadsheet listesi
 - ✅ 6. istek 429 (Rate Limited) dönüyor
 - ✅ webhook.site'de POST geldi (event=update)
@@ -323,11 +360,13 @@ adım adım talimatları içerir. Her modül için:
 ### 11. ⬜ `spreadsheet_accounting_formulas_oca` — Muhasebe Formülleri
 
 **Install**:
+
 - Uygulamalar > "Accounting Formulas" ara > **Kur** (account modülü kurulu olmalı)
 
 **Senaryo**: Hesap bakiyesini e-tabloda göster.
 
 **Test Adımları**:
+
 1. Accounting'de en azından 1 hesap olduğundan emin ol (örn. kod 600000)
 2. Yeni e-tablo aç
 3. A1'e: `=ODOO.BALANCE("600000")` — 0 gösterir başta
@@ -337,6 +376,7 @@ adım adım talimatları içerir. Her modül için:
 7. DevTools'ta Network sekmesinde RPC isteklerini kontrol et
 
 **Beklenen**:
+
 - ✅ Başta 0, sonra gerçek bakiye
 - ✅ `account_account/spreadsheet_get_account_balance` RPC çağrısı görünür
 - ✅ Network'te her farklı hesap kodu için yeni istek (cache çalışıyor)
@@ -346,6 +386,7 @@ adım adım talimatları içerir. Her modül için:
 ### 12. ⬜ `spreadsheet_multicompany_oca` — Çok-Şirket Konsolidasyon
 
 **Install**:
+
 - Uygulamalar > "Multi-Company Consolidation" ara > **Kur**
 
 **Ön-koşul**: Birden fazla şirket kurulu olmalı, her birinde hesaplar olmalı.
@@ -353,6 +394,7 @@ adım adım talimatları içerir. Her modül için:
 **Senaryo**: 2 şirketin bilançosunu konsolide et.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **Consolidation** menüsüne git > **New**
 2. Name: "Grup Konsolidasyon Q1"
 3. Companies: 2+ şirket seç
@@ -362,6 +404,7 @@ adım adım talimatları içerir. Her modül için:
 7. Header'da **Generate Consolidated Report** butonuna tıkla
 
 **Beklenen**:
+
 - ✅ Yeni e-tablo açılır, adı "Consolidated Report - Grup Konsolidasyon Q1"
 - ✅ Sütunlar: Account | Code | Şirket1 | Şirket2 | Eliminations | Consolidated
 - ✅ Para birimi dönüşümü uygulandı
@@ -374,11 +417,13 @@ adım adım talimatları içerir. Her modül için:
 ### 13. ⬜ `spreadsheet_contract_sla_oca` — Sözleşme ve SLA
 
 **Install**:
+
 - Uygulamalar > "Contract & SLA Tracker" ara > **Kur**
 
 **Senaryo**: Yakında bitecek bir sözleşme oluştur, hatırlatma tetikle.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **Contracts & SLA** > **New**
 2. Name: "Test Sözleşmesi 2026"
 3. Partner: Bir müşteri
@@ -393,11 +438,13 @@ adım adım talimatları içerir. Her modül için:
     - Name: "Response", Target: 4, Actual: 6, Unit: hours
 11. Kaydet
 12. Status "Expiring Soon" olmalı (25 gün kaldı, reminder 30 gün)
-13. **Settings > Technical > Scheduled Actions** > "Contract Expiry Check" > **Run Manually**
+13. **Settings > Technical > Scheduled Actions** > "Contract Expiry Check" > **Run
+    Manually**
 14. Inbox'u ve mail.mail kayıtlarını kontrol et
 15. **Calendar** view'a geç
 
 **Beklenen**:
+
 - ✅ Status "Expiring Soon" olarak hesaplandı
 - ✅ SLA satırlarından Uptime "Breached", Response "Breached" (target < actual)
 - ✅ Cron sonrası e-posta gönderildi + activity oluştu
@@ -407,11 +454,13 @@ adım adım talimatları içerir. Her modül için:
 
 ## Faz 8 — Hazır Dashboardlar (9 modül)
 
-Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (crm, sale, hr, vs.) kuruluysa otomatik yüklenir.
+Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (crm, sale, hr, vs.)
+kuruluysa otomatik yüklenir.
 
 ### 14-22. ⬜ Tüm Dashboard Modülleri
 
 **Modul Listesi**:
+
 1. `spreadsheet_dashboard_crm_oca` — CRM Pipeline
 2. `spreadsheet_dashboard_sale_oca` — Sales
 3. `spreadsheet_dashboard_hr_oca` — HR Overview
@@ -424,7 +473,9 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 10. `spreadsheet_quote_conversion_oca` — Quote Conversion
 
 **Ortak Test Adımları** (her dashboard için tekrarla):
-1. İlgili bağımlı modül kurulu mu kontrol et (crm, sale, hr, stock, website_sale, mass_mailing, loyalty vs.)
+
+1. İlgili bağımlı modül kurulu mu kontrol et (crm, sale, hr, stock, website_sale,
+   mass_mailing, loyalty vs.)
 2. Bağımlı app kuruluysa, ilgili dashboard modülü **otomatik kurulmuş** olmalı
 3. **Dashboards** app'ini aç (spreadsheet_dashboard)
 4. Solda yeni dashboard'un listede görünmesi gerek
@@ -434,12 +485,15 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 8. Bir scorecard'a tıkla — drill-down pivotu açmalı
 
 **Beklenen** (her biri için):
+
 - ✅ 4 scorecard + 1 chart + 1 liste görünür
 - ✅ Period filter değişince veriler güncellenir
 - ✅ Drill-down ile kaynak model açılır
 
 **Notlar**:
-- ❗ Eğer bir dashboard boş görünürse → ilgili modelde gerçek veri yok demek (demo data yükleyebilirsiniz)
+
+- ❗ Eğer bir dashboard boş görünürse → ilgili modelde gerçek veri yok demek (demo data
+  yükleyebilirsiniz)
 - ❗ Loyalty dashboard'unun görünmesi için `loyalty` modülü kurulu olmalı
 - ❗ Campaign ROI için `mass_mailing` kurulu olmalı
 
@@ -448,13 +502,16 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 ### 23. ⬜ `spreadsheet_vendor_scorecard_oca` — Tedarikçi Karnesi
 
 **Install**:
+
 - Uygulamalar > "Vendor Scorecard" ara > **Kur** (purchase_stock bağımlılığı)
 
 **Senaryo**: Otomatik scorecard hesapla ve incele.
 
 **Test Adımları**:
+
 1. En az 1 tedarikçiden onaylanmış purchase order olmalı
-2. **Settings > Technical > Scheduled Actions** > "Compute Vendor Scorecards" > **Run Manually**
+2. **Settings > Technical > Scheduled Actions** > "Compute Vendor Scorecards" > **Run
+   Manually**
 3. **Purchase** > **Reporting** > **Vendor Scorecards** menüsüne git
 4. Scorecard kayıtları görünmeli
 5. Bir kayda tıkla, detayları incele
@@ -462,6 +519,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 7. Dashboards > "Vendor Performance" aç
 
 **Beklenen**:
+
 - ✅ Her vendor için aylık scorecard satırı oluştu
 - ✅ score, on_time_delivery_rate, quality_rate, avg_lead_time dolu
 - ✅ Renk kodlaması doğru
@@ -474,6 +532,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 ### 24. ⬜ `spreadsheet_record_rule_oca` — Yetki Bazlı Filtreleme
 
 **Install**:
+
 - Uygulamalar > "Dashboard Record Rule Filter" ara > **Kur**
 
 **Ön-koşul**: En az bir dashboard kurulu olmalı (örn. Sales).
@@ -481,6 +540,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 **Senaryo**: Satış Temsilcisi sadece kendi siparişlerini görsün.
 
 **Test Adımları**:
+
 1. **Spreadsheets** > **Configuration** > **Dashboard Data Filters** > **New**
 2. Name: "Sadece Kendi Siparişleri"
 3. Dashboard: "Sales"
@@ -495,6 +555,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 12. Admin olarak giriş yap, dashboard'u tekrar aç → tüm siparişler görünmeli
 
 **Beklenen**:
+
 - ✅ Sales User dashboard'da kendi verilerini görüyor
 - ✅ Admin tüm verileri görüyor (kural sadece sales user'a uygulandı)
 - ✅ Geçersiz domain yazılırsa save'de hata verir
@@ -504,6 +565,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 ### 25. ⬜ `spreadsheet_portal_dashboard_oca` — Portal Dashboard
 
 **Install**:
+
 - Uygulamalar > "Portal Dashboard" ara > **Kur**
 
 **Ön-koşul**: En az bir dashboard kurulu, en az bir portal user olmalı.
@@ -511,14 +573,17 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 **Senaryo**: Bayi portal'inde Satış dashboard'unu paylaş.
 
 **Test Adımları**:
-1. Contacts'ta bir partner oluştur, "Portal User" yap (Contacts > Partner > Action > Grant Portal Access)
+
+1. Contacts'ta bir partner oluştur, "Portal User" yap (Contacts > Partner > Action >
+   Grant Portal Access)
 2. **Spreadsheets** > **Configuration** > **Portal Dashboards** > **New**
 3. Dashboard: "Sales" dashboard'unu seç
 4. Name: otomatik doldu
 5. Description: "Satış performansınız"
 6. Partner Ids: yukarıda oluşturduğun portal partner'ı seç
 7. Kaydet
-8. Portal partner'ın email'i ile giriş yap (veya admin olarak `/web/session/logout` + portal login)
+8. Portal partner'ın email'i ile giriş yap (veya admin olarak `/web/session/logout` +
+   portal login)
 9. `/my` sayfasına git
 10. "Dashboards" kartı görünmeli
 11. "Dashboards" kartına tıkla → `/my/dashboards` listesi
@@ -526,6 +591,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 13. Read-only HTML render görünmeli
 
 **Beklenen**:
+
 - ✅ Portal home'da "Dashboards" kartı var
 - ✅ `/my/dashboards`'ta sadece bu partner'a atanmış dashboard görünür
 - ✅ Dashboard detay sayfası HTML tablosu ile render
@@ -538,6 +604,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 ### 26. ⬜ Unified Settings Test
 
 **Adımlar**:
+
 1. **Settings** menüsüne git
 2. Sol panelde "Spreadsheet" sekmesini ara (tüm ayarlar modülleri kuruluysa)
 3. Şu blokları görmen gerek:
@@ -555,6 +622,7 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 ### 27. ⬜ Translation Test
 
 **Adımlar**:
+
 1. **Preferences** > kullanıcı dilini **Türkçe** yap
 2. Sayfayı yenile
 3. Menüleri kontrol et:
@@ -568,10 +636,12 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 ### 28. ⬜ Permission / User Card Test
 
 **Adımlar**:
+
 1. **Settings** > **Users & Companies** > **Users** > Admin'i aç
 2. "Other" sekmesinde "Spreadsheet" category'sini ara
 3. Dropdown: **No Access / User / Manager** seçenekleri olmalı
-4. "Manager" seçildiğinde "Template Manager" checkbox'u otomatik seçili olmalı (implied_ids)
+4. "Manager" seçildiğinde "Template Manager" checkbox'u otomatik seçili olmalı
+   (implied_ids)
 5. Yeni bir test user oluştur, sadece "User" seviyesinde
 6. Giriş yap → Template düzenleyememeli
 7. Manager olarak tekrar oluştur → tüm erişim
@@ -580,39 +650,39 @@ Bu modüllerin tümü **auto-install** özelliğine sahip — bağımlı app (cr
 
 ## İlerleme Takibi
 
-| # | Modul | Durum | Notlar |
-|:-:|:------|:-----:|:-------|
-| 1 | spreadsheet_template_oca | ⬜ | |
-| 2 | spreadsheet_forecast_oca | ⬜ | |
-| 3 | spreadsheet_period_comparison_oca | ⬜ | |
-| 4 | spreadsheet_pdf_report_oca | ⬜ | |
-| 5 | spreadsheet_kpi_alert_oca | ⬜ | |
-| 6 | spreadsheet_version_history_oca | ⬜ | |
-| 7 | spreadsheet_scheduled_refresh_oca | ⬜ | |
-| 8 | spreadsheet_email_report_oca | ⬜ | |
-| 9 | spreadsheet_public_share_oca | ⬜ | |
-| 10 | spreadsheet_api_oca | ⬜ | |
-| 11 | spreadsheet_accounting_formulas_oca | ⬜ | |
-| 12 | spreadsheet_multicompany_oca | ⬜ | |
-| 13 | spreadsheet_contract_sla_oca | ⬜ | |
-| 14-22 | 9x dashboard modülü | ⬜ | |
-| 23 | spreadsheet_vendor_scorecard_oca | ⬜ | |
-| 24 | spreadsheet_record_rule_oca | ⬜ | |
-| 25 | spreadsheet_portal_dashboard_oca | ⬜ | |
-| 26 | Unified Settings Test | ⬜ | |
-| 27 | Translation Test | ⬜ | |
-| 28 | Permission Test | ⬜ | |
+|   #   | Modul                               | Durum | Notlar |
+| :---: | :---------------------------------- | :---: | :----- |
+|   1   | spreadsheet_template_oca            |  ⬜   |        |
+|   2   | spreadsheet_forecast_oca            |  ⬜   |        |
+|   3   | spreadsheet_period_comparison_oca   |  ⬜   |        |
+|   4   | spreadsheet_pdf_report_oca          |  ⬜   |        |
+|   5   | spreadsheet_kpi_alert_oca           |  ⬜   |        |
+|   6   | spreadsheet_version_history_oca     |  ⬜   |        |
+|   7   | spreadsheet_scheduled_refresh_oca   |  ⬜   |        |
+|   8   | spreadsheet_email_report_oca        |  ⬜   |        |
+|   9   | spreadsheet_public_share_oca        |  ⬜   |        |
+|  10   | spreadsheet_api_oca                 |  ⬜   |        |
+|  11   | spreadsheet_accounting_formulas_oca |  ⬜   |        |
+|  12   | spreadsheet_multicompany_oca        |  ⬜   |        |
+|  13   | spreadsheet_contract_sla_oca        |  ⬜   |        |
+| 14-22 | 9x dashboard modülü                 |  ⬜   |        |
+|  23   | spreadsheet_vendor_scorecard_oca    |  ⬜   |        |
+|  24   | spreadsheet_record_rule_oca         |  ⬜   |        |
+|  25   | spreadsheet_portal_dashboard_oca    |  ⬜   |        |
+|  26   | Unified Settings Test               |  ⬜   |        |
+|  27   | Translation Test                    |  ⬜   |        |
+|  28   | Permission Test                     |  ⬜   |        |
 
 ---
 
 ## Ortak Hata Senaryoları
 
-| Hata | Muhtemel Neden | Çözüm |
-|------|----------------|-------|
-| "Module not installable" | requests paketi eksik | `pip install requests` |
-| Asset yüklenmiyor | Cache eski | Browser cache temizle, `--dev=all` ile restart |
-| PDF boş çıkıyor | wkhtmltopdf yok | `apt install wkhtmltopdf` |
-| Portal user AccessDenied | Portal Dashboard modülü kurulu değil | Kur |
-| Webhook gelmiyor | Cron aktif değil | Scheduled Actions'tan kontrol |
-| Cell value 0 dönüyor (accounting formula) | İlk yükleme, cache boş | 1-2 saniye bekle |
-| "KeyError: users" | groups alanı "users" olarak isimlendirilmiş, artik "group_ids" | XML görünümünü düzelt |
+| Hata                                      | Muhtemel Neden                                                 | Çözüm                                          |
+| ----------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------- |
+| "Module not installable"                  | requests paketi eksik                                          | `pip install requests`                         |
+| Asset yüklenmiyor                         | Cache eski                                                     | Browser cache temizle, `--dev=all` ile restart |
+| PDF boş çıkıyor                           | wkhtmltopdf yok                                                | `apt install wkhtmltopdf`                      |
+| Portal user AccessDenied                  | Portal Dashboard modülü kurulu değil                           | Kur                                            |
+| Webhook gelmiyor                          | Cron aktif değil                                               | Scheduled Actions'tan kontrol                  |
+| Cell value 0 dönüyor (accounting formula) | İlk yükleme, cache boş                                         | 1-2 saniye bekle                               |
+| "KeyError: users"                         | groups alanı "users" olarak isimlendirilmiş, artik "group_ids" | XML görünümünü düzelt                          |

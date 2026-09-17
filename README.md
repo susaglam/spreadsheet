@@ -11,6 +11,16 @@
 
 spreadsheet
 
+## saas-19.4 branches
+
+The `saas-19.4` branch and its `saas-19.4-*` work branches target Odoo saas-19.4 only
+(OCA publishes no saas-19.4 branch). On these branches GitHub Actions runs the
+pre-commit checks. The `test` workflow is not enabled for them because the OCA CI
+images only exist for 19.0; the Python, tour and hoot tests are run on a saas-19.4
+test instance before each push, with a fresh install (`-i` with demo data) and an
+upgrade of a database installed from the previous state (`-u`), both with
+`--test-enable`.
+
 <!-- /!\ do not modify below this line -->
 
 <!-- prettier-ignore-start -->

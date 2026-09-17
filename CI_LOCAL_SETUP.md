@@ -1,6 +1,8 @@
 # Yerel CI — OCA Botlari Ev Bilgisayarinda
 
-Bu belge, OCA'nin GitHub PR'larinda gordugun botlarin (pre-commit, pylint-odoo, prettier, eslint, ruff) kendi modullerinde **yerel olarak** nasil calistirilacagini gosterir.
+Bu belge, OCA'nin GitHub PR'larinda gordugun botlarin (pre-commit, pylint-odoo,
+prettier, eslint, ruff) kendi modullerinde **yerel olarak** nasil calistirilacagini
+gosterir.
 
 ## Neden?
 
@@ -51,7 +53,8 @@ cp e:/Odoo-2026-modules/spreadsheet/checklog-odoo.cfg \
    e:/your-custom-modules-repo/
 ```
 
-Not: Custom repo'lariniz varsa **OCA standardi konfigurasyonlar** yeterli. Versiyon `branch` parametresini module'un hedefine gore degistir: `19.0`, `saas-19.2`, `18.0`.
+Not: Custom repo'lariniz varsa **OCA standardi konfigurasyonlar** yeterli. Versiyon
+`branch` parametresini module'un hedefine gore degistir: `19.0`, `saas-19.2`, `18.0`.
 
 ### 4. Pre-commit Hook'larini Kur
 
@@ -94,19 +97,20 @@ git commit --no-verify
 
 ## Botlarin Kontrol Ettikleri
 
-| Hook | Nedir | Ne Bulur |
-|------|-------|----------|
-| **prettier** | Kod formatlayici | JSON/JS/XML icin tutarsiz indent, uzun satirlar, trailing newline |
-| **eslint** | JS linter | ES6 syntax hatalari, unused vars, import sirasi |
-| **pylint-odoo** | Odoo ozel pylint | `_()` yerine `self.env._()` (W8161), missing-manifest-dependency, method-inheritability (E8148) |
-| **ruff** | Hizli Python linter | PEP8, unused imports, shadowed names |
-| **check-merge-conflict** | Git marker'lari | `<<<<<<<` conflict marker'larini algilar |
-| **mixed-line-ending** | CRLF/LF | Satir sonu karistirmasini fix eder |
-| **odoo-pre-commit-hooks** | Odoo-specific | XML schema, field types, manifest formati |
+| Hook                      | Nedir               | Ne Bulur                                                                                        |
+| ------------------------- | ------------------- | ----------------------------------------------------------------------------------------------- |
+| **prettier**              | Kod formatlayici    | JSON/JS/XML icin tutarsiz indent, uzun satirlar, trailing newline                               |
+| **eslint**                | JS linter           | ES6 syntax hatalari, unused vars, import sirasi                                                 |
+| **pylint-odoo**           | Odoo ozel pylint    | `_()` yerine `self.env._()` (W8161), missing-manifest-dependency, method-inheritability (E8148) |
+| **ruff**                  | Hizli Python linter | PEP8, unused imports, shadowed names                                                            |
+| **check-merge-conflict**  | Git marker'lari     | `<<<<<<<` conflict marker'larini algilar                                                        |
+| **mixed-line-ending**     | CRLF/LF             | Satir sonu karistirmasini fix eder                                                              |
+| **odoo-pre-commit-hooks** | Odoo-specific       | XML schema, field types, manifest formati                                                       |
 
 ## Bizim Custom Modullerimize Uygulama Senaryosu
 
-Eger spreadsheet_template_oca, spreadsheet_api_oca vs. moduellerini **ayri bir GitHub repo** olarak paylasmak istersen:
+Eger spreadsheet_template_oca, spreadsheet_api_oca vs. moduellerini **ayri bir GitHub
+repo** olarak paylasmak istersen:
 
 ```bash
 # Yeni repo'da
@@ -168,17 +172,18 @@ manifestoo --select-addons-dir . check-dev-status
 
 ## Troubleshoot
 
-| Hata | Cozum |
-|------|-------|
-| `pre-commit: command not found` | Python Scripts dir'i PATH'e ekle |
-| `prettier not found` | `npm install -g prettier` veya repo'da `npm install` |
-| `pylint: unknown option value` | .pylintrc dosyasi eski pylint surumuyle uyumsuz — OCA maintainer-tools'tan en guncel sablon |
-| Sinir yavas | Ilk calisma hook environment'lari indirir; subsequent runs hizli. `.cache/pre-commit` dizini bunlari tutar. |
-| CRLF vs LF | Windows'ta `git config core.autocrlf false` ve `.gitattributes` dosyasi ile LF enforce |
+| Hata                            | Cozum                                                                                                       |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `pre-commit: command not found` | Python Scripts dir'i PATH'e ekle                                                                            |
+| `prettier not found`            | `npm install -g prettier` veya repo'da `npm install`                                                        |
+| `pylint: unknown option value`  | .pylintrc dosyasi eski pylint surumuyle uyumsuz — OCA maintainer-tools'tan en guncel sablon                 |
+| Sinir yavas                     | Ilk calisma hook environment'lari indirir; subsequent runs hizli. `.cache/pre-commit` dizini bunlari tutar. |
+| CRLF vs LF                      | Windows'ta `git config core.autocrlf false` ve `.gitattributes` dosyasi ile LF enforce                      |
 
 ## Ipucu
 
-`pre-commit` calistiginda hatalari **auto-fix** ediyor genelde. Sonra git'te degisiklikleri gormek icin `git diff`. Auto-fixed dosyalari tekrar stage etmeyi unutma:
+`pre-commit` calistiginda hatalari **auto-fix** ediyor genelde. Sonra git'te
+degisiklikleri gormek icin `git diff`. Auto-fixed dosyalari tekrar stage etmeyi unutma:
 
 ```bash
 pre-commit run --all-files   # Fix'ler uygulanir
