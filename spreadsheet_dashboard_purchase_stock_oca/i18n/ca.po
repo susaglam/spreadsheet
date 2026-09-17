@@ -31,44 +31,14 @@ msgstr ""
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid " days"
-msgstr "dies"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount"
-msgstr "Import"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount Purchased"
-msgstr "Import comprat"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average Order"
-msgstr "Mitjana d'ordres"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average order"
-msgstr "Comanda mitjana"
+msgid "% On time deliveries by vendor"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Buyer"
 msgstr "Comprador"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Category"
-msgstr "Categoria"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -85,18 +55,6 @@ msgstr "Actiu"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to confirm"
-msgstr "Dies per confirmar"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to receive"
-msgstr "Dies per rebre"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "KPI"
 msgstr "KPI"
 
@@ -109,32 +67,14 @@ msgstr "Rebuts tardans"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Lead Time to Receive"
-msgstr "Temps de lliurament per rebre"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Opened"
-msgstr "Obert"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Order"
-msgstr "Ordre"
+msgid "On time deliveries"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Ordered"
 msgstr "Encarregat"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Orders"
-msgstr "Comandes"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -162,32 +102,8 @@ msgstr "Categoria del producte"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_stock_oca.spreadsheet_dashboard_purchase
-msgid "Purchase"
-msgstr "Compres"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Purchased"
-msgstr "Comprat"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Qty Ordered"
-msgstr "Qtat demanada"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Quantity ordered"
-msgstr "Quantitat encarregada"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "RFQ"
-msgstr "RFQ"
+msgid "Purchase Receipts"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -204,50 +120,8 @@ msgstr "Programat el"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Buyers"
-msgstr "Els millors compradors"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Countries"
-msgstr "Principals països"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Orders"
-msgstr "Comandes principals"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Product Categories"
-msgstr "Principals categories de productes"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Products"
-msgstr "Productes Top"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top RFQs"
-msgstr "Principals RFQ"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Vendors"
-msgstr "Principals venedors"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Total Untaxed"
-msgstr "Total sense impostos"
+msgid "Supplier service level"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -264,14 +138,86 @@ msgstr "Proveïdor "
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "last period"
-msgstr "darrer període"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "since last period"
 msgstr "des de l'últim període"
+
+#~ msgid " days"
+#~ msgstr "dies"
+
+#~ msgid "Amount"
+#~ msgstr "Import"
+
+#~ msgid "Amount Purchased"
+#~ msgstr "Import comprat"
+
+#~ msgid "Average Order"
+#~ msgstr "Mitjana d'ordres"
+
+#~ msgid "Average order"
+#~ msgstr "Comanda mitjana"
+
+#~ msgid "Category"
+#~ msgstr "Categoria"
+
+#~ msgid "Days to confirm"
+#~ msgstr "Dies per confirmar"
+
+#~ msgid "Days to receive"
+#~ msgstr "Dies per rebre"
+
+#~ msgid "Lead Time to Receive"
+#~ msgstr "Temps de lliurament per rebre"
+
+#~ msgid "Opened"
+#~ msgstr "Obert"
+
+#~ msgid "Order"
+#~ msgstr "Ordre"
+
+#~ msgid "Orders"
+#~ msgstr "Comandes"
+
+#~ msgid "Purchase"
+#~ msgstr "Compres"
+
+#~ msgid "Purchased"
+#~ msgstr "Comprat"
+
+#~ msgid "Qty Ordered"
+#~ msgstr "Qtat demanada"
+
+#~ msgid "Quantity ordered"
+#~ msgstr "Quantitat encarregada"
+
+#~ msgid "RFQ"
+#~ msgstr "RFQ"
+
+#~ msgid "Top Buyers"
+#~ msgstr "Els millors compradors"
+
+#~ msgid "Top Countries"
+#~ msgstr "Principals països"
+
+#~ msgid "Top Orders"
+#~ msgstr "Comandes principals"
+
+#~ msgid "Top Product Categories"
+#~ msgstr "Principals categories de productes"
+
+#~ msgid "Top Products"
+#~ msgstr "Productes Top"
+
+#~ msgid "Top RFQs"
+#~ msgstr "Principals RFQ"
+
+#~ msgid "Top Vendors"
+#~ msgstr "Principals venedors"
+
+#~ msgid "Total Untaxed"
+#~ msgstr "Total sense impostos"
+
+#~ msgid "last period"
+#~ msgstr "darrer període"
 
 #, python-format
 #~ msgid "Purchase Analysis by Partner Country"

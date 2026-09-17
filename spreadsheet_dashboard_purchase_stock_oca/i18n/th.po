@@ -23,44 +23,14 @@ msgstr ""
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid " days"
-msgstr "วัน"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount"
-msgstr "จำนวน"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount Purchased"
-msgstr "จำนวนเงินที่ซื้อ"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average Order"
-msgstr "คำสั่งโดยเฉลี่ย"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average order"
-msgstr "การสั่งซื้อเฉลี่ย"
+msgid "% On time deliveries by vendor"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Buyer"
 msgstr "ผู้ซื้อ"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Category"
-msgstr "หมวดหมู่"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -77,18 +47,6 @@ msgstr "ปัจจุบัน"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to confirm"
-msgstr "วันที่จะยืนยัน"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to receive"
-msgstr "วันที่จะได้รับ"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "KPI"
 msgstr "KPI"
 
@@ -101,32 +59,14 @@ msgstr "ใบเสร็จรับเงินล่าช้า"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Lead Time to Receive"
-msgstr "ระยะเวลาในการรับ"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Opened"
-msgstr "เปิดแล้ว"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Order"
-msgstr "คำสั่ง"
+msgid "On time deliveries"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Ordered"
 msgstr "สั่งแล้ว"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Orders"
-msgstr "คำสั่ง"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -154,32 +94,8 @@ msgstr "หมวดหมู่สินค้า"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_stock_oca.spreadsheet_dashboard_purchase
-msgid "Purchase"
-msgstr "สั่งซื้อ"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Purchased"
-msgstr "ซื้อแล้ว"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Qty Ordered"
-msgstr "จำนวนคำสั่ง"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Quantity ordered"
-msgstr "จำนวนที่สั่ง"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "RFQ"
-msgstr "ใบแจ้งขอใบเสนอราคา"
+msgid "Purchase Receipts"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -196,50 +112,8 @@ msgstr "กำหนดเวลาไว้"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Buyers"
-msgstr "ผู้ซื้อยอดนิยม"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Countries"
-msgstr "ประเทศยอดนิยม"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Orders"
-msgstr "คำสั่งซื้อยอดนิยม"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Product Categories"
-msgstr "หมวดหมู่สินค้ายอดนิยม"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Products"
-msgstr "สินค้ายอดนิยม"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top RFQs"
-msgstr "RFQ ยอดนิยม"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Vendors"
-msgstr "ผู้จำหน่ายยอดนิยม"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Total Untaxed"
-msgstr "ไม่รวมภาษีทั้งหมด"
+msgid "Supplier service level"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -256,14 +130,86 @@ msgstr "ผู้ขาย"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "last period"
-msgstr "ช่วงสุดท้าย"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "since last period"
 msgstr "ตั้งแต่ช่วงที่แล้ว"
+
+#~ msgid " days"
+#~ msgstr "วัน"
+
+#~ msgid "Amount"
+#~ msgstr "จำนวน"
+
+#~ msgid "Amount Purchased"
+#~ msgstr "จำนวนเงินที่ซื้อ"
+
+#~ msgid "Average Order"
+#~ msgstr "คำสั่งโดยเฉลี่ย"
+
+#~ msgid "Average order"
+#~ msgstr "การสั่งซื้อเฉลี่ย"
+
+#~ msgid "Category"
+#~ msgstr "หมวดหมู่"
+
+#~ msgid "Days to confirm"
+#~ msgstr "วันที่จะยืนยัน"
+
+#~ msgid "Days to receive"
+#~ msgstr "วันที่จะได้รับ"
+
+#~ msgid "Lead Time to Receive"
+#~ msgstr "ระยะเวลาในการรับ"
+
+#~ msgid "Opened"
+#~ msgstr "เปิดแล้ว"
+
+#~ msgid "Order"
+#~ msgstr "คำสั่ง"
+
+#~ msgid "Orders"
+#~ msgstr "คำสั่ง"
+
+#~ msgid "Purchase"
+#~ msgstr "สั่งซื้อ"
+
+#~ msgid "Purchased"
+#~ msgstr "ซื้อแล้ว"
+
+#~ msgid "Qty Ordered"
+#~ msgstr "จำนวนคำสั่ง"
+
+#~ msgid "Quantity ordered"
+#~ msgstr "จำนวนที่สั่ง"
+
+#~ msgid "RFQ"
+#~ msgstr "ใบแจ้งขอใบเสนอราคา"
+
+#~ msgid "Top Buyers"
+#~ msgstr "ผู้ซื้อยอดนิยม"
+
+#~ msgid "Top Countries"
+#~ msgstr "ประเทศยอดนิยม"
+
+#~ msgid "Top Orders"
+#~ msgstr "คำสั่งซื้อยอดนิยม"
+
+#~ msgid "Top Product Categories"
+#~ msgstr "หมวดหมู่สินค้ายอดนิยม"
+
+#~ msgid "Top Products"
+#~ msgstr "สินค้ายอดนิยม"
+
+#~ msgid "Top RFQs"
+#~ msgstr "RFQ ยอดนิยม"
+
+#~ msgid "Top Vendors"
+#~ msgstr "ผู้จำหน่ายยอดนิยม"
+
+#~ msgid "Total Untaxed"
+#~ msgstr "ไม่รวมภาษีทั้งหมด"
+
+#~ msgid "last period"
+#~ msgstr "ช่วงสุดท้าย"
 
 #, python-format
 #~ msgid "Purchase Analysis by Partner Country"

@@ -227,6 +227,12 @@ msgid "Contributors Groups"
 msgstr "Gruppo contributori"
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid "Count"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
 msgid "Create spreadsheet"
 msgstr "Crea foglio di calcolo"
@@ -400,6 +406,12 @@ msgid "Group"
 msgstr "Gruppo"
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Group by"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__has_message
 msgid "Has Message"
 msgstr "Ha un messaggio"
@@ -555,6 +567,12 @@ msgstr "Supervisore"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Measure"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 msgid "Menu Items"
 msgstr "Menu elementi"
@@ -650,6 +668,12 @@ msgstr "Tipo prossima attività"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
 msgid "Next Revision"
 msgstr "Revisione successiva"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "None"
+msgstr ""
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
@@ -950,6 +974,15 @@ msgid ""
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid ""
+"The model %(model)s of this chart could not be loaded, so its technical "
+"names are shown. Check that the module providing this model is still "
+"installed, or insert the chart again from its graph view."
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
 msgid ""
 "The user who owns this spreadsheet. The owner can always open, edit, share "
@@ -1081,86 +1114,3 @@ msgstr "non aggiornato"
 #: model:ir.model,name:spreadsheet_oca.model_ir_websocket
 msgid "websocket message handling"
 msgstr "gestione messaggio websocket"
-
-#~ msgid "Are you sure you want to delete this pivot?"
-#~ msgstr "Si è sicuri di voler cancellare questa pivot?"
-
-#~ msgid "Dimensions"
-#~ msgstr "Dimensioni"
-
-#~ msgid "Insert dynamic pivot"
-#~ msgstr "Inserisci pivot dinamico"
-
-#~ msgid "Insert pivot"
-#~ msgstr "Inserisci pivot"
-
-#~ msgid "Measures"
-#~ msgstr "Misure"
-
-#~ msgid "Pivot name"
-#~ msgstr "Nome pivot"
-
-#~ msgid "Add sheet to spreadsheet"
-#~ msgstr "Aggiungi scheda a foglIo di calcolo"
-
-#~ msgid "Can Have Dynamic Cols"
-#~ msgstr "Può avere colonne dinamiche"
-
-#, python-format
-#~ msgid "Comparisons in pivot are not supprted"
-#~ msgstr "Le comparazioni nella vista pivot non sono supportate"
-
-#, python-format
-#~ msgid "Confirm"
-#~ msgstr "Conferma"
-
-#, python-format
-#~ msgid "Duplicated groupbys in pivot are not supprted"
-#~ msgstr "Nelle viste pivot Non sono supportati i raggruppamenti duplicati"
-
-#~ msgid "Dynamic Cols"
-#~ msgstr "Colonne dinamiche"
-
-#~ msgid "Dynamic Columns"
-#~ msgstr "Colonne dinamiche"
-
-#~ msgid "Number Of Cols"
-#~ msgstr "Numero di colonne"
-
-#~ msgid "Number of Columns"
-#~ msgstr "Numero di colonne"
-
-#, python-format
-#~ msgid "Odoo Spreadsheet"
-#~ msgstr "Foglio di calcolo Odoo"
-
-#, python-format
-#~ msgid "Select the quantity of rows"
-#~ msgstr "Selezionare la quantità di righe"
-
-#~ msgid ""
-#~ "This field allows you to generate tables that its cols are updated with "
-#~ "the filters set in the spreadsheets."
-#~ msgstr ""
-#~ "Questo campo consente di generare tabelle le cui colonne sono aggiornate "
-#~ "con i filtri impostati nei fogli di lavoro."
-
-#~ msgid "Data"
-#~ msgstr "Dati"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Ultima modifica il"
-
-#, python-format
-#~ msgid "Upload XLSX"
-#~ msgstr "Carica XLSX"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dinamico"
-
-#~ msgid ""
-#~ "This field allows you to generate tables that are updated with the "
-#~ "filters set in the spreadsheets."
-#~ msgstr ""
-#~ "Questo campo consente di generare tabelle che sono aggiornate con i "
-#~ "filtri impostati nel foglio di lavoro."

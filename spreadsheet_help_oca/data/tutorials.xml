@@ -5,7 +5,10 @@
     <!-- Tutorial records: pre-seeded, user can add video URLs and screenshots later.
          Cards whose Related Module is not installed are shown as unavailable
          (spreadsheet.tutorial.is_available). Wording changes on existing
-         databases are applied by migrations/saas~19.4.1.0.2. -->
+         databases are applied by migrations/saas~19.4.1.0.2.
+         NEW records need no migration: noupdate only protects records whose
+         xmlid already exists, so `-u` creates a card an older database lacks
+         (odoo/tools/convert.py _tag_record; test_update_creates_missing_cards). -->
 
     <record id="tutorial_quick_start" model="spreadsheet.tutorial">
         <field name="name">🚀 Quick Start — Create your first spreadsheet</field>
@@ -180,6 +183,30 @@
         <field name="duration_minutes">3</field>
         <field name="difficulty">beginner</field>
         <field name="tags">dashboard,crm,pipeline</field>
+    </record>
+
+    <record id="tutorial_dashboard_purchase" model="spreadsheet.tutorial">
+        <field name="name">🤝 Vendor purchases dashboard</field>
+        <field name="sequence">145</field>
+        <field
+            name="description"
+        >See where your purchase budget goes: amount purchased, orders, order lines, quantity ordered and days to receive, each compared with the previous period, plus top vendors, orders, products and buyers and sourcing by country, with period, country, vendor and buyer filters. Use it for vendor reviews and before price negotiations. Example: set the Vendor filter to your main supplier to see how much you bought from them in the last 90 days. Dashboards > Purchases, for Purchase administrators.</field>
+        <field name="module_name">spreadsheet_dashboard_purchase_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,purchase,vendor</field>
+    </record>
+
+    <record id="tutorial_dashboard_purchase_stock" model="spreadsheet.tutorial">
+        <field name="name">🚚 Purchase receipts dashboard</field>
+        <field name="sequence">147</field>
+        <field
+            name="description"
+        >Check how reliably vendors deliver: the supplier service level (quantity received versus ordered) and the on-time delivery rate compared with the previous period, the on-time percentage per vendor and the receipts that are running late. Use it to chase late goods before they hold up sales or production. Example: filter on one product category to see which vendor is late most often, then open Late Receipts to follow up. Dashboards > Purchases, for Inventory administrators; needs the Purchase and Inventory apps.</field>
+        <field name="module_name">spreadsheet_dashboard_purchase_stock_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,purchase,receipt,delivery,vendor</field>
     </record>
 
     <record id="tutorial_dashboard_stock" model="spreadsheet.tutorial">

@@ -168,6 +168,28 @@ msgid "Cancel"
 msgstr "Annuleren"
 
 #. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_purchase_stock
+msgid ""
+"Check how reliably vendors deliver: the supplier service level (quantity "
+"received versus ordered) and the on-time delivery rate compared with the "
+"previous period, the on-time percentage per vendor and the receipts that are"
+" running late. Use it to chase late goods before they hold up sales or "
+"production. Example: filter on one product category to see which vendor is "
+"late most often, then open Late Receipts to follow up. Dashboards > "
+"Purchases, for Inventory administrators; needs the Purchase and Inventory "
+"apps."
+msgstr ""
+"Controleer hoe betrouwbaar leveranciers leveren: het "
+"leveranciersserviceniveau (ontvangen ten opzichte van bestelde hoeveelheid) "
+"en het percentage tijdige leveringen, vergeleken met de vorige periode, het "
+"percentage tijdige leveringen per leverancier en de ontvangsten die te laat "
+"zijn. Gebruik het om late goederen na te jagen voordat ze de verkoop of "
+"productie ophouden. Voorbeeld: filter op één productcategorie om te zien "
+"welke leverancier het vaakst te laat is en open daarna Te late ontvangsten "
+"om op te volgen. Dashboards > Inkoop, voor voorraadbeheerders; vereist de "
+"apps Inkoop en Voorraad."
+
+#. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_consolidation
 msgid ""
 "Combine the balance sheets of several companies into one consolidated "
@@ -603,6 +625,26 @@ msgstr ""
 "periode), de maandelijkse omzettrend en de laatste orders. Filters op "
 "verkoper en productcategorie. Verschijnt automatisch onder Dashboards > "
 "Verkoop."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_purchase
+msgid ""
+"See where your purchase budget goes: amount purchased, orders, order lines, "
+"quantity ordered and days to receive, each compared with the previous "
+"period, plus top vendors, orders, products and buyers and sourcing by "
+"country, with period, country, vendor and buyer filters. Use it for vendor "
+"reviews and before price negotiations. Example: set the Vendor filter to "
+"your main supplier to see how much you bought from them in the last 90 days."
+" Dashboards > Purchases, for Purchase administrators."
+msgstr ""
+"Zie waar je inkoopbudget naartoe gaat: ingekocht bedrag, orders, "
+"orderregels, bestelde hoeveelheid en dagen tot ontvangst, elk vergeleken met"
+" de vorige periode, plus de beste leveranciers, orders, producten en "
+"inkopers en de inkoop per land, met filters op periode, land, leverancier en"
+" inkoper. Gebruik het bij leveranciersbeoordelingen en vóór "
+"prijsonderhandelingen. Voorbeeld: zet het filter Leverancier op je "
+"belangrijkste leverancier om te zien hoeveel je de afgelopen 90 dagen bij "
+"die leverancier hebt ingekocht. Dashboards > Inkoop, voor inkoopbeheerders."
 
 #. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_campaign_roi
@@ -1352,9 +1394,19 @@ msgid "🚀 Quick Start — Create your first spreadsheet"
 msgstr "🚀 Snelstart — Maak je eerste spreadsheet"
 
 #. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_purchase_stock
+msgid "🚚 Purchase receipts dashboard"
+msgstr "🚚 Dashboard inkoopontvangsten"
+
+#. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_ecommerce
 msgid "🛒 eCommerce dashboard"
 msgstr "🛒 Dashboard e-commerce"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_purchase
+msgid "🤝 Vendor purchases dashboard"
+msgstr "🤝 Dashboard inkoop per leverancier"
 
 #. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_customer_segmentation

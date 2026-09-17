@@ -23,44 +23,14 @@ msgstr ""
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid " days"
-msgstr "ngày"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount"
-msgstr "Số tiền"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount Purchased"
-msgstr "Số tiền đã mua"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average Order"
-msgstr "Đơn hàng trung bình"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average order"
-msgstr "Đơn hàng trung bình"
+msgid "% On time deliveries by vendor"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Buyer"
 msgstr "Bên mua"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Category"
-msgstr "Danh mục"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -77,18 +47,6 @@ msgstr "Hiện tại"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to confirm"
-msgstr "Ngày để xác nhận"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to receive"
-msgstr "Ngày để nhận hàng"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "KPI"
 msgstr "KPI"
 
@@ -101,32 +59,14 @@ msgstr "Phiếu nhập kho trễ"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Lead Time to Receive"
-msgstr "Thời gian nhận hàng"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Opened"
-msgstr "Đã mở"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Order"
-msgstr "Đơn hàng"
+msgid "On time deliveries"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Ordered"
 msgstr "Đã đặt"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Orders"
-msgstr "Đơn hàng"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -154,32 +94,8 @@ msgstr "Danh mục sản phẩm"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_stock_oca.spreadsheet_dashboard_purchase
-msgid "Purchase"
-msgstr "Mua hàng"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Purchased"
-msgstr "Đã mua"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Qty Ordered"
-msgstr "SL đã đặt"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Quantity ordered"
-msgstr "Số lượng đã đặt"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "RFQ"
-msgstr "RFQ"
+msgid "Purchase Receipts"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -196,50 +112,8 @@ msgstr "Đã lên lịch vào"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Buyers"
-msgstr "Bên mua tiêu biểu"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Countries"
-msgstr "Quốc gia tiêu biểu"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Orders"
-msgstr "Đơn hàng tiêu biểu"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Product Categories"
-msgstr "Danh mục sản phẩm tiêu biểu"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Products"
-msgstr "Sản phẩm tiêu biểu"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top RFQs"
-msgstr "Yêu cầu báo giá tiêu biểu"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Vendors"
-msgstr "Nhà cung cấp tiêu biểu"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Total Untaxed"
-msgstr "Tổng trước thuế"
+msgid "Supplier service level"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -256,14 +130,86 @@ msgstr "Nhà cung cấp"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "last period"
-msgstr "kỳ trước"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "since last period"
 msgstr "kể từ kỳ trước"
+
+#~ msgid " days"
+#~ msgstr "ngày"
+
+#~ msgid "Amount"
+#~ msgstr "Số tiền"
+
+#~ msgid "Amount Purchased"
+#~ msgstr "Số tiền đã mua"
+
+#~ msgid "Average Order"
+#~ msgstr "Đơn hàng trung bình"
+
+#~ msgid "Average order"
+#~ msgstr "Đơn hàng trung bình"
+
+#~ msgid "Category"
+#~ msgstr "Danh mục"
+
+#~ msgid "Days to confirm"
+#~ msgstr "Ngày để xác nhận"
+
+#~ msgid "Days to receive"
+#~ msgstr "Ngày để nhận hàng"
+
+#~ msgid "Lead Time to Receive"
+#~ msgstr "Thời gian nhận hàng"
+
+#~ msgid "Opened"
+#~ msgstr "Đã mở"
+
+#~ msgid "Order"
+#~ msgstr "Đơn hàng"
+
+#~ msgid "Orders"
+#~ msgstr "Đơn hàng"
+
+#~ msgid "Purchase"
+#~ msgstr "Mua hàng"
+
+#~ msgid "Purchased"
+#~ msgstr "Đã mua"
+
+#~ msgid "Qty Ordered"
+#~ msgstr "SL đã đặt"
+
+#~ msgid "Quantity ordered"
+#~ msgstr "Số lượng đã đặt"
+
+#~ msgid "RFQ"
+#~ msgstr "RFQ"
+
+#~ msgid "Top Buyers"
+#~ msgstr "Bên mua tiêu biểu"
+
+#~ msgid "Top Countries"
+#~ msgstr "Quốc gia tiêu biểu"
+
+#~ msgid "Top Orders"
+#~ msgstr "Đơn hàng tiêu biểu"
+
+#~ msgid "Top Product Categories"
+#~ msgstr "Danh mục sản phẩm tiêu biểu"
+
+#~ msgid "Top Products"
+#~ msgstr "Sản phẩm tiêu biểu"
+
+#~ msgid "Top RFQs"
+#~ msgstr "Yêu cầu báo giá tiêu biểu"
+
+#~ msgid "Top Vendors"
+#~ msgstr "Nhà cung cấp tiêu biểu"
+
+#~ msgid "Total Untaxed"
+#~ msgstr "Tổng trước thuế"
+
+#~ msgid "last period"
+#~ msgstr "kỳ trước"
 
 #, python-format
 #~ msgid "Purchase Analysis by Partner Country"

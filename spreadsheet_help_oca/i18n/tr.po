@@ -164,6 +164,28 @@ msgid "Cancel"
 msgstr "İptal"
 
 #. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_purchase_stock
+msgid ""
+"Check how reliably vendors deliver: the supplier service level (quantity "
+"received versus ordered) and the on-time delivery rate compared with the "
+"previous period, the on-time percentage per vendor and the receipts that are"
+" running late. Use it to chase late goods before they hold up sales or "
+"production. Example: filter on one product category to see which vendor is "
+"late most often, then open Late Receipts to follow up. Dashboards > "
+"Purchases, for Inventory administrators; needs the Purchase and Inventory "
+"apps."
+msgstr ""
+"Tedarikçilerin ne kadar güvenilir teslimat yaptığını kontrol edin: tedarikçi"
+" hizmet seviyesi (sipariş edilene karşı teslim alınan miktar) ve zamanında "
+"teslimat oranı önceki dönemle karşılaştırmalı, tedarikçi başına zamanında "
+"teslimat yüzdesi ve geciken teslim alımlar. Geciken malları, satışı veya "
+"üretimi aksatmadan önce takip etmek için kullanın. Örnek: en sık hangi "
+"tedarikçinin geciktiğini görmek için tek bir ürün kategorisine göre "
+"filtreleyin, ardından takip için Geciken Teslim Alımlar (Late Receipts) "
+"listesini açın. Panolar > Satın Alma, Envanter yöneticileri için; Satın Alma"
+" ve Envanter uygulamalarını gerektirir."
+
+#. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_consolidation
 msgid ""
 "Combine the balance sheets of several companies into one consolidated "
@@ -592,6 +614,27 @@ msgstr ""
 "Adet, Ortalama Sipariş Değeri (önceki dönemle karşılaştırmalı), aylık ciro "
 "trendi ve son siparişler. Satış temsilcisi ve ürün kategorisi filtreleri. "
 "Panolar > Satış altında otomatik olarak görünür."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_purchase
+msgid ""
+"See where your purchase budget goes: amount purchased, orders, order lines, "
+"quantity ordered and days to receive, each compared with the previous "
+"period, plus top vendors, orders, products and buyers and sourcing by "
+"country, with period, country, vendor and buyer filters. Use it for vendor "
+"reviews and before price negotiations. Example: set the Vendor filter to "
+"your main supplier to see how much you bought from them in the last 90 days."
+" Dashboards > Purchases, for Purchase administrators."
+msgstr ""
+"Satın alma bütçenizin nereye gittiğini görün: satın alınan tutar, "
+"siparişler, sipariş satırları, sipariş edilen miktar ve teslim alma süresi "
+"(gün), her biri önceki dönemle karşılaştırmalı; ayrıca en çok alım yapılan "
+"tedarikçiler, siparişler, ürünler ve alıcılar ile ülkelere göre tedarik; "
+"dönem, ülke, tedarikçi ve alıcı filtreleriyle. Tedarikçi "
+"değerlendirmelerinde ve fiyat pazarlıklarından önce kullanın. Örnek: son 90 "
+"günde ana tedarikçinizden ne kadar satın aldığınızı görmek için Tedarikçi "
+"filtresini o tedarikçiye ayarlayın. Panolar > Satın Alma, Satın Alma "
+"yöneticileri için."
 
 #. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_campaign_roi
@@ -1332,9 +1375,19 @@ msgid "🚀 Quick Start — Create your first spreadsheet"
 msgstr "🚀 Hızlı Başlangıç — İlk hesap tablonuzu oluşturun"
 
 #. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_purchase_stock
+msgid "🚚 Purchase receipts dashboard"
+msgstr "🚚 Satın alma teslim alımları panosu"
+
+#. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_ecommerce
 msgid "🛒 eCommerce dashboard"
 msgstr "🛒 E-ticaret panosu"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_purchase
+msgid "🤝 Vendor purchases dashboard"
+msgstr "🤝 Tedarikçi bazında satın alma panosu"
 
 #. module: spreadsheet_help_oca
 #: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_customer_segmentation

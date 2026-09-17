@@ -27,44 +27,14 @@ msgstr ""
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid " days"
-msgstr "zile"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount"
-msgstr "Sumă"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount Purchased"
-msgstr "Suma achiziționată"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average Order"
-msgstr "Media/Comandă"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average order"
-msgstr "Medie dimensiune comandă"
+msgid "% On time deliveries by vendor"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Buyer"
 msgstr "Cumpărător"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Category"
-msgstr "Categorie"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -81,18 +51,6 @@ msgstr "Curent(ă)"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to confirm"
-msgstr "Zile până la confirmare"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to receive"
-msgstr "Zile până la primire"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "KPI"
 msgstr "KPI"
 
@@ -105,32 +63,14 @@ msgstr "Chitanțe întârziate"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Lead Time to Receive"
-msgstr "Timpul până la recepție"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Opened"
-msgstr "Deschis(a)"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Order"
-msgstr "Ordonare"
+msgid "On time deliveries"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Ordered"
 msgstr "Comandat"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Orders"
-msgstr "Comenzi"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -158,32 +98,8 @@ msgstr "Categorie produs"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_stock_oca.spreadsheet_dashboard_purchase
-msgid "Purchase"
-msgstr "Achiziție"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Purchased"
-msgstr "Achiziționat"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Qty Ordered"
-msgstr "Cant. Comandată"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Quantity ordered"
-msgstr "Cantitatea comandată"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "RFQ"
-msgstr "CdO"
+msgid "Purchase Receipts"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -200,50 +116,8 @@ msgstr "Programată in"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Buyers"
-msgstr "Top Cumpărători"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Countries"
-msgstr "Top Țări"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Orders"
-msgstr "Top comenzi"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Product Categories"
-msgstr "Top Categorii Produse"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Products"
-msgstr "Top produse"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top RFQs"
-msgstr "Top Cereri de Ofertă"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Vendors"
-msgstr "Top furnizori"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Total Untaxed"
-msgstr "Total fără taxe"
+msgid "Supplier service level"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -260,14 +134,86 @@ msgstr "Furnizor"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "last period"
-msgstr "ultima perioadă"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "since last period"
 msgstr "de la ultima perioadă"
+
+#~ msgid " days"
+#~ msgstr "zile"
+
+#~ msgid "Amount"
+#~ msgstr "Sumă"
+
+#~ msgid "Amount Purchased"
+#~ msgstr "Suma achiziționată"
+
+#~ msgid "Average Order"
+#~ msgstr "Media/Comandă"
+
+#~ msgid "Average order"
+#~ msgstr "Medie dimensiune comandă"
+
+#~ msgid "Category"
+#~ msgstr "Categorie"
+
+#~ msgid "Days to confirm"
+#~ msgstr "Zile până la confirmare"
+
+#~ msgid "Days to receive"
+#~ msgstr "Zile până la primire"
+
+#~ msgid "Lead Time to Receive"
+#~ msgstr "Timpul până la recepție"
+
+#~ msgid "Opened"
+#~ msgstr "Deschis(a)"
+
+#~ msgid "Order"
+#~ msgstr "Ordonare"
+
+#~ msgid "Orders"
+#~ msgstr "Comenzi"
+
+#~ msgid "Purchase"
+#~ msgstr "Achiziție"
+
+#~ msgid "Purchased"
+#~ msgstr "Achiziționat"
+
+#~ msgid "Qty Ordered"
+#~ msgstr "Cant. Comandată"
+
+#~ msgid "Quantity ordered"
+#~ msgstr "Cantitatea comandată"
+
+#~ msgid "RFQ"
+#~ msgstr "CdO"
+
+#~ msgid "Top Buyers"
+#~ msgstr "Top Cumpărători"
+
+#~ msgid "Top Countries"
+#~ msgstr "Top Țări"
+
+#~ msgid "Top Orders"
+#~ msgstr "Top comenzi"
+
+#~ msgid "Top Product Categories"
+#~ msgstr "Top Categorii Produse"
+
+#~ msgid "Top Products"
+#~ msgstr "Top produse"
+
+#~ msgid "Top RFQs"
+#~ msgstr "Top Cereri de Ofertă"
+
+#~ msgid "Top Vendors"
+#~ msgstr "Top furnizori"
+
+#~ msgid "Total Untaxed"
+#~ msgstr "Total fără taxe"
+
+#~ msgid "last period"
+#~ msgstr "ultima perioadă"
 
 #, python-format
 #~ msgid "Purchase Analysis by Partner Country"

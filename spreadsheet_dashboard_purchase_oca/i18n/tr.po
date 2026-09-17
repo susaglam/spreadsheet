@@ -59,7 +59,7 @@ msgstr "Güncel Değer"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Days to receive"
-msgstr ""
+msgstr "Teslim alma süresi"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -106,8 +106,25 @@ msgstr "Önceki"
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Product"
+msgstr "Ürün"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Purchased"
 msgstr "Satınalınan"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_group_purchase
+msgid "Purchases"
+msgstr "Satınalma"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Qty Ordered"
+msgstr "Sipariş Miktarı"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -131,13 +148,13 @@ msgstr "Kaynak"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Sourcing by Country"
-msgstr ""
+msgstr "Ülkeye Göre Tedarik"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Buyers"
-msgstr ""
+msgstr "En İyi Alıcılar"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -148,20 +165,26 @@ msgstr "En İyi Siparişler"
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Top Products"
+msgstr "En İyi Ürünler"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Vendors"
-msgstr ""
+msgstr "En İyi Tedarikçiler"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Vendors by Amount"
-msgstr ""
+msgstr "Tutara Göre En İyi Tedarikçiler"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Untaxed total"
-msgstr ""
+msgstr "Vergi Hariç Toplam"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript

@@ -22,44 +22,14 @@ msgstr ""
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid " days"
-msgstr " Tage"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount"
-msgstr "Betrag"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Amount Purchased"
-msgstr "Gekaufte Menge"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average Order"
-msgstr "Durchschnittlicher Auftrag"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Average order"
-msgstr "Durchschnittlicher Auftrag"
+msgid "% On time deliveries by vendor"
+msgstr "% Pünktliche Lieferungen nach Lieferant"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Buyer"
 msgstr "Käufer"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Category"
-msgstr "Kategorie"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -76,18 +46,6 @@ msgstr "Aktuell"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to confirm"
-msgstr "Tage zur Bestätigung"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Days to receive"
-msgstr "Tage bis Erhalt"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "KPI"
 msgstr "KPI"
 
@@ -100,32 +58,14 @@ msgstr "Verspätete Eingänge"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Lead Time to Receive"
-msgstr "Vorlaufzeit bis zum Erhalt"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Opened"
-msgstr "Geöffnet"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Order"
-msgstr "Auftrag"
+msgid "On time deliveries"
+msgstr "Pünktliche Lieferungen"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Ordered"
 msgstr "Bestellt"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Orders"
-msgstr "Aufträge"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -153,32 +93,8 @@ msgstr "Produktkategorie"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_stock_oca.spreadsheet_dashboard_purchase
-msgid "Purchase"
-msgstr "Einkauf"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Purchased"
-msgstr "Eingekauft"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Qty Ordered"
-msgstr "Bestellte Menge"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Quantity ordered"
-msgstr "Bestellte Menge"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "RFQ"
-msgstr "Angebotsanfrage"
+msgid "Purchase Receipts"
+msgstr "Einkaufseingänge"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -195,50 +111,8 @@ msgstr "Geplant am"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Buyers"
-msgstr "Top-Käufer"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Countries"
-msgstr "Top-Länder"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Orders"
-msgstr "Top-Aufträge"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Product Categories"
-msgstr "Top-Produktkategorien"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Products"
-msgstr "Top-Produkte"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top RFQs"
-msgstr "Top-Angebotsanfragen"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Top Vendors"
-msgstr "Top-Lieferanten"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "Total Untaxed"
-msgstr "Gesamter Nettobetrag"
+msgid "Supplier service level"
+msgstr "Lieferanten-Servicegrad"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
@@ -255,14 +129,86 @@ msgstr "Lieferant"
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
-msgid "last period"
-msgstr "letzter Zeitraum"
-
-#. module: spreadsheet_dashboard_purchase_stock_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "since last period"
 msgstr "seit dem letzten Zeitraum"
+
+#~ msgid " days"
+#~ msgstr " Tage"
+
+#~ msgid "Amount"
+#~ msgstr "Betrag"
+
+#~ msgid "Amount Purchased"
+#~ msgstr "Gekaufte Menge"
+
+#~ msgid "Average Order"
+#~ msgstr "Durchschnittlicher Auftrag"
+
+#~ msgid "Average order"
+#~ msgstr "Durchschnittlicher Auftrag"
+
+#~ msgid "Category"
+#~ msgstr "Kategorie"
+
+#~ msgid "Days to confirm"
+#~ msgstr "Tage zur Bestätigung"
+
+#~ msgid "Days to receive"
+#~ msgstr "Tage bis Erhalt"
+
+#~ msgid "Lead Time to Receive"
+#~ msgstr "Vorlaufzeit bis zum Erhalt"
+
+#~ msgid "Opened"
+#~ msgstr "Geöffnet"
+
+#~ msgid "Order"
+#~ msgstr "Auftrag"
+
+#~ msgid "Orders"
+#~ msgstr "Aufträge"
+
+#~ msgid "Purchase"
+#~ msgstr "Einkauf"
+
+#~ msgid "Purchased"
+#~ msgstr "Eingekauft"
+
+#~ msgid "Qty Ordered"
+#~ msgstr "Bestellte Menge"
+
+#~ msgid "Quantity ordered"
+#~ msgstr "Bestellte Menge"
+
+#~ msgid "RFQ"
+#~ msgstr "Angebotsanfrage"
+
+#~ msgid "Top Buyers"
+#~ msgstr "Top-Käufer"
+
+#~ msgid "Top Countries"
+#~ msgstr "Top-Länder"
+
+#~ msgid "Top Orders"
+#~ msgstr "Top-Aufträge"
+
+#~ msgid "Top Product Categories"
+#~ msgstr "Top-Produktkategorien"
+
+#~ msgid "Top Products"
+#~ msgstr "Top-Produkte"
+
+#~ msgid "Top RFQs"
+#~ msgstr "Top-Angebotsanfragen"
+
+#~ msgid "Top Vendors"
+#~ msgstr "Top-Lieferanten"
+
+#~ msgid "Total Untaxed"
+#~ msgstr "Gesamter Nettobetrag"
+
+#~ msgid "last period"
+#~ msgstr "letzter Zeitraum"
 
 #, python-format
 #~ msgid "Purchase Analysis by Partner Country"

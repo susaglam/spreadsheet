@@ -225,6 +225,12 @@ msgid "Contributors Groups"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid "Count"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
 msgid "Create spreadsheet"
 msgstr ""
@@ -398,6 +404,12 @@ msgid "Group"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Group by"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__has_message
 msgid "Has Message"
 msgstr ""
@@ -551,6 +563,12 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Measure"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 msgid "Menu Items"
 msgstr ""
@@ -645,6 +663,12 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
 msgid "Next Revision"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "None"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -939,6 +963,15 @@ msgid ""
 "The image could not be loaded (HTTP %(status)s), so it was not copied. "
 "Reload the spreadsheet and try again; if the image was deleted, insert it "
 "again."
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid ""
+"The model %(model)s of this chart could not be loaded, so its technical "
+"names are shown. Check that the module providing this model is still "
+"installed, or insert the chart again from its graph view."
 msgstr ""
 
 #. module: spreadsheet_oca

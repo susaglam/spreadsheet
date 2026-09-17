@@ -168,6 +168,3 @@ msgstr "Alla bacheca"
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__group_ids
 msgid "User Groups"
 msgstr "Gruppi utente"
-
-#~ msgid "To dashboard new sheet"
-#~ msgstr "Al nuovo foglio bacheca"

@@ -227,6 +227,12 @@ msgid "Contributors Groups"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid "Count"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
 msgid "Create spreadsheet"
 msgstr "Criar folha de cálculo"
@@ -400,6 +406,12 @@ msgid "Group"
 msgstr "Grupo"
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Group by"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__has_message
 msgid "Has Message"
 msgstr ""
@@ -553,6 +565,12 @@ msgstr "Gestor"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Measure"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 msgid "Menu Items"
 msgstr ""
@@ -648,6 +666,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
 msgid "Next Revision"
 msgstr "Próxima Revisão"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "None"
+msgstr ""
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
@@ -944,6 +968,15 @@ msgid ""
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+msgid ""
+"The model %(model)s of this chart could not be loaded, so its technical "
+"names are shown. Check that the module providing this model is still "
+"installed, or insert the chart again from its graph view."
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
 msgid ""
 "The user who owns this spreadsheet. The owner can always open, edit, share "
@@ -1075,53 +1108,3 @@ msgstr "não atualizado"
 #: model:ir.model,name:spreadsheet_oca.model_ir_websocket
 msgid "websocket message handling"
 msgstr "tratamento de mensagens websocket"
-
-#~ msgid "Dimensions"
-#~ msgstr "Dimensões"
-
-#~ msgid "Insert dynamic pivot"
-#~ msgstr "Inserir pivô dinâmico"
-
-#~ msgid "Insert pivot"
-#~ msgstr "Inserir pivô"
-
-#~ msgid "Measures"
-#~ msgstr "Medidas"
-
-#~ msgid "Pivot name"
-#~ msgstr "Nome do pivô"
-
-#~ msgid "Add sheet to spreadsheet"
-#~ msgstr "Adicionar folha ao painel"
-
-#, python-format
-#~ msgid "Comparisons in pivot are not supprted"
-#~ msgstr "Comparações no pivô não são suportadas"
-
-#, python-format
-#~ msgid "Confirm"
-#~ msgstr "Confirmar"
-
-#, python-format
-#~ msgid "Duplicated groupbys in pivot are not supprted"
-#~ msgstr "Agrupamentos duplicados no pivô não são suportados"
-
-#, python-format
-#~ msgid "Select the quantity of rows"
-#~ msgstr "Selecione a quantidade de linhas"
-
-#~ msgid "Data"
-#~ msgstr "Data"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Última Modificação em"
-
-#~ msgid "Dynamic"
-#~ msgstr "Dinâmico"
-
-#~ msgid ""
-#~ "This field allows you to generate tables that are updated with the "
-#~ "filters set in the spreadsheets."
-#~ msgstr ""
-#~ "Este campo permite-lhe gerar tabelas que são atualizadas com os filtros "
-#~ "definidos nas folhas de cálculo."

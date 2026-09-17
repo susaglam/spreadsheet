@@ -9,6 +9,7 @@ from lxml import etree
 from odoo.fields import Command, Domain
 from odoo.modules.module import load_script
 from odoo.tests.common import TransactionCase, new_test_user, tagged
+from odoo.tools import convert_file
 from odoo.tools.safe_eval import safe_eval
 
 GUIDE_XMLIDS = (
@@ -25,6 +26,11 @@ TOUR_XMLIDS = (
 MISSING_MODULE = "spreadsheet_help_oca_test_module_that_does_not_exist"
 TEMPLATE_MANAGER = "spreadsheet_template_oca.group_template_manager"
 POST_MIGRATE = "spreadsheet_help_oca/migrations/saas~19.4.1.0.2/post-migrate.py"
+# Help & Examples cards of the OCA purchase dashboards: xml name -> module
+PURCHASE_DASHBOARD_CARDS = {
+    "tutorial_dashboard_purchase": "spreadsheet_dashboard_purchase_oca",
+    "tutorial_dashboard_purchase_stock": "spreadsheet_dashboard_purchase_stock_oca",
+}
 
 
 @tagged("post_install", "-at_install")
@@ -163,6 +169,111 @@ class TestHelpAvailability(TransactionCase):
             Domain(filter_domain) & Domain("id", "in", (missing | installed).ids)
         )
         self.assertEqual(found, installed)
+
+    # ------------------------------------------------------------------
+    # [16] purchase dashboards have a Help & Examples card
+    # ------------------------------------------------------------------
+    def _purchase_dashboard_cards(self):
+        cards = self.Tutorial
+        for name, module in PURCHASE_DASHBOARD_CARDS.items():
+            card = self.env.ref(f"spreadsheet_help_oca.{name}")
+            self.assertEqual(card._name, "spreadsheet.tutorial")
+            self.assertEqual(card.module_name, module, name)
+            self.assertTrue(card.active, name)
+            self.assertTrue(card.description, name)
+            cards |= card
+        return cards
+
+    def _available_cards(self, cards):
+        """Available cards, checked to agree between compute and search."""
+        cards.invalidate_recordset(["is_available"])
+        computed = cards.filtered("is_available")
+        searched = self.Tutorial.search(
+            [("id", "in", cards.ids), ("is_available", "=", True)]
+        )
+        self.assertEqual(computed, searched)
+        return computed
+
+    def test_purchase_dashboard_cards_follow_their_module(self):
+        cards = self._purchase_dashboard_cards()
+        vendors = self.env.ref("spreadsheet_help_oca.tutorial_dashboard_purchase")
+        receipts = cards - vendors
+
+        with self._patch_installed({"spreadsheet_oca", "purchase", "stock"}):
+            self.assertFalse(self._available_cards(cards))
+            self.assertEqual(
+                self.Tutorial.search(
+                    [("id", "in", cards.ids), ("is_available", "=", False)]
+                ),
+                cards,
+            )
+            # the default "Available" filter of the Help menu hides both cards
+            search_view = self.env.ref("spreadsheet_help_oca.tutorial_view_search")
+            available_filter = etree.fromstring(search_view.arch.encode()).xpath(
+                "//filter[@name='available']"
+            )[0]
+            filter_domain = Domain(safe_eval(available_filter.get("domain")))
+            self.assertFalse(
+                self.Tutorial.search(filter_domain & Domain("id", "in", cards.ids))
+            )
+            for card in cards:
+                result = card.action_open_example()
+                self.assertEqual(result["tag"], "display_notification")
+                self.assertEqual(result["params"]["type"], "warning")
+                self.assertIn(card.module_name, result["params"]["message"])
+
+        # each card only needs its own module
+        with self._patch_installed({"spreadsheet_dashboard_purchase_oca"}):
+            self.assertEqual(self._available_cards(cards), vendors)
+        with self._patch_installed({"spreadsheet_dashboard_purchase_stock_oca"}):
+            self.assertEqual(self._available_cards(cards), receipts)
+        with self._patch_installed(PURCHASE_DASHBOARD_CARDS.values()):
+            self.assertEqual(self._available_cards(cards), cards)
+
+        # unpatched: availability follows the modules really installed here
+        installed = self.Tutorial._get_installed_module_names()
+        cards.invalidate_recordset(["is_available"])
+        for card in cards:
+            self.assertEqual(card.is_available, card.module_name in installed)
+
+    def test_update_creates_missing_cards(self):
+        """tutorials.xml is noupdate="1", but noupdate only protects cards whose
+        xmlid already exists: upgrading a database installed before the
+        purchase dashboard cards must create them, without touching the cards
+        users edited. No post-migrate script is needed for new cards."""
+        cards = self._purchase_dashboard_cards()
+        modules = list(PURCHASE_DASHBOARD_CARDS.values())
+        Tutorial = self.Tutorial.with_context(active_test=False)
+        count_before = Tutorial.search_count([("module_name", "in", modules)])
+        edited = self.env.ref("spreadsheet_help_oca.tutorial_dashboard_stock")
+        edited.name = "My own stock dashboard card"
+        cards.unlink()  # also removes their ir.model.data rows
+        self.env.flush_all()
+        for name in PURCHASE_DASHBOARD_CARDS:
+            self.assertFalse(
+                self.env.ref(f"spreadsheet_help_oca.{name}", raise_if_not_found=False)
+            )
+
+        for _run in range(2):  # a second update neither duplicates nor fails
+            convert_file(
+                self.env, "spreadsheet_help_oca", "data/tutorials.xml", {}, "update"
+            )
+            self.env.invalidate_all()
+            self._purchase_dashboard_cards()
+            self.assertEqual(
+                Tutorial.search_count([("module_name", "in", modules)]),
+                count_before,
+            )
+            self.assertEqual(edited.name, "My own stock dashboard card")
+
+        xml_ids = self.env["ir.model.data"].search(
+            [
+                ("module", "=", "spreadsheet_help_oca"),
+                ("name", "in", list(PURCHASE_DASHBOARD_CARDS)),
+            ]
+        )
+        self.assertEqual(len(xml_ids), len(PURCHASE_DASHBOARD_CARDS))
+        self.assertTrue(all(xml_ids.mapped("noupdate")))
 
     # ------------------------------------------------------------------
     # [16F] guides whose formulas come from a missing module never open
