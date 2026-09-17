@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_contract_sla_oca
+# 	* spreadsheet_contract_sla_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-17 00:38+0000\n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"POT-Creation-Date: 2026-09-17 00:00+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,122 +16,689 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_contract_sla_oca
+#: model:mail.template,body_html:spreadsheet_contract_sla_oca.contract_expiry_email_template
+msgid ""
+"<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n"
+"    <div style=\"background-color: #e67e22; color: white; padding: 16px 24px;\">\n"
+"        <h2 style=\"margin: 0;\">Contract Expiry Reminder</h2>\n"
+"    </div>\n"
+"    <div style=\"padding: 24px; border: 1px solid #ddd; border-top: none;\">\n"
+"        <p>Hello <t t-out=\"object.responsible_id.name or ''\"/>,</p>\n"
+"        <p>The following contract is expiring soon:</p>\n"
+"        <table style=\"width: 100%; border-collapse: collapse; margin: 16px 0;\">\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <strong>Contract</strong>\n"
+"                </td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <t t-out=\"object.name or ''\"/>\n"
+"                </td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <strong>Partner</strong>\n"
+"                </td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <t t-out=\"object.partner_id.name or ''\"/>\n"
+"                </td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <strong>Expiry Date</strong>\n"
+"                </td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <strong style=\"color: #e67e22;\">\n"
+"                        <t t-out=\"format_date(object.date_end) or ''\"/>\n"
+"                    </strong>\n"
+"                </td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <strong>Days Remaining</strong>\n"
+"                </td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <t t-out=\"object.days_to_expiry\"/> days\n"
+"                </td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <strong>Value</strong>\n"
+"                </td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\">\n"
+"                    <t t-if=\"object.currency_id\" t-out=\"format_amount(object.amount, object.currency_id) or ''\"/>\n"
+"                    <t t-else=\"\" t-out=\"object.amount\"/>\n"
+"                </td>\n"
+"            </tr>\n"
+"        </table>\n"
+"        <p>Please review and take appropriate action for renewal.</p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__active
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__state__active
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_search
 msgid "Active"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_plans_ids
+msgid "Activity Plans"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__actual_value
 msgid "Actual"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
-msgid "Contract "
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__active
+msgid ""
+"Archived contracts (unchecked) are hidden from the default lists and the "
+"daily expiry check no longer sends reminders for them."
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__last_updated
+msgid ""
+"Automatically stamped whenever the Target or Actual value is changed. Also "
+"marks the metric as measured (so an Actual of 0 is compared instead of "
+"staying Pending)."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract_sla__compliance__breached
+msgid "Breached"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__state
+msgid ""
+"Calculated automatically from the dates, never set by hand. Draft: the start"
+" date is still in the future. Active: running. Expiring Soon: the end date "
+"is within the reminder window. Expired: the end date has passed. The daily "
+"expiry check keeps it current."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__compliance
+msgid ""
+"Calculated automatically. Pending: no Actual value measured yet. Met: Actual"
+" is at or above Target. Breached: Actual is below Target. Example: Target "
+"99.9 and Actual 99.5 gives Breached."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__contract_type
+msgid ""
+"Category of agreement; also drives the colour on the calendar view. Example:"
+" pick 'Service Agreement' for an SLA-backed support contract."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__company_id
+msgid "Company"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__company_id
+msgid ""
+"Company this contract belongs to. Used to group and report contracts per "
+"company in a multi-company database."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__compliance
+msgid "Compliance"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model,name:spreadsheet_contract_sla_oca.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__contract_id
+msgid "Contract"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#. odoo-python
+#: code:addons/spreadsheet_contract_sla_oca/models/contract_sla.py:0
+msgid ""
+"Contract '%(name)s' ends on %(end)s, which is before its start date "
+"%(start)s. A contract cannot end before it begins: its status, days-to-"
+"expiry countdown and renewal reminders would all be wrong. Set the End Date "
+"on or after the Start Date."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#. odoo-python
+#: code:addons/spreadsheet_contract_sla_oca/models/contract_sla.py:0
+msgid "Contract '%(name)s' expires in %(days)s days"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_form
 msgid "Contract Details"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:mail.template,subject:spreadsheet_contract_sla_oca.contract_expiry_email_template
+msgid "Contract Expiring: {{ object.name }}"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:mail.template,name:spreadsheet_contract_sla_oca.contract_expiry_email_template
 msgid "Contract Expiry Reminder"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model,name:spreadsheet_contract_sla_oca.model_spreadsheet_contract_sla
+msgid "Contract SLA Metric"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model,name:spreadsheet_contract_sla_oca.model_spreadsheet_contract
+msgid "Contract Tracker"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__contract_type
+msgid "Contract Type"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__amount
 msgid "Contract Value"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
-msgid "Contract renewed until %s."
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__date_end
+msgid ""
+"Contract expiry date. The Expiring/Expired status and renewal reminders are "
+"calculated from this."
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
-msgid "Contracts &amp; SLA"
+#. odoo-python
+#: code:addons/spreadsheet_contract_sla_oca/models/contract_sla.py:0
+msgid "Contract renewed until %(date)s."
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
-msgid "Dates &amp; Value"
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__contract_id
+msgid ""
+"Contract this service level belongs to. Deleting the contract also deletes "
+"its SLA metrics."
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.actions.act_window,name:spreadsheet_contract_sla_oca.contract_act_window
+#: model:ir.ui.menu,name:spreadsheet_contract_sla_oca.menu_contracts
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.res_config_settings_view_form_spreadsheet_contract
+msgid "Contracts & SLA"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_contract_sla_oca.contract_act_window
+msgid "Create your first contract"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__create_date
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__currency_id
+msgid ""
+"Currency the Contract Value is expressed in. Defaults to your company "
+"currency; pick another one for a contract signed in, for example, USD."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__partner_id
+msgid ""
+"Customer or vendor this contract is signed with. Used for grouping and "
+"reporting."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__date_end
+msgid "Date End"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__date_start
+msgid "Date Start"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__date_start
+msgid ""
+"Date the contract becomes effective. The status turns 'Active' once this "
+"date is reached."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__last_reminder_date
+msgid ""
+"Date the most recent renewal reminder was sent. Prevents the cron from re-"
+"sending the same reminder every day."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_form
+msgid "Dates & Value"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_list
 msgid "Days Left"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
-msgid "Days before expiry to send renewal reminder."
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__days_to_expiry
+msgid "Days To Expiry"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__renewal_reminder_days
+msgid ""
+"Days before expiry to send renewal reminder. Defaults to the value "
+"configured in Settings."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_res_config_settings__contract_default_reminder_days
 msgid "Default Contract Renewal Reminder (days)"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.res_config_settings_view_form_spreadsheet_contract
 msgid "Default days before expiry to trigger renewal reminder."
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__display_name
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__state__expired
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_search
 msgid "Expired"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__state__expiring
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_search
 msgid "Expiring Soon"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
-msgid "Group By"
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_follower_ids
+msgid "Followers"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__notes
+msgid ""
+"Free-form internal notes, e.g. negotiated terms, the renewal contact person "
+"or where the signed PDF is stored."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__name
+msgid ""
+"Human-readable label for this contract. Example: 'Acme Cloud Hosting 2026'."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__id
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__id
+msgid "ID"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__last_updated
+msgid "Last Measured"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__last_reminder_date
+msgid "Last Reminder Sent"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__write_date
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__actual_value
+msgid ""
+"Measured SLA result, compared to Target to compute compliance (e.g. 99.95). "
+"A value of 0 counts as a real measurement."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract_sla__compliance__met
+msgid "Met"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__name
+msgid "Name"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__notes
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_form
 msgid "Notes"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__days_to_expiry
+msgid ""
+"Number of days from today until the End Date; negative once the contract has"
+" expired. Example: 12 means the contract ends in 12 days. Refreshed every "
+"day by the expiry check."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__contract_type__other
+msgid "Other"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__partner_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_search
 msgid "Partner"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract_sla__compliance__pending
+msgid "Pending"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__contract_type__purchase
+msgid "Purchase Contract"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__renewal_reminder_days
 msgid "Reminder Before (days)"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_form
 msgid "Renew Contract"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__responsible_id
 msgid "Responsible"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__name
 msgid "SLA Metric"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__sla_ids
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_form
 msgid "SLA Metrics"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
-msgid "Spreadsheet"
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__contract_type__sale
+msgid "Sales Contract"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields.selection,name:spreadsheet_contract_sla_oca.selection__spreadsheet_contract__contract_type__service
+msgid "Service Agreement"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__sla_ids
+msgid ""
+"Service levels promised in this contract, each with a target and the "
+"measured result. Example: 'Uptime' with a target of 99.9 %."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.actions.server,name:spreadsheet_contract_sla_oca.ir_cron_contract_expiry_check_ir_actions_server
 msgid "Spreadsheet: Contract Expiry Check"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract__state
+msgid "State"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_search
 msgid "Status"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__target_value
 msgid "Target"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__target_value
 msgid "Target SLA value (e.g., 99.9 for 99.9% uptime)."
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__amount
+msgid "Total monetary value of the contract, in the selected currency."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_contract_sla_oca.contract_act_window
+msgid ""
+"Track contract periods, SLA metrics and renewal reminders. Add a\n"
+"                partner, start/end dates and value to get started."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_contract_sla_oca.contract_view_search
 msgid "Type"
 msgstr ""
 
 #. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,field_description:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__unit
+msgid "Unit"
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__unit
 msgid "Unit of measurement (%, hours, days, etc.)."
 msgstr ""
 
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract__responsible_id
+msgid ""
+"User who owns this contract and receives the renewal reminder activity and "
+"email."
+msgstr ""
+
+#. module: spreadsheet_contract_sla_oca
+#: model:ir.model.fields,help:spreadsheet_contract_sla_oca.field_spreadsheet_contract_sla__name
+msgid ""
+"What is being measured, as agreed in the contract. Examples: 'Uptime', "
+"'First response time', 'Resolution time'."
+msgstr ""

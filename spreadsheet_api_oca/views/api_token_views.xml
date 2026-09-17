@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name" />
+                <field name="token_hint" />
                 <field name="user_id" />
                 <field name="last_used" />
                 <field name="usage_count" />
@@ -22,15 +23,29 @@
             <form>
                 <header>
                     <button
-                        name="action_regenerate_token"
+                        name="action_generate_token"
+                        type="object"
+                        string="Generate Token"
+                        class="btn-primary"
+                        icon="fa-key"
+                        invisible="token_hint"
+                    />
+                    <button
+                        name="action_generate_token"
                         type="object"
                         string="Regenerate Token"
                         class="btn-warning"
                         icon="fa-refresh"
-                        confirm="Regenerating will invalidate the current token. Continue?"
+                        invisible="not token_hint"
+                        confirm="Regenerating invalidates the current token immediately: every integration using it stops working until you give it the new one. Continue?"
                     />
                 </header>
                 <sheet>
+                    <div class="alert alert-info" role="alert" invisible="token_hint">
+                        This token has no secret yet. Click
+                        <strong>Generate Token</strong>
+                        to create one. The secret is shown only once, so copy it into your integration right away. Only a fingerprint of it is stored.
+                    </div>
                     <div class="oe_title">
                         <h1>
                             <field name="name" />
@@ -38,12 +53,21 @@
                     </div>
                     <group>
                         <group>
-                            <field name="user_id" />
+                            <field
+                                name="user_id"
+                                groups="spreadsheet_oca.group_manager"
+                            />
+                            <!-- Non-managers can only use themselves: don't offer a choice that fails on save. -->
+                            <field
+                                name="user_id"
+                                groups="!spreadsheet_oca.group_manager"
+                                readonly="1"
+                            />
                             <field name="expires_at" />
                             <field name="active" />
                         </group>
                         <group>
-                            <field name="token" password="0" />
+                            <field name="token_hint" />
                             <field name="last_used" />
                             <field name="usage_count" />
                         </group>
@@ -98,6 +122,13 @@ GET /api/spreadsheet/&lt;id&gt;
 GET /api/spreadsheet/&lt;id&gt;/cells?sheet=Dashboard
   Authorization: Bearer YOUR_TOKEN</pre>
                                 <p>
+                                    Always send the token in the
+                                    <code>Authorization</code>
+                                    header. A
+                                    <code>?token=</code>
+                                    query parameter is refused by default because URLs end up in server and proxy logs.
+                                </p>
+                                <p>
                                     <strong>Webhook payload format:</strong>
                                 </p>
                                 <pre>{
@@ -106,9 +137,51 @@ GET /api/spreadsheet/&lt;id&gt;/cells?sheet=Dashboard
   "spreadsheet_name": "Sales Q1",
   "timestamp": "2026-01-15T10:30:00"
 }</pre>
+                                <p>
+                                    <strong>Verifying a webhook call:</strong>
+                                </p>
+                                <p>
+                                    Each call carries the headers X-Spreadsheet-Event, X-Spreadsheet-Token-Id and X-Spreadsheet-Signature. The signature is "sha256=" followed by the HMAC-SHA256 of the raw request body, using the SHA-256 hex digest of your token as key. Redirects are not followed, and events are only sent for spreadsheets the token user can read.
+                                </p>
+                                <pre>key = sha256(TOKEN).hexdigest()
+expected = "sha256=" + hmac_sha256(key, raw_body).hexdigest()</pre>
                             </div>
                         </page>
                     </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="api_token_show_view_form" model="ir.ui.view">
+        <field name="name">spreadsheet.api.token.show.form</field>
+        <field name="model">spreadsheet.api.token.show</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h3 class="fw-bold">
+                        Copy your API token now
+                    </h3>
+                    <group>
+                        <field name="token_name" readonly="1" />
+                    </group>
+                    <p>
+                        Configure your integration to send this secret in the HTTP header
+                        <code>Authorization: Bearer &lt;token&gt;</code>
+                    </p>
+                    <field
+                        name="token"
+                        widget="CopyClipboardChar"
+                        readonly="1"
+                        class="mb-3"
+                    />
+                    <p class="alert alert-warning" role="alert">
+                        <strong>Important:</strong>
+                        the token cannot be displayed again, because only its fingerprint is stored. Anyone holding it can read the spreadsheets of the token user, so store it like a password.
+                    </p>
+                    <footer>
+                        <button special="cancel" data-hotkey="x" string="Done" />
+                    </footer>
                 </sheet>
             </form>
         </field>
@@ -122,7 +195,7 @@ GET /api/spreadsheet/&lt;id&gt;/cells?sheet=Dashboard
             <p class="o_view_nocontent_smiling_face">Create your first API token</p>
             <p>
                 A token lets an external tool call the spreadsheet REST API.
-                Create one, then call
+                Create one, click Generate Token and copy the secret, then call
                 <code>/api/spreadsheet/list</code> with an
                 <code>Authorization: Bearer &lt;token&gt;</code> header.
             </p>

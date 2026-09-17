@@ -1,54 +1,95 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
-<odoo>
-    <data noupdate="1">
-        <record id="kpi_alert_email_template" model="mail.template">
-            <field name="name">Spreadsheet KPI Alert</field>
-            <field name="model_id" ref="model_spreadsheet_kpi_alert" />
-            <field name="subject">KPI Alert: {{ object.name }}</field>
-            <field
-                name="email_to"
-            >{{ (object.notify_user_ids.mapped('email') | join(',')) }}</field>
-            <field
-                name="body_html"
-            ><![CDATA[
-<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-    <div style="background-color: #875a7b; color: white; padding: 16px 24px;">
-        <h2 style="margin: 0;">KPI Alert Triggered</h2>
-    </div>
-    <div style="padding: 24px; border: 1px solid #ddd; border-top: none;">
-        <p>Hello,</p>
-        <p>The following KPI alert has been triggered:</p>
-        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Alert</td>
-                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.name }}</td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Spreadsheet</td>
-                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.spreadsheet_id.name }}</td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Cell</td>
-                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.sheet_name }}!{{ object.cell_ref }}</td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Current Value</td>
-                <td style="padding: 8px; border-bottom: 1px solid #eee; color: #dc3545; font-weight: bold;">{{ object.last_value }}</td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">Condition</td>
-                <td style="padding: 8px; border-bottom: 1px solid #eee;">{{ object.operator }} {{ object.threshold_value }}</td>
-            </tr>
-        </table>
-        <p style="color: #666; font-size: 12px;">
+<odoo noupdate="1">
+    <!-- body_html is rendered with the QWeb engine: values go in <t t-out/>
+         ({{ }} is only interpolated in t-attf-* attributes there). subject,
+         email_from and email_to are inline templates whose {{ }} hold plain
+         Python expressions (no Jinja filters such as | join).
+         use_default_to must be False, otherwise email_to is ignored and the
+         recipients come from the (non-existent) partner fields of the alert.
+         noupdate="1": existing databases get these fixes from
+         migrations/saas~19.4.1.0.3/post-migrate.py. -->
+    <record id="kpi_alert_email_template" model="mail.template">
+        <field name="name">Spreadsheet KPI Alert</field>
+        <field name="model_id" ref="model_spreadsheet_kpi_alert" />
+        <field name="subject">KPI Alert: {{ object.name }}</field>
+        <field
+            name="email_from"
+        >{{ (object.spreadsheet_id.company_id.email_formatted or user.company_id.email_formatted or user.email_formatted) }}</field>
+        <field
+            name="email_to"
+        >{{ ','.join(object.notify_user_ids.filtered('email').mapped('email_formatted')) }}</field>
+        <field name="use_default_to" eval="False" />
+        <field name="body_html" type="html">
+            <div
+                style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;"
+            >
+                <div
+                    style="background-color: #875a7b; color: white; padding: 16px 24px;"
+                >
+                    <h2 style="margin: 0;">KPI Alert Triggered</h2>
+                </div>
+                <div style="padding: 24px; border: 1px solid #ddd; border-top: none;">
+                    <p>Hello,</p>
+                    <p>The following KPI alert has been triggered:</p>
+                    <table
+                        style="width: 100%; border-collapse: collapse; margin: 16px 0;"
+                    >
+                        <tr>
+                            <td
+                                style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;"
+                            >Alert</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #eee;">
+                                <t t-out="object.name or ''">Revenue Alert</t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;"
+                            >Spreadsheet</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #eee;">
+                                <t
+                                    t-out="object.spreadsheet_id.name or ''"
+                                >Sales KPIs</t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;"
+                            >Cell</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #eee;"><t
+                                t-out="object.sheet_name or ''"
+                            >Sheet1</t>!<t t-out="object.cell_ref or ''">B2</t></td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;"
+                            >Current Value</td>
+                            <td
+                                style="padding: 8px; border-bottom: 1px solid #eee; color: #dc3545; font-weight: bold;"
+                            >
+                                <t t-out="object.last_value">950.0</t>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;"
+                            >Condition</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #eee;">
+                                <t t-out="object.operator or ''">
+                                    &lt;
+                                </t>
+                                <t t-out="object.threshold_value">1000.0</t>
+                            </td>
+                        </tr>
+                    </table>
+                    <p style="color: #666; font-size: 12px;">
             This alert was triggered automatically. To manage your KPI alerts,
             open the spreadsheet and go to Data &gt; KPI Alerts.
         </p>
-    </div>
-</div>
-]]></field>
-        </record>
-    </data>
+                </div>
+            </div>
+        </field>
+    </record>
 </odoo>

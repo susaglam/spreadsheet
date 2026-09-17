@@ -65,6 +65,9 @@
                             />
                         </page>
                         <page string="Visual Diff vs Current" name="diff">
+                            <p class="text-muted">
+                                Compares this snapshot (Version column) with the spreadsheet as it is now (Current column). Only contents (values and formulas) are compared, not formatting.
+                            </p>
                             <field name="diff_html" nolabel="1" readonly="1" />
                         </page>
                     </notebook>

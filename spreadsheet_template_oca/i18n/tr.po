@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_template_oca
+# 	* spreadsheet_template_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish (tr)\n"
 "Language: tr\n"
@@ -16,106 +16,415 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.constraint,message:spreadsheet_template_oca.constraint_spreadsheet_template_category_name_uniq
+msgid "A category with the same name already exists."
+msgstr "Aynı ada sahip bir kategori zaten var."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__active
+msgid "Active"
+msgstr "Etkin"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_search
 msgid "Archived"
-msgstr "Arsivlendi"
+msgstr "Arşivlendi"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_from_template_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_to_template_view_form
 msgid "Cancel"
-msgstr "Iptal"
+msgstr "İptal"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__category_id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__category_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_search
 msgid "Category"
 msgstr "Kategori"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_category_view_form
 msgid "Category name..."
-msgstr ""
+msgstr "Kategori adı..."
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__color
+msgid "Color"
+msgstr "Renk"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template_category__color
+msgid ""
+"Color tag for this category chip, shown wherever the category is displayed."
+msgstr ""
+"Kategori etiketinin rengi; kategorinin gösterildiği her yerde kullanılır."
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_from_template_view_form
 msgid "Create Spreadsheet"
-msgstr "E-tablo Olustur"
+msgstr "E-tablo oluştur"
 
 #. module: spreadsheet_template_oca
+#. odoo-python
+#: code:addons/spreadsheet_template_oca/models/spreadsheet_template.py:0
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_from_template
 msgid "Create Spreadsheet from Template"
-msgstr "Sablondan E-tablo Olustur"
+msgstr "Şablondan e-tablo oluştur"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_category_act_window
+msgid ""
+"Create categories such as Sales, Finance or HR to group your\n"
+"                spreadsheet templates. Categories appear in the template\n"
+"                gallery's search panel so users can filter by theme."
+msgstr ""
+"E-tablo şablonlarınızı gruplamak için Satış, Finans veya İK gibi kategoriler"
+" oluşturun. Kategoriler şablon galerisinin arama panelinde görünür, böylece "
+"kullanıcılar temaya göre filtreleyebilir."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__create_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__create_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__create_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__create_date
+msgid "Created on"
+msgstr "Oluşturulma tarihi"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+msgid "Delete"
+msgstr "Sil"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__description
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__description
+msgid "Description"
+msgstr "Açıklama"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__display_name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__display_name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__display_name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__display_name
+msgid "Display Name"
+msgstr "Görünen ad"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_list
 msgid "Edit"
-msgstr "Duzenle"
+msgstr "Düzenle"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
 msgid "Edit Template"
+msgstr "Şablonu düzenle"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__usage_count
+msgid ""
+"How many spreadsheets have been created from this template; increments "
+"automatically each time someone uses it."
 msgstr ""
+"Bu şablondan kaç e-tablo oluşturulduğunu gösterir; biri şablonu her "
+"kullandığında otomatik olarak artar."
 
 #. module: spreadsheet_template_oca
-msgid "Finance"
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__write_uid
+msgid "Last Updated by"
+msgstr "Son güncelleyen"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__write_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__write_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__write_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__write_date
+msgid "Last Updated on"
+msgstr "Son güncelleme tarihi"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__sequence
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template_category__sequence
+msgid "Lower numbers sort first in lists and the kanban."
+msgstr "Küçük numaralar listelerde ve kanban görünümünde önce sıralanır."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__name
+msgid "Name"
+msgstr "Ad"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_from_template__name
+msgid ""
+"Name of the spreadsheet that will be created. Defaults to the template name;"
+" change it to something specific like 'Sales Report - March 2026'."
 msgstr ""
+"Oluşturulacak e-tablonun adı. Varsayılan olarak şablonun adıdır; 'Satış "
+"Raporu - Mart 2026' gibi daha belirgin bir adla değiştirin."
 
 #. module: spreadsheet_template_oca
-msgid "General"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__name
+msgid ""
+"Name of the template as it will appear in the template gallery. Defaults to "
+"the current spreadsheet name."
 msgstr ""
+"Şablonun şablon galerisinde görünecek adı. Varsayılan olarak mevcut "
+"e-tablonun adıdır."
 
 #. module: spreadsheet_template_oca
-msgid "Group By"
-msgstr "Gruplama"
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_category_act_window
+msgid "No categories yet"
+msgstr "Henüz kategori yok"
 
 #. module: spreadsheet_template_oca
-msgid "Human Resources"
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_act_window
+msgid "No templates yet"
+msgstr "Henüz şablon yok"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_act_window
+msgid ""
+"Open any spreadsheet and choose File &gt; Save as Template to\n"
+"                create your first one (this needs the Template Manager access\n"
+"                right). Templates let your team start new spreadsheets from a\n"
+"                ready-made layout."
 msgstr ""
+"İlk şablonunuzu oluşturmak için herhangi bir e-tabloyu açın ve Dosya &gt; "
+"Şablon olarak kaydet seçeneğini seçin (bunun için Şablon Yöneticisi erişim "
+"yetkisi gerekir). Şablonlar, ekibinizin yeni e-tablolara hazır bir düzenle "
+"başlamasını sağlar."
 
 #. module: spreadsheet_template_oca
-msgid "Operations"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__category_id
+msgid ""
+"Optional grouping (Sales, Finance, HR...) shown in the kanban search panel "
+"so users can filter templates by theme."
 msgstr ""
+"Kanban arama panelinde gösterilen isteğe bağlı gruplama (Satış, Finans, "
+"İK...); kullanıcıların şablonları temaya göre filtrelemesini sağlar."
 
 #. module: spreadsheet_template_oca
-msgid "Sales"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__category_id
+msgid ""
+"Optional grouping (Sales, Finance, HR...) used to organise templates in the "
+"gallery search panel."
 msgstr ""
+"Şablonları galeri arama panelinde düzenlemek için kullanılan isteğe bağlı "
+"gruplama (Satış, Finans, İK...)."
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__thumbnail
+msgid "Preview image shown on the template's kanban card."
+msgstr "Şablonun kanban kartında gösterilen önizleme görseli."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_to_template
+msgid "Save Spreadsheet as Template"
+msgstr "E-tabloyu şablon olarak kaydet"
+
+#. module: spreadsheet_template_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_template_oca/static/src/spreadsheet/bundle/save_as_template.esm.js:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_to_template_view_form
 msgid "Save as Template"
-msgstr "Sablon Olarak Kaydet"
+msgstr "Şablon olarak kaydet"
 
 #. module: spreadsheet_template_oca
-msgid "Spreadsheet Template: Full access for managers"
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__sequence
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__sequence
+msgid "Sequence"
+msgstr "Sıra"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template_category__name
+msgid ""
+"Short grouping label for templates, e.g. 'Sales', 'Finance', 'HR'. Must be "
+"unique."
 msgstr ""
+"Şablonlar için kısa gruplama etiketi, ör. 'Satış', 'Finans', 'İK'. Benzersiz"
+" olmalıdır."
 
 #. module: spreadsheet_template_oca
-msgid "Spreadsheet Template: Read for all users"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__spreadsheet_id
+msgid "Spreadsheet"
+msgstr "E-tablo"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__name
+msgid "Spreadsheet Name"
+msgstr "E-tablo adı"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__spreadsheet_raw
+msgid "Spreadsheet Raw"
+msgstr "Ham e-tablo verisi"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "E-tablo revizyonu"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_template
+msgid "Spreadsheet Template"
+msgstr "E-tablo şablonu"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_template_category
+msgid "Spreadsheet Template Category"
+msgstr "E-tablo şablonu kategorisi"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__spreadsheet_binary_data
+msgid "Spreadsheet file"
+msgstr "E-tablo dosyası"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__template_id
 msgid "Template"
-msgstr "Sablon"
+msgstr "Şablon"
 
 #. module: spreadsheet_template_oca
+#: model:ir.actions.act_window,name:spreadsheet_template_oca.spreadsheet_template_category_act_window
+#: model:ir.ui.menu,name:spreadsheet_template_oca.menu_spreadsheet_template_categories
 msgid "Template Categories"
-msgstr ""
+msgstr "Şablon kategorileri"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__template_count
+msgid "Template Count"
+msgstr "Şablon sayısı"
+
+#. module: spreadsheet_template_oca
+#: model:res.groups,name:spreadsheet_template_oca.group_template_manager
 msgid "Template Manager"
-msgstr ""
+msgstr "Şablon Yöneticisi"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__name
+msgid "Template Name"
+msgstr "Şablon adı"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+msgid "Template Preview"
+msgstr "Şablon önizlemesi"
+
+#. module: spreadsheet_template_oca
+#. odoo-python
+#: code:addons/spreadsheet_template_oca/wizards/spreadsheet_to_template.py:0
+msgid "Template created successfully."
+msgstr "Şablon başarıyla oluşturuldu."
+
+#. module: spreadsheet_template_oca
+#: model:ir.actions.act_window,name:spreadsheet_template_oca.spreadsheet_template_act_window
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__template_ids
+#: model:ir.ui.menu,name:spreadsheet_template_oca.menu_spreadsheet_templates
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_category_view_list
 msgid "Templates"
-msgstr "Sablonlar"
+msgstr "Şablonlar"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__spreadsheet_id
+msgid ""
+"The spreadsheet whose current contents will be saved as a reusable template."
+msgstr ""
+"Mevcut içeriği yeniden kullanılabilir bir şablon olarak kaydedilecek "
+"e-tablo."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_from_template__template_id
+msgid "The template whose contents will be copied into the new spreadsheet."
+msgstr "İçeriği yeni e-tabloya kopyalanacak şablon."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__thumbnail
+msgid "Thumbnail"
+msgstr "Küçük resim"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__usage_count
 msgid "Times Used"
-msgstr "Kullanim Sayisi"
+msgstr "Kullanım sayısı"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_list
 msgid "Use"
-msgstr ""
+msgstr "Kullan"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
 msgid "Use Template"
-msgstr "Sablonu Kullan"
+msgstr "Şablonu kullan"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_list
 msgid "Used"
-msgstr ""
+msgstr "Kullanım"
 
 #. module: spreadsheet_template_oca
-msgid "e.g. Monthly Sales Report"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__description
+msgid ""
+"What this template is for and when to use it — shown on the kanban card. "
+"Example: 'Monthly sales summary with a pivot by salesperson and a total "
+"revenue KPI.'"
 msgstr ""
+"Bu şablonun ne işe yaradığı ve ne zaman kullanılacağı — kanban kartında "
+"gösterilir. Örnek: 'Satış temsilcisine göre pivot tablo ve toplam gelir "
+"göstergesi içeren aylık satış özeti.'"
 
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__description
+msgid ""
+"What this template is for and when to use it — shown on the template's "
+"kanban card."
+msgstr ""
+"Bu şablonun ne işe yaradığı ve ne zaman kullanılacağı — şablonun kanban "
+"kartında gösterilir."
+
+#. module: spreadsheet_template_oca
+#. odoo-python
+#: code:addons/spreadsheet_template_oca/wizards/spreadsheet_to_template.py:0
+msgid ""
+"You cannot save this spreadsheet as a template: creating templates is "
+"reserved for Template Managers, because a template is shared with every "
+"spreadsheet user. Ask an administrator to give you the 'Template Manager' "
+"access right for Spreadsheets (Settings > Users & Companies > Users, Access "
+"Rights tab), or ask a Template Manager to save this spreadsheet as a "
+"template for you."
+msgstr ""
+"Bu e-tabloyu şablon olarak kaydedemezsiniz: şablon oluşturmak Şablon "
+"Yöneticilerine ayrılmıştır, çünkü bir şablon tüm e-tablo kullanıcılarıyla "
+"paylaşılır. Bir yöneticiden size E-tablolar için 'Şablon Yöneticisi' erişim "
+"yetkisini vermesini isteyin (Ayarlar > Kullanıcılar & Firmalar > "
+"Kullanıcılar, Erişim Yetkileri sekmesi) ya da bir Şablon Yöneticisinden bu "
+"e-tabloyu sizin için şablon olarak kaydetmesini isteyin."
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
+msgid "e.g. Monthly Sales Report"
+msgstr "ör. Aylık Satış Raporu"

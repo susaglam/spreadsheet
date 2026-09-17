@@ -28,10 +28,27 @@ patch(SpreadsheetRenderer.prototype, {
         });
     },
     async _checkTemplatePermission() {
-        const result =
-            (await user.hasGroup("base.group_system")) ||
-            (await user.hasGroup("spreadsheet_template_oca.group_template_manager"));
-        this.templateState.canSaveAsTemplate = result;
+        // The renderer is shared by every spreadsheet-like model (templates,
+        // dashboards...). The wizard's spreadsheet_id points to
+        // spreadsheet.spreadsheet, so offering the entry elsewhere would hand
+        // it the id of an unrelated record.
+        if (this.props.model !== "spreadsheet.spreadsheet") {
+            return;
+        }
+        // Only Template Managers may create templates (ir.access.csv).
+        // base.group_system is deliberately NOT accepted: it grants no ACL on
+        // spreadsheet.template, so a system admin without the Template Manager
+        // right would only reach an error. The wizard re-checks server-side.
+        let result = false;
+        try {
+            result = await user.hasGroup(
+                "spreadsheet_template_oca.group_template_manager"
+            );
+        } catch {
+            // Soft-fail: keep the menu hidden rather than break the editor.
+            result = false;
+        }
+        this.templateState.canSaveAsTemplate = Boolean(result);
     },
     async _saveAsTemplate() {
         const record = this.props.record;

@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_portal_dashboard_oca
+# 	* spreadsheet_portal_dashboard_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-17 00:38+0000\n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"POT-Creation-Date: 2026-09-17 11:46+0000\n"
+"PO-Revision-Date: 2026-09-17 11:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,46 +16,293 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboard_detail
+msgid ""
+"<i class=\"fa fa-arrow-left me-1\"/>\n"
+"                                Back to Dashboards"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboards_list
+msgid ""
+"<i class=\"fa fa-eye me-1\"/>\n"
+"                                        View Dashboard"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboard_detail
+msgid ""
+"<i class=\"fa fa-info-circle me-1\"/>\n"
+"                            This dashboard is read-only. Reload the page to see the latest version."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
 msgid "Access"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__active
+msgid "Active"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__all_portal_users
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_search
 msgid "All Portal Users"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__active
+msgid ""
+"Archive the assignment to stop sharing the dashboard on the portal "
+"immediately, without losing the partner selection."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
+msgid "Archived"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_act_window
+msgid "Assign your first portal dashboard"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Calculated value, not shown in this preview"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Charts & KPIs"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__dashboard_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
 msgid "Dashboard"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Dashboard loaded but no displayable content found."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
 msgid "Dashboard name..."
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Description shown to portal users."
+#: model:portal.entry,name:spreadsheet_portal_dashboard_oca.portal_entry_dashboards
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_breadcrumbs_dashboards
+msgid "Dashboards"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "If checked, all portal users can see this dashboard."
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__description
+msgid "Description"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Portal Dashboard: Internal user full access"
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__display_name
+msgid "Display Name"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Portal Dashboard: Portal user read access"
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__sequence
+msgid ""
+"Display order of this dashboard in the portal list; lower numbers appear "
+"first."
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Empty sheet"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__id
+msgid "ID"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "KPI"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboard_detail
+msgid "Loading dashboard..."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__name
+msgid "Name"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboards_list
+msgid ""
+"No dashboards have been shared with you yet. When your contact person shares"
+" a dashboard with your account, it appears here."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__partner_ids
+msgid ""
+"Partners whose users can open this dashboard at /my/dashboards. Selecting a "
+"company also gives the portal users of all its contacts access; an internal "
+"employee only gets access when their own contact is listed. When this list "
+"is empty and 'All Portal Users' is not ticked, nobody can see the dashboard."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_act_window
+msgid ""
+"Pick a dashboard and choose which portal partners can view it\n"
+"                at /my/dashboards."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model,name:spreadsheet_portal_dashboard_oca.model_spreadsheet_portal_dashboard
+msgid "Portal Dashboard Assignment"
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.actions.act_window,name:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_act_window
+#: model:ir.ui.menu,name:spreadsheet_portal_dashboard_oca.menu_portal_dashboards
+#: model:ir.ui.menu,name:spreadsheet_portal_dashboard_oca.menu_portal_dashboards_dashboard_config
 msgid "Portal Dashboards"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__partner_ids
 msgid "Portal Partners"
 msgstr ""
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Portal partners who can view this dashboard. "
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__sequence
+msgid "Sequence"
 msgstr ""
 
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__all_portal_users
+msgid ""
+"Share this dashboard with every portal user (external users such as dealers "
+"or distributors), in addition to the partners listed. Internal employees are"
+" not included: they only get access when their own partner is listed in "
+"Portal Partners."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__description
+msgid ""
+"Short explanation shown under the dashboard title in the portal, e.g. 'Your "
+"orders and deliveries of the current year'."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboards_list
+msgid ""
+"The dashboard you tried to open is no longer available. It may have been "
+"archived or is no longer shared with you. Ask your contact person if you "
+"still need it."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__dashboard_id
+msgid ""
+"The internal spreadsheet dashboard whose read-only view is shared with the "
+"selected portal partners. Example: a 'Monthly Sales' dashboard shared with "
+"dealers. You can only pick dashboards you are allowed to open yourself."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "This dashboard has no data yet."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_portal_dashboard_oca/controllers/portal.py:0
+msgid ""
+"This dashboard is not available to your account. It may have been archived "
+"or is no longer shared with you. Go back to Dashboards, or ask your contact "
+"person to share it again."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid ""
+"This preview shows the dashboard layout and labels. Calculated figures, such"
+" as KPIs and pivot values, are not shown here. Ask your contact person if "
+"you need the latest figures."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__name
+msgid ""
+"Title portal users see on the /my/dashboards card. Defaults to the dashboard"
+" name; change it to use a friendlier label, e.g. 'Your monthly sales'."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Unable to load dashboard data. Please try again later."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:portal.entry,description:spreadsheet_portal_dashboard_oca.portal_entry_dashboards
+msgid "View your analytics dashboards."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_portal_dashboard_oca/models/spreadsheet_portal_dashboard.py:0
+msgid ""
+"You cannot share dashboard #%(dashboard_id)s on the portal because you are "
+"not allowed to open it yourself. Sharing it would expose data your own "
+"access rights hide from you. Ask a Dashboard administrator to share it, or "
+"to add you to one of the dashboard's access groups."
+msgstr ""
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_portal_dashboard_oca/models/spreadsheet_portal_dashboard.py:0
+msgid ""
+"You cannot view this portal dashboard. It is archived, or it is not shared "
+"with your account, and its figures may only be shown to the partners it is "
+"shared with. Open your dashboards from /my/dashboards, or ask the person who"
+" shared it to add your contact again."
+msgstr ""

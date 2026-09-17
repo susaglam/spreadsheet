@@ -210,8 +210,9 @@
             <p class="o_view_nocontent_smiling_face">No templates yet</p>
             <p>
                 Open any spreadsheet and choose File &gt; Save as Template to
-                create your first one. Templates let your team start new
-                spreadsheets from a ready-made layout.
+                create your first one (this needs the Template Manager access
+                right). Templates let your team start new spreadsheets from a
+                ready-made layout.
             </p>
         </field>
     </record>

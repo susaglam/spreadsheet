@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-17 00:38+0000\n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"POT-Creation-Date: 2026-09-17 00:00+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,42 +16,315 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "<code>company_id</code>: ID of the active company"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "<code>company_ids</code>: IDs of the active companies"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid ""
+"<code>group_xmlids</code>: external IDs of the user's groups, e.g. "
+"'sales_team.group_sale_manager'"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "<code>partner_id</code>: ID of the user's contact"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "<code>user_id</code>: ID of the user"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_record_rule_oca.dashboard_rule_act_window
+msgid ""
+"A data filter rule narrows the records a spreadsheet dashboard\n"
+"                shows to a specific group of users. For example, let each\n"
+"                salesperson see only their own orders."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid ""
+"A rule that cannot be evaluated fails closed: the users it applies to see no"
+" records of its model on this dashboard."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#. odoo-python
+#: code:addons/spreadsheet_record_rule_oca/models/dashboard_rule.py:0
+msgid ""
+"A rule that cannot be evaluated fails closed: until it is fixed, the users "
+"it applies to see no '%(model)s' records on this dashboard."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__active
+msgid "Active"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__domain_extension
 msgid "Additional Domain"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
-msgid "Additional domain applied to the model"
-msgstr ""
-
-#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__group_ids
 msgid "Apply to Groups"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "Available variables (plain values of the user viewing the dashboard):"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_record_rule_oca.dashboard_rule_act_window
+msgid "Create your first dashboard data filter"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__dashboard_id
+msgid "Dashboard"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model,name:spreadsheet_record_rule_oca.model_spreadsheet_dashboard_rule
+msgid "Dashboard Data Filter Rule"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.actions.act_window,name:spreadsheet_record_rule_oca.dashboard_rule_act_window
+#: model:ir.ui.menu,name:spreadsheet_record_rule_oca.menu_dashboard_rules
 msgid "Dashboard Data Filters"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard__rule_ids
 msgid "Data Filter Rules"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard__rule_ids
+msgid ""
+"Data filter rules that narrow the pivot, list and chart data this dashboard "
+"displays for specific groups of users. They are a display convenience, not a"
+" security boundary: users never see more than their normal access rights "
+"allow."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "Display filter, not a security boundary."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
 msgid "Domain Extension"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
-msgid "Invalid domain expression: %s"
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__evaluation_error
+msgid "Evaluation Problem"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__sequence
+msgid "Evaluation and listing order; lower numbers are applied first."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid ""
+"Examples: <code>[('user_id', '=', user_id)]</code>, <code>[('company_id', "
+"'in', company_ids + [False])]</code>, <code>[] if "
+"'sales_team.group_sale_manager' in group_xmlids else [('user_id', '=', "
+"user_id)]</code>"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__evaluation_error
+msgid ""
+"Explains why this rule cannot currently be evaluated, checked with your own "
+"user values (a user in another company may still hit a different problem). "
+"While a problem is shown the rule fails closed: the users it applies to see "
+"no records of its model on the dashboard. Empty means the rule evaluates "
+"correctly."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__domain_extension
+msgid ""
+"Extra conditions AND-ed to the domain of every pivot, list and chart of this"
+" model on the dashboard, for the users this rule applies to. Only these "
+"plain-value variables are available: user_id, partner_id, company_id (active"
+" company), company_ids (active companies) and group_xmlids (external IDs of "
+"the user's groups). Example: [('user_id', '=', user_id)]. Important: this "
+"narrows what the dashboard displays, it is NOT a security boundary. The "
+"filter is sent to the browser, where a technical user could remove it, "
+"although nobody ever sees more than their normal Odoo access rights allow. "
+"Use access rights (Settings > Technical > Security > Access Rights) to truly"
+" restrict data. If the domain cannot be evaluated the rule fails closed: its"
+" data sources show no records."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__name
+msgid "Human label for this filter rule, e.g. 'Salesperson sees own orders'."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__id
+msgid "ID"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__model_name
 msgid "Model"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
-msgid "Odoo model to apply filter to (e.g., sale.order)."
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__name
+msgid "Name"
 msgstr ""
 
 #. module: spreadsheet_record_rule_oca
-msgid "Rule applies to users in these groups. Empty = all users."
+#: model_terms:ir.actions.act_window,help:spreadsheet_record_rule_oca.dashboard_rule_act_window
+msgid ""
+"Rules narrow what dashboards display; they are not a security\n"
+"                boundary. Only administrators can create or change them."
 msgstr ""
 
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,field_description:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__model_name
+msgid ""
+"Technical name of the Odoo model whose dashboard data sources this rule "
+"filters, e.g. sale.order. It must match the model used by the pivot, list or"
+" chart on the dashboard."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#. odoo-python
+#: code:addons/spreadsheet_record_rule_oca/models/dashboard_rule.py:0
+msgid ""
+"The Additional Domain is not a valid domain for the model '%(model)s' "
+"(%(error)s). Enter a list of conditions such as [('user_id', '=', user_id)],"
+" using only the variables user_id, partner_id, company_id, company_ids and "
+"group_xmlids."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#. odoo-python
+#: code:addons/spreadsheet_record_rule_oca/models/dashboard_rule.py:0
+msgid ""
+"The Additional Domain uses '%(name)s', which is not an available variable. "
+"Only user_id, partner_id, company_id, company_ids and group_xmlids can be "
+"used; anything else must be a literal value such as 'draft', 42 or True."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#. odoo-python
+#: code:addons/spreadsheet_record_rule_oca/models/dashboard_rule.py:0
+msgid ""
+"The Additional Domain uses the 'user' variable, which is no longer "
+"available: it exposed the full user record, whose methods could change data "
+"with administrator rights. Use the plain values instead: user_id, "
+"partner_id, company_id, company_ids or group_xmlids. For example, replace "
+"user.id with user_id."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__dashboard_id
+msgid ""
+"The dashboard whose pivot, list and chart data sources this rule filters, "
+"e.g. the Sales dashboard."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#. odoo-python
+#: code:addons/spreadsheet_record_rule_oca/models/dashboard_rule.py:0
+msgid ""
+"The model '%(model)s' does not exist in this database, so this rule can "
+"never match a dashboard data source. Enter the technical model name used by "
+"the pivot, list or chart, for example sale.order (see Settings > Technical >"
+" Database Structure > Models)."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__group_ids
+msgid ""
+"The rule only applies to users who belong to at least one of these groups "
+"(directly or through an implied group). Leave empty to apply it to every "
+"user who opens the dashboard."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid ""
+"This rule narrows what the dashboard shows. The filter is sent to the "
+"browser, so a technical user could remove it, but nobody ever sees more than"
+" their normal Odoo access rights allow. Use Settings &gt; Technical &gt; "
+"Security &gt; Access Rights to truly restrict data."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_record_rule_oca.dashboard_rule_act_window
+msgid ""
+"To get started, pick a dashboard, enter the model to filter\n"
+"                (e.g. sale.order), choose the groups it applies to, and add an\n"
+"                additional domain such as [('user_id', '=', user_id)]."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model:ir.model.fields,help:spreadsheet_record_rule_oca.field_spreadsheet_dashboard_rule__active
+msgid ""
+"Uncheck to archive this rule so it no longer filters dashboard data, without"
+" deleting it."
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "[('user_id', '=', user_id)]"
+msgstr ""
+
+#. module: spreadsheet_record_rule_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_record_rule_oca.dashboard_rule_view_form
+msgid "e.g. sale.order"
+msgstr ""

@@ -43,6 +43,21 @@ Configuration
 
 No configuration needed. Snapshots are stored as attachments.
 
+Access rights
+=============
+
+A snapshot holds a full copy of its spreadsheet and can be restored over it, so
+its access follows the spreadsheet's own sharing:
+
+* Everyone who can open the spreadsheet (its owner, contributors and readers,
+  and spreadsheet managers of its company) can see its snapshots and their diff.
+* Only users who can edit the spreadsheet (its owner, contributors and
+  spreadsheet managers) can take a snapshot, edit a snapshot's name, label and
+  note, move a snapshot to another spreadsheet they can edit, or restore it.
+* Only spreadsheet managers can delete snapshots.
+* The captured content of a snapshot and the user who captured it cannot be
+  changed once the snapshot exists.
+
 Dependencies
 ============
 
@@ -54,6 +69,17 @@ Known issues / Roadmap
 * Automatic daily snapshots
 * Compare any two versions
 * Snapshot retention policies
+* The visual diff compares cell contents (values and formulas) only;
+  formatting-only changes (styles, number formats, borders) are not listed yet.
+  Compressed cell runs saved by the spreadsheet editor are expanded on the
+  server; the rare run that cannot be expanded is shown as stored, with a
+  warning above the diff.
+* To keep the snapshot form fast, each side of the diff expands at most
+  250,000 cells and a bounded amount of formula work (about 600 KB of stored
+  formulas, far more than any dashboard shipped with Odoo), and at most 2,000
+  differing cells are listed. Beyond that, the remaining entries are shown as
+  stored with a "too large" warning; the added/changed/removed counters still
+  include the differences that are not listed.
 
 Credits
 =======

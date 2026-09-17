@@ -4,12 +4,13 @@
         <field name="name">spreadsheet.dashboard.rule.list</field>
         <field name="model">spreadsheet.dashboard.rule</field>
         <field name="arch" type="xml">
-            <list editable="bottom">
+            <list decoration-danger="evaluation_error">
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="dashboard_id" />
                 <field name="model_name" />
                 <field name="group_ids" widget="many2many_tags" />
+                <field name="evaluation_error" column_invisible="True" />
                 <field name="active" widget="boolean_toggle" />
             </list>
         </field>
@@ -20,16 +21,31 @@
         <field name="model">spreadsheet.dashboard.rule</field>
         <field name="arch" type="xml">
             <form>
+                <div
+                    class="alert alert-danger mb-0"
+                    role="alert"
+                    invisible="not evaluation_error"
+                >
+                    <field name="evaluation_error" nolabel="1" />
+                </div>
                 <sheet>
                     <div class="oe_title">
                         <h1>
                             <field name="name" />
                         </h1>
                     </div>
+                    <div class="alert alert-info" role="status">
+                        <p
+                            class="fw-bold mb-1"
+                        >Display filter, not a security boundary.</p>
+                        <p
+                            class="mb-0"
+                        >This rule narrows what the dashboard shows. The filter is sent to the browser, so a technical user could remove it, but nobody ever sees more than their normal Odoo access rights allow. Use Settings &gt; Technical &gt; Security &gt; Access Rights to truly restrict data.</p>
+                    </div>
                     <group>
                         <group>
                             <field name="dashboard_id" />
-                            <field name="model_name" />
+                            <field name="model_name" placeholder="e.g. sale.order" />
                             <field name="sequence" />
                             <field name="active" />
                         </group>
@@ -40,9 +56,27 @@
                     <group string="Domain Extension">
                         <field
                             name="domain_extension"
-                            placeholder="[('user_id', '=', user.id)]"
+                            placeholder="[('user_id', '=', user_id)]"
                         />
                     </group>
+                    <div class="text-muted">
+                        <p
+                        >Available variables (plain values of the user viewing the dashboard):</p>
+                        <ul>
+                            <li><code>user_id</code>: ID of the user</li>
+                            <li><code>partner_id</code>: ID of the user's contact</li>
+                            <li><code>company_id</code>: ID of the active company</li>
+                            <li><code
+                            >company_ids</code>: IDs of the active companies</li>
+                            <li><code
+                            >group_xmlids</code>: external IDs of the user's groups, e.g. 'sales_team.group_sale_manager'</li>
+                        </ul>
+                        <p>Examples: <code>[('user_id', '=', user_id)]</code>, <code
+                        >[('company_id', 'in', company_ids + [False])]</code>, <code
+                        >[] if 'sales_team.group_sale_manager' in group_xmlids else [('user_id', '=', user_id)]</code></p>
+                        <p
+                        >A rule that cannot be evaluated fails closed: the users it applies to see no records of its model on this dashboard.</p>
+                    </div>
                 </sheet>
             </form>
         </field>
@@ -64,7 +98,11 @@
             <p>
                 To get started, pick a dashboard, enter the model to filter
                 (e.g. sale.order), choose the groups it applies to, and add an
-                additional domain such as [('user_id', '=', user.id)].
+                additional domain such as [('user_id', '=', user_id)].
+            </p>
+            <p>
+                Rules narrow what dashboards display; they are not a security
+                boundary. Only administrators can create or change them.
             </p>
         </field>
     </record>
@@ -76,7 +114,10 @@
             ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
         />
         <field name="action" ref="dashboard_rule_act_window" />
-        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field
+            name="group_ids"
+            eval="[(4, ref('spreadsheet_oca.group_manager')), (4, ref('base.group_system'))]"
+        />
         <field name="sequence" eval="40" />
     </record>
 </odoo>

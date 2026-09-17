@@ -42,12 +42,16 @@ Configuration
 =============
 
 * Adjust monthly cron via **Settings** > **Technical** > **Scheduled Actions**
+  (the job is non-updatable: module upgrades keep your schedule and settings)
+* Each run computes the previous complete month for every vendor with a purchase
+  order confirmed in that month (locked orders included); a failing vendor is
+  logged and skipped without blocking the others
+* A manually edited quality rate is kept when the month is computed again
 * Weight customization requires overriding ``_compute_score``
 
 Dependencies
 ============
 
-* ``spreadsheet_oca``
 * ``spreadsheet_dashboard``
 * ``purchase_stock``
 

@@ -20,6 +20,12 @@
         <field name="name">Manager</field>
         <field name="privilege_id" ref="privilege_spreadsheet" />
         <field name="implied_ids" eval="[(4, ref('group_user'))]" />
+        <!-- saas-19.4: res.groups.users was RENAMED to user_ids (res_groups.py),
+             not removed. Admin/OdooBot manage every spreadsheet by default. -->
+        <field
+            name="user_ids"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
     </record>
     <!-- saas-19.4: ir.rule + ir.model.access merged into ir.access.
          access = OR(group permissions) AND AND(global restrictions), evaluated
@@ -28,6 +34,8 @@
          The no-domain group_user crud grant on spreadsheet.spreadsheet was
          REMOVED from ir.access.csv so these owner/contributor/reader permissions
          are the sole scope (else OR with TRUE would expose every spreadsheet).
+         Group-sharing domains use user.all_group_ids (explicit + implied
+         groups); user.group_ids only holds EXPLICITLY assigned groups in 19.4.
          perm_* -> operation letters (c,r,u,d): owner/manager=crud,
          contributor(no create/unlink)=ru, reader(read only)=r. -->
     <record model="ir.access" id="spreadsheet_company_rule">
@@ -50,7 +58,7 @@
         <field name="operation">ru</field>
         <field
             name="domain"
-        >['|', ('contributor_ids','=', user.id), ('contributor_group_ids','in', user.group_ids.ids)]</field>
+        >['|', ('contributor_ids','=', user.id), ('contributor_group_ids','in', user.all_group_ids.ids)]</field>
     </record>
     <record model="ir.access" id="spreadsheet_reader_rule">
         <field name="name">Spreadsheet Reader</field>
@@ -59,7 +67,7 @@
         <field name="operation">r</field>
         <field
             name="domain"
-        >['|', ('reader_ids','=', user.id), ('reader_group_ids','in', user.group_ids.ids)]</field>
+        >['|', ('reader_ids','=', user.id), ('reader_group_ids','in', user.all_group_ids.ids)]</field>
     </record>
     <record model="ir.access" id="spreadsheet_manager_rule">
         <field name="name">Spreadsheet Manager</field>
@@ -72,6 +80,6 @@
         <field name="name">Spreadsheet Import mode</field>
         <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
         <field name="operation">crud</field>
-        <field name="domain">[('group_ids','in', user.group_ids.ids)]</field>
+        <field name="domain">[('group_ids','in', user.all_group_ids.ids)]</field>
     </record>
 </odoo>

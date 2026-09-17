@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 11:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish (tr)\n"
 "Language: tr\n"
@@ -16,102 +16,332 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_vendor_scorecard_oca
-msgid "Average number of days from PO confirmation to receipt."
-msgstr ""
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid " days"
+msgstr " gün"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Amount"
+msgstr "Tutar"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__avg_lead_time
+msgid ""
+"Average number of days between a purchase order's order deadline and the "
+"planned receipt date of its lines (the 'Days to Receive' measure of the "
+"purchase analysis), for orders confirmed in the period. Example: order "
+"deadline on the 1st, goods planned for the 6th -> 5 days."
+msgstr ""
+"Dönem içinde onaylanan siparişler için bir satın alma siparişinin sipariş "
+"son tarihi ile satırlarının planlanan teslim alma tarihi arasındaki ortalama"
+" gün sayısı (satın alma analizindeki 'Teslim Alma Süresi' ölçüsü). Örnek: "
+"sipariş son tarihi ayın 1'i, malların planlanan gelişi ayın 6'sı -> 5 gün."
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Avg Lead Time"
+msgstr "Ort. Tedarik Süresi"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__avg_lead_time
 msgid "Avg Lead Time (days)"
-msgstr ""
+msgstr "Ort. Tedarik Süresi (gün)"
 
 #. module: spreadsheet_vendor_scorecard_oca
-msgid "Group By"
-msgstr "Gruplama"
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Avg Score"
+msgstr "Ort. Puan"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__create_date
+msgid "Created on"
+msgstr "Oluşturulma Tarihi"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Current"
+msgstr "Güncel"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__date
+msgid "Date"
+msgstr "Tarih"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__date
+msgid "First day of the period this scorecard summarises."
+msgstr "Bu karnenin özetlediği dönemin ilk günü."
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__notes
+msgid "Free-text manual remarks, e.g. reason for a low score."
+msgstr "Serbest metin notları, ör. düşük puanın nedeni."
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_search
 msgid "High Performers (80+)"
-msgstr ""
+msgstr "Yüksek Performanslılar (80+)"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "KPI"
+msgstr "KPI"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Lead Time"
+msgstr "Tedarik Süresi"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_list
 msgid "Lead Time (d)"
-msgstr ""
+msgstr "Tedarik Süresi (g)"
 
 #. module: spreadsheet_vendor_scorecard_oca
-msgid "Low Performers (&lt;50)"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_search
+msgid "Low Performers (<50)"
+msgstr "Düşük Performanslılar (<50)"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__quality_rate
+msgid ""
+"Manual quality override; defaults to 100 pending QC integration. Percentage "
+"of received items without quality issues."
+msgstr ""
+"Elle girilen kalite değeri; kalite kontrol entegrasyonu gelene kadar "
+"varsayılan olarak 100'dür. Kalite sorunu olmadan teslim alınan ürünlerin "
+"yüzdesi."
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_search
 msgid "Month"
-msgstr ""
+msgstr "Ay"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_vendor_scorecard_oca.vendor_scorecard_act_window
+msgid "No vendor scorecards yet"
+msgstr "Henüz tedarikçi karnesi yok"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__notes
+msgid "Notes"
+msgstr "Notlar"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__total_orders
+msgid ""
+"Number of purchase orders confirmed in the period (locked orders included)."
+msgstr ""
+"Dönem içinde onaylanan satın alma siparişi sayısı (kilitli siparişler "
+"dahil)."
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_list
 msgid "On-Time %"
-msgstr ""
+msgstr "Zamanında %"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "On-Time Delivery"
+msgstr "Zamanında Teslimat"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__on_time_delivery_rate
 msgid "On-Time Delivery (%)"
-msgstr ""
+msgstr "Zamanında Teslimat (%)"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Orders"
+msgstr "Siparişler"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__score
 msgid "Overall Score"
 msgstr "Genel Puan"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__on_time_delivery_rate
 msgid "Percentage of deliveries received on or before the expected date."
-msgstr ""
+msgstr "Beklenen tarihte veya öncesinde teslim alınan teslimatların yüzdesi."
 
 #. module: spreadsheet_vendor_scorecard_oca
-msgid "Percentage of received items without quality issues."
-msgstr ""
-
-#. module: spreadsheet_vendor_scorecard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_form
 msgid "Performance"
-msgstr ""
+msgstr "Performans"
 
 #. module: spreadsheet_vendor_scorecard_oca
-msgid "Purchase Orders - %s"
-msgstr ""
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Period"
+msgstr "Dönem"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Previous"
+msgstr "Önceki"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-python
+#: code:addons/spreadsheet_vendor_scorecard_oca/models/vendor_scorecard.py:0
+msgid "Purchase Orders - %(name)s"
+msgstr "Satın Alma Siparişleri - %(name)s"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_list
 msgid "Quality %"
-msgstr ""
+msgstr "Kalite %"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Quality Rate"
+msgstr "Kalite Oranı"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__quality_rate
 msgid "Quality Rate (%)"
-msgstr ""
+msgstr "Kalite Oranı (%)"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_list
 msgid "Score"
 msgstr "Puan"
 
 #. module: spreadsheet_vendor_scorecard_oca
-msgid "Spreadsheet: Compute Vendor Scorecards"
+#: model_terms:ir.actions.act_window,help:spreadsheet_vendor_scorecard_oca.vendor_scorecard_act_window
+msgid ""
+"Scorecards are generated monthly by a scheduled action\n"
+"                (Settings &gt; Technical &gt; Scheduled Actions) and can also be\n"
+"                created manually here."
 msgstr ""
+"Karneler her ay zamanlanmış bir eylemle oluşturulur\n"
+"                (Ayarlar &gt; Teknik &gt; Zamanlanmış Eylemler) ve burada elle de\n"
+"                oluşturulabilir."
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.actions.server,name:spreadsheet_vendor_scorecard_oca.ir_cron_vendor_scorecard_ir_actions_server
+msgid "Spreadsheet: Compute Vendor Scorecards"
+msgstr "Spreadsheet: Tedarikçi Karnelerini Hesapla"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__partner_id
+msgid ""
+"The supplier this scorecard rates. The list offers contacts flagged as "
+"vendors: created from a purchase order's Vendor field or used on a posted "
+"vendor bill."
+msgstr ""
+"Bu karnenin değerlendirdiği tedarikçi. Liste, tedarikçi olarak işaretlenmiş "
+"kişileri gösterir: bir satın alma siparişinin Tedarikçi alanından "
+"oluşturulanlar veya onaylanmış bir tedarikçi faturasında kullanılanlar."
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+msgid "Top Vendors by Score"
+msgstr "Puana Göre En İyi Tedarikçiler"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__total_amount
 msgid "Total Amount"
 msgstr "Toplam Tutar"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__total_orders
 msgid "Total Orders"
-msgstr "Toplam Siparis"
+msgstr "Toplam Sipariş"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__total_amount
+msgid ""
+"Untaxed total, in company currency, of the purchase orders confirmed in the "
+"period."
+msgstr ""
+"Dönem içinde onaylanan satın alma siparişlerinin şirket para birimindeki "
+"vergiler hariç toplamı."
+
+#. module: spreadsheet_vendor_scorecard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_vendor_scorecard_oca/data/files/vendor_scorecard_dashboard.json:0
+#: model:ir.model.fields,field_description:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__partner_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_search
 msgid "Vendor"
-msgstr "Tedarikci"
+msgstr "Tedarikçi"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:spreadsheet.dashboard,name:spreadsheet_vendor_scorecard_oca.spreadsheet_dashboard_vendor_scorecard
 msgid "Vendor Performance"
-msgstr "Tedarikci Performansi"
+msgstr "Tedarikçi Performansı"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model,name:spreadsheet_vendor_scorecard_oca.model_spreadsheet_vendor_scorecard
+msgid "Vendor Performance Scorecard"
+msgstr "Tedarikçi Performans Karnesi"
+
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.actions.act_window,name:spreadsheet_vendor_scorecard_oca.vendor_scorecard_act_window
+#: model:ir.ui.menu,name:spreadsheet_vendor_scorecard_oca.menu_vendor_scorecard
 msgid "Vendor Scorecards"
-msgstr "Tedarikci Karneleri"
+msgstr "Tedarikçi Karneleri"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_form
 msgid "View Orders"
-msgstr ""
+msgstr "Siparişleri Görüntüle"
 
 #. module: spreadsheet_vendor_scorecard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_vendor_scorecard_oca.vendor_scorecard_view_form
 msgid "Volume"
-msgstr ""
+msgstr "Hacim"
 
+#. module: spreadsheet_vendor_scorecard_oca
+#: model:ir.model.fields,help:spreadsheet_vendor_scorecard_oca.field_spreadsheet_vendor_scorecard__score
+msgid ""
+"Weighted 0-100 rating: 40% on-time delivery + 40% quality + 20% lead-time "
+"efficiency. Example: 90% on-time, 100% quality, 5-day lead time -> ~89."
+msgstr ""
+"0-100 arası ağırlıklı puan: %40 zamanında teslimat + %40 kalite + %20 "
+"tedarik süresi verimliliği. Örnek: %90 zamanında, %100 kalite, 5 günlük "
+"tedarik süresi -> ~89."

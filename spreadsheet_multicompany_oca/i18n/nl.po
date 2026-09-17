@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Dutch (nl)\n"
 "Language: nl\n"
@@ -16,58 +16,306 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_multicompany_oca
-msgid "Accounts used for inter-company transactions. "
-msgstr ""
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "%(count)s account(s) you cannot see"
+msgstr "%(count)s rekening(en) (niet zichtbaar voor u)"
 
 #. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "%(count)s company(ies) you cannot see"
+msgstr "%(count)s bedrijf/bedrijven (niet zichtbaar voor u)"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__name
+msgid "A label for this consolidation setup. Example: Group Consolidation Q1."
+msgstr ""
+"Een naam voor deze consolidatie-instelling. Voorbeeld: Groepsconsolidatie "
+"K1."
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_multicompany_oca.consolidation_profile_act_window
+msgid ""
+"A profile selects the companies to consolidate, the elimination\n"
+"                accounts for inter-company balances, and the target currency,\n"
+"                then generates a consolidated spreadsheet."
+msgstr ""
+"Een profiel bepaalt welke bedrijven worden geconsolideerd, de "
+"eliminatierekeningen voor intercompany-saldi en de doelvaluta, en maakt "
+"daarna een geconsolideerde spreadsheet."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Account"
+msgstr "Rekening"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__elimination_account_ids
+msgid ""
+"Accounts used for inter-company transactions. The report row with the code "
+"of a selected account is cancelled in the Eliminations column for all "
+"consolidated companies together; the code is looked up in the chart of "
+"accounts of each consolidated company. Example: select the inter-company "
+"receivable account 1100 of one group company, and the 1100 balances of every"
+" consolidated company net out to zero."
+msgstr ""
+"Rekeningen voor intercompany-transacties. De rapportregel met de code van "
+"een gekozen rekening wordt in de kolom Eliminaties tegengeboekt voor alle "
+"geconsolideerde bedrijven samen; de code wordt opgezocht in het "
+"rekeningschema van elk geconsolideerd bedrijf. Voorbeeld: kies de "
+"intercompany-debiteurenrekening 1100 van één groepsbedrijf, en de 1100-saldi"
+" van alle geconsolideerde bedrijven vallen tegen elkaar weg."
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__active
+msgid "Active"
+msgstr "Actief"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__currency_id
+msgid ""
+"All company balances are converted to this currency before consolidating. "
+"Example: set EUR to report a mixed EUR/USD group in euros."
+msgstr ""
+"Alle bedrijfssaldi worden vóór het consolideren omgerekend naar deze valuta."
+" Voorbeeld: kies EUR om een gemengde EUR/USD-groep in euro te rapporteren."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Code"
+msgstr "Code"
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "Companies"
 msgstr "Bedrijven"
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__company_ids
 msgid "Companies to Consolidate"
-msgstr ""
+msgstr "Te consolideren bedrijven"
 
 #. module: spreadsheet_multicompany_oca
-msgid "Consolidated Report - %s"
-msgstr ""
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Consolidated"
+msgstr "Geconsolideerd"
 
 #. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Consolidated Report - %(name)s"
+msgstr "Geconsolideerd rapport - %(name)s"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.ui.menu,name:spreadsheet_multicompany_oca.menu_consolidation_profiles
 msgid "Consolidation"
 msgstr "Consolidatie"
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__currency_id
 msgid "Consolidation Currency"
-msgstr ""
+msgstr "Consolidatievaluta"
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.actions.act_window,name:spreadsheet_multicompany_oca.consolidation_profile_act_window
 msgid "Consolidation Profiles"
-msgstr ""
+msgstr "Consolidatieprofielen"
 
 #. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Consolidation profile '%(profile)s' has no company whose balances you can "
+"read, so there is nothing to consolidate. %(reasons)s"
+msgstr ""
+"Consolidatieprofiel '%(profile)s' bevat geen bedrijf waarvan u de saldi kunt"
+" lezen, dus er valt niets te consolideren. %(reasons)s"
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_multicompany_oca.consolidation_profile_act_window
+msgid "Create your first consolidation profile"
+msgstr "Maak uw eerste consolidatieprofiel aan"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "Eliminations"
-msgstr ""
+msgstr "Eliminaties"
 
 #. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_list
 msgid "Generate"
-msgstr ""
+msgstr "Genereren"
 
 #. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "Generate Consolidated Report"
-msgstr ""
+msgstr "Geconsolideerd rapport genereren"
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__elimination_account_ids
 msgid "Inter-Company Elimination Accounts"
-msgstr ""
+msgstr "Intercompany-eliminatierekeningen"
 
 #. module: spreadsheet_multicompany_oca
-msgid "Inter-Company Partners"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
 
 #. module: spreadsheet_multicompany_oca
-msgid "Partner records representing inter-company entities. "
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model,name:spreadsheet_multicompany_oca.model_spreadsheet_consolidation_profile
+msgid "Multi-Company Consolidation Profile"
+msgstr "Consolidatieprofiel voor meerdere bedrijven"
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__name
+msgid "Name"
+msgstr "Naam"
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Not included: %(companies)s. These companies are archived, so their journal "
+"items cannot be read and their balances are missing from this consolidation."
+" Restore the companies, or remove them from the profile, then generate the "
+"report again."
+msgstr ""
+"Niet opgenomen: %(companies)s. Deze bedrijven zijn gearchiveerd, dus hun "
+"boekingsregels kunnen niet worden gelezen en hun saldi ontbreken in deze "
+"consolidatie. Herstel de bedrijven of verwijder ze uit het profiel en "
+"genereer het rapport daarna opnieuw."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Not included: %(companies)s. Your access rights do not allow reading the "
+"journal items of these companies, so their balances are missing from this "
+"consolidation. Ask an administrator for read access to journal items in "
+"these companies (at least the 'Invoicing' role under Accounting in your user"
+" settings), then generate the report again."
+msgstr ""
+"Niet opgenomen: %(companies)s. Uw toegangsrechten staan het lezen van de "
+"boekingsregels van deze bedrijven niet toe, dus hun saldi ontbreken in deze "
+"consolidatie. Vraag een beheerder om leestoegang tot boekingsregels in deze "
+"bedrijven (minimaal de rol 'Facturatie' onder Boekhouding in uw "
+"gebruikersinstellingen) en genereer het rapport daarna opnieuw."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Not included: %(companies)s. Your user has no access to these companies, so "
+"their balances are missing from this consolidation. Ask an administrator to "
+"add them to your allowed companies, then generate the report again."
+msgstr ""
+"Niet opgenomen: %(companies)s. Uw gebruiker heeft geen toegang tot deze "
+"bedrijven, dus hun saldi ontbreken in deze consolidatie. Vraag een beheerder"
+" om ze toe te voegen aan uw toegestane bedrijven en genereer het rapport "
+"daarna opnieuw."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Nothing was eliminated for %(accounts)s: these elimination accounts do not "
+"belong to any consolidated company. Select the inter-company accounts of the"
+" companies in this profile instead."
+msgstr ""
+"Voor %(accounts)s is niets geëlimineerd: deze eliminatierekeningen horen bij"
+" geen enkel geconsolideerd bedrijf. Kies in plaats daarvan de intercompany-"
+"rekeningen van de bedrijven in dit profiel."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Select the companies to consolidate on the profile, then generate the report"
+" again."
+msgstr ""
+"Kies in het profiel de bedrijven die u wilt consolideren en genereer het "
+"rapport daarna opnieuw."
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__company_ids
+msgid ""
+"The legal entities whose posted journal items are summed into this "
+"consolidation, one column per company. A branch that is not listed itself is"
+" included in the column of its parent company; list the branch as well to "
+"give it its own column. Example: pick the parent plus each subsidiary in the"
+" group report."
+msgstr ""
+"De juridische entiteiten waarvan de geboekte boekingsregels in deze "
+"consolidatie worden opgeteld, één kolom per bedrijf. Een filiaal dat zelf "
+"niet in de lijst staat, wordt meegenomen in de kolom van zijn moederbedrijf;"
+" voeg het filiaal ook toe om het een eigen kolom te geven. Voorbeeld: kies "
+"het moederbedrijf plus elke dochteronderneming in het groepsrapport."
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__active
+msgid ""
+"Uncheck to archive this profile: it disappears from the list but keeps its "
+"settings, so you can restore it later."
+msgstr ""
+"Vink uit om dit profiel te archiveren: het verdwijnt uit de lijst maar "
+"behoudt zijn instellingen, zodat u het later kunt herstellen."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"You cannot read journal items, so no balances can be consolidated. Ask an "
+"administrator to give you accounting access (at least the 'Invoicing' role "
+"under Accounting in your user settings), then generate the report again."
+msgstr ""
+"U kunt geen boekingsregels lezen, dus er kunnen geen saldi worden "
+"geconsolideerd. Vraag een beheerder om u toegang tot de boekhouding te geven"
+" (minimaal de rol 'Facturatie' onder Boekhouding in uw "
+"gebruikersinstellingen) en genereer het rapport daarna opnieuw."
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"You need Spreadsheet access to generate a consolidated report. Ask an "
+"administrator to add you to the Spreadsheet users group."
+msgstr ""
+"U hebt toegang tot Spreadsheet nodig om een geconsolideerd rapport te "
+"genereren. Vraag een beheerder om u toe te voegen aan de gebruikersgroep "
+"Spreadsheet."
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "e.g. Group Consolidation Q1"
-msgstr ""
-
+msgstr "bijv. Groepsconsolidatie K1"

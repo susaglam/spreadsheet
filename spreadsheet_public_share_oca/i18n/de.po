@@ -1,12 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_public_share_oca
+# 	* spreadsheet_public_share_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"POT-Creation-Date: 2026-09-17 00:00+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: German (de)\n"
 "Language: de\n"
@@ -16,78 +17,571 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_password_prompt
+msgid ""
+"<i class=\"fa fa-clock-o me-1\"/>\n"
+"                            <span>Too many incorrect passwords. For security, this\n"
+"                            link is locked for up to 15 minutes. Please try again\n"
+"                            later.</span>"
+msgstr ""
+"<i class=\"fa fa-clock-o me-1\"/>\n"
+"                            <span>Zu viele falsche Passwörter. Aus Sicherheitsgründen ist dieser Link für bis zu 15 Minuten gesperrt. Bitte versuchen Sie es später erneut.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid ""
+"<i class=\"fa fa-download me-1\"/>\n"
+"                                    <span>Download data (JSON)</span>"
+msgstr ""
+"<i class=\"fa fa-download me-1\"/>\n"
+"                                    <span>Daten herunterladen (JSON)</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_password_prompt
+msgid ""
+"<i class=\"fa fa-exclamation-circle me-1\"/>\n"
+"                            <span>Incorrect password. Please try again.</span>"
+msgstr ""
+"<i class=\"fa fa-exclamation-circle me-1\"/>\n"
+"                            <span>Falsches Passwort. Bitte versuchen Sie es erneut.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid ""
+"<i class=\"fa fa-exclamation-triangle me-1\"/>\n"
+"                                <span>This sheet could not be displayed in the\n"
+"                                preview.</span>"
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle me-1\"/>\n"
+"                                <span>Dieses Blatt konnte in der Vorschau nicht angezeigt werden.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_invalid
+msgid "<i class=\"fa fa-exclamation-triangle me-2\"/>Invalid or Expired Link"
+msgstr ""
+"<i class=\"fa fa-exclamation-triangle me-2\"/>Ungültiger oder abgelaufener "
+"Link"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid ""
+"<i class=\"fa fa-eye me-1\"/>\n"
+"                            <span>Read-only shared view.</span>"
+msgstr ""
+"<i class=\"fa fa-eye me-1\"/>\n"
+"                            <span>Geteilte Ansicht, nur lesbar.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid ""
+"<i class=\"fa fa-info-circle me-1\"/>\n"
+"                    <span>There is nothing to preview in this spreadsheet.</span>"
+msgstr ""
+"<i class=\"fa fa-info-circle me-1\"/>\n"
+"                    <span>In dieser Tabelle gibt es nichts anzuzeigen.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid ""
+"<i class=\"fa fa-info-circle me-2\"/>\n"
+"                            <span>This is a lightweight preview showing the sheet\n"
+"                            layout and labels. Live formula results are calculated\n"
+"                            when you open the full spreadsheet in Odoo.</span>"
+msgstr ""
+"<i class=\"fa fa-info-circle me-2\"/>\n"
+"                            <span>Dies ist eine einfache Vorschau mit dem Layout und den Beschriftungen des Blatts. Live-Formelergebnisse werden berechnet, wenn Sie die vollständige Tabelle in Odoo öffnen.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_password_prompt
+msgid ""
+"<i class=\"fa fa-lock me-2\"/>\n"
+"                            <span>Password Required</span>"
+msgstr ""
+"<i class=\"fa fa-lock me-2\"/>\n"
+"                            <span>Passwort erforderlich</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid ""
+"<i class=\"fa fa-scissors me-1\"/>\n"
+"                                <span>Preview limited to the first 100 rows and 26\n"
+"                                columns. Download the data for the full\n"
+"                                sheet.</span>"
+msgstr ""
+"<i class=\"fa fa-scissors me-1\"/>\n"
+"                                <span>Die Vorschau ist auf die ersten 100 Zeilen und 26 Spalten beschränkt. Laden Sie die Daten für das vollständige Blatt herunter.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_password_prompt
+msgid ""
+"<i class=\"fa fa-unlock me-1\"/>\n"
+"                                <span>Access</span>"
+msgstr ""
+"<i class=\"fa fa-unlock me-1\"/>\n"
+"                                <span>Öffnen</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid ""
+"<span class=\"text-muted\" title=\"Live value — open the full spreadsheet to"
+" see computed figures\">—</span>"
+msgstr ""
+"<span class=\"text-muted\" title=\"Live-Wert — öffnen Sie die vollständige "
+"Tabelle, um die berechneten Zahlen zu sehen\">—</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_spreadsheet_view
+msgid "<span>views.</span>"
+msgstr "<span>Aufrufe.</span>"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_public_share_oca.public_share_act_window
+msgid ""
+"A public share link exposes a read-only preview of a spreadsheet\n"
+"                at a token URL that external users can open without logging in.\n"
+"                Click Create, pick a spreadsheet (optionally set a password,\n"
+"                expiry, or allow download), then use Show Link to copy the URL."
+msgstr ""
+"Ein öffentlicher Freigabelink stellt eine schreibgeschützte Vorschau einer "
+"Tabelle unter einer Token-URL bereit, die externe Benutzer ohne Anmeldung "
+"öffnen können. Klicken Sie auf Erstellen, wählen Sie eine Tabelle (optional "
+"mit Passwort, Ablaufdatum oder Download-Erlaubnis) und kopieren Sie die URL "
+"anschließend mit Link anzeigen."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__active
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__allow_download
+msgid "Allow Download"
+msgstr "Download erlauben"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_res_config_settings__public_share_allow_download_default
 msgid "Allow Download by Default"
-msgstr ""
+msgstr "Download standardmäßig erlauben"
 
 #. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.res_config_settings_view_form_spreadsheet_share
 msgid "Allow download on new share links by default."
-msgstr ""
+msgstr "Download bei neuen Freigabelinks standardmäßig erlauben."
 
 #. module: spreadsheet_public_share_oca
-msgid "Allow downloading the spreadsheet data."
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__allow_download
+msgid ""
+"Allow downloading the spreadsheet data as a JSON file from the public page. "
+"The file is the complete workbook so it re-imports without losing anything: "
+"it also contains what the preview does not show (hidden sheets, hidden rows "
+"and columns, and helper sheets such as 'Data'), because formulas on the "
+"visible cells read from them. Only enable it when the whole workbook may be "
+"published. The default comes from Settings > Spreadsheet."
 msgstr ""
+"Erlaubt das Herunterladen der Tabellendaten als JSON-Datei von der "
+"öffentlichen Seite. Die Datei ist die vollständige Arbeitsmappe, damit sie "
+"verlustfrei wieder importiert werden kann: Sie enthält auch, was die "
+"Vorschau nicht zeigt (ausgeblendete Blätter, ausgeblendete Zeilen und "
+"Spalten sowie Hilfsblätter wie 'Data'), weil Formeln in den sichtbaren "
+"Zellen daraus lesen. Aktivieren Sie dies nur, wenn die gesamte Arbeitsmappe "
+"veröffentlicht werden darf. Der Standardwert stammt aus Einstellungen > "
+"Tabelle."
 
 #. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+msgid "Anyone with the link can now open the spreadsheet without a password."
+msgstr "Jeder mit dem Link kann die Tabelle jetzt ohne Passwort öffnen."
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
+msgid ""
+"Anyone with the link will be able to open the spreadsheet without a "
+"password. Continue?"
+msgstr ""
+"Jeder mit dem Link kann die Tabelle dann ohne Passwort öffnen. Fortfahren?"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_public_share_oca.public_share_act_window
+msgid "Create your first public share link"
+msgstr "Erstellen Sie Ihren ersten öffentlichen Freigabelink"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__created_by_id
+msgid "Created By"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_res_config_settings__public_share_default_expiry_days
 msgid "Default Share Link Expiry (days, 0 = no expiry)"
-msgstr ""
+msgstr "Standard-Ablauf von Freigabelinks (Tage, 0 = kein Ablauf)"
 
 #. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.res_config_settings_view_form_spreadsheet_share
 msgid "Default expiry in days for new share links (0 = no expiry)."
-msgstr ""
+msgstr "Standard-Ablauf in Tagen für neue Freigabelinks (0 = kein Ablauf)."
 
 #. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_password_prompt
 msgid "Enter password"
-msgstr ""
+msgstr "Passwort eingeben"
 
 #. module: spreadsheet_public_share_oca
-msgid "Optional expiry date for the share link."
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__expires_at
+msgid "Expires At"
+msgstr "Läuft ab am"
 
 #. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__view_count
+msgid "How many times the public link has been opened so far."
+msgstr "Wie oft der öffentliche Link bisher geöffnet wurde."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__name
+msgid "Internal label for this link, e.g. 'Q3 board deck - external'."
+msgstr ""
+"Interne Bezeichnung für diesen Link, z. B. 'Q3-Vorstandspräsentation - "
+"extern'."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__last_viewed
+msgid "Last Viewed"
+msgstr "Zuletzt angesehen"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__name
+msgid "Name"
+msgstr "Name"
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+msgid ""
+"Only a Spreadsheet manager can change who created a public share link. "
+"Besides the managers, the creator is the only user who can see and manage "
+"the link, and the link only opens while the creator may edit the "
+"spreadsheet. Ask a Spreadsheet manager to hand the link over to another "
+"user."
+msgstr ""
+"Nur ein Tabellen-Manager kann ändern, wer einen öffentlichen Freigabelink "
+"erstellt hat. Neben den Managern ist der Ersteller der einzige Benutzer, der"
+" den Link sehen und verwalten kann, und der Link öffnet sich nur, solange "
+"der Ersteller die Tabelle bearbeiten darf. Bitten Sie einen Tabellen-"
+"Manager, den Link an einen anderen Benutzer zu übergeben."
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+msgid ""
+"Only a Spreadsheet manager can set the secret token of a public share link "
+"by hand. A token that is typed in instead of generated can be guessed, which"
+" would publish the spreadsheet to strangers. Use 'Regenerate Link' to get a "
+"new random token."
+msgstr ""
+"Nur ein Tabellen-Manager kann das geheime Token eines öffentlichen "
+"Freigabelinks von Hand festlegen. Ein eingetipptes statt generiertes Token "
+"kann erraten werden, wodurch die Tabelle für Fremde veröffentlicht würde. "
+"Verwenden Sie 'Link neu generieren', um ein neues zufälliges Token zu "
+"erhalten."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__expires_at
+msgid ""
+"Optional expiry date for the share link. Defaults come from Settings > "
+"Spreadsheet > Default Share Link Expiry."
+msgstr ""
+"Optionales Ablaufdatum des Freigabelinks. Der Standardwert stammt aus "
+"Einstellungen > Tabelle > Standard-Ablauf von Freigabelinks."
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
 msgid "Optional password protection"
-msgstr ""
+msgstr "Optionaler Passwortschutz"
 
 #. module: spreadsheet_public_share_oca
-msgid "Optional password to access the shared spreadsheet."
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__password
+msgid "Password"
+msgstr "Passwort"
 
 #. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__password_hash
+msgid "Password Hash"
+msgstr "Passwort-Hash"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__has_password
+msgid "Password Protected"
+msgstr "Passwortgeschützt"
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+msgid "Password Removed"
+msgstr "Passwort entfernt"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.actions.act_window,name:spreadsheet_public_share_oca.public_share_act_window
+#: model:ir.ui.menu,name:spreadsheet_public_share_oca.menu_public_shares
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.res_config_settings_view_form_spreadsheet_share
 msgid "Public Share Links"
-msgstr "Oeffentliche Freigabelinks"
+msgstr "Öffentliche Freigabelinks"
 
 #. module: spreadsheet_public_share_oca
+#: model:ir.model,name:spreadsheet_public_share_oca.model_spreadsheet_public_share
+msgid "Public Spreadsheet Share Link"
+msgstr "Öffentlicher Tabellen-Freigabelink"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__share_url
+msgid ""
+"Public address of the read-only preview. Anyone with this URL (and the "
+"password, if one is set) can open it without logging in."
+msgstr ""
+"Öffentliche Adresse der schreibgeschützten Vorschau. Jeder mit dieser URL "
+"(und dem Passwort, falls eines gesetzt ist) kann sie ohne Anmeldung öffnen."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__token
+msgid ""
+"Random secret embedded in the share URL; regenerate it to invalidate every "
+"previously distributed link."
+msgstr ""
+"Zufälliges Geheimnis in der Freigabe-URL; generieren Sie es neu, um alle "
+"zuvor verteilten Links ungültig zu machen."
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
 msgid "Regenerate Link"
 msgstr "Link neu generieren"
 
 #. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
+msgid "Remove Password"
+msgstr "Passwort entfernen"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__password_hash
+msgid ""
+"Salted PBKDF2 hash of the link password (never the password itself). Only "
+"readable by the server."
+msgstr ""
+"Gesalzener PBKDF2-Hash des Link-Passworts (nie das Passwort selbst). Nur für"
+" den Server lesbar."
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
+msgid "Set Password"
+msgstr "Passwort festlegen"
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
 msgid "Share Link"
-msgstr ""
+msgstr "Freigabelink"
 
 #. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
 msgid "Share Settings"
-msgstr ""
+msgstr "Freigabeeinstellungen"
 
 #. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__share_url
 msgid "Share URL"
 msgstr "Freigabe-URL"
 
 #. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
 msgid "Show Link"
-msgstr ""
+msgstr "Link anzeigen"
 
 #. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__spreadsheet_id
 msgid "Spreadsheet"
 msgstr "Tabelle"
 
 #. module: spreadsheet_public_share_oca
-msgid "Statistics"
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__spreadsheet_id
+msgid ""
+"Spreadsheet whose read-only preview is exposed at the public URL. You can "
+"only share a spreadsheet you are allowed to edit (its owner, a contributor "
+"or a Spreadsheet manager), because the link publishes it to anyone who has "
+"the URL."
 msgstr ""
+"Tabelle, deren schreibgeschützte Vorschau unter der öffentlichen URL "
+"bereitgestellt wird. Sie können nur eine Tabelle freigeben, die Sie "
+"bearbeiten dürfen (Eigentümer, Mitwirkender oder Tabellen-Manager), weil der"
+" Link sie für jeden mit der URL veröffentlicht."
 
 #. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
+msgid "Statistics"
+msgstr "Statistiken"
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/controllers/main.py:0
+msgid ""
+"The data of this spreadsheet could not be read, so it cannot be downloaded "
+"right now. Please tell the person who shared this link, so they can open the"
+" spreadsheet in Odoo and save it again."
+msgstr ""
+"Die Daten dieser Tabelle konnten nicht gelesen werden, daher kann sie gerade"
+" nicht heruntergeladen werden. Bitte informieren Sie die Person, die diesen "
+"Link geteilt hat, damit sie die Tabelle in Odoo öffnen und erneut speichern "
+"kann."
+
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_view_form
+msgid "The old link will stop working. Continue?"
+msgstr "Der alte Link funktioniert dann nicht mehr. Fortfahren?"
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+msgid ""
+"The password of the share link '%(name)s' is too long (%(length)s "
+"characters). Very long passwords make every access check slow for the "
+"server. Choose a password of at most %(max)s characters."
+msgstr ""
+"Das Passwort des Freigabelinks '%(name)s' ist zu lang (%(length)s Zeichen). "
+"Sehr lange Passwörter verlangsamen jede Zugriffsprüfung auf dem Server. "
+"Wählen Sie ein Passwort mit höchstens %(max)s Zeichen."
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
 msgid "The share link has been updated. Old links no longer work."
 msgstr ""
+"Der Freigabelink wurde aktualisiert. Alte Links funktionieren nicht mehr."
 
 #. module: spreadsheet_public_share_oca
-msgid "Token Regenerated"
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_share_invalid
+msgid ""
+"This share link is no longer valid. Please contact the sender for a new "
+"link."
 msgstr ""
+"Dieser Freigabelink ist nicht mehr gültig. Bitte wenden Sie sich für einen "
+"neuen Link an den Absender."
 
+#. module: spreadsheet_public_share_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_public_share_oca.public_password_prompt
+msgid "This shared spreadsheet is password-protected."
+msgstr "Diese freigegebene Tabelle ist passwortgeschützt."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__has_password
+msgid ""
+"Ticked when visitors must enter a password before the spreadsheet is shown."
+msgstr ""
+"Aktiviert, wenn Besucher ein Passwort eingeben müssen, bevor die Tabelle "
+"angezeigt wird."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__last_viewed
+msgid "Timestamp of the most recent time the public link was opened."
+msgstr "Zeitpunkt, zu dem der öffentliche Link zuletzt geöffnet wurde."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__token
+msgid "Token"
+msgstr "Token"
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+msgid "Token Regenerated"
+msgstr "Token neu generiert"
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.constraint,message:spreadsheet_public_share_oca.constraint_spreadsheet_public_share_token_unique
+msgid "Token must be unique."
+msgstr "Das Token muss eindeutig sein."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__password
+msgid ""
+"Type a password to protect the link: visitors must enter it before they see "
+"the spreadsheet. The password is stored hashed, so it can never be displayed"
+" again; leave this empty to keep the current password, or use 'Remove "
+"Password' to make the link open without one."
+msgstr ""
+"Geben Sie ein Passwort ein, um den Link zu schützen: Besucher müssen es "
+"eingeben, bevor sie die Tabelle sehen. Das Passwort wird gehasht gespeichert"
+" und kann daher nie wieder angezeigt werden; lassen Sie dieses Feld leer, um"
+" das aktuelle Passwort zu behalten, oder verwenden Sie 'Passwort entfernen',"
+" damit sich der Link ohne Passwort öffnet."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__active
+msgid ""
+"Untick to instantly revoke the link; the public URL then shows 'Invalid or "
+"Expired Link'."
+msgstr ""
+"Deaktivieren Sie dies, um den Link sofort zu widerrufen; die öffentliche URL"
+" zeigt dann 'Ungültiger oder abgelaufener Link'."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,help:spreadsheet_public_share_oca.field_spreadsheet_public_share__created_by_id
+msgid ""
+"User who created this share link. The link only opens while this user is "
+"still allowed to edit the spreadsheet. Spreadsheet users only see and manage"
+" their own links; Spreadsheet managers see every link and can hand a link "
+"over to another user."
+msgstr ""
+"Benutzer, der diesen Freigabelink erstellt hat. Der Link öffnet sich nur, "
+"solange dieser Benutzer die Tabelle noch bearbeiten darf. Tabellen-Benutzer "
+"sehen und verwalten nur ihre eigenen Links; Tabellen-Manager sehen alle "
+"Links und können einen Link an einen anderen Benutzer übergeben."
+
+#. module: spreadsheet_public_share_oca
+#: model:ir.model.fields,field_description:spreadsheet_public_share_oca.field_spreadsheet_public_share__view_count
+msgid "View Count"
+msgstr "Anzahl Aufrufe"
+
+#. module: spreadsheet_public_share_oca
+#. odoo-python
+#: code:addons/spreadsheet_public_share_oca/models/public_share.py:0
+msgid ""
+"You cannot publish the spreadsheet '%(spreadsheet)s' through a public share "
+"link because you are not allowed to edit it. A public link shows the "
+"spreadsheet to anyone who has the URL, so only its owner, its contributors "
+"or a Spreadsheet manager may create a link for it or move a link to it. Ask "
+"the owner to share it, or to add you as a contributor."
+msgstr ""
+"Sie können die Tabelle '%(spreadsheet)s' nicht über einen öffentlichen "
+"Freigabelink veröffentlichen, weil Sie sie nicht bearbeiten dürfen. Ein "
+"öffentlicher Link zeigt die Tabelle jedem, der die URL hat, daher dürfen nur"
+" der Eigentümer, die Mitwirkenden oder ein Tabellen-Manager einen Link dafür"
+" erstellen oder einen Link darauf verschieben. Bitten Sie den Eigentümer, "
+"die Tabelle freizugeben oder Sie als Mitwirkenden hinzuzufügen."

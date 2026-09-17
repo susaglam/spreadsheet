@@ -12,12 +12,15 @@ class SpreadsheetFileUploader extends Component {
         this.orm = useService("orm");
         this.attachmentIdsToProcess = [];
         this.action = useService("action");
+        this.notification = useService("notification");
     }
     async onFileUploaded(file) {
         const att_data = {
             name: file.name,
             mimetype: file.type,
-            datas: file.data,
+            // On saas-19.4, ir.attachment has no `datas` field; a base64 string
+            // written to `raw` over RPC is decoded server side.
+            raw: file.data,
         };
         const att_id = await this.orm.create("ir.attachment", [att_data], {
             context: this.env.searchModel.context,

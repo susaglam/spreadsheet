@@ -20,5 +20,11 @@
     <!-- Model access is granted entirely via security/ir.access.csv:
          group_user gets read, group_template_manager gets full crud on
          spreadsheet.template. No additional ir.access records are needed here —
-         a second all-records (1=1) grant would only duplicate the CSV rows. -->
+         a second all-records (1=1) grant would only duplicate the CSV rows.
+         The "Save as Template" wizard (spreadsheet.to.template) is granted to
+         group_user ON PURPOSE: restricting it to Template Managers would turn
+         a plain user's attempt into a raw AccessError. The wizard instead
+         checks create access on spreadsheet.template itself and raises a
+         UserError explaining who can grant the right, and the entry points
+         (File menu item in the editor) are only shown to Template Managers. -->
 </odoo>

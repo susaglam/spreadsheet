@@ -9,13 +9,26 @@ from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 
+DEFAULT_INTERVAL_PARAM = "spreadsheet_scheduled_refresh.default_interval_hours"
+FALLBACK_INTERVAL_HOURS = 24
+
 
 class SpreadsheetRefreshSchedule(models.Model):
     _name = "spreadsheet.refresh.schedule"
     _description = "Scheduled Spreadsheet Data Refresh"
 
-    name = fields.Char(required=True)
-    active = fields.Boolean(default=True)
+    name = fields.Char(
+        required=True,
+        help="A short label to recognise this schedule in the list, for example "
+        "'Sales dashboard - every 6 hours'. It only identifies the schedule and "
+        "does not change the spreadsheet itself.",
+    )
+    active = fields.Boolean(
+        default=True,
+        help="Uncheck to pause this schedule without deleting it. The cron skips "
+        "inactive schedules, so open sheets stop receiving refresh signals until "
+        "you enable it again.",
+    )
     spreadsheet_id = fields.Many2one(
         "spreadsheet.spreadsheet",
         required=True,
@@ -23,10 +36,11 @@ class SpreadsheetRefreshSchedule(models.Model):
         help="The spreadsheet whose data sources this schedule refreshes.",
     )
     interval_number = fields.Integer(
-        default=1,
+        default=lambda self: self._default_interval_number(),
         required=True,
         help="How often to refresh, combined with the interval type. "
-        "Example: 6 with Hours refreshes every 6 hours.",
+        "Example: 6 with Hours refreshes every 6 hours. New schedules start "
+        "from the default interval set in Settings > Spreadsheet.",
     )
     interval_type = fields.Selection(
         [
@@ -35,7 +49,8 @@ class SpreadsheetRefreshSchedule(models.Model):
             ("weeks", "Weeks"),
             ("months", "Months"),
         ],
-        default="days",
+        # Hours, because the configurable default interval is expressed in hours.
+        default="hours",
         required=True,
         help="Unit paired with the interval number (hours/days/weeks/months).",
     )
@@ -55,25 +70,26 @@ class SpreadsheetRefreshSchedule(models.Model):
         "The refresh interval must be a positive number of intervals (e.g. 6 Hours).",
     )
 
+    @api.model
+    def _default_interval_number(self):
+        """Default interval (in hours) taken from the settings.
+
+        The default is applied through the field default rather than in
+        ``create()``: the web client sends every field of a new record (defaults
+        included) on save, so a ``create()``-time "no interval given" check never
+        fired from the form and the setting was silently ignored.
+        """
+        hours = self.env["ir.config_parameter"].sudo().get_int(DEFAULT_INTERVAL_PARAM)
+        if hours <= 0:
+            # Unset, invalid or non-positive setting: never propose a value the
+            # CHECK constraint would reject.
+            return FALLBACK_INTERVAL_HOURS
+        return hours
+
     @api.model_create_multi
     def create(self, vals_list):
         records = super().create(vals_list)
-        default_hours = (
-            self.env["ir.config_parameter"]
-            .sudo()
-            .get_int("spreadsheet_scheduled_refresh.default_interval_hours")
-        ) or 24
-        for rec, vals in zip(records, vals_list, strict=False):
-            # When the user did not specify any interval, honour the
-            # configured default (expressed in hours) instead of the raw
-            # field defaults (1 / days).
-            if "interval_number" not in vals and "interval_type" not in vals:
-                rec.write(
-                    {
-                        "interval_type": "hours",
-                        "interval_number": default_hours,
-                    }
-                )
+        for rec in records:
             rec._schedule_next()
         return records
 
@@ -104,13 +120,24 @@ class SpreadsheetRefreshSchedule(models.Model):
         )
 
         for schedule in schedules:
+            # Read the label before the savepoint so the error log below never
+            # depends on a query issued after a failure.
+            label = f"{schedule.name} (id={schedule.id})"
             try:
-                schedule._refresh_spreadsheet()
-            except Exception as e:
-                _logger.error(
-                    "Failed to refresh spreadsheet '%s': %s",
-                    schedule.spreadsheet_id.name,
-                    e,
+                # One savepoint per schedule. A database error raised while
+                # refreshing one schedule (constraint, serialization failure,
+                # ...) otherwise leaves PostgreSQL in an aborted-transaction
+                # state: every following schedule, and the cron's own
+                # bookkeeping, would then fail with InFailedSqlTransaction. The
+                # rollback also discards a failing schedule's partial writes.
+                with self.env.cr.savepoint():
+                    schedule._refresh_spreadsheet()
+            except Exception:  # noqa: BLE001 - one bad schedule must not stop the batch
+                _logger.exception(
+                    "Scheduled spreadsheet refresh %s failed and was skipped. "
+                    "The other due schedules are still processed; this one stays "
+                    "due and is retried on the next cron run.",
+                    label,
                 )
 
     def _refresh_spreadsheet(self):

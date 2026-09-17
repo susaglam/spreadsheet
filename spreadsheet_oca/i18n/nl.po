@@ -19,38 +19,38 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model.constraint,message:spreadsheet_oca.constraint_spreadsheet_spreadsheet_tag_name_uniq
 msgid "A tag with the same name already exists."
-msgstr ""
+msgstr "Er bestaat al een label met dezelfde naam."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Actie vereist"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__active
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__active
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Activiteiten"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Activiteit uitzondering decoratie"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Activiteitsstatus"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Activiteitstype icoon"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -69,12 +69,6 @@ msgstr "Relatie toevoegen"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Add text"
 msgstr "Tekst toevoegen"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
-msgid "Add to spreadesheet"
-msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -97,24 +91,24 @@ msgstr "Na volgende"
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
 msgid "Archived"
-msgstr ""
+msgstr "Gearchiveerd"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Are you sure you want to delete this list?"
-msgstr ""
+msgstr "Weet je zeker dat je deze lijst wilt verwijderen?"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Area"
-msgstr ""
+msgstr "Vlak"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Aantal bijlagen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -126,12 +120,12 @@ msgstr "Automatisch filteren op de huidige periode"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Automatically filter on the current user"
-msgstr ""
+msgstr "Automatisch filteren op de huidige gebruiker"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__badge_image
 msgid "Badge Background"
-msgstr ""
+msgstr "Badge-achtergrond"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -142,7 +136,7 @@ msgstr "Vóór Vorige"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
 msgid "Can Be Dynamic"
-msgstr ""
+msgstr "Kan dynamisch zijn"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -166,18 +160,18 @@ msgstr "Cliënt"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
 msgid "Color"
-msgstr ""
+msgstr "Kleur"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Column"
-msgstr ""
+msgstr "Kolom"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
@@ -187,23 +181,23 @@ msgstr "Commando's"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
 msgid "Company"
-msgstr ""
+msgstr "Bedrijf"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 msgid "Comparisons in pivot are not supported"
-msgstr ""
+msgstr "Vergelijkingen in draaitabellen worden niet ondersteund"
 
 #. module: spreadsheet_oca
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu
 msgid "Configuration"
-msgstr ""
+msgstr "Configuratie"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Context"
-msgstr ""
+msgstr "Context"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
@@ -213,7 +207,7 @@ msgstr "Bijdragers"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
 msgid "Contributors Groups"
-msgstr ""
+msgstr "Bijdragersgroepen"
 
 #. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
@@ -244,12 +238,12 @@ msgstr "Gemaakt op"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
 msgid "Datasource Name"
-msgstr ""
+msgstr "Naam gegevensbron"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -262,7 +256,7 @@ msgstr "Standaardwaarde"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
@@ -284,19 +278,19 @@ msgstr "Domein"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Download XLSX"
-msgstr ""
+msgstr "XLSX downloaden"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 msgid "Duplicated groupbys in pivot are not supported"
-msgstr ""
+msgstr "Dubbele groeperingen in draaitabellen worden niet ondersteund"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
 msgid "Dynamic Rows"
-msgstr ""
+msgstr "Dynamische rijen"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
@@ -312,10 +306,32 @@ msgid "Edit domain"
 msgstr "Bewerk domein"
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-msgid "File"
-msgstr "Bestand"
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
+msgid ""
+"Every member of these groups can open and edit this spreadsheet, but not "
+"delete it, including users who receive the group through another group. "
+"Members also need Spreadsheets access (User or Manager). Example: share the "
+"forecast with the sales group so the whole sales team can update it."
+msgstr ""
+"Alle leden van deze groepen kunnen deze spreadsheet openen en bewerken, maar"
+" niet verwijderen, ook gebruikers die de groep via een andere groep krijgen."
+" Leden hebben ook Spreadsheets-toegang nodig (Gebruiker of Manager). "
+"Voorbeeld: deel de prognose met de verkoopgroep, zodat het hele verkoopteam "
+"deze kan bijwerken."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
+msgid ""
+"Every member of these groups can open this spreadsheet in read-only mode, "
+"including users who receive the group through another group. Members also "
+"need Spreadsheets access (User or Manager). Example: share a report with a "
+"managers group so they can view it without changing it."
+msgstr ""
+"Alle leden van deze groepen kunnen deze spreadsheet alleen-lezen openen, ook"
+" gebruikers die de groep via een andere groep krijgen. Leden hebben ook "
+"Spreadsheets-toegang nodig (Gebruiker of Manager). Voorbeeld: deel een "
+"rapport met een managersgroep, zodat zij het kunnen bekijken zonder het te "
+"wijzigen."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__filename
@@ -326,28 +342,28 @@ msgstr "Bestandsnaam"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Filters"
-msgstr ""
+msgstr "Filters"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Volgers"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Volgers (Relaties)"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Font awesome icoon bijv. fa-tasks"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "From / To"
-msgstr ""
+msgstr "Van / Tot"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__group_ids
@@ -357,7 +373,7 @@ msgstr "Groep"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Heeft bericht"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__id
@@ -367,27 +383,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Icoon"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icoon om een uitzonderingsactiviteit aan te geven."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Indien aangevinkt vragen nieuwe berichten je aandacht."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Indien aangevinkt hebben sommige berichten een leveringsfout."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
@@ -395,6 +411,8 @@ msgid ""
 "If set, the spreadsheet will be available only if this company is in the "
 "current companies."
 msgstr ""
+"Indien ingesteld, is de spreadsheet alleen beschikbaar als dit bedrijf bij "
+"de huidige bedrijven hoort."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__import_data
@@ -420,29 +438,29 @@ msgstr "Gegevens importeren naar spreadsheet"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Include children"
-msgstr ""
+msgstr "Onderliggende opnemen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Insert list"
-msgstr ""
+msgstr "Lijst invoegen"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Is volger"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__is_tree
 msgid "Is Tree"
-msgstr ""
+msgstr "Is boomstructuur"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_uid
@@ -474,7 +492,7 @@ msgstr "Laatst bijgewerkt op"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Line"
-msgstr ""
+msgstr "Lijn"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -491,41 +509,41 @@ msgstr "Naam van lijst"
 #. module: spreadsheet_oca
 #: model:res.groups,name:spreadsheet_oca.group_manager
 msgid "Manager"
-msgstr ""
+msgstr "Manager"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Menu Items"
-msgstr ""
+msgstr "Menu-items"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Bericht afleverfout"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Berichten"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode_id
 msgid "Mode"
-msgstr ""
+msgstr "Modus"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modellen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -537,17 +555,17 @@ msgstr "Maand"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Month / Quarter"
-msgstr ""
+msgstr "Maand / Kwartaal"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Mijn activiteit deadline"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
 msgid "My Sheets"
-msgstr ""
+msgstr "Mijn spreadsheets"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__name
@@ -567,17 +585,17 @@ msgstr "Volgende"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Volgende activiteit deadline"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Volgende activiteit overzicht"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Volgende activiteit type"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
@@ -588,32 +606,32 @@ msgstr "Volgende revisie"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
 msgid "Number Of Rows"
-msgstr ""
+msgstr "Aantal rijen"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Aantal acties"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Aantal fouten"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Aantal berichten die actie vereisen"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Aantal berichten met leveringsfout"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
@@ -623,19 +641,19 @@ msgstr "Eigenaar"
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Ownership"
-msgstr ""
+msgstr "Eigendom"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Pie"
-msgstr ""
+msgstr "Taart"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Possible values"
-msgstr ""
+msgstr "Mogelijke waarden"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -653,18 +671,18 @@ msgstr "Kwartaal"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Re-insert Dynamic"
-msgstr ""
+msgstr "Dynamisch opnieuw invoegen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Re-insert Static"
-msgstr ""
+msgstr "Statisch opnieuw invoegen"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Read Access"
-msgstr ""
+msgstr "Leestoegang"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
@@ -674,7 +692,7 @@ msgstr "Lezers"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
 msgid "Readers Groups"
-msgstr ""
+msgstr "Lezersgroepen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -703,24 +721,24 @@ msgstr "Verwijderen"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__res_id
 msgid "Res"
-msgstr ""
+msgstr "Record-ID"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Verantwoordelijke gebruiker"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Restrict values with a domain"
-msgstr ""
+msgstr "Waarden beperken met een domein"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Rows:"
-msgstr ""
+msgstr "Rijen:"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -734,17 +752,17 @@ msgstr "Opslaan"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Select a menu..."
-msgstr ""
+msgstr "Selecteer een menu..."
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
 msgid "Select number of rows to duplicate row"
-msgstr ""
+msgstr "Selecteer het aantal rijen om de rij te dupliceren"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Reeks"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__server_revision_id
@@ -752,16 +770,10 @@ msgid "Server Revision"
 msgstr "Serverversie"
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-msgid "Settings"
-msgstr ""
-
-#. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_abstract.py:0
 msgid "Sheet1"
-msgstr ""
+msgstr "Blad1"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -773,13 +785,14 @@ msgstr "Sortering"
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
 #: model:ir.module.category,name:spreadsheet_oca.module_category_spreedsheet
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.res_config_settings_view_form
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Spreadsheet"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_oca_revision
-msgid "Spreadsheet Oca Revision"
-msgstr "Spreadsheet Oca-revisie"
+msgid "Spreadsheet Collaborative Revision"
+msgstr "Gezamenlijke spreadsheetrevisie"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_raw
@@ -796,7 +809,7 @@ msgstr "Revisie van spreadsheets"
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_tag
 msgid "Spreadsheet Tag"
-msgstr ""
+msgstr "Spreadsheetlabel"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_abstract
@@ -807,24 +820,24 @@ msgstr "Spreadsheetsamenvatting voor overerving"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_binary_data
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_binary_data
 msgid "Spreadsheet file"
-msgstr ""
+msgstr "Spreadsheetbestand"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_menu
 msgid "Spreadsheets"
-msgstr ""
+msgstr "Spreadsheets"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_tags_act_window
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_tag_menu
 msgid "Spreadsheets Tags"
-msgstr ""
+msgstr "Spreadsheetlabels"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 msgid "Spreasheet Image"
-msgstr ""
+msgstr "Spreadsheetafbeelding"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -836,19 +849,19 @@ msgstr "Gestapeld"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Area"
-msgstr ""
+msgstr "Gestapeld vlak"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Column"
-msgstr ""
+msgstr "Gestapelde kolom"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Line"
-msgstr ""
+msgstr "Gestapelde lijn"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
@@ -858,11 +871,51 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Status gebaseerd op activiteiten\n"
+"Te laat: Vervaldatum is al verstreken\n"
+"Vandaag: Activiteitsdatum is vandaag\n"
+"Gepland: Toekomstige activiteiten."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_tag_ids
 msgid "Tags"
+msgstr "Labels"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_revision_ids
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_revision_ids
+msgid ""
+"Technical: the collaborative edit history (revision commands) replayed on "
+"top of the stored spreadsheet file when it is opened. Only administrators "
+"can read it directly; users see its effect by opening the spreadsheet."
 msgstr ""
+"Technisch: de geschiedenis van gezamenlijke bewerkingen (revisiecommando's) "
+"die bij het openen bovenop het opgeslagen spreadsheetbestand wordt "
+"afgespeeld. Alleen beheerders kunnen deze rechtstreeks lezen; gebruikers "
+"zien het resultaat door de spreadsheet te openen."
+
+#. module: spreadsheet_oca
+#. odoo-python
+#: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"The file \"%(file)s\" could not be imported because it is not a valid Excel "
+"workbook (.xlsx), so no spreadsheet was created. Open it in Excel or "
+"LibreOffice, save it as \"Excel Workbook (.xlsx)\" and upload it again."
+msgstr ""
+"Het bestand \"%(file)s\" kon niet worden geïmporteerd omdat het geen geldige"
+" Excel-werkmap (.xlsx) is; er is dus geen spreadsheet aangemaakt. Open het "
+"in Excel of LibreOffice, sla het op als \"Excel-werkmap (.xlsx)\" en upload "
+"het opnieuw."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
+msgid ""
+"The user who owns this spreadsheet. The owner can always open, edit, share "
+"and delete it, as can Spreadsheet managers."
+msgstr ""
+"De gebruiker die eigenaar is van deze spreadsheet. De eigenaar kan de "
+"spreadsheet altijd openen, bewerken, delen en verwijderen, net als "
+"spreadsheetmanagers."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
@@ -870,6 +923,8 @@ msgid ""
 "This field allows you to generate tables that its rows are updated with the "
 "filters set in the spreadsheets."
 msgstr ""
+"Met dit veld kun je tabellen genereren waarvan de rijen worden bijgewerkt "
+"met de filters die in de spreadsheets zijn ingesteld."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -881,28 +936,28 @@ msgstr "Tijdsbestek"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Dropdown in-/uitklappen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Total rows used when inserting list"
-msgstr ""
+msgstr "Totaal aantal rijen bij het invoegen van de lijst"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
 msgid "Transparent tags are not visible in the kanban view"
-msgstr ""
+msgstr "Transparante labels zijn niet zichtbaar in de kanbanweergave"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Type van de uitzonderingsactiviteit op het record."
 
 #. module: spreadsheet_oca
 #. odoo-python
@@ -914,13 +969,13 @@ msgstr "Naamloos"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml:0
 msgid "Upload"
-msgstr ""
+msgstr "Uploaden"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.esm.js:0
 msgid "Upload a Spreadsheet"
-msgstr ""
+msgstr "Een spreadsheet uploaden"
 
 #. module: spreadsheet_oca
 #: model:res.groups,name:spreadsheet_oca.group_user
@@ -928,19 +983,39 @@ msgid "User"
 msgstr "Gebruiker"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
+msgid ""
+"Users who can open and edit this spreadsheet, but not delete it. They also "
+"need Spreadsheets access (User or Manager). Example: add the colleague who "
+"fills in the monthly figures."
+msgstr ""
+"Gebruikers die deze spreadsheet kunnen openen en bewerken, maar niet "
+"verwijderen. Ze hebben ook Spreadsheets-toegang nodig (Gebruiker of "
+"Manager). Voorbeeld: voeg de collega toe die de maandcijfers invult."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
+msgid ""
+"Users who can open this spreadsheet in read-only mode. They also need "
+"Spreadsheets access (User or Manager)."
+msgstr ""
+"Gebruikers die deze spreadsheet alleen-lezen kunnen openen. Ze hebben ook "
+"Spreadsheets-toegang nodig (Gebruiker of Manager)."
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Websiteberichten"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Website communicatie geschiedenis"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Write Access"
-msgstr ""
+msgstr "Schrijftoegang"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -963,7 +1038,7 @@ msgstr "aflopend"
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "e.g. Sales KPI"
-msgstr ""
+msgstr "bijv. Verkoop-KPI"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -981,25 +1056,3 @@ msgstr "niet geüpdate"
 #: model:ir.model,name:spreadsheet_oca.model_ir_websocket
 msgid "websocket message handling"
 msgstr "afhandeling van websocket-berichten"
-
-#~ msgid "Dimensions"
-#~ msgstr "Dimensies"
-
-#~ msgid "Insert pivot"
-#~ msgstr "Draaipunt invoegen"
-
-#~ msgid "Measures"
-#~ msgstr "Afmetingen"
-
-#~ msgid "Add sheet to spreadsheet"
-#~ msgstr "Blad toevoegen aan spreadsheet"
-
-#, python-format
-#~ msgid "Confirm"
-#~ msgstr "Bevestigen"
-
-#~ msgid "Data"
-#~ msgstr "Gegevens"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Laatst aangepast op"

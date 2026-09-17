@@ -2,31 +2,8 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <!-- Portal home entry card -->
-    <template
-        id="portal_my_home_dashboard_entry"
-        name="Portal Dashboards Entry"
-        inherit_id="portal.portal_my_home"
-        priority="40"
-    >
-        <!-- saas-19.4: portal.portal_my_home dropped <div id='portal_common_category'>;
-             cards are now data-driven in <div id='portal_cards'>. Re-anchored into
-             the always-present o_portal_docs container so the entry still renders.
-             (Proper 19.4 approach: register via the portal_cards mechanism.) -->
-        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
-            <t t-call="portal.portal_docs_entry">
-                <t
-                    t-set="icon"
-                    t-value="'/spreadsheet_oca/static/description/icon.png'"
-                />
-                <t t-set="title">Dashboards</t>
-                <t t-set="text">View your analytics dashboards.</t>
-                <t t-set="url" t-value="'/my/dashboards'" />
-                <t t-set="placeholder_count" t-value="'portal_dashboard_count'" />
-                <t t-set="config_card" t-value="True" />
-            </t>
-        </xpath>
-    </template>
+    <!-- saas-19.4: the /my home card is a portal.entry record
+         (data/portal_entry_data.xml), not a portal.portal_my_home inherit. -->
 
     <!-- Portal breadcrumbs -->
     <template
@@ -54,11 +31,26 @@
     <!-- Dashboard list page -->
     <template id="portal_dashboards_list" name="Portal Dashboards List">
         <t t-call="portal.portal_layout">
-            <t t-set="breadcrumbs_searchbar" t-value="True" />
+            <!-- No breadcrumbs_searchbar here: this page has no search bar, so
+                 the layout itself must render the breadcrumbs. -->
+            <!-- Shown after /my/dashboards/<id> refused an archived or
+                 unshared dashboard, instead of a silent redirect. -->
+            <div
+                t-if="dashboard_unavailable"
+                class="alert alert-warning d-flex mt-3"
+                role="alert"
+            >
+                <i class="fa fa-exclamation-triangle me-2 mt-1" aria-hidden="true" />
+                <p class="mb-0">
+                    The dashboard you tried to open is no longer available. It may have been archived or is no longer shared with you. Ask your contact person if you still need it.
+                </p>
+            </div>
 
             <t t-if="not dashboards">
-                <div class="alert alert-info text-center" role="alert">
-                    No dashboards available.
+                <div class="alert alert-info text-center mt-3" role="alert">
+                    <p class="mb-0">
+                        No dashboards have been shared with you yet. When your contact person shares a dashboard with your account, it appears here.
+                    </p>
                 </div>
             </t>
 
@@ -140,7 +132,7 @@
 
                         <div class="text-muted small mt-2">
                             <i class="fa fa-info-circle me-1" />
-                            This dashboard is read-only. Data is refreshed automatically.
+                            This dashboard is read-only. Reload the page to see the latest version.
                         </div>
                     </div>
                 </div>

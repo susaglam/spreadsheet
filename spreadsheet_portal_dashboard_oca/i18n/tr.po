@@ -1,12 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_portal_dashboard_oca
+# 	* spreadsheet_portal_dashboard_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish (tr)\n"
 "Language: tr\n"
@@ -16,46 +15,343 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboard_detail
+msgid ""
+"<i class=\"fa fa-arrow-left me-1\"/>\n"
+"                                Back to Dashboards"
+msgstr ""
+"<i class=\"fa fa-arrow-left me-1\"/>\n"
+"                                Rapor panellerine geri dön"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboards_list
+msgid ""
+"<i class=\"fa fa-eye me-1\"/>\n"
+"                                        View Dashboard"
+msgstr ""
+"<i class=\"fa fa-eye me-1\"/>\n"
+"                                        Rapor panelini görüntüle"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboard_detail
+msgid ""
+"<i class=\"fa fa-info-circle me-1\"/>\n"
+"                            This dashboard is read-only. Reload the page to see the latest version."
+msgstr ""
+"<i class=\"fa fa-info-circle me-1\"/>\n"
+"                            Bu rapor paneli salt okunurdur. En güncel sürümü görmek için sayfayı yenileyin."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
 msgid "Access"
-msgstr ""
+msgstr "Erişim"
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__active
+msgid "Active"
+msgstr "Etkin"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__all_portal_users
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_search
 msgid "All Portal Users"
-msgstr "Tum Portal Kullanicilari"
+msgstr "Tüm Portal Kullanıcıları"
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__active
+msgid ""
+"Archive the assignment to stop sharing the dashboard on the portal "
+"immediately, without losing the partner selection."
+msgstr ""
+"Rapor panelinin portalda paylaşımını hemen durdurmak için atamayı "
+"arşivleyin; iş ortağı seçimi kaybolmaz."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
+msgid "Archived"
+msgstr "Arşivlendi"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_act_window
+msgid "Assign your first portal dashboard"
+msgstr "İlk portal rapor panelinizi atayın"
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Charts & KPIs"
+msgstr "Grafikler ve KPI'lar"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__create_date
+msgid "Created on"
+msgstr "Oluşturulma"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__dashboard_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "Rapor Paneli"
 
 #. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Dashboard loaded but no displayable content found."
+msgstr "Rapor paneli yüklendi ancak gösterilecek içerik bulunamadı."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_view_form
 msgid "Dashboard name..."
-msgstr ""
+msgstr "Rapor paneli adı..."
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Description shown to portal users."
-msgstr ""
+#: model:portal.entry,name:spreadsheet_portal_dashboard_oca.portal_entry_dashboards
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_breadcrumbs_dashboards
+msgid "Dashboards"
+msgstr "Rapor Panelleri"
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "If checked, all portal users can see this dashboard."
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__description
+msgid "Description"
+msgstr "Açıklama"
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Portal Dashboard: Internal user full access"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Portal Dashboard: Portal user read access"
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__sequence
+msgid ""
+"Display order of this dashboard in the portal list; lower numbers appear "
+"first."
 msgstr ""
+"Bu rapor panelinin portal listesindeki sırası; küçük numaralar önce "
+"gösterilir."
 
 #. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Empty sheet"
+msgstr "Boş sayfa"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "KPI"
+msgstr "KPI"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboard_detail
+msgid "Loading dashboard..."
+msgstr "Rapor paneli yükleniyor..."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__name
+msgid "Name"
+msgstr "Ad"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_act_window
+msgid ""
+"Pick a dashboard and choose which portal partners can view it\n"
+"                at /my/dashboards."
+msgstr ""
+"Bir rapor paneli seçin ve /my/dashboards adresinde hangi portal\n"
+"                iş ortaklarının görebileceğini belirleyin."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model,name:spreadsheet_portal_dashboard_oca.model_spreadsheet_portal_dashboard
+msgid "Portal Dashboard Assignment"
+msgstr "Portal Rapor Paneli Ataması"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.actions.act_window,name:spreadsheet_portal_dashboard_oca.spreadsheet_portal_dashboard_act_window
+#: model:ir.ui.menu,name:spreadsheet_portal_dashboard_oca.menu_portal_dashboards
+#: model:ir.ui.menu,name:spreadsheet_portal_dashboard_oca.menu_portal_dashboards_dashboard_config
 msgid "Portal Dashboards"
-msgstr "Portal Dashboardlari"
+msgstr "Portal Rapor Panelleri"
 
 #. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__partner_ids
 msgid "Portal Partners"
-msgstr "Portal Ortaklari"
+msgstr "Portal İş Ortakları"
 
 #. module: spreadsheet_portal_dashboard_oca
-msgid "Portal partners who can view this dashboard. "
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__sequence
+msgid "Sequence"
+msgstr "Sıralama"
 
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__all_portal_users
+msgid ""
+"Share this dashboard with every portal user (external users such as dealers "
+"or distributors), in addition to the partners listed. Internal employees are"
+" not included: they only get access when their own partner is listed in "
+"Portal Partners."
+msgstr ""
+"Bu rapor panelini, listelenen iş ortaklarına ek olarak her portal "
+"kullanıcısıyla (bayiler veya distribütörler gibi harici kullanıcılar) "
+"paylaşın. Şirket içi çalışanlar buna dahil değildir: yalnızca kendi iş "
+"ortağı kayıtları Portal İş Ortakları listesindeyse erişim kazanırlar."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__description
+msgid ""
+"Short explanation shown under the dashboard title in the portal, e.g. 'Your "
+"orders and deliveries of the current year'."
+msgstr ""
+"Portalda rapor paneli başlığının altında gösterilen kısa açıklama, ör. 'Bu "
+"yılki siparişleriniz ve teslimatlarınız'."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__dashboard_id
+msgid ""
+"The internal spreadsheet dashboard whose read-only view is shared with the "
+"selected portal partners. Example: a 'Monthly Sales' dashboard shared with "
+"dealers. You can only pick dashboards you are allowed to open yourself."
+msgstr ""
+"Salt okunur görünümü seçilen portal iş ortaklarıyla paylaşılan dahili hesap "
+"tablosu rapor paneli. Örnek: bayilerle paylaşılan 'Aylık Satışlar' rapor "
+"paneli. Yalnızca kendinizin açmaya yetkili olduğu rapor panellerini "
+"seçebilirsiniz."
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "This dashboard has no data yet."
+msgstr "Bu rapor panelinde henüz veri yok."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__name
+msgid ""
+"Title portal users see on the /my/dashboards card. Defaults to the dashboard"
+" name; change it to use a friendlier label, e.g. 'Your monthly sales'."
+msgstr ""
+"Portal kullanıcılarının /my/dashboards kartında gördüğü başlık. Varsayılan "
+"olarak rapor panelinin adıdır; daha anlaşılır bir etiket için değiştirin, "
+"ör. 'Aylık satışlarınız'."
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Unable to load dashboard data. Please try again later."
+msgstr "Rapor paneli verileri yüklenemedi. Lütfen daha sonra tekrar deneyin."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:portal.entry,description:spreadsheet_portal_dashboard_oca.portal_entry_dashboards
+msgid "View your analytics dashboards."
+msgstr "Analiz rapor panellerinizi görüntüleyin."
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_portal_dashboard_oca/models/spreadsheet_portal_dashboard.py:0
+msgid ""
+"You cannot share dashboard #%(dashboard_id)s on the portal because you are "
+"not allowed to open it yourself. Sharing it would expose data your own "
+"access rights hide from you. Ask a Dashboard administrator to share it, or "
+"to add you to one of the dashboard's access groups."
+msgstr ""
+"#%(dashboard_id)s numaralı rapor panelini portalda paylaşamazsınız, çünkü bu"
+" paneli kendiniz açma yetkiniz yok. Paylaşmak, kendi erişim haklarınızın "
+"sizden gizlediği verileri açığa çıkarır. Paylaşması veya sizi rapor "
+"panelinin erişim gruplarından birine eklemesi için bir Rapor Paneli "
+"yöneticisine başvurun."
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid "Calculated value, not shown in this preview"
+msgstr "Hesaplanan değer, bu önizlemede gösterilmez"
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboards_list
+msgid ""
+"No dashboards have been shared with you yet. When your contact person shares"
+" a dashboard with your account, it appears here."
+msgstr ""
+"Henüz sizinle paylaşılan bir rapor paneli yok. İlgili kişiniz hesabınızla "
+"bir rapor paneli paylaştığında burada görünür."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model:ir.model.fields,help:spreadsheet_portal_dashboard_oca.field_spreadsheet_portal_dashboard__partner_ids
+msgid ""
+"Partners whose users can open this dashboard at /my/dashboards. Selecting a "
+"company also gives the portal users of all its contacts access; an internal "
+"employee only gets access when their own contact is listed. When this list "
+"is empty and 'All Portal Users' is not ticked, nobody can see the dashboard."
+msgstr ""
+"Kullanıcıları bu rapor panelini /my/dashboards adresinden açabilen iş "
+"ortakları. Bir şirket seçildiğinde şirketin tüm ilgili kişilerinin portal "
+"kullanıcıları da erişim kazanır; şirket içi bir çalışan ise yalnızca kendi "
+"kişi kaydı listedeyse erişim kazanır. Bu liste boşsa ve 'Tüm Portal "
+"Kullanıcıları' işaretli değilse rapor panelini kimse göremez."
+
+#. module: spreadsheet_portal_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_portal_dashboard_oca.portal_dashboards_list
+msgid ""
+"The dashboard you tried to open is no longer available. It may have been "
+"archived or is no longer shared with you. Ask your contact person if you "
+"still need it."
+msgstr ""
+"Açmaya çalıştığınız rapor paneli artık kullanılamıyor. Arşivlenmiş olabilir "
+"ya da artık sizinle paylaşılmıyor olabilir. Hâlâ ihtiyacınız varsa ilgili "
+"kişinize başvurun."
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_portal_dashboard_oca/controllers/portal.py:0
+msgid ""
+"This dashboard is not available to your account. It may have been archived "
+"or is no longer shared with you. Go back to Dashboards, or ask your contact "
+"person to share it again."
+msgstr ""
+"Bu rapor paneli hesabınız için kullanılamıyor. Arşivlenmiş olabilir ya da "
+"artık sizinle paylaşılmıyor olabilir. Rapor Panelleri sayfasına geri dönün "
+"veya ilgili kişinizden paneli yeniden paylaşmasını isteyin."
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_portal_dashboard_oca/static/src/spreadsheet/bundle/portal_spreadsheet.esm.js:0
+msgid ""
+"This preview shows the dashboard layout and labels. Calculated figures, such"
+" as KPIs and pivot values, are not shown here. Ask your contact person if "
+"you need the latest figures."
+msgstr ""
+"Bu önizleme, rapor panelinin düzenini ve etiketlerini gösterir. KPI'lar ve "
+"pivot değerleri gibi hesaplanan rakamlar burada gösterilmez. En güncel "
+"rakamlara ihtiyacınız varsa ilgili kişinize başvurun."
+
+#. module: spreadsheet_portal_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_portal_dashboard_oca/models/spreadsheet_portal_dashboard.py:0
+msgid ""
+"You cannot view this portal dashboard. It is archived, or it is not shared "
+"with your account, and its figures may only be shown to the partners it is "
+"shared with. Open your dashboards from /my/dashboards, or ask the person who"
+" shared it to add your contact again."
+msgstr ""
+"Bu portal rapor panelini görüntüleyemezsiniz. Panel arşivlenmiş ya da "
+"hesabınızla paylaşılmamış; rakamları yalnızca paylaşıldığı iş ortaklarına "
+"gösterilebilir. Rapor panellerinizi /my/dashboards adresinden açın veya "
+"paneli paylaşan kişiden kişi kaydınızı yeniden eklemesini isteyin."

@@ -6,7 +6,8 @@ from odoo import fields, models
 
 class SpreadsheetOcaRevision(models.Model):
     _name = "spreadsheet.oca.revision"
-    _description = "Spreadsheet Oca Revision"  # TODO
+    _description = "Spreadsheet Collaborative Revision"
+    _order = "id"
 
     model = fields.Char(required=True)
     res_id = fields.Integer(required=True, index=True)

@@ -20,6 +20,9 @@ class VendorScorecard(models.Model):
         required=True,
         domain=[("supplier_rank", ">", 0)],
         index=True,
+        help="The supplier this scorecard rates. The list offers contacts "
+        "flagged as vendors: created from a purchase order's Vendor field or "
+        "used on a posted vendor bill.",
     )
     date = fields.Date(
         default=fields.Date.context_today,
@@ -37,15 +40,18 @@ class VendorScorecard(models.Model):
     )
     avg_lead_time = fields.Float(
         string="Avg Lead Time (days)",
-        help="Average number of days from PO confirmation to receipt.",
+        help="Average number of days between a purchase order's order deadline "
+        "and the planned receipt date of its lines (the 'Days to Receive' "
+        "measure of the purchase analysis), for orders confirmed in the period. "
+        "Example: order deadline on the 1st, goods planned for the 6th -> 5 days.",
     )
     total_orders = fields.Integer(
-        string="Total Orders",
-        help="Number of confirmed purchase orders in the period.",
+        help="Number of purchase orders confirmed in the period (locked "
+        "orders included).",
     )
     total_amount = fields.Float(
-        string="Total Amount",
-        help="Untaxed purchase total for the period.",
+        help="Untaxed total, in company currency, of the purchase orders "
+        "confirmed in the period.",
     )
     score = fields.Float(
         string="Overall Score",
@@ -75,7 +81,8 @@ class VendorScorecard(models.Model):
 
     @api.model
     def _cron_compute_scorecards(self):
-        """Cron: compute monthly scorecards for all active vendors."""
+        """Cron: compute last month's scorecard for every vendor with an order
+        confirmed in that month."""
         today = fields.Date.context_today(self)
         # Target the previous complete month so the run on the 1st is not an
         # empty window. period_start = first day of last month,
@@ -83,37 +90,61 @@ class VendorScorecard(models.Model):
         period_end = today.replace(day=1)
         period_start = (period_end - timedelta(days=1)).replace(day=1)
 
-        vendors = self.env["res.partner"].search([("supplier_rank", ">", 0)])
+        # Only vendors with an order confirmed in the window can get a card.
+        # Taking them from the orders (not from supplier_rank > 0) also covers
+        # vendors whose rank is still 0 because no vendor bill was posted yet.
+        order_groups = self.env["purchase.order"]._read_group(
+            self._get_period_order_domain(period_start, period_end),
+            groupby=["partner_id"],
+        )
+        vendors = self.env["res.partner"].union(partner for (partner,) in order_groups)
 
         for vendor in vendors:
+            # One savepoint per vendor: a failure (including a SQL error, which
+            # aborts the whole transaction without one) only rolls back that
+            # vendor's partial writes, and the remaining vendors still run.
             try:
-                self._compute_vendor_scorecard(vendor, period_start, period_end)
-            except Exception as e:  # noqa: BLE001 - isolate one vendor's failure
-                _logger.warning("Scorecard skipped for vendor %s: %s", vendor.id, e)
-                continue
+                with self.env.cr.savepoint():
+                    self._compute_vendor_scorecard(vendor, period_start, period_end)
+            except Exception:  # noqa: BLE001 - isolate one vendor's failure
+                _logger.warning(
+                    "Vendor scorecard skipped for vendor %s (id %s); the other "
+                    "vendors are still computed. Fix the cause below and run the "
+                    "'Spreadsheet: Compute Vendor Scorecards' scheduled action again.",
+                    vendor.display_name,
+                    vendor.id,
+                    exc_info=True,
+                )
+
+    @api.model
+    def _get_period_order_domain(self, period_start, period_end):
+        """Domain of the purchase orders confirmed in [period_start, period_end).
+
+        saas-19.4 has no 'done' state: a finished order stays 'purchase' and is
+        only flagged ``locked``, so 'purchase' covers open and locked orders.
+        """
+        return [
+            ("state", "=", "purchase"),
+            ("date_approve", ">=", period_start),
+            ("date_approve", "<", period_end),
+        ]
 
     def _compute_vendor_scorecard(self, vendor, period_start, period_end):
         """Compute and upsert one vendor's scorecard for a single period."""
-        # Count orders confirmed in the target period
+        # Orders confirmed in the target period (open and locked alike).
         orders = self.env["purchase.order"].search(
-            [
-                ("partner_id", "=", vendor.id),
-                ("state", "in", ["purchase", "done"]),
-                ("date_approve", ">=", period_start),
-                ("date_approve", "<", period_end),
-            ]
+            [("partner_id", "=", vendor.id)]
+            + self._get_period_order_domain(period_start, period_end)
         )
         if not orders:
             return
 
-        # Calculate metrics from purchase.report over the same window
+        # Calculate metrics from purchase.report over the SAME window: keyed on
+        # the confirmation date too (date_order is the RFQ deadline in 19.4 and
+        # can fall in another month than the confirmation).
         report_data = self.env["purchase.report"]._read_group(
-            domain=[
-                ("partner_id", "=", vendor.id),
-                ("state", "in", ["purchase", "done"]),
-                ("date_order", ">=", period_start),
-                ("date_order", "<", period_end),
-            ],
+            domain=[("partner_id", "=", vendor.id)]
+            + self._get_period_order_domain(period_start, period_end),
             groupby=[],
             aggregates=[
                 "order_id:count_distinct",
@@ -157,15 +188,17 @@ class VendorScorecard(models.Model):
             "partner_id": vendor.id,
             "date": period_start,
             "on_time_delivery_rate": on_time_rate,
-            "quality_rate": 100.0,  # Default; can be extended with quality module
-            "avg_lead_time": avg_delay or 0,
-            "total_orders": order_count,
-            "total_amount": total_amount,
+            "avg_lead_time": avg_delay or 0.0,
+            "total_orders": order_count or 0,
+            "total_amount": total_amount or 0.0,
         }
 
         if existing:
+            # quality_rate is a manual override (no QC integration yet): a
+            # re-run for the same period must not reset it back to 100.
             existing.write(vals)
         else:
+            vals["quality_rate"] = 100.0  # default until a QC module feeds it
             self.create(vals)
 
     def action_open_vendor_orders(self):
@@ -178,6 +211,6 @@ class VendorScorecard(models.Model):
             "view_mode": "list,form",
             "domain": [
                 ("partner_id", "=", self.partner_id.id),
-                ("state", "in", ["purchase", "done"]),
+                ("state", "=", "purchase"),
             ],
         }

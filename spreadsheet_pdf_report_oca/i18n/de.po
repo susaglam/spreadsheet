@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: German (de)\n"
 "Language: de\n"
@@ -16,6 +16,300 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_pdf_report_oca
-msgid "Spreadsheet Landscape A4"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.spreadsheet_pdf_main
+msgid "Company Logo"
+msgstr "Firmenlogo"
 
+#. module: spreadsheet_pdf_report_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_pdf_report_oca/static/src/spreadsheet/bundle/download_pdf.esm.js:0
+msgid "Download PDF"
+msgstr "PDF herunterladen"
+
+#. module: spreadsheet_pdf_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.spreadsheet_pdf_content
+msgid "Empty sheet"
+msgstr "Leeres Blatt"
+
+#. module: spreadsheet_pdf_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.spreadsheet_pdf_main
+msgid "Generated on"
+msgstr "Erstellt am"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"Only internal users can export spreadsheets to PDF. Your account is a portal"
+" or public account, and the export renders documents on the server with the "
+"company letterhead. Ask an administrator for an internal user account, or "
+"ask a colleague to export the PDF for you."
+msgstr ""
+"Nur interne Benutzer können Tabellen als PDF exportieren. Ihr Konto ist ein "
+"Portal- oder öffentliches Konto, und der Export erstellt Dokumente auf dem "
+"Server mit dem Briefkopf des Unternehmens. Bitten Sie einen Administrator um"
+" ein internes Benutzerkonto oder einen Kollegen, das PDF für Sie zu "
+"exportieren."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"Row %(row)s of sheet \"%(sheet)s\" is %(count)s cells wide in the PDF export"
+" (merged cells count for every column they cover), but the limit is "
+"%(limit)s cells per row. Very large exports take minutes to render and block"
+" the server for other users. Remove the columns you do not need, or use File"
+" > Download XLSX to get the full data."
+msgstr ""
+"Zeile %(row)s von Blatt \"%(sheet)s\" ist im PDF-Export %(count)s Zellen "
+"breit (verbundene Zellen zählen für jede Spalte, die sie abdecken), das "
+"Limit liegt jedoch bei %(limit)s Zellen pro Zeile. Sehr große Exporte "
+"brauchen Minuten und blockieren den Server für andere Benutzer. Entfernen "
+"Sie die Spalten, die Sie nicht benötigen, oder verwenden Sie Datei > XLSX "
+"herunterladen, um alle Daten zu erhalten."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "Sheet"
+msgstr "Blatt"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"Sheet \"%(sheet)s\" sends %(count)s rows to the PDF export, but the limit is"
+" %(limit)s rows per sheet. Very large exports take minutes to render and "
+"block the server for other users. Remove the rows you do not need, split the"
+" sheet, or use File > Download XLSX to get the full data."
+msgstr ""
+"Blatt \"%(sheet)s\" sendet %(count)s Zeilen an den PDF-Export, das Limit "
+"liegt jedoch bei %(limit)s Zeilen pro Blatt. Sehr große Exporte brauchen "
+"Minuten und blockieren den Server für andere Benutzer. Entfernen Sie die "
+"Zeilen, die Sie nicht benötigen, teilen Sie das Blatt auf oder verwenden Sie"
+" Datei > XLSX herunterladen, um alle Daten zu erhalten."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "Spreadsheet"
+msgstr "Tabelle"
+
+#. module: spreadsheet_pdf_report_oca
+#: model:ir.actions.report,name:spreadsheet_pdf_report_oca.action_report_spreadsheet_pdf
+msgid "Spreadsheet PDF Export"
+msgstr "Tabellen-PDF-Export"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF could not be generated because the PDF engine reported an unexpected"
+" error. Try again; if it keeps failing, ask an administrator to check the "
+"server log (logger odoo.addons.spreadsheet_pdf_report_oca) for the details."
+msgstr ""
+"Das PDF konnte nicht erstellt werden, weil die PDF-Engine einen unerwarteten"
+" Fehler gemeldet hat. Versuchen Sie es erneut; schlägt es weiterhin fehl, "
+"bitten Sie einen Administrator, das Serverprotokoll (Logger "
+"odoo.addons.spreadsheet_pdf_report_oca) auf Details zu prüfen."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF engine \"%(engine)s\" is installed but does not respond, so the "
+"spreadsheet cannot be converted to PDF. Ask an administrator to check the "
+"engine installation on the server, or to switch to another engine with the "
+"system parameter report.pdf_engine_default (Settings > Technical > "
+"Parameters > System Parameters)."
+msgstr ""
+"Die PDF-Engine \"%(engine)s\" ist installiert, reagiert aber nicht, daher "
+"kann die Tabelle nicht in PDF umgewandelt werden. Bitten Sie einen "
+"Administrator, die Installation der Engine auf dem Server zu prüfen oder mit"
+" dem Systemparameter report.pdf_engine_default (Einstellungen > Technisch > "
+"Parameter > Systemparameter) auf eine andere Engine umzustellen."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF engine \"%(engine)s\" is not available on this server, so the "
+"spreadsheet cannot be converted to PDF (all Odoo PDF reports need an "
+"engine). Ask an administrator to install the \"Report Engine: "
+"wkhtmltopdf/wkhtmltoimage\" module together with the wkhtmltopdf program, or"
+" the \"Report Engine: Paper Muncher\" module, and to select it with the "
+"system parameter report.pdf_engine_default (Settings > Technical > "
+"Parameters > System Parameters)."
+msgstr ""
+"Die PDF-Engine \"%(engine)s\" ist auf diesem Server nicht verfügbar, daher "
+"kann die Tabelle nicht in PDF umgewandelt werden (alle PDF-Berichte von Odoo"
+" benötigen eine Engine). Bitten Sie einen Administrator, das Modul "
+"\"Berichtsmaschine: wkhtmltopdf/wkhtmltoimage\" zusammen mit dem Programm "
+"wkhtmltopdf oder das Modul \"Berichtsmaschine: Paper Muncher\" zu "
+"installieren und es mit dem Systemparameter report.pdf_engine_default "
+"(Einstellungen > Technisch > Parameter > Systemparameter) auszuwählen."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s contains data in an "
+"unexpected format. Reload the spreadsheet and use File > Download PDF again;"
+" if the problem persists, contact your administrator."
+msgstr ""
+"Der PDF-Export wurde abgelehnt, weil %(location)s Daten in einem "
+"unerwarteten Format enthält. Laden Sie die Tabelle neu und verwenden Sie "
+"erneut Datei > PDF herunterladen; wenden Sie sich an Ihren Administrator, "
+"falls das Problem bestehen bleibt."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s has an invalid %(property)s "
+"\"%(value)s\". Only colors written as #rgb, #rrggbb, rgb(r, g, b) or rgba(r,"
+" g, b, a) are accepted, because any other text could inject styling that "
+"makes the PDF engine load external resources. Reload the spreadsheet and "
+"export again; if the value comes from an integration or a script, change it "
+"to one of those formats."
+msgstr ""
+"Der PDF-Export wurde abgelehnt, weil %(location)s eine ungültige "
+"%(property)s \"%(value)s\" hat. Nur Farben in der Form #rgb, #rrggbb, rgb(r,"
+" g, b) oder rgba(r, g, b, a) werden akzeptiert, da jeder andere Text "
+"Formatierungen einschleusen könnte, mit denen die PDF-Engine externe "
+"Ressourcen lädt. Laden Sie die Tabelle neu und exportieren Sie erneut; "
+"stammt der Wert aus einer Integration oder einem Skript, ändern Sie ihn in "
+"eines dieser Formate."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s has an invalid alignment "
+"\"%(value)s\". Only left, center and right are accepted, because the value "
+"is written into the PDF styling. Reload the spreadsheet and export again."
+msgstr ""
+"Der PDF-Export wurde abgelehnt, weil %(location)s eine ungültige Ausrichtung"
+" \"%(value)s\" hat. Nur left, center und right werden akzeptiert, da der "
+"Wert in die PDF-Formatierung geschrieben wird. Laden Sie die Tabelle neu und"
+" exportieren Sie erneut."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s has an invalid font size "
+"\"%(value)s\". The font size must be a number between %(min)s and %(max)s, "
+"because it is written into the PDF styling. Reload the spreadsheet and "
+"export again."
+msgstr ""
+"Der PDF-Export wurde abgelehnt, weil %(location)s eine ungültige "
+"Schriftgröße \"%(value)s\" hat. Die Schriftgröße muss eine Zahl zwischen "
+"%(min)s und %(max)s sein, da sie in die PDF-Formatierung geschrieben wird. "
+"Laden Sie die Tabelle neu und exportieren Sie erneut."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The spreadsheet data sent for the PDF export is not in the expected format, "
+"so it was refused. Reload the spreadsheet and use File > Download PDF again;"
+" if the problem persists, contact your administrator."
+msgstr ""
+"Die für den PDF-Export gesendeten Tabellendaten haben nicht das erwartete "
+"Format und wurden daher abgelehnt. Laden Sie die Tabelle neu und verwenden "
+"Sie erneut Datei > PDF herunterladen; wenden Sie sich an Ihren "
+"Administrator, falls das Problem bestehen bleibt."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The spreadsheet data sent to the PDF export is larger than %(limit)s MB. "
+"Very large exports take minutes to render and block the server for other "
+"users. Remove unused rows and columns, hide the sheets you do not need in "
+"the PDF, or use File > Download XLSX to get the full data."
+msgstr ""
+"Die an den PDF-Export gesendeten Tabellendaten sind größer als %(limit)s MB."
+" Sehr große Exporte brauchen Minuten und blockieren den Server für andere "
+"Benutzer. Entfernen Sie ungenutzte Zeilen und Spalten, blenden Sie die "
+"Blätter aus, die Sie im PDF nicht benötigen, oder verwenden Sie Datei > XLSX"
+" herunterladen, um alle Daten zu erhalten."
+
+#. module: spreadsheet_pdf_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.report_spreadsheet_pdf_placeholder
+msgid ""
+"This report only holds the paper format and PDF engine settings of the "
+"spreadsheet PDF export. To export a spreadsheet, open it and use File &gt; "
+"Download PDF."
+msgstr ""
+"Dieser Bericht enthält nur das Papierformat und die PDF-Engine-Einstellungen"
+" des Tabellen-PDF-Exports. Um eine Tabelle zu exportieren, öffnen Sie sie "
+"und verwenden Sie Datei &gt; PDF herunterladen."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_pdf_report_oca/static/src/spreadsheet/bundle/download_pdf.esm.js:0
+msgid ""
+"This spreadsheet has %(count)s cells to print (the used range of every "
+"visible sheet), but the PDF export is limited to %(limit)s cells. Very large"
+" exports take minutes to render and block the server for other users. Remove"
+" unused rows and columns, hide the sheets you do not need in the PDF, or use"
+" File > Download XLSX to get the full data."
+msgstr ""
+"Diese Tabelle hat %(count)s Zellen zum Drucken (der verwendete Bereich jedes"
+" sichtbaren Blatts), der PDF-Export ist jedoch auf %(limit)s Zellen "
+"begrenzt. Sehr große Exporte brauchen Minuten und blockieren den Server für "
+"andere Benutzer. Entfernen Sie ungenutzte Zeilen und Spalten, blenden Sie "
+"die Blätter aus, die Sie im PDF nicht benötigen, oder verwenden Sie Datei > "
+"XLSX herunterladen, um alle Daten zu erhalten."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"This spreadsheet sends %(count)s sheets to the PDF export, but the limit is "
+"%(limit)s. Very large exports take minutes to render and block the server "
+"for other users. Hide the sheets you do not need in the PDF, split the "
+"spreadsheet, or use File > Download XLSX to get the whole workbook."
+msgstr ""
+"Diese Tabelle sendet %(count)s Blätter an den PDF-Export, das Limit liegt "
+"jedoch bei %(limit)s. Sehr große Exporte brauchen Minuten und blockieren den"
+" Server für andere Benutzer. Blenden Sie die Blätter aus, die Sie im PDF "
+"nicht benötigen, teilen Sie die Tabelle auf oder verwenden Sie Datei > XLSX "
+"herunterladen, um die gesamte Arbeitsmappe zu erhalten."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"This spreadsheet sends more than %(limit)s cells to the PDF export (merged "
+"cells count for every cell they cover). Very large exports take minutes to "
+"render and block the server for other users. Remove unused rows and columns,"
+" hide the sheets you do not need in the PDF, or use File > Download XLSX to "
+"get the full data."
+msgstr ""
+"Diese Tabelle sendet mehr als %(limit)s Zellen an den PDF-Export (verbundene"
+" Zellen zählen für jede Zelle, die sie abdecken). Sehr große Exporte "
+"brauchen Minuten und blockieren den Server für andere Benutzer. Entfernen "
+"Sie ungenutzte Zeilen und Spalten, blenden Sie die Blätter aus, die Sie im "
+"PDF nicht benötigen, oder verwenden Sie Datei > XLSX herunterladen, um alle "
+"Daten zu erhalten."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "fill color"
+msgstr "Füllfarbe"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "sheet \"%(sheet)s\", row %(row)s, cell %(cell)s"
+msgstr "Blatt \"%(sheet)s\", Zeile %(row)s, Zelle %(cell)s"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "text color"
+msgstr "Textfarbe"

@@ -2,15 +2,20 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <!-- Adds a block to the single "Spreadsheet" settings app owned by
+         spreadsheet_oca. Never declare a second <app name="spreadsheet_oca">:
+         saas-19.4 would list "Spreadsheet" twice in the Settings navigation.
+         notApp="0" un-hides the app, which spreadsheet_oca ships hidden until
+         an add-on gives it content. -->
     <record id="res_config_settings_view_form_spreadsheet_contract" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.spreadsheet.contract</field>
         <field name="model">res.config.settings</field>
         <field name="priority" eval="102" />
-        <field
-            name="inherit_id"
-            ref="spreadsheet_kpi_alert_oca.res_config_settings_view_form_spreadsheet_kpi"
-        />
+        <field name="inherit_id" ref="spreadsheet_oca.res_config_settings_view_form" />
         <field name="arch" type="xml">
+            <xpath expr="//app[@name='spreadsheet_oca']" position="attributes">
+                <attribute name="notApp">0</attribute>
+            </xpath>
             <xpath expr="//app[@name='spreadsheet_oca']" position="inside">
                 <block title="Contracts &amp; SLA" name="contract_settings_block">
                     <setting

@@ -63,11 +63,11 @@
                         </group>
                         <group string="Access">
                             <field name="all_portal_users" />
-                            <field
-                                name="partner_ids"
-                                widget="many2many_tags"
-                                invisible="all_portal_users"
-                            />
+                            <!-- Always visible: listed partners keep their
+                                 access when All Portal Users is ticked, and an
+                                 internal employee can only be granted access
+                                 here. -->
+                            <field name="partner_ids" widget="many2many_tags" />
                         </group>
                     </group>
                 </sheet>
@@ -91,7 +91,10 @@
         </field>
     </record>
 
-    <!-- Menu under Spreadsheets > Configuration -->
+    <!-- Menu under Spreadsheets > Configuration. Only Dashboard administrators
+         may create/edit assignments (security/ir.access.csv), so the menu is
+         reserved to them. (6, 0, ...) replaces the spreadsheet_oca.group_user
+         grant of earlier versions on upgrade; (4, ...) would only add. -->
     <record id="menu_portal_dashboards" model="ir.ui.menu">
         <field name="name">Portal Dashboards</field>
         <field
@@ -99,7 +102,27 @@
             ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
         />
         <field name="action" ref="spreadsheet_portal_dashboard_act_window" />
-        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field
+            name="group_ids"
+            eval="[(6, 0, [ref('spreadsheet_dashboard.group_dashboard_manager')])]"
+        />
         <field name="sequence" eval="30" />
+    </record>
+
+    <!-- Same action under Dashboards > Configuration: only Dashboard
+         administrators may create/edit assignments (security/ir.access.csv),
+         and they do not necessarily have the Spreadsheets app. -->
+    <record id="menu_portal_dashboards_dashboard_config" model="ir.ui.menu">
+        <field name="name">Portal Dashboards</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_dashboard.spreadsheet_dashboard_menu_configuration"
+        />
+        <field name="action" ref="spreadsheet_portal_dashboard_act_window" />
+        <field
+            name="group_ids"
+            eval="[(4, ref('spreadsheet_dashboard.group_dashboard_manager'))]"
+        />
+        <field name="sequence" eval="40" />
     </record>
 </odoo>

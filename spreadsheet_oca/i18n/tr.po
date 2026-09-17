@@ -1,0 +1,1057 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.4\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: Turkish (tr)\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: spreadsheet_oca
+#: model:ir.model.constraint,message:spreadsheet_oca.constraint_spreadsheet_spreadsheet_tag_name_uniq
+msgid "A tag with the same name already exists."
+msgstr "Aynı ada sahip bir etiket zaten var."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
+msgid "Action Needed"
+msgstr "Aksiyon Gerekiyor"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__active
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__active
+msgid "Active"
+msgstr "Aktif"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_ids
+msgid "Activities"
+msgstr "Aktiviteler"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Aktivite İstisna Dekorasyonu"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
+msgid "Activity State"
+msgstr "Aktivite Durumu"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Aktivite Türü İkonu"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Add date"
+msgstr "Tarih ekle"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Add relation"
+msgstr "İlişki ekle"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Add text"
+msgstr "Metin ekle"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/graph_controller.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.xml:0
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
+msgid "Add to spreadsheet"
+msgstr "Hesap tablosuna ekle"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "After next"
+msgstr "Sonrakinden sonraki"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
+msgid "Archived"
+msgstr "Arşivlendi"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Are you sure you want to delete this list?"
+msgstr "Bu listeyi silmek istediğinizden emin misiniz?"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Area"
+msgstr "Alan"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_attachment_count
+msgid "Attachment Count"
+msgstr "Ek Sayısı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Automatically filter on the current period"
+msgstr "Geçerli döneme göre otomatik filtrele"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Automatically filter on the current user"
+msgstr "Geçerli kullanıcıya göre otomatik filtrele"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__badge_image
+msgid "Badge Background"
+msgstr "Rozet Arka Planı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Before Previous"
+msgstr "Öncekinden önceki"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
+msgid "Can Be Dynamic"
+msgstr "Dinamik Olabilir"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
+msgid "Cancel"
+msgstr "İptal"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Change name"
+msgstr "Adı değiştir"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__client_id
+msgid "Client"
+msgstr "İstemci"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__code
+msgid "Code"
+msgstr "Kod"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
+msgid "Color"
+msgstr "Renk"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Column"
+msgstr "Sütun"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
+msgid "Commands"
+msgstr "Komutlar"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
+msgid "Company"
+msgstr "Şirket"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+msgid "Comparisons in pivot are not supported"
+msgstr "Pivot tablolarda karşılaştırmalar desteklenmiyor"
+
+#. module: spreadsheet_oca
+#: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+msgid "Context"
+msgstr "Bağlam"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
+msgid "Contributors"
+msgstr "Katkıda Bulunanlar"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
+msgid "Contributors Groups"
+msgstr "Katkıda Bulunan Grupları"
+
+#. module: spreadsheet_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
+msgid "Create spreadsheet"
+msgstr "Hesap tablosu oluştur"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__create_date
+msgid "Created on"
+msgstr "Oluşturulma Tarihi"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
+msgid "Currency"
+msgstr "Para Birimi"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
+msgid "Datasource Name"
+msgstr "Veri Kaynağı Adı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Default value"
+msgstr "Varsayılan değer"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
+msgid "Delete"
+msgstr "Sil"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Domain"
+msgstr "Domain"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Download XLSX"
+msgstr "XLSX indir"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+msgid "Duplicated groupbys in pivot are not supported"
+msgstr "Pivot tablolarda yinelenen gruplamalar desteklenmiyor"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid "Dynamic Rows"
+msgstr "Dinamik Satırlar"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_tree_view
+msgid "Edit"
+msgstr "Düzenle"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Edit domain"
+msgstr "Domain'i düzenle"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
+msgid ""
+"Every member of these groups can open and edit this spreadsheet, but not "
+"delete it, including users who receive the group through another group. "
+"Members also need Spreadsheets access (User or Manager). Example: share the "
+"forecast with the sales group so the whole sales team can update it."
+msgstr ""
+"Bu grupların tüm üyeleri, grubu başka bir grup üzerinden alan kullanıcılar "
+"da dahil olmak üzere, bu hesap tablosunu açıp düzenleyebilir ancak silemez. "
+"Üyelerin ayrıca Hesap Tabloları erişimine (Kullanıcı veya Yönetici) ihtiyacı"
+" vardır. Örnek: tahmini satış grubuyla paylaşın, böylece tüm satış ekibi "
+"tabloyu güncelleyebilir."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
+msgid ""
+"Every member of these groups can open this spreadsheet in read-only mode, "
+"including users who receive the group through another group. Members also "
+"need Spreadsheets access (User or Manager). Example: share a report with a "
+"managers group so they can view it without changing it."
+msgstr ""
+"Bu grupların tüm üyeleri, grubu başka bir grup üzerinden alan kullanıcılar "
+"da dahil olmak üzere, bu hesap tablosunu salt okunur modda açabilir. "
+"Üyelerin ayrıca Hesap Tabloları erişimine (Kullanıcı veya Yönetici) ihtiyacı"
+" vardır. Örnek: bir raporu yöneticiler grubuyla paylaşın, böylece raporu "
+"değiştirmeden görüntüleyebilirler."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__filename
+msgid "Filename"
+msgstr "Dosya Adı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Filters"
+msgstr "Filtreler"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_follower_ids
+msgid "Followers"
+msgstr "Takipçiler"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Takipçiler (İş Ortakları)"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font awesome ikonu ör. fa-tasks"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "From / To"
+msgstr "Başlangıç / Bitiş"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__group_ids
+msgid "Group"
+msgstr "Grup"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__has_message
+msgid "Has Message"
+msgstr "Mesajı Var"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_icon
+msgid "Icon"
+msgstr "İkon"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Bir istisna aktivitesini belirten ikon."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "İşaretliyse yeni mesajlar ilginizi gerektirir."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "İşaretliyse bazı mesajlarda teslim hatası var."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
+msgid ""
+"If set, the spreadsheet will be available only if this company is in the "
+"current companies."
+msgstr ""
+"Ayarlanırsa, hesap tablosu yalnızca bu şirket geçerli şirketler arasındaysa "
+"kullanılabilir."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__import_data
+msgid "Import Data"
+msgstr "Verileri İçe Aktar"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_import_mode
+msgid "Import Mode"
+msgstr "İçe Aktarma Modu"
+
+#. module: spreadsheet_oca
+#: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_import_act_window
+msgid "Import Pivot"
+msgstr "Pivot İçe Aktar"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_import
+msgid "Import data to spreadsheet"
+msgstr "Verileri hesap tablosuna aktar"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Include children"
+msgstr "Alt kayıtları dahil et"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Insert list"
+msgstr "Liste ekle"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_is_follower
+msgid "Is Follower"
+msgstr "Takipçi mi"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__is_tree
+msgid "Is Tree"
+msgstr "Ağaç Yapısı mı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Label"
+msgstr "Etiket"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme Tarihi"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Last updated at"
+msgstr "Son güncelleme"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Line"
+msgstr "Çizgi"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Link to Odoo menu"
+msgstr "Odoo menüsüne bağla"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "List name"
+msgstr "Liste adı"
+
+#. module: spreadsheet_oca
+#: model:res.groups,name:spreadsheet_oca.group_manager
+msgid "Manager"
+msgstr "Yönetici"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Menu Items"
+msgstr "Menü Öğeleri"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error
+msgid "Message Delivery error"
+msgstr "Mesaj Teslim Hatası"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_ids
+msgid "Messages"
+msgstr "Mesajlar"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode_id
+msgid "Mode"
+msgstr "Mod"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
+msgid "Model"
+msgstr "Model"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_ir_model
+msgid "Models"
+msgstr "Modeller"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Month"
+msgstr "Ay"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Month / Quarter"
+msgstr "Ay / Çeyrek"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Aktivite Son Tarihim"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
+msgid "My Sheets"
+msgstr "Hesap Tablolarım"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__name
+msgid "Name"
+msgstr "Ad"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Next"
+msgstr "Sonraki"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Sonraki Aktivite Son Tarihi"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_summary
+msgid "Next Activity Summary"
+msgstr "Sonraki Aktivite Özeti"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_id
+msgid "Next Activity Type"
+msgstr "Sonraki Aktivite Türü"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
+msgid "Next Revision"
+msgstr "Sonraki Revizyon"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
+msgid "Number Of Rows"
+msgstr "Satır Sayısı"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Aksiyon Sayısı"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hata Sayısı"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Aksiyon gerektiren mesaj sayısı"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Teslim hatası olan mesaj sayısı"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
+msgid "OK"
+msgstr "Tamam"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
+msgid "Owner"
+msgstr "Sahibi"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+msgid "Ownership"
+msgstr "Sahiplik"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Pie"
+msgstr "Pasta"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Possible values"
+msgstr "Olası değerler"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Previous"
+msgstr "Önceki"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Quarter"
+msgstr "Çeyrek"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Re-insert Dynamic"
+msgstr "Dinamik olarak yeniden ekle"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Re-insert Static"
+msgstr "Statik olarak yeniden ekle"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+msgid "Read Access"
+msgstr "Okuma Erişimi"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
+msgid "Readers"
+msgstr "Okuyucular"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
+msgid "Readers Groups"
+msgstr "Okuyucu Grupları"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Refresh all data"
+msgstr "Tüm verileri yenile"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Related model"
+msgstr "İlişkili model"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+msgid "Relative Period"
+msgstr "Göreli Dönem"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Remove"
+msgstr "Kaldır"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__res_id
+msgid "Res"
+msgstr "Kayıt ID"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_user_id
+msgid "Responsible User"
+msgstr "Sorumlu Kullanıcı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Restrict values with a domain"
+msgstr "Değerleri bir domain ile kısıtla"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Rows:"
+msgstr "Satırlar:"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Save"
+msgstr "Kaydet"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Select a menu..."
+msgstr "Bir menü seçin..."
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
+msgid "Select number of rows to duplicate row"
+msgstr "Satırı çoğaltmak için satır sayısını seçin"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__sequence
+msgid "Sequence"
+msgstr "Sıra"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__server_revision_id
+msgid "Server Revision"
+msgstr "Sunucu Revizyonu"
+
+#. module: spreadsheet_oca
+#. odoo-python
+#: code:addons/spreadsheet_oca/models/spreadsheet_abstract.py:0
+msgid "Sheet1"
+msgstr "Sayfa1"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Sorting"
+msgstr "Sıralama"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
+#: model:ir.module.category,name:spreadsheet_oca.module_category_spreedsheet
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.res_config_settings_view_form
+msgid "Spreadsheet"
+msgstr "Hesap Tablosu"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_oca_revision
+msgid "Spreadsheet Collaborative Revision"
+msgstr "Hesap Tablosu Ortak Düzenleme Revizyonu"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_raw
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_raw
+msgid "Spreadsheet Raw"
+msgstr "Hesap Tablosu Ham Verisi"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_revision_ids
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "Hesap Tablosu Revizyonu"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_tag
+msgid "Spreadsheet Tag"
+msgstr "Hesap Tablosu Etiketi"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_abstract
+msgid "Spreadsheet abstract for inheritance"
+msgstr "Kalıtım için soyut hesap tablosu"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_binary_data
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_binary_data
+msgid "Spreadsheet file"
+msgstr "Hesap tablosu dosyası"
+
+#. module: spreadsheet_oca
+#: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
+#: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_menu
+msgid "Spreadsheets"
+msgstr "Hesap Tabloları"
+
+#. module: spreadsheet_oca
+#: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_tags_act_window
+#: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_tag_menu
+msgid "Spreadsheets Tags"
+msgstr "Hesap Tablosu Etiketleri"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
+msgid "Spreasheet Image"
+msgstr "Hesap tablosu görseli"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Stacked"
+msgstr "Yığılmış"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Stacked Area"
+msgstr "Yığılmış Alan"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Stacked Column"
+msgstr "Yığılmış Sütun"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Stacked Line"
+msgstr "Yığılmış Çizgi"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Aktivitelere dayalı durum\n"
+"Gecikmiş: Son tarih zaten geçti\n"
+"Bugün: Aktivite tarihi bugün\n"
+"Planlanmış: Gelecekteki aktiviteler."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_tag_ids
+msgid "Tags"
+msgstr "Etiketler"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_revision_ids
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_revision_ids
+msgid ""
+"Technical: the collaborative edit history (revision commands) replayed on "
+"top of the stored spreadsheet file when it is opened. Only administrators "
+"can read it directly; users see its effect by opening the spreadsheet."
+msgstr ""
+"Teknik: hesap tablosu açıldığında kayıtlı dosyanın üzerine yeniden uygulanan"
+" ortak düzenleme geçmişi (revizyon komutları). Yalnızca yöneticiler bunu "
+"doğrudan okuyabilir; kullanıcılar etkisini hesap tablosunu açarak görür."
+
+#. module: spreadsheet_oca
+#. odoo-python
+#: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"The file \"%(file)s\" could not be imported because it is not a valid Excel "
+"workbook (.xlsx), so no spreadsheet was created. Open it in Excel or "
+"LibreOffice, save it as \"Excel Workbook (.xlsx)\" and upload it again."
+msgstr ""
+"\"%(file)s\" dosyası geçerli bir Excel çalışma kitabı (.xlsx) olmadığı için "
+"içe aktarılamadı, bu nedenle hesap tablosu oluşturulmadı. Dosyayı Excel veya"
+" LibreOffice ile açın, \"Excel Çalışma Kitabı (.xlsx)\" olarak kaydedin ve "
+"tekrar yükleyin."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
+msgid ""
+"The user who owns this spreadsheet. The owner can always open, edit, share "
+"and delete it, as can Spreadsheet managers."
+msgstr ""
+"Bu hesap tablosunun sahibi olan kullanıcı. Sahibi, Hesap Tablosu "
+"yöneticileri gibi tabloyu her zaman açabilir, düzenleyebilir, paylaşabilir "
+"ve silebilir."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid ""
+"This field allows you to generate tables that its rows are updated with the "
+"filters set in the spreadsheets."
+msgstr ""
+"Bu alan, satırları hesap tablolarında ayarlanan filtrelerle güncellenen "
+"tablolar oluşturmanızı sağlar."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Time range"
+msgstr "Zaman aralığı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Toggle Dropdown"
+msgstr "Açılır Menüyü Aç/Kapat"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Total rows used when inserting list"
+msgstr "Liste eklenirken kullanılan toplam satır sayısı"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
+msgid "Transparent tags are not visible in the kanban view"
+msgstr "Şeffaf etiketler kanban görünümünde görünmez"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
+msgid "Type"
+msgstr "Tür"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Kayıttaki istisna aktivitesinin türü."
+
+#. module: spreadsheet_oca
+#. odoo-python
+#: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
+msgid "Unnamed"
+msgstr "Adsız"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml:0
+msgid "Upload"
+msgstr "Yükle"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.esm.js:0
+msgid "Upload a Spreadsheet"
+msgstr "Hesap Tablosu Yükle"
+
+#. module: spreadsheet_oca
+#: model:res.groups,name:spreadsheet_oca.group_user
+msgid "User"
+msgstr "Kullanıcı"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
+msgid ""
+"Users who can open and edit this spreadsheet, but not delete it. They also "
+"need Spreadsheets access (User or Manager). Example: add the colleague who "
+"fills in the monthly figures."
+msgstr ""
+"Bu hesap tablosunu açıp düzenleyebilen ancak silemeyen kullanıcılar. Bu "
+"kullanıcıların ayrıca Hesap Tabloları erişimine (Kullanıcı veya Yönetici) "
+"ihtiyacı vardır. Örnek: aylık rakamları dolduran çalışma arkadaşınızı "
+"ekleyin."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
+msgid ""
+"Users who can open this spreadsheet in read-only mode. They also need "
+"Spreadsheets access (User or Manager)."
+msgstr ""
+"Bu hesap tablosunu salt okunur modda açabilen kullanıcılar. Bu "
+"kullanıcıların ayrıca Hesap Tabloları erişimine (Kullanıcı veya Yönetici) "
+"ihtiyacı vardır."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
+msgid "Website Messages"
+msgstr "Web Sitesi Mesajları"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
+msgid "Website communication history"
+msgstr "Web sitesi iletişim geçmişi"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+msgid "Write Access"
+msgstr "Yazma Erişimi"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Year"
+msgstr "Yıl"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "ascending"
+msgstr "artan"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "descending"
+msgstr "azalan"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+msgid "e.g. Sales KPI"
+msgstr "ör. Satış KPI'ı"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "name is required"
+msgstr "ad zorunludur"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "not updated"
+msgstr "güncellenmedi"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_ir_websocket
+msgid "websocket message handling"
+msgstr "websocket mesaj işleme"

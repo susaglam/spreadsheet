@@ -1,68 +1,76 @@
 {
-  "version": "18.4.14",
-  "revisionId": "START_REVISION",
+  "version": "19.3.10",
   "sheets": [
     {
       "id": "sh1",
-      "name": "Formul Referansi",
+      "name": "Formula Reference",
       "colNumber": 8,
       "rowNumber": 34,
       "rows": {},
-      "cols": {"0": {"size": 340}, "1": {"size": 460}},
+      "cols": {
+        "0": {
+          "size": 340
+        },
+        "1": {
+          "size": 460
+        }
+      },
       "merges": [],
       "cells": {
-        "A1": "🧰 ODOO CORE FORMULLERI — Referans ve Canli Ornekler",
-        "A2": "Bu sayfadaki formuller CANLI calisir. Kopyalayip kendi sayfanda kullanabilirsin.",
-        "A4": "MUHASEBE (spreadsheet_account)",
-        "A5": "Formul",
-        "B5": "Aciklama  (DIKKAT: tarih araligi ZORUNLU arguman)",
+        "A1": "🧰 ODOO CORE FORMULAS — Reference and Live Examples",
+        "A2": "The formulas on this sheet are LIVE. Copy them into your own spreadsheet to reuse them.",
+        "A4": "ACCOUNTING (spreadsheet_account)",
+        "A5": "Formula",
         "A6": "=ODOO.BALANCE(\"600\", \"2026\")",
-        "B6": "600 ile baslayan hesaplarin 2026 mali yili net bakiyesi (borc - alacak)",
         "A7": "=ODOO.CREDIT(\"600\", \"2026\")",
-        "B7": "600 hesaplarinin 2026 alacak toplami",
         "A8": "=ODOO.DEBIT(\"600\", \"2026\")",
-        "B8": "600 hesaplarinin 2026 borc toplami",
         "A9": "=ODOO.RESIDUAL(\"400\")",
-        "B9": "400 ile baslayan hesaplarda acik (odenmemis) kalan tutar",
         "A10": "=ODOO.PARTNER.BALANCE(\"1\")",
-        "B10": "1 numarali partnerin acik bakiyesi",
         "A11": "=ODOO.FISCALYEAR.START(TODAY())",
-        "B11": "Bugunun icinde oldugu mali yilin baslangic tarihi",
         "A12": "=ODOO.FISCALYEAR.END(TODAY())",
-        "B12": "Bugunun icinde oldugu mali yilin bitis tarihi",
-        "A13": "NOT: Muhasebe hareketi yoksa bakiyeler 0,00 doner — formul dogru, veri henuz yok.",
-        "A15": "CANLI VERI KAYNAKLARI (res.partner uzerinden)",
-        "A16": "=PIVOT.VALUE(1, \"__count\")",
-        "B16": "Pivot 1: toplam partner sayisi (canli)",
+        "A13": "NOTE: without journal entries the balances return 0.00 — the formula is correct, there is just no data yet.",
+        "A15": "LIVE DATA SOURCES (based on res.partner)",
+        "A16": "=PIVOT.VALUE(1,\"__count\")",
         "A17": "=ODOO.LIST.VALUE(1, 1, \"name\")",
-        "B17": "List 1: 1. partnerin adi (canli)",
         "A18": "=ODOO.LIST.VALUE(1, 2, \"name\")",
-        "B18": "List 1: 2. partnerin adi (canli)",
         "A19": "=ODOO.CURRENCY.RATE(\"USD\", \"EUR\")",
-        "B19": "USD to EUR guncel doviz kuru",
-        "A21": "BIZIM CUSTOM FORMULLER (OCA modulleri)",
-        "A22": "Modul",
-        "B22": "Formuller",
-        "A23": "forecast_oca",
+        "A21": "CUSTOM FORMULAS (OCA modules)",
+        "A22": "Module",
+        "A23": "spreadsheet_forecast_oca",
+        "A24": "spreadsheet_period_comparison_oca",
+        "A26": "🔗 OPEN THESE GUIDES FOR MORE EXAMPLES",
+        "A27": "• 📈 Guide: Forecasting Functions (Help & Examples > Forecasting Formulas)",
+        "A28": "• 📊 Guide: Period Comparison (Help & Examples > Period Comparison)",
+        "A29": "• ✨ Guide: Features and Menus (Help & Examples > Features and Menus)",
+        "B5": "Description  (NOTE: BALANCE, CREDIT and DEBIT REQUIRE a date range)",
+        "B6": "Net balance (debit - credit) of the accounts starting with 600 in fiscal year 2026",
+        "B7": "Total credit of the 600 accounts in fiscal year 2026",
+        "B8": "Total debit of the 600 accounts in fiscal year 2026",
+        "B9": "Open (unpaid) residual amount on the accounts starting with 400",
+        "B10": "Open balance of the partner with ID 1",
+        "B11": "Start date of the fiscal year that contains today",
+        "B12": "End date of the fiscal year that contains today",
+        "B16": "Pivot 1: total number of partners (live)",
+        "B17": "List 1: name of the 1st partner (live)",
+        "B18": "List 1: name of the 2nd partner (live)",
+        "B19": "Current USD to EUR exchange rate",
+        "B22": "Formulas",
         "B23": "ODOO.FORECAST, ODOO.TREND, ODOO.MOVING_AVG",
-        "A24": "period_comparison_oca",
-        "B24": "ODOO.PERCENT_CHANGE, ODOO.GROWTH_ARROW, ODOO.YOY, ODOO.VARIANCE",
-        "A26": "🔗 DAHA FAZLA ORNEK ICIN BU REHBERLERI AC",
-        "A27": "• 📈 Rehber: Tahminleme Fonksiyonlari (forecast)",
-        "A28": "• 📊 Rehber: Donem Karsilastirma (period comparison)",
-        "A29": "• ✨ Rehber: Ozellikler ve Menuler"
+        "B24": "ODOO.PERCENT_CHANGE, ODOO.GROWTH_ARROW, ODOO.YOY, ODOO.VARIANCE"
       },
       "styles": {
         "A1": 1,
-        "A2": 3,
-        "A4": 2, "A5": 2, "B5": 2,
-        "A6": 5, "A7": 5, "A8": 5, "A9": 5, "A10": 5, "A11": 5, "A12": 5,
-        "A13": 6,
-        "A15": 2,
-        "A16": 5, "A17": 5, "A18": 5, "A19": 5,
-        "A21": 2, "A22": 2, "B22": 2,
-        "A23": 5, "A24": 5,
-        "A26": 1
+        "A26": 1,
+        "A2": 2,
+        "A4:A5": 3,
+        "A15": 3,
+        "A21:A22": 3,
+        "B5": 3,
+        "B22": 3,
+        "A6:A12": 4,
+        "A16:A19": 4,
+        "A23:A24": 4,
+        "A13": 5
       },
       "formats": {},
       "borders": {},
@@ -72,19 +80,40 @@
       "tables": [],
       "areGridLinesVisible": true,
       "isVisible": true,
-      "headerGroups": {"ROW": [], "COL": []},
-      "comments": {}
+      "headerGroups": {
+        "ROW": [],
+        "COL": []
+      }
     }
   ],
   "styles": {
-    "1": {"bold": true, "fillColor": "#875a7b", "textColor": "#FFFFFF", "fontSize": 13},
-    "2": {"bold": true, "fillColor": "#d9d9d9"},
-    "3": {"italic": true, "textColor": "#666666"},
-    "5": {"fillColor": "#fff3e0", "textColor": "#e65100"},
-    "6": {"italic": true, "textColor": "#0d47a1"}
+    "1": {
+      "bold": true,
+      "fillColor": "#875a7b",
+      "textColor": "#FFFFFF",
+      "fontSize": 13
+    },
+    "2": {
+      "italic": true,
+      "textColor": "#666666"
+    },
+    "3": {
+      "bold": true,
+      "fillColor": "#d9d9d9"
+    },
+    "4": {
+      "fillColor": "#fff3e0",
+      "textColor": "#e65100"
+    },
+    "5": {
+      "italic": true,
+      "textColor": "#0d47a1"
+    }
   },
   "formats": {},
   "borders": {},
+  "revisionId": "START_REVISION",
+  "uniqueFigureIds": true,
   "settings": {
     "locale": {
       "name": "English (US)",
@@ -96,20 +125,21 @@
       "formulaArgSeparator": ","
     }
   },
-  "uniqueFigureIds": true,
-  "customTableStyles": {},
-  "chartOdooMenusReferences": {},
-  "globalFilters": [],
   "pivots": {
     "1": {
       "type": "ODOO",
       "id": "1",
       "formulaId": "1",
-      "name": "Partner Sayisi",
+      "name": "Partner Count",
       "model": "res.partner",
       "domain": [],
       "context": {},
-      "measures": [{"id": "__count", "fieldName": "__count"}],
+      "measures": [
+        {
+          "id": "__count",
+          "fieldName": "__count"
+        }
+      ],
       "columns": [],
       "rows": [],
       "sortedColumn": null,
@@ -117,17 +147,26 @@
     }
   },
   "pivotNextId": 2,
+  "customTableStyles": {},
+  "namedRanges": {},
+  "globalFilters": [],
   "lists": {
     "1": {
       "id": "1",
-      "name": "Partner Listesi",
+      "name": "Partner List",
       "model": "res.partner",
       "columns": ["name", "email", "city"],
       "domain": [],
       "context": {},
-      "orderBy": [{"name": "name", "asc": true}],
+      "orderBy": [
+        {
+          "name": "name",
+          "asc": true
+        }
+      ],
       "fieldMatching": {}
     }
   },
-  "listNextId": 2
+  "listNextId": 2,
+  "chartOdooMenusReferences": {}
 }

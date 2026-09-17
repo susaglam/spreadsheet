@@ -1,0 +1,1382 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_help_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server saas~19.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-17 00:00+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Dutch (nl)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid ""
+"%(examples)s (your access rights do not allow creating them; a Spreadsheet "
+"manager can run the loader)"
+msgstr ""
+"%(examples)s (je toegangsrechten staan het aanmaken ervan niet toe; een "
+"Spreadsheet-manager kan het laden uitvoeren)"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid "1 KPI alert added"
+msgstr "1 KPI-waarschuwing toegevoegd"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid "1 contract + 1 SLA added"
+msgstr "1 contract + 1 SLA toegevoegd"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid "1 template added"
+msgstr "1 sjabloon toegevoegd"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid "1 vendor scorecard added"
+msgstr "1 leveranciersscorekaart toegevoegd"
+
+#. module: spreadsheet_help_oca
+#: model_terms:web_tour.tour,rainbow_man_message:spreadsheet_help_oca.tour_quick_start
+msgid ""
+"<strong>🎉 Congratulations!</strong> You created your first spreadsheet."
+msgstr ""
+"<strong>🎉 Gefeliciteerd!</strong> Je hebt je eerste spreadsheet gemaakt."
+
+#. module: spreadsheet_help_oca
+#: model_terms:web_tour.tour,rainbow_man_message:spreadsheet_help_oca.tour_save_template
+msgid ""
+"<strong>📋 Great!</strong> You can now reuse this spreadsheet as a template "
+"whenever you want."
+msgstr ""
+"<strong>📋 Top!</strong> Je kunt deze spreadsheet nu altijd opnieuw gebruiken"
+" als sjabloon."
+
+#. module: spreadsheet_help_oca
+#: model_terms:web_tour.tour,rainbow_man_message:spreadsheet_help_oca.tour_kpi_alert
+msgid "<strong>🔔 Your KPI is now being watched!</strong>"
+msgstr "<strong>🔔 Je KPI wordt nu bewaakt!</strong>"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__guide_spreadsheet_id
+msgid "A pre-built spreadsheet with live examples for this feature."
+msgstr "Een kant-en-klare spreadsheet met live voorbeelden van deze functie."
+
+#. module: spreadsheet_help_oca
+#: model_terms:web_tour.tour,rainbow_man_message:spreadsheet_help_oca.tour_kpi_alert
+msgid ""
+"A scheduled action checks the thresholds every 15 minutes. When a threshold "
+"is crossed, a notification arrives in your Discuss inbox."
+msgstr ""
+"Een geplande actie controleert de drempels elke 15 minuten. Wordt een "
+"drempel overschreden, dan komt er een melding in je Discuss-inbox."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "Access right missing"
+msgstr "Toegangsrecht ontbreekt"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_api
+msgid ""
+"Access spreadsheet data from external systems (Power BI, Google Sheets, "
+"webhooks). Bearer token, rate limit, webhook delivery log."
+msgstr ""
+"Benader spreadsheetgegevens vanuit externe systemen (Power BI, Google "
+"Sheets, webhooks). Bearer-token, rate limit, afleverlog van webhooks."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__active
+msgid "Active"
+msgstr "Actief"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.sample_data_loader_view_form
+msgid ""
+"Adds demo records to the spreadsheet modules you select. Every record name "
+"starts with \"SAMPLE\", so you can find and delete them later."
+msgstr ""
+"Voegt demorecords toe aan de spreadsheetmodules die je kiest. Elke "
+"recordnaam begint met \"SAMPLE\", zodat je ze later kunt terugvinden en "
+"verwijderen."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_tutorial__difficulty__advanced
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Advanced"
+msgstr "Gevorderd"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_quick_start
+msgid ""
+"All the basics of the Spreadsheets app: create a new spreadsheet, enter "
+"data, save it, save it as a template and download it as PDF. Start right "
+"away with the interactive tour!"
+msgstr ""
+"Alle basisbeginselen van de Spreadsheets-app: een nieuwe spreadsheet maken, "
+"gegevens invoeren, opslaan, als sjabloon opslaan en als PDF downloaden. "
+"Begin meteen met de interactieve rondleiding!"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_record_rule
+msgid ""
+"Apply per-user record rules to dashboard data so that every user only sees "
+"their own data. Especially useful for dealer isolation (each dealer sees "
+"only their own orders)."
+msgstr ""
+"Pas recordregels per gebruiker toe op dashboardgegevens, zodat elke "
+"gebruiker alleen zijn eigen gegevens ziet. Vooral handig om dealers van "
+"elkaar te scheiden (elke dealer ziet alleen zijn eigen orders)."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__active
+msgid "Archive a tutorial to hide it from the Help menu without deleting it."
+msgstr ""
+"Archiveer een tutorial om hem uit het Help-menu te verbergen zonder hem te "
+"verwijderen."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__is_available
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Available"
+msgstr "Beschikbaar"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_tutorial__difficulty__beginner
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Beginner"
+msgstr "Beginner"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.sample_data_loader_view_form
+msgid "Cancel"
+msgstr "Annuleren"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_consolidation
+msgid ""
+"Combine the balance sheets of several companies into one consolidated "
+"report. Currency conversion, inter-company elimination."
+msgstr ""
+"Combineer de balansen van meerdere bedrijven in één geconsolideerd rapport. "
+"Valutaomrekening, eliminatie van intercompany-posten."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__tags
+msgid "Comma-separated tags for search (e.g., 'formula,forecast,template')."
+msgstr ""
+"Door komma's gescheiden labels om op te zoeken (bijv. "
+"'formula,forecast,template')."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_sample_data_loader__what_to_load__contract
+msgid "Contract + SLA examples"
+msgstr "Voorbeelden van contracten + SLA"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__create_date
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_customer_segmentation
+msgid ""
+"Customer overview: total customers, companies and individual buyers, new "
+"customers compared with the previous period, a monthly new-customer trend "
+"and a top customers list, with a period filter. NOTE: a real RFM/CLV "
+"segmentation is not available yet."
+msgstr ""
+"Klantoverzicht: totaal aantal klanten, bedrijven en particuliere kopers, "
+"nieuwe klanten vergeleken met de vorige periode, een maandelijkse trend van "
+"nieuwe klanten en een lijst met topklanten, met een periodefilter. LET OP: "
+"een echte RFM/CLV-segmentatie is nog niet beschikbaar."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__description
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "Description"
+msgstr "Omschrijving"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__difficulty
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Difficulty"
+msgstr "Moeilijkheid"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__display_name
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__duration_minutes
+msgid "Duration Minutes"
+msgstr "Duur in minuten"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_email_report
+msgid ""
+"Email weekly or monthly reports to your team automatically, attached as "
+"spreadsheet data (JSON) that opens in the Spreadsheets app. Mail template, "
+"scheduled (cron) delivery and a Send Now button."
+msgstr ""
+"Mail wekelijkse of maandelijkse rapporten automatisch naar je team, als "
+"bijlage met spreadsheetgegevens (JSON) die in de Spreadsheets-app opengaan. "
+"E-mailsjabloon, geplande (cron) verzending en een knop Nu verzenden."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__duration_minutes
+msgid "Estimated time to complete this tutorial, in minutes (e.g. 5)."
+msgstr "Geschatte tijd om deze tutorial te doorlopen, in minuten (bijv. 5)."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_sample_data_loader__what_to_load__all
+msgid "Everything (full demo)"
+msgstr "Alles (volledige demo)"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_list
+msgid "Example"
+msgstr "Voorbeeld"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__guide_spreadsheet_id
+msgid "Example Spreadsheet"
+msgstr "Voorbeeldspreadsheet"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "Example not available yet"
+msgstr "Voorbeeld nog niet beschikbaar"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "Example spreadsheet missing"
+msgstr "Voorbeeldspreadsheet ontbreekt"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_pdf_report
+msgid ""
+"Export a spreadsheet as a professional PDF with your company logo — for "
+"customer or management presentations."
+msgstr ""
+"Exporteer een spreadsheet als professionele PDF met je bedrijfslogo — voor "
+"presentaties aan klanten of directie."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_forecast
+msgid ""
+"Forecast future values from historical data with ODOO.FORECAST, ODOO.TREND "
+"and ODOO.MOVING_AVG. Linear regression and moving average examples."
+msgstr ""
+"Voorspel toekomstige waarden op basis van historische gegevens met "
+"ODOO.FORECAST, ODOO.TREND en ODOO.MOVING_AVG. Voorbeelden van lineaire "
+"regressie en voortschrijdend gemiddelde."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_kpi_alert
+msgid ""
+"Get notified when a cell crosses a threshold. Create an alert from the "
+"spreadsheet's 'Data > KPI Alerts' menu, choose the operator and the "
+"notification recipients. The tour needs a desktop-size screen and ends by "
+"sending a test notification to your Discuss inbox."
+msgstr ""
+"Krijg een melding wanneer een cel een drempel overschrijdt. Maak een "
+"waarschuwing aan via het menu 'Gegevens > KPI-alerts' van de spreadsheet en "
+"kies de operator en de ontvangers van de melding. De rondleiding vereist een"
+" scherm op desktopformaat en eindigt met het versturen van een testmelding "
+"naar je Discuss-inbox."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Has Example Spreadsheet"
+msgstr "Heeft voorbeeldspreadsheet"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Has Interactive Tour"
+msgstr "Heeft interactieve rondleiding"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Has Video"
+msgstr "Heeft video"
+
+#. module: spreadsheet_help_oca
+#: model:ir.ui.menu,name:spreadsheet_help_oca.menu_spreadsheet_help
+msgid "Help & Examples"
+msgstr "Help & voorbeelden"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__id
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__tour_name
+msgid "Interactive Tour Name"
+msgstr "Naam interactieve rondleiding"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"Interactive tours are not available in this session, so the tour cannot "
+"start. Reload the page and try again; if it persists, ask an administrator "
+"to check that the Tours (web_tour) module is installed."
+msgstr ""
+"Interactieve rondleidingen zijn in deze sessie niet beschikbaar, dus de "
+"rondleiding kan niet starten. Herlaad de pagina en probeer het opnieuw; "
+"blijft het probleem bestaan, vraag dan een beheerder te controleren of de "
+"module Tours (web_tour) is geïnstalleerd."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_help_oca.tutorial_action
+msgid ""
+"Interactive tours, videos and example spreadsheets are listed here. Remove "
+"the \"Available\" filter to also see tutorials for modules that are not "
+"installed."
+msgstr ""
+"Interactieve rondleidingen, video's en voorbeeldspreadsheets staan hier. "
+"Verwijder het filter \"Beschikbaar\" om ook tutorials te zien voor modules "
+"die niet zijn geïnstalleerd."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_tutorial__difficulty__intermediate
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Intermediate"
+msgstr "Gemiddeld"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_sample_data_loader__what_to_load__kpi_alert
+msgid "KPI alert examples"
+msgstr "Voorbeelden van KPI-waarschuwingen"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__write_date
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_portal
+msgid ""
+"Let portal users (dealers/distributors) see a read-only dashboard of their "
+"own data. A record rule filter shows each dealer only their own orders."
+msgstr ""
+"Laat portaalgebruikers (dealers/distributeurs) een alleen-lezen dashboard "
+"met hun eigen gegevens zien. Een recordregelfilter toont elke dealer alleen "
+"zijn eigen orders."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.sample_data_loader_view_form
+msgid "Load"
+msgstr "Laden"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model,name:spreadsheet_help_oca.model_spreadsheet_sample_data_loader
+msgid "Load Sample / Demo Data for Spreadsheet Modules"
+msgstr "Voorbeeld-/demogegevens laden voor spreadsheetmodules"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid ""
+"Loaded: %(loaded)s. Not loaded: %(failed)s. These examples were skipped and "
+"nothing else was changed. The server log has the technical details: fix the "
+"problem (for example a missing access right or required setting) and run the"
+" loader again."
+msgstr ""
+"Geladen: %(loaded)s. Niet geladen: %(failed)s. Deze voorbeelden zijn "
+"overgeslagen en verder is er niets gewijzigd. Het serverlog bevat de "
+"technische details: los het probleem op (bijvoorbeeld een ontbrekend "
+"toegangsrecht of een ontbrekende verplichte instelling) en voer het laden "
+"opnieuw uit."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__sequence
+msgid "Lower numbers are shown first in the Tutorials & Videos list."
+msgstr "Lagere nummers worden eerst getoond in de lijst Tutorials & video's."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_loyalty_dashboard
+msgid ""
+"Loyalty program analysis: points, coupon and member metrics. Only meaningful"
+" when the Odoo Loyalty app is actively used."
+msgstr ""
+"Analyse van het loyaliteitsprogramma: statistieken over punten, coupons en "
+"leden. Alleen zinvol als de Odoo-app Loyaliteit actief wordt gebruikt."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_list
+msgid "Minutes"
+msgstr "Minuten"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Module"
+msgstr "Module"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_search
+msgid "Module Not Installed"
+msgstr "Module niet geïnstalleerd"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "Module not installed"
+msgstr "Module niet geïnstalleerd"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_kanban
+msgid ""
+"Module not installed: ask an administrator to install it from the Apps menu "
+"to unlock this tutorial."
+msgstr ""
+"Module niet geïnstalleerd: vraag een beheerder de module te installeren via "
+"het menu Apps om deze tutorial te ontgrendelen."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__name
+msgid "Name"
+msgstr "Naam"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "No access to the example"
+msgstr "Geen toegang tot het voorbeeld"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "No example available"
+msgstr "Geen voorbeeld beschikbaar"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "No tour available"
+msgstr "Geen rondleiding beschikbaar"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_help_oca.tutorial_action
+msgid "No tutorial available yet"
+msgstr "Nog geen tutorial beschikbaar"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid ""
+"Nothing new to load: the sample records already exist or the related modules"
+" are not installed."
+msgstr ""
+"Niets nieuws te laden: de voorbeeldrecords bestaan al of de bijbehorende "
+"modules zijn niet geïnstalleerd."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_crm
+msgid ""
+"Open opportunities, expected and prorated revenue and won deals, with "
+"salesperson and sales team filters. Lets the sales manager follow the "
+"quarterly pipeline. Dashboards > Sales."
+msgstr ""
+"Openstaande verkoopkansen, verwachte en naar rato berekende omzet en "
+"gewonnen deals, met filters op verkoper en verkoopteam. Zo volgt de "
+"salesmanager de kwartaalpipeline. Dashboards > Verkoop."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_version_history
+msgid ""
+"Periodic snapshots of a spreadsheet: the 'New Snapshot' button, a visual "
+"cell-level diff between versions and rollback."
+msgstr ""
+"Periodieke snapshots van een spreadsheet: de knop 'New Snapshot', een "
+"visuele vergelijking per cel tussen versies en terugdraaien."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_stock_sales_correlation
+msgid ""
+"Put stock levels next to sales velocity to see which products are "
+"overstocked or understocked — for reorder decisions."
+msgstr ""
+"Zet voorraadniveaus naast de verkoopsnelheid om te zien welke producten te "
+"veel of te weinig voorraad hebben — voor beslissingen over nabestellen."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_scheduled_refresh
+msgid ""
+"Refresh dashboard data automatically by periodically bumping the spreadsheet"
+" revision (with a scheduled action), so the data is always up to date when "
+"opened."
+msgstr ""
+"Ververs dashboardgegevens automatisch door de spreadsheetrevisie periodiek "
+"op te hogen (met een geplande actie), zodat de gegevens bij het openen "
+"altijd actueel zijn."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__module_name
+msgid "Related Module"
+msgstr "Gerelateerde module"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid "Sample data loaded"
+msgstr "Voorbeeldgegevens geladen"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_template_save
+msgid ""
+"Save a report layout you use often and recreate it in one click. Interactive"
+" tour of the 'File > Save as Template' flow; it needs the Template Manager "
+"access right and a desktop-size screen."
+msgstr ""
+"Sla een rapportindeling die je vaak gebruikt op en maak hem met één klik "
+"opnieuw aan. Interactieve rondleiding door de stappen van 'Bestand > Opslaan"
+" als sjabloon'; hiervoor zijn het toegangsrecht Sjabloonbeheerder en een "
+"scherm op desktopformaat nodig."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_vendor_scorecard
+msgid ""
+"Score and compare vendors on delivery, quality and price metrics, to see "
+"which vendors perform well in a wholesale or dealer supply chain."
+msgstr ""
+"Beoordeel en vergelijk leveranciers op levering, kwaliteit en prijs, om te "
+"zien welke leveranciers goed presteren in een groothandels- of dealerketen."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_quote_conversion
+msgid ""
+"See how many quotations turned into orders and the conversion percentage. A "
+"dealer-sales indicator to follow the sales funnel and the quotation success "
+"rate."
+msgstr ""
+"Zie hoeveel offertes orders zijn geworden en het conversiepercentage. Een "
+"indicator voor dealerverkoop om de verkooptrechter en het slagingspercentage"
+" van offertes te volgen."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_sale
+msgid ""
+"See sales team performance at a glance: Revenue, Orders, Units Sold, Average"
+" Order Value (compared with the previous period), the monthly revenue trend "
+"and the latest orders. Salesperson and product category filters. Appears "
+"automatically under Dashboards > Sales."
+msgstr ""
+"Zie de prestaties van het verkoopteam in één oogopslag: omzet, orders, "
+"verkochte eenheden, gemiddelde orderwaarde (vergeleken met de vorige "
+"periode), de maandelijkse omzettrend en de laatste orders. Filters op "
+"verkoper en productcategorie. Verschijnt automatisch onder Dashboards > "
+"Verkoop."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_campaign_roi
+msgid ""
+"Sent, delivered, opened and clicked counts of completed email campaigns and "
+"the monthly delivery trend. NOTE: despite the 'ROI' name there is no real "
+"revenue or coupon attribution yet — it only measures email engagement."
+msgstr ""
+"Aantallen verzonden, afgeleverd, geopend en aangeklikt voor afgeronde "
+"e-mailcampagnes en de maandelijkse aflevertrend. LET OP: ondanks de naam "
+"'ROI' is er nog geen echte toewijzing van omzet of coupons — alleen de "
+"betrokkenheid bij e-mails wordt gemeten."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__sequence
+msgid "Sequence"
+msgstr "Volgorde"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_public_share
+msgid ""
+"Share a spreadsheet read-only with customers or external teams. Password "
+"protection, expiry date and download permission settings."
+msgstr ""
+"Deel een spreadsheet alleen-lezen met klanten of externe teams. Instellingen"
+" voor wachtwoordbeveiliging, vervaldatum en downloadtoestemming."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__difficulty
+msgid ""
+"Skill level shown as a badge so users can pick tutorials matching their "
+"experience (e.g. 'Beginner' for first-time users)."
+msgstr ""
+"Niveau, getoond als badge, zodat gebruikers tutorials kunnen kiezen die bij "
+"hun ervaring passen (bijv. 'Beginner' voor nieuwe gebruikers)."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid "Some sample data could not be loaded"
+msgstr "Sommige voorbeeldgegevens konden niet worden geladen"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model,name:spreadsheet_help_oca.model_spreadsheet_tutorial
+msgid "Spreadsheet Tutorial / Video Guide"
+msgstr "Spreadsheet-tutorial / videogids"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "Spreadsheets"
+msgstr "Spreadsheets"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_stock
+msgid ""
+"Stock moves: completed transfers, quantity moved, average lead time, the "
+"monthly movement trend and the latest transfers, with warehouse and product "
+"category filters. Dashboards > Logistics."
+msgstr ""
+"Voorraadbewegingen: afgeronde verplaatsingen, verplaatste hoeveelheid, "
+"gemiddelde doorlooptijd, de maandelijkse bewegingstrend en de laatste "
+"verplaatsingen, met filters op magazijn en productcategorie. Dashboards > "
+"Logistiek."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__tags
+msgid "Tags"
+msgstr "Labels"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__tour_name
+msgid ""
+"Technical name of a tour registered under Settings > Technical > Tours (e.g."
+" spreadsheet_quick_start). If set, the 'Interactive Tour' button launches "
+"it."
+msgstr ""
+"Technische naam van een rondleiding die is geregistreerd onder Instellingen "
+"> Technisch > Tours (bijv. spreadsheet_quick_start). Indien ingevuld, start "
+"de knop 'Interactieve rondleiding' deze."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__module_name
+msgid ""
+"Technical name of the module this tutorial covers (e.g. "
+"spreadsheet_template_oca). When that module is not installed, the tutorial "
+"is marked as unavailable and its tour and example are hidden. Leave empty "
+"for tutorials that only need the Spreadsheets app."
+msgstr ""
+"Technische naam van de module die deze tutorial behandelt (bijv. "
+"spreadsheet_template_oca). Is die module niet geïnstalleerd, dan wordt de "
+"tutorial als niet beschikbaar gemarkeerd en worden de rondleiding en het "
+"voorbeeld verborgen. Laat leeg voor tutorials die alleen de Spreadsheets-app"
+" nodig hebben."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_sample_data_loader__what_to_load__template
+msgid "Template examples"
+msgstr "Voorbeelden van sjablonen"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid ""
+"The Related Module is not installed, so this tutorial's tour and example are"
+" disabled. Install the module from the Apps menu to use them."
+msgstr ""
+"De gerelateerde module is niet geïnstalleerd, daarom zijn de rondleiding en "
+"het voorbeeld van deze tutorial uitgeschakeld. Installeer de module via het "
+"menu Apps om ze te gebruiken."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"The example spreadsheet behind this menu was deleted, so there is nothing to"
+" open. Upgrade the Spreadsheet Help & Examples module from the Apps menu to "
+"restore it."
+msgstr ""
+"De voorbeeldspreadsheet achter dit menu is verwijderd, dus er valt niets te "
+"openen. Werk de module Spreadsheet Help & Examples bij via het menu Apps om "
+"hem te herstellen."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"The interactive tour %(tour)s is not registered in the database, so it "
+"cannot start. Upgrade the Spreadsheet Help & Examples module, or check the "
+"tour name under Settings > Technical > Tours."
+msgstr ""
+"De interactieve rondleiding %(tour)s is niet in de database geregistreerd en"
+" kan dus niet starten. Werk de module Spreadsheet Help & Examples bij, of "
+"controleer de naam van de rondleiding onder Instellingen > Technisch > "
+"Tours."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"The tour %(name)s could not start: %(error)s. Reload the page and try again."
+msgstr ""
+"De rondleiding %(name)s kon niet starten: %(error)s. Herlaad de pagina en "
+"probeer het opnieuw."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"The tour could not start because no tour name was provided. Set the "
+"Interactive Tour Name on the tutorial and try again."
+msgstr ""
+"De rondleiding kon niet starten omdat er geen naam is opgegeven. Vul de naam"
+" van de interactieve rondleiding in op de tutorial en probeer het opnieuw."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"This example uses formulas from %(modules)s, which is not installed. Without"
+" it the cells would only show #NAME? errors. Ask an administrator to install"
+" %(modules)s from the Apps menu, then open the example again."
+msgstr ""
+"Dit voorbeeld gebruikt formules uit %(modules)s, dat niet is geïnstalleerd. "
+"Zonder die module tonen de cellen alleen #NAME?-fouten. Vraag een beheerder "
+"%(modules)s te installeren via het menu Apps en open het voorbeeld daarna "
+"opnieuw."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_period_comparison
+msgid ""
+"This month vs last month, YoY (year-over-year) and a visual percentage "
+"change with GROWTH_ARROW. Essential functions for dashboards."
+msgstr ""
+"Deze maand vs. vorige maand, YoY (jaar op jaar) en een visuele procentuele "
+"verandering met GROWTH_ARROW. Onmisbare functies voor dashboards."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"This tour guides you through the spreadsheet editor's top menu, which is "
+"only shown on larger screens, so it cannot run on this device. Open Odoo on "
+"a computer or a tablet in landscape mode and start the tour again."
+msgstr ""
+"Deze rondleiding gaat door het bovenste menu van de spreadsheeteditor, dat "
+"alleen op grotere schermen wordt getoond, dus hij kan op dit apparaat niet "
+"worden uitgevoerd. Open Odoo op een computer of op een tablet in liggende "
+"stand en start de rondleiding opnieuw."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"This tour needs the %(group)s access right: the menu entry it guides you to "
+"is only shown to users who have it, so the tour would stop halfway. Ask an "
+"administrator to grant you %(group)s under Settings > Users, then start the "
+"tour again."
+msgstr ""
+"Deze rondleiding vereist het toegangsrecht %(group)s: het menu-item waar de "
+"rondleiding je naartoe leidt, wordt alleen getoond aan gebruikers met dat "
+"recht, dus de rondleiding zou halverwege vastlopen. Vraag een beheerder om "
+"je %(group)s toe te kennen via Instellingen > Gebruikers en start de "
+"rondleiding daarna opnieuw."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"This tutorial does not have an example spreadsheet yet, so there is nothing "
+"to open. A Spreadsheet manager can link one in the Example Spreadsheet field"
+" of this tutorial."
+msgstr ""
+"Deze tutorial heeft nog geen voorbeeldspreadsheet, dus er is niets om te "
+"openen. Een Spreadsheet-manager kan er een koppelen in het veld "
+"Voorbeeldspreadsheet van deze tutorial."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"This tutorial does not have an interactive tour, so there is nothing to "
+"start. A Spreadsheet manager can set one in the Interactive Tour Name field "
+"of this tutorial (for example spreadsheet_quick_start)."
+msgstr ""
+"Deze tutorial heeft geen interactieve rondleiding, dus er is niets om te "
+"starten. Een Spreadsheet-manager kan er een instellen in het veld Naam "
+"interactieve rondleiding van deze tutorial (bijvoorbeeld "
+"spreadsheet_quick_start)."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"This tutorial needs the module %(module)s, which is not installed in this "
+"database, so its tour and example cannot run. Ask an administrator to "
+"install %(module)s from the Apps menu; the tutorial becomes available right "
+"after."
+msgstr ""
+"Deze tutorial heeft de module %(module)s nodig, die niet in deze database is"
+" geïnstalleerd, dus de rondleiding en het voorbeeld kunnen niet worden "
+"gebruikt. Vraag een beheerder %(module)s te installeren via het menu Apps; "
+"de tutorial is daarna direct beschikbaar."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__name
+msgid ""
+"Title shown on the tutorial card, e.g. 'Quick Start - create your first "
+"spreadsheet'."
+msgstr ""
+"Titel op de tutorialkaart, bijv. 'Snelstart - maak je eerste spreadsheet'."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_hr
+msgid ""
+"Total employees, new hires, distribution by department and job position and "
+"an employee directory, with period, department and company filters. Only "
+"meaningful when the Odoo Employees app is used. Dashboards > HR."
+msgstr ""
+"Totaal aantal werknemers, nieuwe medewerkers, verdeling per afdeling en "
+"functie en een personeelsgids, met filters op periode, afdeling en bedrijf. "
+"Alleen zinvol als de Odoo-app Werknemers wordt gebruikt. Dashboards > HR."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_list
+msgid "Tour"
+msgstr "Rondleiding"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid "Tour not found"
+msgstr "Rondleiding niet gevonden"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "Tour started: %(name)s. Follow the highlighted steps."
+msgstr "Rondleiding gestart: %(name)s. Volg de gemarkeerde stappen."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_contract
+msgid ""
+"Track yearly contracts, record SLA metrics (uptime, response time) and "
+"create automatic emails and activities for upcoming end dates."
+msgstr ""
+"Volg jaarcontracten, registreer SLA-statistieken (uptime, reactietijd) en "
+"maak automatische e-mails en activiteiten aan voor naderende einddatums."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__is_available
+msgid ""
+"True when the Related Module is installed (or no module is required). "
+"Unavailable tutorials cannot start their tour or open their example, because"
+" the screens and formulas they rely on do not exist."
+msgstr ""
+"Waar wanneer de gerelateerde module is geïnstalleerd (of er geen module "
+"nodig is). Niet-beschikbare tutorials kunnen hun rondleiding niet starten en"
+" hun voorbeeld niet openen, omdat de schermen en formules waarop ze steunen "
+"niet bestaan."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields.selection,name:spreadsheet_help_oca.selection__spreadsheet_sample_data_loader__what_to_load__vendor
+msgid "Vendor scorecard examples"
+msgstr "Voorbeelden van leveranciersscorekaarten"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_tutorial__video_url
+msgid "Video URL"
+msgstr "Video-URL"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,description:spreadsheet_help_oca.tutorial_dashboard_ecommerce
+msgid ""
+"Web shop (website) sales KPIs: revenue, number of orders, average basket and"
+" customers, compared with the previous period, plus the daily revenue trend."
+" NOTE: only website orders are shown; dealer and wholesale orders are "
+"excluded."
+msgstr ""
+"Verkoop-KPI's van de webshop (website): omzet, aantal orders, gemiddelde "
+"winkelmand en klanten, vergeleken met de vorige periode, plus de dagelijkse "
+"omzettrend. LET OP: alleen websiteorders worden getoond; dealer- en "
+"groothandelsorders vallen erbuiten."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__description
+msgid ""
+"What the tutorial teaches and when it is useful, shown on the card. Example:"
+" 'Save a report layout once and recreate it in one click.'"
+msgstr ""
+"Wat de tutorial leert en wanneer die nuttig is, getoond op de kaart. "
+"Voorbeeld: 'Sla een rapportindeling één keer op en maak hem met één klik "
+"opnieuw aan.'"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,field_description:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__what_to_load
+msgid "What to load"
+msgstr "Wat laden"
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_sample_data_loader__what_to_load
+msgid ""
+"Which demo records to create. 'Everything' loads examples for every "
+"installed spreadsheet module; modules that are not installed are skipped. "
+"Every record name starts with 'SAMPLE' so you can find and delete it "
+"afterwards."
+msgstr ""
+"Welke demorecords aangemaakt worden. 'Alles' laadt voorbeelden voor elke "
+"geïnstalleerde spreadsheetmodule; niet-geïnstalleerde modules worden "
+"overgeslagen. Elke recordnaam begint met 'SAMPLE', zodat je hem achteraf "
+"kunt terugvinden en verwijderen."
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/models/spreadsheet_tutorial.py:0
+msgid ""
+"You are not allowed to read this example spreadsheet, so it cannot be "
+"opened. The guides are shared with every Spreadsheet user by default; ask a "
+"Spreadsheet manager to add your group under Read Access on the spreadsheet."
+msgstr ""
+"Je mag deze voorbeeldspreadsheet niet lezen, dus hij kan niet worden "
+"geopend. De gidsen worden standaard gedeeld met elke Spreadsheet-gebruiker; "
+"vraag een Spreadsheet-manager om je groep toe te voegen onder Leestoegang op"
+" de spreadsheet."
+
+#. module: spreadsheet_help_oca
+#: model_terms:web_tour.tour,rainbow_man_message:spreadsheet_help_oca.tour_quick_start
+msgid ""
+"You can now enter data in the cells, write formulas and turn it into a "
+"template with File &gt; Save as Template."
+msgstr ""
+"Je kunt nu gegevens in de cellen invoeren, formules schrijven en er via "
+"'Bestand &gt; Opslaan als sjabloon' een sjabloon van maken."
+
+#. module: spreadsheet_help_oca
+#: model:ir.model.fields,help:spreadsheet_help_oca.field_spreadsheet_tutorial__video_url
+msgid ""
+"YouTube, Vimeo or any embeddable video URL. Leave empty for text-only "
+"tutorials."
+msgstr ""
+"YouTube-, Vimeo- of andere insluitbare video-URL. Laat leeg voor tutorials "
+"met alleen tekst."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "e.g. Quick Start - create your first spreadsheet"
+msgstr "bijv. Snelstart - maak je eerste spreadsheet"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "e.g. formula,forecast"
+msgstr "bijv. formula,forecast"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "e.g. https://www.youtube.com/watch?v=..."
+msgstr "bijv. https://www.youtube.com/watch?v=..."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "e.g. spreadsheet_quick_start"
+msgstr "bijv. spreadsheet_quick_start"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "e.g. spreadsheet_template_oca"
+msgstr "bijv. spreadsheet_template_oca"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_kanban
+msgid "min"
+msgstr "min"
+
+#. module: spreadsheet_help_oca
+#. odoo-python
+#: code:addons/spreadsheet_help_oca/wizards/sample_data_loader.py:0
+msgid "nothing"
+msgstr "niets"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "✅ Confirm with Save as Template!"
+msgstr "✅ Bevestig met 'Opslaan als sjabloon'!"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"✏️ Give the alert a meaningful name, for example 'Revenue threshold "
+"crossed'."
+msgstr ""
+"✏️ Geef de waarschuwing een duidelijke naam, bijvoorbeeld 'Omzetdrempel "
+"overschreden'."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "✏️ Give the template a clear name."
+msgstr "✏️ Geef het sjabloon een duidelijke naam."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "✏️ Give your spreadsheet a name, for example 'Sales Report'."
+msgstr "✏️ Geef je spreadsheet een naam, bijvoorbeeld 'Verkooprapport'."
+
+#. module: spreadsheet_help_oca
+#: model:ir.ui.menu,name:spreadsheet_help_oca.menu_guide_features
+msgid "✨ Features and Menus"
+msgstr "✨ Functies en menu's"
+
+#. module: spreadsheet_help_oca
+#: model:ir.actions.server,name:spreadsheet_help_oca.action_guide_features
+msgid "✨ Features and Menus Guide"
+msgstr "✨ Gids functies en menu's"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "➕ Click New to create an alert."
+msgstr "➕ Klik op Nieuw om een waarschuwing aan te maken."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_loyalty_dashboard
+msgid "🎁 Loyalty program dashboard"
+msgstr "🎁 Dashboard loyaliteitsprogramma"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"🎉 This is the spreadsheet editor! Click a cell to type data or a formula. "
+"The File menu offers Save as Template and PDF download."
+msgstr ""
+"🎉 Dit is de spreadsheeteditor! Klik op een cel om gegevens of een formule te"
+" typen. Het menu Bestand biedt 'Opslaan als sjabloon' en PDF-download."
+
+#. module: spreadsheet_help_oca
+#: model:ir.actions.act_window,name:spreadsheet_help_oca.tutorial_action
+#: model:ir.ui.menu,name:spreadsheet_help_oca.menu_tutorials
+msgid "🎓 Tutorials & Videos"
+msgstr "🎓 Tutorials & video's"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_kanban
+msgid "🎬 Interactive Tour"
+msgstr "🎬 Interactieve rondleiding"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "🎬 Start Interactive Tour"
+msgstr "🎬 Interactieve rondleiding starten"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"🎯 Enter the threshold value, for example 40000. The operator (>, <, =...) is"
+" set just above."
+msgstr ""
+"🎯 Vul de drempelwaarde in, bijvoorbeeld 40000. De operator (>, <, =...) stel"
+" je net daarboven in."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_quote_conversion
+msgid "🎯 Quotation → order conversion dashboard"
+msgstr "🎯 Dashboard conversie offerte → order"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_consolidation
+msgid "🏢 Multi-company consolidation"
+msgstr "🏢 Consolidatie van meerdere bedrijven"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_vendor_scorecard
+msgid "🏭 Vendor performance scorecard"
+msgstr "🏭 Scorekaart leveranciersprestaties"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"👋 Welcome! This tour shows how to create your first spreadsheet. Click New "
+"to start."
+msgstr ""
+"👋 Welkom! Deze rondleiding laat zien hoe je je eerste spreadsheet maakt. "
+"Klik op Nieuw om te beginnen."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_hr
+msgid "👤 Human Resources dashboard"
+msgstr "👤 Dashboard personeelszaken"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_portal
+msgid "👥 Dealer dashboards through the portal"
+msgstr "👥 Dealerdashboards via het portaal"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "💾 Choose Save as Template. A dialog opens to name the template."
+msgstr ""
+"💾 Kies 'Opslaan als sjabloon'. Er opent een venster om het sjabloon een naam"
+" te geven."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "💾 Save the record with the save (cloud) icon."
+msgstr "💾 Sla het record op met het opslaan-icoon (wolkje)."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "💾 Save! A scheduled action checks the threshold every 15 minutes."
+msgstr "💾 Opslaan! Een geplande actie controleert de drempel elke 15 minuten."
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_kanban
+msgid "📂 Open Example"
+msgstr "📂 Voorbeeld openen"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "📂 Open Example Spreadsheet"
+msgstr "📂 Voorbeeldspreadsheet openen"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "📂 Open the File menu in the top bar."
+msgstr "📂 Open het menu Bestand in de bovenbalk."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_pdf_report
+msgid "📄 Professional PDF export"
+msgstr "📄 Professionele PDF-export"
+
+#. module: spreadsheet_help_oca
+#: model:ir.ui.menu,name:spreadsheet_help_oca.menu_guide_forecast
+msgid "📈 Forecasting Formulas"
+msgstr "📈 Prognoseformules"
+
+#. module: spreadsheet_help_oca
+#: model:ir.actions.server,name:spreadsheet_help_oca.action_guide_forecast
+msgid "📈 Forecasting Functions Guide"
+msgstr "📈 Gids prognosefuncties"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_forecast
+msgid "📈 Forecasting functions"
+msgstr "📈 Prognosefuncties"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_sale
+msgid "📈 Sales analysis dashboard"
+msgstr "📈 Dashboard verkoopanalyse"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_crm
+msgid "📊 CRM pipeline dashboard"
+msgstr "📊 Dashboard CRM-pipeline"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "📊 Open the Data menu in the top bar."
+msgstr "📊 Open het menu Gegevens in de bovenbalk."
+
+#. module: spreadsheet_help_oca
+#: model:ir.ui.menu,name:spreadsheet_help_oca.menu_guide_period
+msgid "📊 Period Comparison"
+msgstr "📊 Periodevergelijking"
+
+#. module: spreadsheet_help_oca
+#: model:ir.actions.server,name:spreadsheet_help_oca.action_guide_period
+msgid "📊 Period Comparison Guide"
+msgstr "📊 Gids periodevergelijking"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_period_comparison
+msgid "📊 Period comparison"
+msgstr "📊 Periodevergelijking"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_template_save
+msgid "📋 Save a spreadsheet as a template"
+msgstr "📋 Een spreadsheet opslaan als sjabloon"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"📋 This tour saves a spreadsheet as a template. Open one of your spreadsheets"
+" (create one first with the Quick Start tour if the list is empty)."
+msgstr ""
+"📋 Deze rondleiding slaat een spreadsheet op als sjabloon. Open een van je "
+"spreadsheets (maak er eerst een met de Quick Start-rondleiding als de lijst "
+"leeg is)."
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "📍 Enter the cell to watch, for example B5."
+msgstr "📍 Vul de cel in die bewaakt moet worden, bijvoorbeeld B5."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_contract
+msgid "📝 Contract and SLA tracking"
+msgstr "📝 Contracten en SLA's opvolgen"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_campaign_roi
+msgid "📣 Email campaign performance"
+msgstr "📣 Prestaties van e-mailcampagnes"
+
+#. module: spreadsheet_help_oca
+#: model:ir.actions.act_window,name:spreadsheet_help_oca.sample_data_loader_action
+#: model:ir.ui.menu,name:spreadsheet_help_oca.menu_sample_data_loader
+msgid "📦 Load Sample Data"
+msgstr "📦 Voorbeeldgegevens laden"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.sample_data_loader_view_form
+msgid "📦 Sample Data Loader"
+msgstr "📦 Voorbeeldgegevens laden"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_stock
+msgid "📦 Stock / inventory dashboard"
+msgstr "📦 Dashboard voorraad"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_email_report
+msgid "📧 Scheduled email reports"
+msgstr "📧 Geplande e-mailrapporten"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_version_history
+msgid "📸 Version backups and rollback"
+msgstr "📸 Versieback-ups en terugdraaien"
+
+#. module: spreadsheet_help_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_help_oca.tutorial_view_form
+msgid "📺 Use the Video URL field above to open the video."
+msgstr "📺 Gebruik het veld Video-URL hierboven om de video te openen."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_scheduled_refresh
+msgid "🔄 Scheduled data refresh"
+msgstr "🔄 Geplande gegevensverversing"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_api
+msgid "🔑 Integrate with the REST API"
+msgstr "🔑 Integreren met de REST API"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_record_rule
+msgid "🔒 Per-user record rules for dashboards"
+msgstr "🔒 Recordregels per gebruiker voor dashboards"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "🔔 Choose KPI Alerts to see the alerts of this spreadsheet."
+msgstr ""
+"🔔 Kies 'KPI-alerts' om de waarschuwingen van deze spreadsheet te zien."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_kpi_alert
+msgid "🔔 Set up a KPI alert"
+msgstr "🔔 Een KPI-waarschuwing instellen"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"🔔 This tour adds a KPI threshold alert to a spreadsheet. Open the "
+"spreadsheet you want to watch."
+msgstr ""
+"🔔 Deze rondleiding voegt een KPI-drempelwaarschuwing toe aan een "
+"spreadsheet. Open de spreadsheet die je wilt bewaken."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_public_share
+msgid "🔗 Share a spreadsheet with a public link"
+msgstr "🔗 Een spreadsheet delen via een openbare link"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_stock_sales_correlation
+msgid "🔗 Stock - sales correlation"
+msgstr "🔗 Correlatie voorraad - verkoop"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid "🚀 Click Edit to open the spreadsheet in the o-spreadsheet editor."
+msgstr ""
+"🚀 Klik op 'Bewerking' om de spreadsheet te openen in de o-spreadsheet-"
+"editor."
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_quick_start
+msgid "🚀 Quick Start — Create your first spreadsheet"
+msgstr "🚀 Snelstart — Maak je eerste spreadsheet"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_dashboard_ecommerce
+msgid "🛒 eCommerce dashboard"
+msgstr "🛒 Dashboard e-commerce"
+
+#. module: spreadsheet_help_oca
+#: model:spreadsheet.tutorial,name:spreadsheet_help_oca.tutorial_customer_segmentation
+msgid "🧩 Customer segmentation"
+msgstr "🧩 Klantsegmentatie"
+
+#. module: spreadsheet_help_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_help_oca/static/src/js/tours.esm.js:0
+msgid ""
+"🧪 Click Test Alert to send a test notification right away and see it in your"
+" Discuss inbox."
+msgstr ""
+"🧪 Klik op 'Alert testen' om meteen een testmelding te sturen en bekijk die "
+"in je Discuss-inbox."
+
+#. module: spreadsheet_help_oca
+#: model:ir.ui.menu,name:spreadsheet_help_oca.menu_guide_core
+msgid "🧰 Core Formulas"
+msgstr "🧰 Kernformules"
+
+#. module: spreadsheet_help_oca
+#: model:ir.actions.server,name:spreadsheet_help_oca.action_guide_core
+msgid "🧰 Core Formulas Guide"
+msgstr "🧰 Gids kernformules"

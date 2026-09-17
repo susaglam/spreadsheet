@@ -2,27 +2,28 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <!-- Adds a block to the single "Spreadsheet" settings app owned by
+         spreadsheet_oca. Never declare a second <app name="spreadsheet_oca">:
+         saas-19.4 would list "Spreadsheet" twice in the Settings navigation.
+         notApp="0" un-hides the app, which spreadsheet_oca ships hidden until
+         an add-on gives it content. -->
     <record id="res_config_settings_view_form_spreadsheet_refresh" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.spreadsheet.refresh</field>
         <field name="model">res.config.settings</field>
         <field name="priority" eval="104" />
-        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="inherit_id" ref="spreadsheet_oca.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//form" position="inside">
-                <app
-                    data-string="Spreadsheet"
-                    string="Spreadsheet"
-                    name="spreadsheet_oca"
-                    logo="/spreadsheet_oca/static/description/icon.png"
-                >
-                    <block title="Scheduled Refresh" name="refresh_settings_block">
-                        <setting
-                            help="Default refresh interval (hours) for new refresh schedules."
-                        >
-                            <field name="refresh_default_interval_hours" />
-                        </setting>
-                    </block>
-                </app>
+            <xpath expr="//app[@name='spreadsheet_oca']" position="attributes">
+                <attribute name="notApp">0</attribute>
+            </xpath>
+            <xpath expr="//app[@name='spreadsheet_oca']" position="inside">
+                <block title="Scheduled Refresh" name="refresh_settings_block">
+                    <setting
+                        help="Default refresh interval (hours) for new refresh schedules."
+                    >
+                        <field name="refresh_default_interval_hours" />
+                    </setting>
+                </block>
             </xpath>
         </field>
     </record>

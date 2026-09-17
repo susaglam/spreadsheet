@@ -37,7 +37,9 @@
         <field name="name">spreadsheet.kpi.alert.list</field>
         <field name="model">spreadsheet.kpi.alert</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-warning="owner_access_lost">
+                <field name="can_manage" column_invisible="True" />
+                <field name="owner_access_lost" column_invisible="True" />
                 <field name="name" />
                 <field name="spreadsheet_id" />
                 <field name="alert_condition" string="Condition" />
@@ -51,6 +53,7 @@
                     type="object"
                     string="Test"
                     icon="fa-bell"
+                    invisible="not can_manage"
                 />
             </list>
         </field>
@@ -69,8 +72,18 @@
                         string="Test Alert"
                         class="btn-primary"
                         icon="fa-bell"
+                        invisible="not can_manage"
                     />
                 </header>
+                <field name="can_manage" invisible="1" />
+                <field name="owner_access_lost" invisible="1" />
+                <div
+                    class="alert alert-warning mb-0"
+                    role="alert"
+                    invisible="not owner_access_lost"
+                >
+                    This alert is not being checked: its owner is archived or can no longer open the spreadsheet, so nobody is notified. Restore the owner's access, or duplicate the alert as a user who can open the spreadsheet and archive this one.
+                </div>
                 <sheet>
                     <field name="active" invisible="1" />
                     <widget
@@ -107,6 +120,14 @@
                         <group>
                             <field name="last_checked" />
                             <field name="last_triggered" />
+                            <field
+                                name="create_uid"
+                                string="Owner"
+                                widget="many2one_avatar_user"
+                                readonly="1"
+                                invisible="not id"
+                                help="The user who created this alert. The scheduled check reads the cell with this user's access rights and skips the alert when they can no longer open the spreadsheet. To change the owner, duplicate the alert and archive this one."
+                            />
                         </group>
                     </group>
                 </sheet>

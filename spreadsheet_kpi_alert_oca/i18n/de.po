@@ -1,12 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_kpi_alert_oca
+# 	* spreadsheet_kpi_alert_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"POT-Creation-Date: 2026-09-17 00:00+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: German (de)\n"
 "Language: de\n"
@@ -16,142 +17,629 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:mail.template,body_html:spreadsheet_kpi_alert_oca.kpi_alert_email_template
+msgid ""
+"<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n"
+"    <div style=\"background-color: #875a7b; color: white; padding: 16px 24px;\">\n"
+"        <h2 style=\"margin: 0;\">KPI Alert Triggered</h2>\n"
+"    </div>\n"
+"    <div style=\"padding: 24px; border: 1px solid #ddd; border-top: none;\">\n"
+"        <p>Hello,</p>\n"
+"        <p>The following KPI alert has been triggered:</p>\n"
+"        <table style=\"width: 100%; border-collapse: collapse; margin: 16px 0;\">\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Alert</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.name or ''\">Revenue Alert</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Spreadsheet</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.spreadsheet_id.name or ''\">Sales KPIs</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Cell</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.sheet_name or ''\">Sheet1</t>!<t t-out=\"object.cell_ref or ''\">B2</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Current Value</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; color: #dc3545; font-weight: bold;\"><t t-out=\"object.last_value\">950.0</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Condition</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.operator or ''\">&lt;</t> <t t-out=\"object.threshold_value\">1000.0</t></td>\n"
+"            </tr>\n"
+"        </table>\n"
+"        <p style=\"color: #666; font-size: 12px;\">\n"
+"            This alert was triggered automatically. To manage your KPI alerts,\n"
+"            open the spreadsheet and go to Data &gt; KPI Alerts.\n"
+"        </p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+msgstr ""
+"<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n"
+"    <div style=\"background-color: #875a7b; color: white; padding: 16px 24px;\">\n"
+"        <h2 style=\"margin: 0;\">KPI-Alarm ausgelöst</h2>\n"
+"    </div>\n"
+"    <div style=\"padding: 24px; border: 1px solid #ddd; border-top: none;\">\n"
+"        <p>Hallo,</p>\n"
+"        <p>Der folgende KPI-Alarm wurde ausgelöst:</p>\n"
+"        <table style=\"width: 100%; border-collapse: collapse; margin: 16px 0;\">\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Alarm</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.name or ''\">Revenue Alert</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Tabelle</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.spreadsheet_id.name or ''\">Sales KPIs</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Zelle</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.sheet_name or ''\">Sheet1</t>!<t t-out=\"object.cell_ref or ''\">B2</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Aktueller Wert</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; color: #dc3545; font-weight: bold;\"><t t-out=\"object.last_value\">950.0</t></td>\n"
+"            </tr>\n"
+"            <tr>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;\">Bedingung</td>\n"
+"                <td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><t t-out=\"object.operator or ''\">&lt;</t> <t t-out=\"object.threshold_value\">1000.0</t></td>\n"
+"            </tr>\n"
+"        </table>\n"
+"        <p style=\"color: #666; font-size: 12px;\">\n"
+"            Dieser Alarm wurde automatisch ausgelöst. Um Ihre KPI-Alarme zu verwalten,\n"
+"            öffnen Sie die Tabelle und gehen Sie zu Daten &gt; KPI-Alarme.\n"
+"        </p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__active
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_search
 msgid "Active"
 msgstr "Aktiv"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
 msgid "Alert Condition"
-msgstr ""
+msgstr "Alarmbedingung"
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "Also send an email notification when triggered."
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__send_email
+msgid ""
+"Also email the notified users (those with an email address) when the alert "
+"fires, in addition to the Discuss notification."
 msgstr ""
+"Benachrichtigte Benutzer (mit E-Mail-Adresse) beim Auslösen des Alarms "
+"zusätzlich zur Discuss-Benachrichtigung per E-Mail informieren."
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
+msgid "Archived"
+msgstr "Archiviert"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__can_manage
+msgid "Can Manage"
+msgstr "Kann verwalten"
+
+#. module: spreadsheet_kpi_alert_oca
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
+msgid "Cell %(cell)s = %(value)s (threshold: %(operator)s %(threshold)s)"
+msgstr ""
+"Zelle %(cell)s = %(value)s (Schwellenwert: %(operator)s %(threshold)s)"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__cell_ref
 msgid "Cell Reference"
-msgstr ""
+msgstr "Zellbezug"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__cell_ref
 msgid "Cell reference (e.g., B2, C10) to monitor."
-msgstr ""
+msgstr "Bezug der zu überwachenden Zelle (z. B. B2, C10)."
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__alert_condition
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_list
 msgid "Condition"
-msgstr ""
+msgstr "Bedingung"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__cooldown_hours
 msgid "Cooldown (hours)"
 msgstr "Abklingzeit (Stunden)"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_act_window
+msgid "Create your first KPI alert"
+msgstr "Erstellen Sie Ihren ersten KPI-Alarm"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_res_config_settings__kpi_alert_default_cooldown_hours
 msgid "Default KPI Alert Cooldown (hours)"
-msgstr ""
+msgstr "Standard-Abklingzeit für KPI-Alarme (Stunden)"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.res_config_settings_view_form_spreadsheet_kpi
 msgid "Default cooldown period between repeated alert notifications."
-msgstr ""
+msgstr "Standard-Abklingzeit zwischen wiederholten Alarmbenachrichtigungen."
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "Group By"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "KPI Alert: Manager Full Access"
-msgstr ""
+#: model:ir.model.fields.selection,name:spreadsheet_kpi_alert_oca.selection__spreadsheet_kpi_alert__operator__=
+msgid "Equal (=)"
+msgstr "Gleich (=)"
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "KPI Alert: Owner/Contributor Access"
-msgstr ""
+#: model:ir.model.fields.selection,name:spreadsheet_kpi_alert_oca.selection__spreadsheet_kpi_alert__operator__>=
+msgid "Greater or equal (>=)"
+msgstr "Größer oder gleich (>=)"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields.selection,name:spreadsheet_kpi_alert_oca.selection__spreadsheet_kpi_alert__operator__>
+msgid "Greater than (>)"
+msgstr "Größer als (>)"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__operator
+msgid ""
+"How the cell value is compared to the threshold. Example: 'Less than (<)' "
+"fires when the value falls below the threshold."
+msgstr ""
+"Wie der Zellwert mit dem Schwellenwert verglichen wird. Beispiel: „Kleiner "
+"als (<)“ löst aus, sobald der Wert unter den Schwellenwert fällt."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_spreadsheet__kpi_alert_count
+msgid "KPI Alert Count"
+msgstr "Anzahl KPI-Alarme"
+
+#. module: spreadsheet_kpi_alert_oca
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
+msgid "KPI Alert: %(name)s"
+msgstr "KPI-Alarm: %(name)s"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:mail.template,subject:spreadsheet_kpi_alert_oca.kpi_alert_email_template
+msgid "KPI Alert: {{ object.name }}"
+msgstr "KPI-Alarm: {{ object.name }}"
+
+#. module: spreadsheet_kpi_alert_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_kpi_alert_oca/static/src/spreadsheet/bundle/kpi_alert.esm.js:0
+#: model:ir.actions.act_window,name:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_act_window
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_spreadsheet__kpi_alert_ids
+#: model:ir.ui.menu,name:spreadsheet_kpi_alert_oca.menu_spreadsheet_kpi_alerts
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.res_config_settings_view_form_spreadsheet_kpi
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_form_kpi_alert_button
 msgid "KPI Alerts"
 msgstr "KPI-Alarme"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__last_checked
+msgid "Last Checked"
+msgstr "Zuletzt geprüft"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__last_value
 msgid "Last Known Value"
-msgstr ""
+msgstr "Letzter bekannter Wert"
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "Last evaluated cell value, updated by the JS client."
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__last_triggered
+msgid "Last Triggered"
+msgstr "Zuletzt ausgelöst"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__last_value
+msgid ""
+"Last evaluated cell value, pushed by the JS client while a browser has the "
+"spreadsheet open."
+msgstr ""
+"Zuletzt berechneter Zellwert, vom JS-Client übermittelt, während die Tabelle"
+" in einem Browser geöffnet ist."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields.selection,name:spreadsheet_kpi_alert_oca.selection__spreadsheet_kpi_alert__operator__<=
+msgid "Less or equal (<=)"
+msgstr "Kleiner oder gleich (<=)"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields.selection,name:spreadsheet_kpi_alert_oca.selection__spreadsheet_kpi_alert__operator__<
+msgid "Less than (<)"
+msgstr "Kleiner als (<)"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__cooldown_hours
 msgid "Minimum hours between repeated alert notifications."
-msgstr ""
+msgstr "Mindestanzahl Stunden zwischen wiederholten Alarmbenachrichtigungen."
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__name
+msgid "Name"
+msgstr "Name"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__sheet_name
 msgid "Name of the sheet containing the cell to monitor."
-msgstr ""
+msgstr "Name des Blatts, das die zu überwachende Zelle enthält."
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields.selection,name:spreadsheet_kpi_alert_oca.selection__spreadsheet_kpi_alert__operator__!=
+msgid "Not equal (!=)"
+msgstr "Ungleich (!=)"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
 msgid "Notification"
-msgstr ""
+msgstr "Benachrichtigung"
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "Notification sent for "
-msgstr ""
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
+msgid "Notification sent for %(name)s."
+msgstr "Benachrichtigung für %(name)s gesendet."
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__notify_user_ids
 msgid "Notify Users"
 msgstr "Benutzer benachrichtigen"
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "Recently Triggered"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__operator
+msgid "Operator"
+msgstr "Operator"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
+msgid "Owner"
+msgstr "Eigentümer"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__owner_access_lost
+msgid "Owner Lost Access"
+msgstr "Eigentümer ohne Zugriff"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_search
+msgid "Recently Triggered"
+msgstr "Kürzlich ausgelöst"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__send_email
 msgid "Send Email"
 msgstr "E-Mail senden"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_res_config_settings__kpi_alert_default_send_email
 msgid "Send Email by Default on KPI Alert"
-msgstr ""
+msgstr "Bei KPI-Alarm standardmäßig E-Mail senden"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.res_config_settings_view_form_spreadsheet_kpi
 msgid "Send an email alongside Discuss inbox notification by default."
 msgstr ""
+"Standardmäßig zusätzlich zur Benachrichtigung im Discuss-Posteingang eine "
+"E-Mail senden."
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__owner_access_lost
+msgid ""
+"Set when the user who created this alert is archived or can no longer open "
+"its spreadsheet. The scheduled check then skips the alert and nobody is "
+"notified, until that user's access is restored or someone who can open the "
+"spreadsheet duplicates the alert."
+msgstr ""
+"Gesetzt, wenn der Benutzer, der diesen Alarm erstellt hat, archiviert ist "
+"oder die Tabelle des Alarms nicht mehr öffnen kann. Die geplante Prüfung "
+"überspringt den Alarm dann und niemand wird benachrichtigt, bis der Zugriff "
+"dieses Benutzers wiederhergestellt ist oder jemand, der die Tabelle öffnen "
+"kann, den Alarm dupliziert."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__sheet_name
+msgid "Sheet Name"
+msgstr "Blattname"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__name
+msgid ""
+"Short label for this alert, used in the notification and the email subject. "
+"Example: 'Revenue below monthly target'."
+msgstr ""
+"Kurze Bezeichnung für diesen Alarm, verwendet in der Benachrichtigung und im"
+" E-Mail-Betreff. Beispiel: „Umsatz unter Monatsziel“."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__spreadsheet_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_search
 msgid "Spreadsheet"
 msgstr "Tabelle"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model,name:spreadsheet_kpi_alert_oca.model_spreadsheet_kpi_alert
+#: model:mail.template,name:spreadsheet_kpi_alert_oca.kpi_alert_email_template
 msgid "Spreadsheet KPI Alert"
-msgstr "Tabellen KPI Alarm"
+msgstr "Tabellen-KPI-Alarm"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.actions.server,name:spreadsheet_kpi_alert_oca.ir_cron_kpi_alert_check_ir_actions_server
 msgid "Spreadsheet: KPI Alert Threshold Check"
-msgstr ""
+msgstr "Tabelle: Schwellenwertprüfung für KPI-Alarme"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__alert_condition
+msgid ""
+"Summary of what is watched, for example 'Sheet1!B2 < 1000.0': the alert "
+"fires when that cell's value meets this condition."
+msgstr ""
+"Zusammenfassung der Überwachung, zum Beispiel „Sheet1!B2 < 1000.0“: Der "
+"Alarm löst aus, wenn der Wert dieser Zelle die Bedingung erfüllt."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_list
 msgid "Test"
 msgstr "Test"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
 msgid "Test Alert"
 msgstr "Alarm testen"
 
 #. module: spreadsheet_kpi_alert_oca
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
 msgid "Test Alert Sent"
-msgstr ""
+msgstr "Testalarm gesendet"
 
 #. module: spreadsheet_kpi_alert_oca
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
+msgid ""
+"Test notification for %(name)s sent to you only. You cannot edit this "
+"spreadsheet, so a test does not post in its discussion or notify the other "
+"users; the alert itself still does when its condition is met."
+msgstr ""
+"Testbenachrichtigung für %(name)s nur an Sie gesendet. Sie können diese "
+"Tabelle nicht bearbeiten, daher schreibt ein Test nichts in ihre Diskussion "
+"und benachrichtigt die anderen Benutzer nicht; der Alarm selbst tut dies "
+"weiterhin, sobald seine Bedingung erfüllt ist."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__threshold_value
+msgid ""
+"The number the cell value is compared against. Example: with operator '<' "
+"and threshold 1000, the alert fires when the cell drops below 1000."
+msgstr ""
+"Die Zahl, mit der der Zellwert verglichen wird. Beispiel: Mit Operator „<“ "
+"und Schwellenwert 1000 löst der Alarm aus, sobald die Zelle unter 1000 "
+"fällt."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__spreadsheet_id
+msgid ""
+"The spreadsheet holding the cell to watch. You can only pick a spreadsheet "
+"you are allowed to open. The scheduled check reads the cell with the access "
+"rights of the user who created the alert, and skips the alert if that user "
+"can no longer open the spreadsheet."
+msgstr ""
+"Die Tabelle mit der zu überwachenden Zelle. Sie können nur eine Tabelle "
+"wählen, die Sie öffnen dürfen. Die geplante Prüfung liest die Zelle mit den "
+"Zugriffsrechten des Benutzers, der den Alarm erstellt hat, und überspringt "
+"den Alarm, wenn dieser Benutzer die Tabelle nicht mehr öffnen kann."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
+msgid ""
+"The user who created this alert. The scheduled check reads the cell with "
+"this user's access rights and skips the alert when they can no longer open "
+"the spreadsheet. To change the owner, duplicate the alert and archive this "
+"one."
+msgstr ""
+"Der Benutzer, der diesen Alarm erstellt hat. Die geplante Prüfung liest die "
+"Zelle mit seinen Zugriffsrechten und überspringt den Alarm, sobald er die "
+"Tabelle nicht mehr öffnen kann. Um den Eigentümer zu ändern, duplizieren Sie"
+" den Alarm und archivieren Sie diesen."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
+msgid ""
+"This alert is not being checked: its owner is archived or can no longer open"
+" the spreadsheet, so nobody is notified. Restore the owner's access, or "
+"duplicate the alert as a user who can open the spreadsheet and archive this "
+"one."
+msgstr ""
+"Dieser Alarm wird nicht geprüft: Sein Eigentümer ist archiviert oder kann "
+"die Tabelle nicht mehr öffnen, daher wird niemand benachrichtigt. Stellen "
+"Sie den Zugriff des Eigentümers wieder her, oder duplizieren Sie den Alarm "
+"als Benutzer, der die Tabelle öffnen kann, und archivieren Sie diesen."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__threshold_value
 msgid "Threshold"
 msgstr "Schwellenwert"
 
 #. module: spreadsheet_kpi_alert_oca
-msgid "Users to notify when the threshold is breached."
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__active
+msgid ""
+"Uncheck to pause this alert without deleting it: the scheduled check skips "
+"archived alerts."
 msgstr ""
+"Deaktivieren, um diesen Alarm zu pausieren, ohne ihn zu löschen: Die "
+"geplante Prüfung überspringt archivierte Alarme."
 
 #. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__notify_user_ids
+msgid ""
+"Users to notify when the threshold is breached. They can see this alert "
+"(read-only) and receive the cell value in the notification even if they "
+"cannot open the spreadsheet, so only add people allowed to see it."
+msgstr ""
+"Benutzer, die benachrichtigt werden, wenn der Schwellenwert überschritten "
+"wird. Sie können diesen Alarm (schreibgeschützt) sehen und erhalten den "
+"Zellwert in der Benachrichtigung, auch wenn sie die Tabelle nicht öffnen "
+"können. Fügen Sie daher nur Personen hinzu, die diesen Wert sehen dürfen."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,field_description:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__value_synced_at
+msgid "Value Synced At"
+msgstr "Wert synchronisiert am"
+
+#. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_act_window
+msgid ""
+"Watch a spreadsheet cell and get notified in Discuss (and\n"
+"                optionally by email) when it crosses a threshold. Open a\n"
+"                spreadsheet and use Data &gt; KPI Alerts, or create one here."
+msgstr ""
+"Überwachen Sie eine Tabellenzelle und werden Sie in Discuss (optional auch "
+"per E-Mail) benachrichtigt, wenn sie einen Schwellenwert überschreitet. "
+"Öffnen Sie eine Tabelle und verwenden Sie Daten &gt; KPI-Alarme, oder "
+"erstellen Sie hier einen Alarm."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__value_synced_at
+msgid ""
+"When the JS client last pushed an evaluated value for this cell. "
+"Distinguishes a never-synced cell from a genuine 0, and lets the cron ignore"
+" values older than the staleness window so alerts don't fire on data a "
+"browser evaluated days ago. Not needed for cells holding a literal number — "
+"those the cron reads directly from the stored sheet."
+msgstr ""
+"Wann der JS-Client zuletzt einen berechneten Wert für diese Zelle "
+"übermittelt hat. Unterscheidet eine nie synchronisierte Zelle von einer "
+"echten 0 und lässt die geplante Prüfung veraltete Werte ignorieren, damit "
+"Alarme nicht auf Daten auslösen, die ein Browser vor Tagen berechnet hat. "
+"Für Zellen mit einer festen Zahl nicht nötig – diese liest die Prüfung "
+"direkt aus dem gespeicherten Blatt."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__last_checked
+msgid ""
+"When the scheduled check last evaluated this alert, whether or not it fired."
+" It stops moving when the alert is skipped, for example because the user who"
+" created it can no longer open the spreadsheet."
+msgstr ""
+"Wann die geplante Prüfung diesen Alarm zuletzt ausgewertet hat, unabhängig "
+"davon, ob er ausgelöst wurde. Der Zeitpunkt bleibt stehen, solange der Alarm"
+" übersprungen wird, zum Beispiel weil sein Ersteller die Tabelle nicht mehr "
+"öffnen kann."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__last_triggered
+msgid ""
+"When this alert last sent a notification. The cooldown is counted from this "
+"moment; empty means the alert has never fired."
+msgstr ""
+"Wann dieser Alarm zuletzt eine Benachrichtigung gesendet hat. Die "
+"Abklingzeit zählt ab diesem Zeitpunkt; leer bedeutet, dass der Alarm noch "
+"nie ausgelöst wurde."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model:ir.model.fields,help:spreadsheet_kpi_alert_oca.field_spreadsheet_kpi_alert__can_manage
+msgid ""
+"Whether you may edit, test or delete this alert: its creator, the "
+"spreadsheet's owner and contributors, and spreadsheet managers can. A user "
+"who is only notified by the alert sees it read-only."
+msgstr ""
+"Ob Sie diesen Alarm bearbeiten, testen oder löschen dürfen: Das dürfen sein "
+"Ersteller, der Eigentümer und die Mitwirkenden der Tabelle sowie "
+"Tabellenverwalter. Ein Benutzer, der von dem Alarm nur benachrichtigt wird, "
+"sieht ihn schreibgeschützt."
+
+#. module: spreadsheet_kpi_alert_oca
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
+msgid ""
+"You cannot move the KPI alert %(alert)s to spreadsheet %(spreadsheet)s. On "
+"that spreadsheet only the alert's creator, the spreadsheet's owner and "
+"contributors, and spreadsheet managers may manage alerts, because an alert "
+"sends the spreadsheet's values on their behalf. Ask the spreadsheet owner to"
+" add you as a contributor, or create a new alert of your own on that "
+"spreadsheet."
+msgstr ""
+"Sie können den KPI-Alarm %(alert)s nicht in die Tabelle %(spreadsheet)s "
+"verschieben. In dieser Tabelle dürfen nur der Ersteller des Alarms, der "
+"Eigentümer und die Mitwirkenden der Tabelle sowie Tabellenverwalter Alarme "
+"verwalten, weil ein Alarm die Werte der Tabelle in ihrem Namen versendet. "
+"Bitten Sie den Eigentümer der Tabelle, Sie als Mitwirkenden hinzuzufügen, "
+"oder erstellen Sie einen eigenen neuen Alarm in dieser Tabelle."
+
+#. module: spreadsheet_kpi_alert_oca
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
+msgid ""
+"You cannot set a KPI alert on spreadsheet #%(spreadsheet_id)s because you "
+"are not allowed to open it. An alert sends the watched cell's value to its "
+"notified users, so it may only watch a spreadsheet you can read. Ask the "
+"spreadsheet owner to add you as a reader or contributor, or choose another "
+"spreadsheet."
+msgstr ""
+"Sie können keinen KPI-Alarm für die Tabelle #%(spreadsheet_id)s einrichten, "
+"weil Sie diese nicht öffnen dürfen. Ein Alarm sendet den Wert der "
+"überwachten Zelle an die benachrichtigten Benutzer und darf daher nur eine "
+"Tabelle überwachen, die Sie lesen können. Bitten Sie den Eigentümer der "
+"Tabelle, Sie als Leser oder Mitwirkenden hinzuzufügen, oder wählen Sie eine "
+"andere Tabelle."
+
+#. module: spreadsheet_kpi_alert_oca
+#. odoo-python
+#: code:addons/spreadsheet_kpi_alert_oca/models/spreadsheet_kpi_alert.py:0
+msgid ""
+"You cannot test the KPI alert %(name)s because you are only notified by it. "
+"A test sends notifications on the alert's behalf, so only its creator, the "
+"spreadsheet's owner and contributors, and spreadsheet managers may run it. "
+"Ask one of them to test the alert."
+msgstr ""
+"Sie können den KPI-Alarm %(name)s nicht testen, weil Sie von ihm nur "
+"benachrichtigt werden. Ein Test sendet Benachrichtigungen im Namen des "
+"Alarms, daher dürfen ihn nur sein Ersteller, der Eigentümer und die "
+"Mitwirkenden der Tabelle sowie Tabellenverwalter ausführen. Bitten Sie eine "
+"dieser Personen, den Alarm zu testen."
+
+#. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
 msgid "e.g. B2"
-msgstr ""
+msgstr "z. B. B2"
 
 #. module: spreadsheet_kpi_alert_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_kpi_alert_oca.spreadsheet_kpi_alert_view_form
 msgid "e.g. Revenue Alert"
-msgstr ""
-
+msgstr "z. B. Umsatzalarm"

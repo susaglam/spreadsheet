@@ -2,21 +2,45 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <!-- saas-19.4: ir.rule -> ir.access permissions (group_id set). The
-         no-domain group_user crud grant on spreadsheet.kpi.alert was removed
-         from ir.access.csv so this owner permission is the sole scope. -->
-    <!-- Users can manage alerts on spreadsheets they have access to -->
+    <!-- saas-19.4: ir.rule -> ir.access permissions (group_id set). Permissions
+         of the user's groups are OR-ed per operation, so the notified-user
+         permission below only ever adds READ. There is no domain-less
+         group_user grant in ir.access.csv: these permissions are the scope.
+
+         An alert copies a cell value into notifications, so managing it is
+         tied to the spreadsheet: `('spreadsheet_id', 'access', <op>)` is the
+         19.4 operator that evaluates the spreadsheet's own ir.access rules. -->
+
+    <!-- Manage (crud): anyone who may edit the spreadsheet (owner, contributor,
+         contributor group), or the alert's creator while they can still open
+         the spreadsheet. The create check runs after insert, so a user cannot
+         create an alert on a spreadsheet they cannot read. The write check runs
+         BEFORE the write (old spreadsheet), so SpreadsheetKpiAlert.write()
+         re-checks a changed spreadsheet_id: readable first, then this permission
+         again against the new spreadsheet. (Not an @api.constrains: 19.4 runs
+         those as sudo.) -->
     <record id="rule_kpi_alert_owner" model="ir.access">
-        <field name="name">KPI Alert: Owner/Contributor Access</field>
+        <field name="name">KPI Alert: Creator / Spreadsheet Editor Access</field>
         <field name="model_id" ref="model_spreadsheet_kpi_alert" />
         <field name="group_id" ref="spreadsheet_oca.group_user" />
         <field name="operation">crud</field>
         <field name="domain">[
-            '|', '|',
-            ('spreadsheet_id.owner_id', '=', user.id),
-            ('spreadsheet_id.contributor_ids', '=', user.id),
-            ('notify_user_ids', '=', user.id)
+            '|',
+                '&amp;',
+                    ('create_uid', '=', user.id),
+                    ('spreadsheet_id', 'access', 'read'),
+                ('spreadsheet_id', 'access', 'write'),
         ]</field>
+    </record>
+
+    <!-- Read only: a notified user sees the alert they are notified about, but
+         cannot change it, fire it, or feed it values. -->
+    <record id="rule_kpi_alert_notified" model="ir.access">
+        <field name="name">KPI Alert: Notified User Read Access</field>
+        <field name="model_id" ref="model_spreadsheet_kpi_alert" />
+        <field name="group_id" ref="spreadsheet_oca.group_user" />
+        <field name="operation">r</field>
+        <field name="domain">[('notify_user_ids', 'in', [user.id])]</field>
     </record>
 
     <!-- Managers have full access to all alerts -->

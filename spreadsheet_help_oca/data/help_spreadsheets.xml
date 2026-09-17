@@ -2,40 +2,71 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
-    <!-- Pre-built guide spreadsheets — live examples user can open immediately -->
+    <!-- Pre-built guide spreadsheets — live examples user can open immediately.
+
+         They are created by the installing (system) user, so the owner /
+         contributor record rules of spreadsheet_oca would hide them from every
+         ordinary Spreadsheet user. reader_group_ids shares them read-only with
+         the whole Spreadsheet User group (managers keep full access).
+         Existing databases are fixed by migrations/saas~19.4.1.0.2, which also
+         reloads the English workbooks while a guide still holds the Turkish
+         one shipped before (and nobody edited it).
+         type="bytes" stores the JSON file as is (type="base64" is deprecated
+         since saas-19.4, odoo/tools/convert.py).
+         Because they are shared, the guides also show in the regular
+         Spreadsheets views: guides whose formulas come from an optional module
+         (GUIDE_REQUIRED_MODULES in models/spreadsheet_tutorial.py) refuse to
+         open there too and explain which module to install
+         (models/spreadsheet_spreadsheet.py). -->
 
     <record id="guide_forecast" model="spreadsheet.spreadsheet">
-        <field name="name">📈 Rehber: Tahminleme Fonksiyonlari</field>
+        <field name="name">📈 Guide: Forecasting Functions</field>
+        <field
+            name="reader_group_ids"
+            eval="[(4, ref('spreadsheet_oca.group_user'))]"
+        />
         <field
             name="spreadsheet_binary_data"
-            type="base64"
+            type="bytes"
             file="spreadsheet_help_oca/data/files/guide_forecast.json"
         />
     </record>
 
     <record id="guide_period" model="spreadsheet.spreadsheet">
-        <field name="name">📊 Rehber: Donem Karsilastirma</field>
+        <field name="name">📊 Guide: Period Comparison</field>
+        <field
+            name="reader_group_ids"
+            eval="[(4, ref('spreadsheet_oca.group_user'))]"
+        />
         <field
             name="spreadsheet_binary_data"
-            type="base64"
+            type="bytes"
             file="spreadsheet_help_oca/data/files/guide_period.json"
         />
     </record>
 
     <record id="guide_core" model="spreadsheet.spreadsheet">
-        <field name="name">🧰 Rehber: Odoo Core Formulleri</field>
+        <field name="name">🧰 Guide: Odoo Core Formulas</field>
+        <field
+            name="reader_group_ids"
+            eval="[(4, ref('spreadsheet_oca.group_user'))]"
+        />
         <field
             name="spreadsheet_binary_data"
-            type="base64"
+            type="bytes"
             file="spreadsheet_help_oca/data/files/guide_core.json"
         />
     </record>
 
     <record id="guide_features" model="spreadsheet.spreadsheet">
-        <field name="name">✨ Rehber: Ozellikler ve Menuler</field>
+        <field name="name">✨ Guide: Features and Menus</field>
+        <field
+            name="reader_group_ids"
+            eval="[(4, ref('spreadsheet_oca.group_user'))]"
+        />
         <field
             name="spreadsheet_binary_data"
-            type="base64"
+            type="bytes"
             file="spreadsheet_help_oca/data/files/guide_features.json"
         />
     </record>

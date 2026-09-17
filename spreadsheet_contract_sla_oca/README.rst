@@ -36,8 +36,12 @@ Usage
 1. Go to **Spreadsheets** > **Contracts & SLA**
 2. Create a contract: partner, dates, value, responsible user
 3. Add SLA metrics in the tab (e.g., 99.9% uptime)
-4. Cron sends daily reminders for contracts nearing expiry
+4. Cron sends daily reminders for contracts nearing expiry: a to-do activity and
+   an email for the **Responsible** user (never the contract partner). A
+   responsible user without an email address still gets the activity.
 5. Click **Renew Contract** to extend for the same duration
+
+The end date of a contract cannot be before its start date.
 
 Configuration
 =============
@@ -49,7 +53,6 @@ Dependencies
 ============
 
 * ``spreadsheet_oca``
-* ``spreadsheet_kpi_alert_oca``
 * ``mail``
 
 Known issues / Roadmap

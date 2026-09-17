@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish (tr)\n"
 "Language: tr\n"
@@ -16,6 +16,297 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_pdf_report_oca
-msgid "Spreadsheet Landscape A4"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.spreadsheet_pdf_main
+msgid "Company Logo"
+msgstr "Şirket Logosu"
 
+#. module: spreadsheet_pdf_report_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_pdf_report_oca/static/src/spreadsheet/bundle/download_pdf.esm.js:0
+msgid "Download PDF"
+msgstr "PDF indir"
+
+#. module: spreadsheet_pdf_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.spreadsheet_pdf_content
+msgid "Empty sheet"
+msgstr "Boş sayfa"
+
+#. module: spreadsheet_pdf_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.spreadsheet_pdf_main
+msgid "Generated on"
+msgstr "Oluşturulma tarihi"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"Only internal users can export spreadsheets to PDF. Your account is a portal"
+" or public account, and the export renders documents on the server with the "
+"company letterhead. Ask an administrator for an internal user account, or "
+"ask a colleague to export the PDF for you."
+msgstr ""
+"E-tabloları yalnızca dahili kullanıcılar PDF olarak dışa aktarabilir. "
+"Hesabınız bir portal veya herkese açık hesaptır; dışa aktarma ise belgeleri "
+"sunucuda şirket antetiyle oluşturur. Bir yöneticiden dahili kullanıcı hesabı"
+" isteyin veya PDF'yi sizin için dışa aktarmasını bir iş arkadaşınızdan rica "
+"edin."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"Row %(row)s of sheet \"%(sheet)s\" is %(count)s cells wide in the PDF export"
+" (merged cells count for every column they cover), but the limit is "
+"%(limit)s cells per row. Very large exports take minutes to render and block"
+" the server for other users. Remove the columns you do not need, or use File"
+" > Download XLSX to get the full data."
+msgstr ""
+"\"%(sheet)s\" sayfasının %(row)s. satırı PDF dışa aktarımında %(count)s "
+"hücre genişliğinde (birleştirilmiş hücreler kapladıkları her sütun için "
+"sayılır), ancak sınır satır başına %(limit)s hücre. Çok büyük dışa "
+"aktarımların oluşturulması dakikalar sürer ve sunucuyu diğer kullanıcılar "
+"için meşgul eder. İhtiyacınız olmayan sütunları kaldırın veya verilerin "
+"tamamını almak için Dosya > XLSX indir seçeneğini kullanın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "Sheet"
+msgstr "Sayfa"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"Sheet \"%(sheet)s\" sends %(count)s rows to the PDF export, but the limit is"
+" %(limit)s rows per sheet. Very large exports take minutes to render and "
+"block the server for other users. Remove the rows you do not need, split the"
+" sheet, or use File > Download XLSX to get the full data."
+msgstr ""
+"\"%(sheet)s\" sayfası PDF dışa aktarımına %(count)s satır gönderiyor, ancak "
+"sınır sayfa başına %(limit)s satır. Çok büyük dışa aktarımların "
+"oluşturulması dakikalar sürer ve sunucuyu diğer kullanıcılar için meşgul "
+"eder. İhtiyacınız olmayan satırları kaldırın, sayfayı bölün veya verilerin "
+"tamamını almak için Dosya > XLSX indir seçeneğini kullanın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "Spreadsheet"
+msgstr "E-tablo"
+
+#. module: spreadsheet_pdf_report_oca
+#: model:ir.actions.report,name:spreadsheet_pdf_report_oca.action_report_spreadsheet_pdf
+msgid "Spreadsheet PDF Export"
+msgstr "E-tablo PDF Dışa Aktarımı"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF could not be generated because the PDF engine reported an unexpected"
+" error. Try again; if it keeps failing, ask an administrator to check the "
+"server log (logger odoo.addons.spreadsheet_pdf_report_oca) for the details."
+msgstr ""
+"PDF motoru beklenmeyen bir hata bildirdiği için PDF oluşturulamadı. Tekrar "
+"deneyin; hata sürerse bir yöneticiden ayrıntılar için sunucu günlüğünü "
+"(odoo.addons.spreadsheet_pdf_report_oca günlükçüsü) kontrol etmesini "
+"isteyin."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF engine \"%(engine)s\" is installed but does not respond, so the "
+"spreadsheet cannot be converted to PDF. Ask an administrator to check the "
+"engine installation on the server, or to switch to another engine with the "
+"system parameter report.pdf_engine_default (Settings > Technical > "
+"Parameters > System Parameters)."
+msgstr ""
+"\"%(engine)s\" PDF motoru kurulu ancak yanıt vermiyor, bu nedenle e-tablo "
+"PDF'ye dönüştürülemiyor. Bir yöneticiden sunucudaki motor kurulumunu kontrol"
+" etmesini veya report.pdf_engine_default sistem parametresiyle (Ayarlar > "
+"Teknik > Parametreler > Sistem Parametreleri) başka bir motora geçmesini "
+"isteyin."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF engine \"%(engine)s\" is not available on this server, so the "
+"spreadsheet cannot be converted to PDF (all Odoo PDF reports need an "
+"engine). Ask an administrator to install the \"Report Engine: "
+"wkhtmltopdf/wkhtmltoimage\" module together with the wkhtmltopdf program, or"
+" the \"Report Engine: Paper Muncher\" module, and to select it with the "
+"system parameter report.pdf_engine_default (Settings > Technical > "
+"Parameters > System Parameters)."
+msgstr ""
+"\"%(engine)s\" PDF motoru bu sunucuda kullanılamıyor, bu nedenle e-tablo "
+"PDF'ye dönüştürülemiyor (Odoo'daki tüm PDF raporları bir motora ihtiyaç "
+"duyar). Bir yöneticiden \"Report Engine: wkhtmltopdf/wkhtmltoimage\" "
+"modülünü wkhtmltopdf programıyla birlikte ya da \"Report Engine: Paper "
+"Muncher\" modülünü kurmasını ve report.pdf_engine_default sistem "
+"parametresiyle (Ayarlar > Teknik > Parametreler > Sistem Parametreleri) "
+"seçmesini isteyin."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s contains data in an "
+"unexpected format. Reload the spreadsheet and use File > Download PDF again;"
+" if the problem persists, contact your administrator."
+msgstr ""
+"PDF dışa aktarımı reddedildi çünkü %(location)s beklenmeyen biçimde veri "
+"içeriyor. E-tabloyu yeniden yükleyip Dosya > PDF indir seçeneğini tekrar "
+"kullanın; sorun devam ederse sistem yöneticinize başvurun."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s has an invalid %(property)s "
+"\"%(value)s\". Only colors written as #rgb, #rrggbb, rgb(r, g, b) or rgba(r,"
+" g, b, a) are accepted, because any other text could inject styling that "
+"makes the PDF engine load external resources. Reload the spreadsheet and "
+"export again; if the value comes from an integration or a script, change it "
+"to one of those formats."
+msgstr ""
+"PDF dışa aktarımı reddedildi çünkü %(location)s için %(property)s değeri "
+"geçersiz: \"%(value)s\". Yalnızca #rgb, #rrggbb, rgb(r, g, b) veya rgba(r, "
+"g, b, a) biçimindeki renkler kabul edilir; başka herhangi bir metin, PDF "
+"motorunun harici kaynakları yüklemesine yol açan stiller enjekte edebilir. "
+"E-tabloyu yeniden yükleyip tekrar dışa aktarın; değer bir entegrasyondan "
+"veya betikten geliyorsa bu biçimlerden birine dönüştürün."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s has an invalid alignment "
+"\"%(value)s\". Only left, center and right are accepted, because the value "
+"is written into the PDF styling. Reload the spreadsheet and export again."
+msgstr ""
+"PDF dışa aktarımı reddedildi çünkü %(location)s için hizalama değeri "
+"geçersiz: \"%(value)s\". Değer PDF stiline yazıldığı için yalnızca left, "
+"center ve right kabul edilir. E-tabloyu yeniden yükleyip tekrar dışa "
+"aktarın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The PDF export was refused because %(location)s has an invalid font size "
+"\"%(value)s\". The font size must be a number between %(min)s and %(max)s, "
+"because it is written into the PDF styling. Reload the spreadsheet and "
+"export again."
+msgstr ""
+"PDF dışa aktarımı reddedildi çünkü %(location)s için yazı tipi boyutu "
+"geçersiz: \"%(value)s\". Yazı tipi boyutu PDF stiline yazıldığı için %(min)s"
+" ile %(max)s arasında bir sayı olmalıdır. E-tabloyu yeniden yükleyip tekrar "
+"dışa aktarın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The spreadsheet data sent for the PDF export is not in the expected format, "
+"so it was refused. Reload the spreadsheet and use File > Download PDF again;"
+" if the problem persists, contact your administrator."
+msgstr ""
+"PDF dışa aktarımı için gönderilen e-tablo verisi beklenen biçimde "
+"olmadığından reddedildi. E-tabloyu yeniden yükleyip Dosya > PDF indir "
+"seçeneğini tekrar kullanın; sorun devam ederse sistem yöneticinize başvurun."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"The spreadsheet data sent to the PDF export is larger than %(limit)s MB. "
+"Very large exports take minutes to render and block the server for other "
+"users. Remove unused rows and columns, hide the sheets you do not need in "
+"the PDF, or use File > Download XLSX to get the full data."
+msgstr ""
+"PDF dışa aktarımına gönderilen e-tablo verisi %(limit)s MB'tan büyük. Çok "
+"büyük dışa aktarımların oluşturulması dakikalar sürer ve sunucuyu diğer "
+"kullanıcılar için meşgul eder. Kullanılmayan satır ve sütunları kaldırın, "
+"PDF'de ihtiyacınız olmayan sayfaları gizleyin veya verilerin tamamını almak "
+"için Dosya > XLSX indir seçeneğini kullanın."
+
+#. module: spreadsheet_pdf_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_pdf_report_oca.report_spreadsheet_pdf_placeholder
+msgid ""
+"This report only holds the paper format and PDF engine settings of the "
+"spreadsheet PDF export. To export a spreadsheet, open it and use File &gt; "
+"Download PDF."
+msgstr ""
+"Bu rapor yalnızca e-tablo PDF dışa aktarımının kağıt biçimi ve PDF motoru "
+"ayarlarını içerir. Bir e-tabloyu dışa aktarmak için onu açın ve Dosya &gt; "
+"PDF indir seçeneğini kullanın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_pdf_report_oca/static/src/spreadsheet/bundle/download_pdf.esm.js:0
+msgid ""
+"This spreadsheet has %(count)s cells to print (the used range of every "
+"visible sheet), but the PDF export is limited to %(limit)s cells. Very large"
+" exports take minutes to render and block the server for other users. Remove"
+" unused rows and columns, hide the sheets you do not need in the PDF, or use"
+" File > Download XLSX to get the full data."
+msgstr ""
+"Bu e-tabloda yazdırılacak %(count)s hücre var (görünür her sayfanın "
+"kullanılan aralığı), ancak PDF dışa aktarımı %(limit)s hücreyle sınırlı. Çok"
+" büyük dışa aktarımların oluşturulması dakikalar sürer ve sunucuyu diğer "
+"kullanıcılar için meşgul eder. Kullanılmayan satır ve sütunları kaldırın, "
+"PDF'de ihtiyacınız olmayan sayfaları gizleyin veya verilerin tamamını almak "
+"için Dosya > XLSX indir seçeneğini kullanın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"This spreadsheet sends %(count)s sheets to the PDF export, but the limit is "
+"%(limit)s. Very large exports take minutes to render and block the server "
+"for other users. Hide the sheets you do not need in the PDF, split the "
+"spreadsheet, or use File > Download XLSX to get the whole workbook."
+msgstr ""
+"Bu e-tablo PDF dışa aktarımına %(count)s sayfa gönderiyor, ancak sınır "
+"%(limit)s. Çok büyük dışa aktarımların oluşturulması dakikalar sürer ve "
+"sunucuyu diğer kullanıcılar için meşgul eder. PDF'de ihtiyacınız olmayan "
+"sayfaları gizleyin, e-tabloyu bölün veya çalışma kitabının tamamını almak "
+"için Dosya > XLSX indir seçeneğini kullanın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid ""
+"This spreadsheet sends more than %(limit)s cells to the PDF export (merged "
+"cells count for every cell they cover). Very large exports take minutes to "
+"render and block the server for other users. Remove unused rows and columns,"
+" hide the sheets you do not need in the PDF, or use File > Download XLSX to "
+"get the full data."
+msgstr ""
+"Bu e-tablo PDF dışa aktarımına %(limit)s hücreden fazlasını gönderiyor "
+"(birleştirilmiş hücreler kapladıkları her hücre için sayılır). Çok büyük "
+"dışa aktarımların oluşturulması dakikalar sürer ve sunucuyu diğer "
+"kullanıcılar için meşgul eder. Kullanılmayan satır ve sütunları kaldırın, "
+"PDF'de ihtiyacınız olmayan sayfaları gizleyin veya verilerin tamamını almak "
+"için Dosya > XLSX indir seçeneğini kullanın."
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "fill color"
+msgstr "dolgu rengi"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "sheet \"%(sheet)s\", row %(row)s, cell %(cell)s"
+msgstr "\"%(sheet)s\" sayfası, %(row)s. satır, %(cell)s. hücre"
+
+#. module: spreadsheet_pdf_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_pdf_report_oca/controllers/main.py:0
+msgid "text color"
+msgstr "metin rengi"

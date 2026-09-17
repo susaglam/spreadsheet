@@ -1,12 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_version_history_oca
+# 	* spreadsheet_version_history_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: German (de)\n"
 "Language: de\n"
@@ -16,78 +15,524 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "%(a)s added, %(c)s changed, %(r)s removed."
+msgstr "%(a)s hinzugefügt, %(c)s geändert, %(r)s entfernt."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"%(count)s more differences are not listed, to keep this page fast. The "
+"summary above counts them all; open the spreadsheet to review them."
+msgstr ""
+"%(count)s weitere Unterschiede werden nicht aufgeführt, damit diese Seite "
+"schnell bleibt. Die Zusammenfassung oben zählt sie alle mit; öffnen Sie die "
+"Tabelle, um sie zu prüfen."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "(compressed value — open the spreadsheet to see it)"
+msgstr "(komprimierter Wert — öffnen Sie die Tabelle, um ihn zu sehen)"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"<p class='o_view_nocontent_smiling_face'>No snapshots yet</p><p>Use 'New "
+"Snapshot' on the spreadsheet form to capture its current state, then diff or"
+" restore it from here.</p>"
+msgstr ""
+"<p class='o_view_nocontent_smiling_face'>Noch keine "
+"Schnappschüsse</p><p>Verwenden Sie „Neuer Schnappschuss“ im "
+"Tabellenformular, um den aktuellen Stand festzuhalten, und vergleichen oder "
+"stellen Sie ihn anschließend hier wieder her.</p>"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Added"
+msgstr "Hinzugefügt"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"Cannot restore '%(version)s': its stored snapshot is unreadable (corrupted "
+"or truncated). Create a fresh snapshot and restore that instead."
+msgstr ""
+"„%(version)s“ kann nicht wiederhergestellt werden: Der gespeicherte "
+"Schnappschuss ist unlesbar (beschädigt oder abgeschnitten). Erstellen Sie "
+"einen neuen Schnappschuss und stellen Sie stattdessen diesen wieder her."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Cell"
+msgstr "Zelle"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__diff_html
+msgid ""
+"Cell-by-cell comparison of this snapshot with the spreadsheet as it is now: "
+"which cells were added, changed or removed since the snapshot, with the old "
+"and new value side by side. Only contents (values and formulas) are "
+"compared, not formatting."
+msgstr ""
+"Zellweiser Vergleich dieses Schnappschusses mit dem aktuellen Stand der "
+"Tabelle: welche Zellen seit dem Schnappschuss hinzugefügt, geändert oder "
+"entfernt wurden, mit altem und neuem Wert nebeneinander. Verglichen werden "
+"nur Inhalte (Werte und Formeln), nicht die Formatierung."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__cells_added
 msgid "Cells Added"
-msgstr "Zellen hinzugefuegt"
+msgstr "Hinzugefügte Zellen"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__cells_changed
 msgid "Cells Changed"
-msgstr "Zellen geaendert"
+msgstr "Geänderte Zellen"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__cells_removed
 msgid "Cells Removed"
-msgstr "Zellen entfernt"
+msgstr "Entfernte Zellen"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Changed"
+msgstr "Geändert"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
+msgid ""
+"Compares this snapshot (Version column) with the spreadsheet as it is now "
+"(Current column). Only contents (values and formulas) are compared, not "
+"formatting."
+msgstr ""
+"Vergleicht diesen Schnappschuss (Spalte Version) mit dem aktuellen Stand der"
+" Tabelle (Spalte Aktuell). Verglichen werden nur Inhalte (Werte und "
+"Formeln), nicht die Formatierung."
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
 msgid "Created"
 msgstr "Erstellt"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__created_by_id
+msgid "Created By"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Current"
+msgstr "Aktuell"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__name
+msgid ""
+"Human label for this snapshot; auto-filled as \"Snapshot <timestamp>\" when "
+"left blank."
+msgstr ""
+"Lesbare Bezeichnung für diesen Schnappschuss; bleibt das Feld leer, wird "
+"automatisch \"Schnappschuss <Zeitstempel>\" eingetragen."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__name
+msgid "Name"
+msgstr "Name"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_form_versions_button
 msgid "New Snapshot"
 msgstr "Neuer Schnappschuss"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "No cell-level changes detected."
+msgstr "Keine Änderungen auf Zellebene gefunden."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__note
+msgid "Note"
+msgstr "Notiz"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "Notes"
 msgstr "Notizen"
 
 #. module: spreadsheet_version_history_oca
-msgid "Optional label (e.g., "
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__cells_removed
+msgid ""
+"Number of cells that had content in this snapshot but are empty in the "
+"spreadsheet now."
 msgstr ""
+"Anzahl der Zellen, die in diesem Schnappschuss Inhalt hatten, in der Tabelle"
+" jetzt aber leer sind."
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__cells_added
+msgid ""
+"Number of cells that have content in the spreadsheet now but were empty in "
+"this snapshot."
+msgstr ""
+"Anzahl der Zellen, die in der Tabelle jetzt Inhalt haben, in diesem "
+"Schnappschuss aber leer waren."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__cells_changed
+msgid ""
+"Number of cells whose content differs between this snapshot and the "
+"spreadsheet now."
+msgstr ""
+"Anzahl der Zellen, deren Inhalt sich zwischen diesem Schnappschuss und der "
+"aktuellen Tabelle unterscheidet."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_count
+msgid "Number of snapshots captured for this spreadsheet."
+msgstr "Anzahl der für diese Tabelle erstellten Schnappschüsse."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__version_label
+msgid "Optional label (e.g., 'v1.0', 'before Q1 update')."
+msgstr "Optionale Bezeichnung (z. B. 'v1.0', 'vor dem Q1-Update')."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Removed"
+msgstr "Entfernt"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
 msgid "Restore"
 msgstr "Wiederherstellen"
 
 #. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "Restore This Version"
 msgstr "Diese Version wiederherstellen"
 
 #. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
+msgid "Restore this version? Current state will be overwritten."
+msgstr ""
+"Diese Version wiederherstellen? Der aktuelle Stand wird überschrieben."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Sheet:"
+msgstr "Blatt:"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
 msgid "Size"
-msgstr ""
+msgstr "Größe"
 
 #. module: spreadsheet_version_history_oca
-msgid "Snapshot %s"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__size_bytes
+msgid "Size Bytes"
+msgstr "Größe (Bytes)"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Snapshot %(ts)s"
+msgstr "Schnappschuss %(ts)s"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "Snapshot '%(version)s' captured for '%(sheet)s'."
+msgstr "Schnappschuss „%(version)s“ für „%(sheet)s“ erstellt."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "Snapshot Created"
+msgstr "Schnappschuss erstellt"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_data
 msgid "Snapshot Data"
-msgstr ""
+msgstr "Schnappschussdaten"
 
 #. module: spreadsheet_version_history_oca
-msgid "Spreadsheet "
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_ids
+msgid ""
+"Snapshots captured for this spreadsheet, newest first. Open one to compare "
+"it with the current content or restore it."
 msgstr ""
+"Für diese Tabelle erstellte Schnappschüsse, neueste zuerst. Öffnen Sie "
+"einen, um ihn mit dem aktuellen Inhalt zu vergleichen oder "
+"wiederherzustellen."
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"Some cells of the sheet(s) %(sheets)s are stored in a compressed form that "
+"this screen could not fully expand, so they are shown as stored and may be "
+"listed as changed even when their value is the same. Open the spreadsheet to"
+" check those cells."
+msgstr ""
+"Einige Zellen (Blatt: %(sheets)s) sind in einer komprimierten Form "
+"gespeichert, die diese Ansicht nicht vollständig entpacken kann. Sie werden "
+"so angezeigt, wie sie gespeichert sind, und können als geändert erscheinen, "
+"obwohl ihr Wert gleich geblieben ist. Öffnen Sie die Tabelle, um diese "
+"Zellen zu prüfen."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model,name:spreadsheet_version_history_oca.model_spreadsheet_spreadsheet
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_id
+msgid "Spreadsheet"
+msgstr "Tabelle"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Spreadsheet '%(sheet)s' restored to version '%(version)s'."
+msgstr "Tabelle „%(sheet)s“ wurde auf Version „%(version)s“ zurückgesetzt."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model,name:spreadsheet_version_history_oca.model_spreadsheet_version
+msgid "Spreadsheet Version Snapshot"
+msgstr "Schnappschuss einer Tabellenversion"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Status"
+msgstr "Status"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__size_bytes
+msgid ""
+"Storage size of this snapshot in bytes (raw JSON before base64 encoding)."
+msgstr ""
+"Speichergröße dieses Schnappschusses in Bytes (rohes JSON vor der "
+"Base64-Kodierung)."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Summary:"
+msgstr "Zusammenfassung:"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"The captured content of a snapshot and the user who captured it cannot be "
+"changed. They record the spreadsheet as it was at that moment, and restoring"
+" the snapshot must bring back exactly that. You can still edit its name, "
+"label and note; to record the spreadsheet as it is now, use 'New Snapshot' "
+"on the spreadsheet."
+msgstr ""
+"Der erfasste Inhalt eines Schnappschusses und der Benutzer, der ihn erfasst "
+"hat, können nicht geändert werden. Sie halten die Tabelle so fest, wie sie "
+"in diesem Moment war, und das Wiederherstellen des Schnappschusses muss "
+"genau diesen Stand zurückbringen. Name, Bezeichnung und Notiz können Sie "
+"weiterhin bearbeiten; um die Tabelle in ihrem jetzigen Stand festzuhalten, "
+"verwenden Sie „Neuer Schnappschuss“ in der Tabelle."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_data
+msgid ""
+"The full content of the spreadsheet at the moment the snapshot was captured."
+" It cannot be changed afterwards; restoring the snapshot writes it back to "
+"the spreadsheet."
+msgstr ""
+"Der vollständige Inhalt der Tabelle zu dem Zeitpunkt, an dem der "
+"Schnappschuss erstellt wurde. Er kann danach nicht mehr geändert werden; "
+"beim Wiederherstellen des Schnappschusses wird er in die Tabelle "
+"zurückgeschrieben."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_id
+msgid "The spreadsheet this snapshot belongs to."
+msgstr "Die Tabelle, zu der dieser Schnappschuss gehört."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"The visual diff could not be built for this snapshot. The snapshot itself is"
+" intact and can still be restored. If this keeps happening, send the server "
+"log to your administrator."
+msgstr ""
+"Der visuelle Vergleich konnte für diesen Schnappschuss nicht erstellt "
+"werden. Der Schnappschuss selbst ist intakt und kann weiterhin "
+"wiederhergestellt werden. Wenn das wiederholt auftritt, senden Sie das "
+"Serverprotokoll an Ihren Administrator."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"This snapshot's stored data is unreadable (corrupted or truncated), so no "
+"comparison can be shown and it cannot be restored. A spreadsheet manager can"
+" delete it; use 'New Snapshot' on the spreadsheet to capture a fresh one."
+msgstr ""
+"Die gespeicherten Daten dieses Schnappschusses sind unlesbar (beschädigt "
+"oder abgeschnitten), daher kann kein Vergleich angezeigt und der "
+"Schnappschuss nicht wiederhergestellt werden. Ein Tabellen-Manager kann ihn "
+"löschen; verwenden Sie „Neuer Schnappschuss“ in der Tabelle, um einen neuen "
+"zu erstellen."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "This spreadsheet has no content to snapshot yet — add some data first."
+msgstr ""
+"Diese Tabelle hat noch keinen Inhalt für einen Schnappschuss — fügen Sie "
+"zuerst Daten hinzu."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"This spreadsheet is too large to compare every cell on this screen, so some "
+"cells of the sheet(s) %(sheets)s are shown as stored and may be listed as "
+"changed even when their value is the same. Open the spreadsheet to check "
+"those cells."
+msgstr ""
+"Diese Tabelle ist zu groß, um hier jede Zelle zu vergleichen. Daher werden "
+"einige Zellen (Blatt: %(sheets)s) so angezeigt, wie sie gespeichert sind, "
+"und können als geändert erscheinen, obwohl ihr Wert gleich geblieben ist. "
+"Öffnen Sie die Tabelle, um diese Zellen zu prüfen."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__created_by_id
+msgid ""
+"User who captured this snapshot. Set automatically when the snapshot is "
+"created and cannot be changed."
+msgstr ""
+"Benutzer, der diesen Schnappschuss erstellt hat. Wird beim Erstellen des "
+"Schnappschusses automatisch gesetzt und kann nicht geändert werden."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Version"
+msgstr "Version"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_count
+msgid "Version Count"
+msgstr "Anzahl Versionen"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__version_label
+msgid "Version Label"
+msgstr "Versionsbezeichnung"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
 msgid "Version Restored"
-msgstr ""
+msgstr "Version wiederhergestellt"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_ids
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_form_versions_button
 msgid "Versions"
 msgstr "Versionen"
 
 #. module: spreadsheet_version_history_oca
-msgid "Versions - %s"
-msgstr ""
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "Versions - %(name)s"
+msgstr "Versionen - %(name)s"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__diff_html
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "Visual Diff vs Current"
-msgstr ""
+msgstr "Visueller Vergleich mit aktuellem Stand"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__note
 msgid "What changed in this version."
-msgstr ""
+msgstr "Was sich in dieser Version geändert hat."
 
 #. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "What changed in this version..."
-msgstr ""
+msgstr "Was hat sich in dieser Version geändert..."
 
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"You cannot restore '%(version)s' because you may view spreadsheet %(sheet)s "
+"but not edit it. Restoring replaces the spreadsheet's current content with "
+"this snapshot, so only its owner, its contributors and spreadsheet managers "
+"may do it. Ask the owner to restore it, or to add you as a contributor."
+msgstr ""
+"Sie können „%(version)s“ nicht wiederherstellen, weil Sie die Tabelle "
+"%(sheet)s zwar ansehen, aber nicht bearbeiten dürfen. Das Wiederherstellen "
+"ersetzt den aktuellen Inhalt der Tabelle durch diesen Schnappschuss, daher "
+"dürfen das nur ihr Eigentümer, ihre Mitwirkenden und Tabellen-Manager. "
+"Bitten Sie den Eigentümer, ihn wiederherzustellen oder Sie als Mitwirkenden "
+"hinzuzufügen."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"You cannot save a snapshot on spreadsheet %(spreadsheet)s because you are "
+"not allowed to edit that spreadsheet. A snapshot can be restored over the "
+"spreadsheet's content, so only its owner, its contributors and spreadsheet "
+"managers may create a snapshot on it or move one to it. Ask the owner to add"
+" you as a contributor, or use a spreadsheet you can edit."
+msgstr ""
+"Sie können keinen Schnappschuss für die Tabelle %(spreadsheet)s speichern, "
+"weil Sie diese Tabelle nicht bearbeiten dürfen. Ein Schnappschuss kann über "
+"den Inhalt der Tabelle wiederhergestellt werden, daher dürfen nur ihr "
+"Eigentümer, ihre Mitwirkenden und Tabellen-Manager einen Schnappschuss für "
+"sie erstellen oder einen dorthin verschieben. Bitten Sie den Eigentümer, Sie"
+" als Mitwirkenden hinzuzufügen, oder verwenden Sie eine Tabelle, die Sie "
+"bearbeiten können."

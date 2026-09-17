@@ -1,12 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_email_report_oca
+# 	* spreadsheet_email_report_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"POT-Creation-Date: 2026-09-17 00:00+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Dutch (nl)\n"
 "Language: nl\n"
@@ -16,62 +17,537 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_email_report_oca
-msgid "Comma-separated additional email addresses."
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"%(owner)s cannot open the spreadsheet '%(spreadsheet)s', so they cannot own "
+"the scheduled report '%(report)s'. Reports are sent with their owner's "
+"access rights, and emailing a workbook the owner may not read would leak "
+"data. Share the spreadsheet with %(owner)s (as reader or contributor) or "
+"choose another owner."
 msgstr ""
+"%(owner)s kan de spreadsheet '%(spreadsheet)s' niet openen en kan daarom "
+"geen eigenaar zijn van het geplande rapport '%(report)s'. Rapporten worden "
+"verzonden met de toegangsrechten van hun eigenaar, en een werkmap mailen die"
+" de eigenaar niet mag lezen zou gegevens lekken. Deel de spreadsheet met "
+"%(owner)s (als lezer of bijdrager) of kies een andere eigenaar."
 
 #. module: spreadsheet_email_report_oca
-msgid "Default Email Report Format"
+#: model:mail.template,body_html:spreadsheet_email_report_oca.spreadsheet_email_report_template
+msgid ""
+"<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n"
+"    <div style=\"background-color: #875a7b; color: white; padding: 16px 24px;\">\n"
+"        <h2 style=\"margin: 0;\" t-out=\"object.spreadsheet_id.name or ''\">Weekly Sales</h2>\n"
+"    </div>\n"
+"    <div style=\"padding: 24px; border: 1px solid #ddd; border-top: none;\">\n"
+"        <p>Hello,</p>\n"
+"        <p>Please find attached the scheduled report <strong t-out=\"object.name or ''\">Weekly Sales Dashboard</strong>.</p>\n"
+"        <p>Generated on: <t t-out=\"format_datetime(ctx.get('report_generated_at') or object.last_sent or object.create_date, tz=object.owner_id.tz)\">2026-01-05 08:00:00</t></p>\n"
+"        <p style=\"color: #666; font-size: 12px;\">\n"
+"            This is an automated report sent by your Odoo instance.\n"
+"        </p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
 msgstr ""
+"<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;\">\n"
+"    <div style=\"background-color: #875a7b; color: white; padding: 16px 24px;\">\n"
+"        <h2 style=\"margin: 0;\" t-out=\"object.spreadsheet_id.name or ''\">Wekelijkse verkoop</h2>\n"
+"    </div>\n"
+"    <div style=\"padding: 24px; border: 1px solid #ddd; border-top: none;\">\n"
+"        <p>Hallo,</p>\n"
+"        <p>In de bijlage vind je het geplande rapport <strong t-out=\"object.name or ''\">Wekelijks verkoopdashboard</strong>.</p>\n"
+"        <p>Gegenereerd op: <t t-out=\"format_datetime(ctx.get('report_generated_at') or object.last_sent or object.create_date, tz=object.owner_id.tz)\">2026-01-05 08:00:00</t></p>\n"
+"        <p style=\"color: #666; font-size: 12px;\">\n"
+"            Dit is een automatisch rapport, verzonden door je Odoo-omgeving.\n"
+"        </p>\n"
+"    </div>\n"
+"</div>\n"
+"            "
 
 #. module: spreadsheet_email_report_oca
-msgid "Default attachment format for scheduled email reports."
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__name
+msgid ""
+"A label for this scheduled report, e.g. 'Weekly Sales Dashboard'. It appears"
+" in the email subject."
 msgstr ""
+"Een naam voor dit geplande rapport, bijv. 'Wekelijks verkoopdashboard'. Deze"
+" verschijnt in het onderwerp van de e-mail."
 
 #. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_needaction
+msgid "Action Needed"
+msgstr "Actie gevraagd"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__active
+msgid "Active"
+msgstr "Actief"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__extra_emails
+msgid ""
+"Additional email addresses without a contact record, separated by commas. "
+"Example: finance@example.com, ceo@example.com"
+msgstr ""
+"Extra e-mailadressen zonder contactpersoon, gescheiden door komma's. "
+"Voorbeeld: finance@example.com, ceo@example.com"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_attachment_count
+msgid "Attachment Count"
+msgstr "Aantal bijlagen"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__format
+msgid ""
+"Attachment format. The scheduler runs server-side with no o-spreadsheet JS "
+"engine, so it can only export the workbook as its native JSON; open the file"
+" in the Spreadsheets app to view it. (The old 'Excel (XLSX)' option was "
+"mislabelled — it attached JSON with a .xlsx extension that Excel could not "
+"open.)"
+msgstr ""
+"Formaat van de bijlage. De planner draait op de server zonder de "
+"o-spreadsheet JS-engine en kan de werkmap dus alleen als eigen JSON "
+"exporteren; open het bestand in de Spreadsheets-app om het te bekijken. (De "
+"oude optie 'Excel (XLSX)' was verkeerd benoemd — die voegde JSON toe met een"
+" .xlsx-extensie die Excel niet kon openen.)"
+
+#. module: spreadsheet_email_report_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_email_report_oca.email_report_act_window
+msgid "Create your first scheduled email report"
+msgstr "Maak je eerste geplande e-mailrapport aan"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__create_uid
+msgid "Created by"
+msgstr "Aangemaakt door"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__create_date
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields.selection,name:spreadsheet_email_report_oca.selection__spreadsheet_email_report__interval_type__days
+msgid "Days"
+msgstr "Dagen"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__display_name
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.actions.act_window,name:spreadsheet_email_report_oca.email_report_act_window
+#: model:ir.ui.menu,name:spreadsheet_email_report_oca.menu_email_reports
 msgid "Email Reports"
-msgstr "E-mail Rapporten"
+msgstr "E-mailrapporten"
 
 #. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__extra_emails
 msgid "Extra Emails"
-msgstr ""
+msgstr "Extra e-mailadressen"
 
 #. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_follower_ids
+msgid "Followers"
+msgstr "Volgers"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Volgers (Partners)"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__format
+msgid "Format"
+msgstr "Formaat"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__has_message
+msgid "Has Message"
+msgstr "Heeft bericht"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__interval_number
+msgid ""
+"How often to resend, combined with the interval unit; must be 1 or more. "
+"Example: 2 + Weeks = every two weeks."
+msgstr ""
+"Hoe vaak opnieuw verzonden wordt, samen met de intervaleenheid; minimaal 1. "
+"Voorbeeld: 2 + Weken = om de twee weken."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Indien aangevinkt vragen nieuwe berichten je aandacht."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Indien aangevinkt hebben sommige berichten een leveringsfout."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__interval_number
+msgid "Interval Number"
+msgstr "Interval"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__interval_type
+msgid "Interval Type"
+msgstr "Intervaleenheid"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_is_follower
+msgid "Is Follower"
+msgstr "Is een volger"
+
+#. module: spreadsheet_email_report_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_email_report_oca.email_report_act_window
+msgid ""
+"It emails a spreadsheet exported as JSON to your chosen\n"
+"                recipients on a recurring schedule."
+msgstr ""
+"Het mailt een als JSON geëxporteerde spreadsheet volgens een\n"
+"                terugkerende planning naar de ontvangers die je kiest."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__last_sent
+msgid "Last Sent"
+msgstr "Laatst verzonden"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__write_uid
+msgid "Last Updated by"
+msgstr "Laatst bijgewerkt door"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__write_date
+msgid "Last Updated on"
+msgstr "Laatst bijgewerkt op"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_has_error
+msgid "Message Delivery error"
+msgstr "Bericht afleverfout"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_ids
+msgid "Messages"
+msgstr "Berichten"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields.selection,name:spreadsheet_email_report_oca.selection__spreadsheet_email_report__interval_type__months
+msgid "Months"
+msgstr "Maanden"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__name
+msgid "Name"
+msgstr "Naam"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__next_send
+msgid "Next Send"
+msgstr "Volgende verzending"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Aantal acties"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_has_error_counter
+msgid "Number of errors"
+msgstr "Aantal fouten"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Aantal berichten die actie vereisen"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Aantal berichten met leveringsfout"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__owner_id
+msgid "Owner"
+msgstr "Eigenaar"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__recipient_ids
+msgid ""
+"Partners who receive the email; only partners that have an email address are"
+" used. Add addresses without a partner via Extra Emails."
+msgstr ""
+"Relaties die de e-mail ontvangen; alleen relaties met een e-mailadres worden"
+" gebruikt. Voeg adressen zonder relatie toe via Extra e-mailadressen."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__send_count
+msgid ""
+"Read-only counter of how many times this report has been sent successfully."
+msgstr "Alleen-lezen teller van hoe vaak dit rapport succesvol is verzonden."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__last_sent
+msgid ""
+"Read-only. When the last successful send happened. Empty until the first "
+"email goes out."
+msgstr ""
+"Alleen-lezen. Wanneer de laatste geslaagde verzending plaatsvond. Leeg "
+"totdat de eerste e-mail is verstuurd."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__recipient_ids
+#: model_terms:ir.ui.view,arch_db:spreadsheet_email_report_oca.email_report_view_form
 msgid "Recipients"
 msgstr "Ontvangers"
 
 #. module: spreadsheet_email_report_oca
-msgid "Report "
-msgstr ""
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid "Report '%(report)s' has been sent to recipients."
+msgstr "Rapport '%(report)s' is naar de ontvangers verzonden."
 
 #. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"Report '%(report)s' has invalid addresses in Extra Emails: %(addresses)s. "
+"Mail to a malformed address is never delivered, so those people would "
+"silently miss the report. Separate addresses with commas and write each one "
+"as name@example.com."
+msgstr ""
+"Rapport '%(report)s' bevat ongeldige adressen in Extra e-mailadressen: "
+"%(addresses)s. E-mail naar een onjuist adres wordt nooit bezorgd, dus die "
+"personen zouden het rapport ongemerkt missen. Scheid adressen met komma's en"
+" schrijf elk adres als naam@example.com."
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"Report '%(report)s' was not sent: no recipient has a valid email address, or"
+" the mail template is missing. Add an email to a recipient partner or fill "
+"Extra Emails."
+msgstr ""
+"Rapport '%(report)s' is niet verzonden: geen enkele ontvanger heeft een "
+"geldig e-mailadres, of de e-mailsjabloon ontbreekt. Voeg een e-mailadres toe"
+" aan een ontvanger of vul Extra e-mailadressen in."
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid "Report Not Sent"
+msgstr "Rapport niet verzonden"
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
 msgid "Report Sent"
-msgstr ""
+msgstr "Rapport verzonden"
 
 #. module: spreadsheet_email_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_email_report_oca.email_report_view_form
 msgid "Schedule"
-msgstr ""
+msgstr "Planning"
 
 #. module: spreadsheet_email_report_oca
+#: model:ir.model,name:spreadsheet_email_report_oca.model_spreadsheet_email_report
+msgid "Scheduled Spreadsheet Email Report"
+msgstr "Gepland spreadsheet-e-mailrapport"
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid "Scheduled send skipped. %(reason)s Next attempt: %(next_send)s (UTC)."
+msgstr ""
+"Geplande verzending overgeslagen. %(reason)s Volgende poging: %(next_send)s "
+"(UTC)."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__send_count
+msgid "Send Count"
+msgstr "Aantal verzendingen"
+
+#. module: spreadsheet_email_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_email_report_oca.email_report_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_email_report_oca.email_report_view_list
 msgid "Send Now"
-msgstr "Nu Verzenden"
+msgstr "Nu verzenden"
 
 #. module: spreadsheet_email_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_email_report_oca.email_report_view_form
 msgid "Source"
-msgstr ""
+msgstr "Bron"
 
 #. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,field_description:spreadsheet_email_report_oca.field_spreadsheet_email_report__spreadsheet_id
 msgid "Spreadsheet"
 msgstr "Spreadsheet"
 
 #. module: spreadsheet_email_report_oca
+#: model:mail.template,name:spreadsheet_email_report_oca.spreadsheet_email_report_template
 msgid "Spreadsheet Scheduled Report"
-msgstr ""
+msgstr "Gepland spreadsheetrapport"
 
 #. module: spreadsheet_email_report_oca
+#: model:ir.model.fields.selection,name:spreadsheet_email_report_oca.selection__spreadsheet_email_report__format__json
+msgid "Spreadsheet data (JSON)"
+msgstr "Spreadsheetgegevens (JSON)"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.actions.server,name:spreadsheet_email_report_oca.ir_cron_send_email_reports_ir_actions_server
 msgid "Spreadsheet: Send Scheduled Email Reports"
-msgstr ""
+msgstr "Spreadsheet: geplande e-mailrapporten verzenden"
 
 #. module: spreadsheet_email_report_oca
-msgid "email1@example.com, email2@example.com"
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"The interval of report '%(report)s' must be at least 1 (it is %(value)s). "
+"With 0 or a negative number the report would be emailed again on every "
+"hourly scheduler run. Enter 1 or more, e.g. 1 + Weeks for a weekly email."
 msgstr ""
+"Het interval van rapport '%(report)s' moet minimaal 1 zijn (nu %(value)s). "
+"Met 0 of een negatief getal zou het rapport bij elke uurlijkse run van de "
+"planner opnieuw worden gemaild. Vul 1 of meer in, bijv. 1 + Weken voor een "
+"wekelijkse e-mail."
 
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"The owner %(owner)s can no longer open the spreadsheet '%(spreadsheet)s', so"
+" the workbook was not emailed (sending it would leak data the owner may not "
+"see). Share the spreadsheet with %(owner)s again, or let a Spreadsheet "
+"manager assign another owner."
+msgstr ""
+"De eigenaar %(owner)s kan de spreadsheet '%(spreadsheet)s' niet meer openen,"
+" dus de werkmap is niet gemaild (verzenden zou gegevens lekken die de "
+"eigenaar niet mag zien). Deel de spreadsheet opnieuw met %(owner)s, of laat "
+"een Spreadsheet-manager een andere eigenaar toewijzen."
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"The owner %(owner)s is archived, so the report no longer runs on behalf of "
+"an active user. A Spreadsheet manager can assign an active owner who can "
+"open the spreadsheet."
+msgstr ""
+"De eigenaar %(owner)s is gearchiveerd, dus het rapport draait niet langer "
+"namens een actieve gebruiker. Een Spreadsheet-manager kan een actieve "
+"eigenaar toewijzen die de spreadsheet kan openen."
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"The report has no owner, so nobody's access rights can be checked. A "
+"Spreadsheet manager must set an owner who can open the spreadsheet."
+msgstr ""
+"Het rapport heeft geen eigenaar, dus er kunnen geen toegangsrechten worden "
+"gecontroleerd. Een Spreadsheet-manager moet een eigenaar instellen die de "
+"spreadsheet kan openen."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__spreadsheet_id
+msgid ""
+"The spreadsheet whose data is exported as JSON and attached to each email. "
+"You can only pick a spreadsheet you are allowed to open."
+msgstr ""
+"De spreadsheet waarvan de gegevens als JSON worden geëxporteerd en aan elke "
+"e-mail worden toegevoegd. Je kunt alleen een spreadsheet kiezen die je mag "
+"openen."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__interval_type
+msgid "The unit for the interval. Example: 2 + Weeks = every two weeks."
+msgstr "De eenheid van het interval. Voorbeeld: 2 + Weken = om de twee weken."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__owner_id
+msgid ""
+"The user this report is sent on behalf of. Every send checks that the owner "
+"can still open the spreadsheet; if not, the send is skipped and a note is "
+"posted here. Only the owner and Spreadsheet managers can see the report, and"
+" only managers can hand it to another user."
+msgstr ""
+"De gebruiker namens wie dit rapport wordt verzonden. Bij elke verzending "
+"wordt gecontroleerd of de eigenaar de spreadsheet nog kan openen; zo niet, "
+"dan wordt de verzending overgeslagen en hier een notitie geplaatst. Alleen "
+"de eigenaar en Spreadsheet-managers zien het rapport, en alleen managers "
+"kunnen het aan een andere gebruiker overdragen."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__active
+msgid ""
+"Untick to pause this schedule without deleting it; the cron ignores inactive"
+" reports."
+msgstr ""
+"Vink uit om deze planning te pauzeren zonder haar te verwijderen; de "
+"geplande taak slaat inactieve rapporten over."
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields.selection,name:spreadsheet_email_report_oca.selection__spreadsheet_email_report__interval_type__weeks
+msgid "Weeks"
+msgstr "Weken"
+
+#. module: spreadsheet_email_report_oca
+#: model:ir.model.fields,help:spreadsheet_email_report_oca.field_spreadsheet_email_report__next_send
+msgid ""
+"When the next automatic send is due. Editable: set it in the future to "
+"pause, or to now to send on the next hourly cron run."
+msgstr ""
+"Wanneer de volgende automatische verzending gepland staat. Aanpasbaar: zet "
+"een datum in de toekomst om te pauzeren, of nu om bij de volgende uurlijkse "
+"run te verzenden."
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"You cannot hand a scheduled email report to another user. Reports are sent "
+"with their owner's access rights, so changing the owner could email data you"
+" are not allowed to see. Keep yourself as owner, or ask a Spreadsheet "
+"manager to reassign the report."
+msgstr ""
+"Je kunt een gepland e-mailrapport niet aan een andere gebruiker overdragen. "
+"Rapporten worden verzonden met de toegangsrechten van hun eigenaar, dus een "
+"andere eigenaar kan gegevens mailen die jij niet mag zien. Blijf zelf "
+"eigenaar, of vraag een Spreadsheet-manager om het rapport over te dragen."
+
+#. module: spreadsheet_email_report_oca
+#. odoo-python
+#: code:addons/spreadsheet_email_report_oca/models/email_report.py:0
+msgid ""
+"You cannot schedule an email report for spreadsheet #%(spreadsheet_id)s "
+"because you are not allowed to open it. The report attaches the complete "
+"workbook, so it may only use spreadsheets you can read. Ask the spreadsheet "
+"owner to add you as a reader or contributor, or pick another spreadsheet."
+msgstr ""
+"Je kunt geen e-mailrapport plannen voor spreadsheet #%(spreadsheet_id)s, "
+"omdat je die niet mag openen. Het rapport voegt de volledige werkmap toe en "
+"mag dus alleen spreadsheets gebruiken die je kunt lezen. Vraag de eigenaar "
+"van de spreadsheet om je als lezer of bijdrager toe te voegen, of kies een "
+"andere spreadsheet."
+
+#. module: spreadsheet_email_report_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_email_report_oca.email_report_view_form
+msgid "email1@example.com, email2@example.com"
+msgstr "email1@example.com, email2@example.com"
+
+#. module: spreadsheet_email_report_oca
+#: model:mail.template,subject:spreadsheet_email_report_oca.spreadsheet_email_report_template
+msgid "{{ object.name }} - {{ object.spreadsheet_id.name }}"
+msgstr "{{ object.name }} - {{ object.spreadsheet_id.name }}"

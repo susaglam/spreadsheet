@@ -4,17 +4,17 @@
 {
     "name": "Spreadsheet Vendor Scorecard OCA",
     "summary": "Supplier scorecard: delivery, lead time and quality metrics",
-    "version": "saas~19.4.1.0.1",
+    "version": "saas~19.4.1.0.2",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
     "depends": [
         "spreadsheet_dashboard",
-        "spreadsheet_oca",
         "purchase_stock",
     ],
     "data": [
         "security/ir.access.csv",
+        "data/ir_cron.xml",
         "data/dashboards.xml",
         "views/vendor_scorecard_views.xml",
     ],

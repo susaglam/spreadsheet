@@ -8,27 +8,29 @@
         <field name="arch" type="xml">
             <form>
                 <div class="alert alert-info" role="alert">
-                    <strong>📦 Ornek Veri Yukleyici</strong><br />
-                    Secilen modullere demo kayitlari ekler. Bu kayitlar "ORNEK" prefix'i ile baslar, daha sonra silebilirsiniz.
+                    <p class="fw-bold mb-1">📦 Sample Data Loader</p>
+                    <p
+                        class="mb-0"
+                    >Adds demo records to the spreadsheet modules you select. Every record name starts with "SAMPLE", so you can find and delete them later.</p>
                 </div>
                 <group>
                     <field name="what_to_load" />
                 </group>
                 <footer>
                     <button
-                        string="Yukle"
+                        string="Load"
                         name="action_load"
                         type="object"
                         class="btn-primary"
                     />
-                    <button string="Iptal" class="btn-secondary" special="cancel" />
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
                 </footer>
             </form>
         </field>
     </record>
 
     <record id="sample_data_loader_action" model="ir.actions.act_window">
-        <field name="name">📦 Ornek Veri Yukle</field>
+        <field name="name">📦 Load Sample Data</field>
         <field name="res_model">spreadsheet.sample.data.loader</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>

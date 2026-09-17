@@ -771,6 +771,7 @@ msgstr ""
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
 #: model:ir.module.category,name:spreadsheet_oca.module_category_spreedsheet
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.res_config_settings_view_form
 msgid "Spreadsheet"
 msgstr ""
 

@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-17 00:38+0000\n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"POT-Creation-Date: 2026-09-17 00:00+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,58 +16,259 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_multicompany_oca
-msgid "Accounts used for inter-company transactions. "
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "%(count)s account(s) you cannot see"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "%(count)s company(ies) you cannot see"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__name
+msgid "A label for this consolidation setup. Example: Group Consolidation Q1."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_multicompany_oca.consolidation_profile_act_window
+msgid ""
+"A profile selects the companies to consolidate, the elimination\n"
+"                accounts for inter-company balances, and the target currency,\n"
+"                then generates a consolidated spreadsheet."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Account"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__elimination_account_ids
+msgid ""
+"Accounts used for inter-company transactions. The report row with the code "
+"of a selected account is cancelled in the Eliminations column for all "
+"consolidated companies together; the code is looked up in the chart of "
+"accounts of each consolidated company. Example: select the inter-company "
+"receivable account 1100 of one group company, and the 1100 balances of every"
+" consolidated company net out to zero."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__active
+msgid "Active"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__currency_id
+msgid ""
+"All company balances are converted to this currency before consolidating. "
+"Example: set EUR to report a mixed EUR/USD group in euros."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Code"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "Companies"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__company_ids
 msgid "Companies to Consolidate"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
-msgid "Consolidated Report - %s"
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Consolidated"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid "Consolidated Report - %(name)s"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.ui.menu,name:spreadsheet_multicompany_oca.menu_consolidation_profiles
 msgid "Consolidation"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__currency_id
 msgid "Consolidation Currency"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.actions.act_window,name:spreadsheet_multicompany_oca.consolidation_profile_act_window
 msgid "Consolidation Profiles"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Consolidation profile '%(profile)s' has no company whose balances you can "
+"read, so there is nothing to consolidate. %(reasons)s"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_multicompany_oca.consolidation_profile_act_window
+msgid "Create your first consolidation profile"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "Eliminations"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_list
 msgid "Generate"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "Generate Consolidated Report"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__id
+msgid "ID"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__elimination_account_ids
 msgid "Inter-Company Elimination Accounts"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
-msgid "Inter-Company Partners"
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__write_uid
+msgid "Last Updated by"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
-msgid "Partner records representing inter-company entities. "
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__write_date
+msgid "Last Updated on"
 msgstr ""
 
 #. module: spreadsheet_multicompany_oca
+#: model:ir.model,name:spreadsheet_multicompany_oca.model_spreadsheet_consolidation_profile
+msgid "Multi-Company Consolidation Profile"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,field_description:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__name
+msgid "Name"
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Not included: %(companies)s. These companies are archived, so their journal "
+"items cannot be read and their balances are missing from this consolidation."
+" Restore the companies, or remove them from the profile, then generate the "
+"report again."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Not included: %(companies)s. Your access rights do not allow reading the "
+"journal items of these companies, so their balances are missing from this "
+"consolidation. Ask an administrator for read access to journal items in "
+"these companies (at least the 'Invoicing' role under Accounting in your user"
+" settings), then generate the report again."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Not included: %(companies)s. Your user has no access to these companies, so "
+"their balances are missing from this consolidation. Ask an administrator to "
+"add them to your allowed companies, then generate the report again."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Nothing was eliminated for %(accounts)s: these elimination accounts do not "
+"belong to any consolidated company. Select the inter-company accounts of the"
+" companies in this profile instead."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"Select the companies to consolidate on the profile, then generate the report"
+" again."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__company_ids
+msgid ""
+"The legal entities whose posted journal items are summed into this "
+"consolidation, one column per company. A branch that is not listed itself is"
+" included in the column of its parent company; list the branch as well to "
+"give it its own column. Example: pick the parent plus each subsidiary in the"
+" group report."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model:ir.model.fields,help:spreadsheet_multicompany_oca.field_spreadsheet_consolidation_profile__active
+msgid ""
+"Uncheck to archive this profile: it disappears from the list but keeps its "
+"settings, so you can restore it later."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"You cannot read journal items, so no balances can be consolidated. Ask an "
+"administrator to give you accounting access (at least the 'Invoicing' role "
+"under Accounting in your user settings), then generate the report again."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#. odoo-python
+#: code:addons/spreadsheet_multicompany_oca/models/consolidation_report.py:0
+msgid ""
+"You need Spreadsheet access to generate a consolidated report. Ask an "
+"administrator to add you to the Spreadsheet users group."
+msgstr ""
+
+#. module: spreadsheet_multicompany_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_multicompany_oca.consolidation_profile_view_form
 msgid "e.g. Group Consolidation Q1"
 msgstr ""
-

@@ -35,11 +35,20 @@ Usage
 2. Create a schedule: select spreadsheet, interval
 3. The hourly cron triggers due refreshes
 4. Connected browser clients receive a live update signal
+5. If one schedule fails, the error is logged and the other due schedules are
+   still processed; the failing schedule stays due and is retried on the next
+   cron run
+
+Spreadsheet users see and manage only the schedules they created. Spreadsheet
+managers see and manage every schedule.
 
 Configuration
 =============
 
 Cron interval (default: hourly) configurable via **Settings** > **Technical** > **Scheduled Actions**.
+
+The interval proposed for new schedules (default: 24 hours) is set in
+**Settings** > **Spreadsheet** > **Scheduled Refresh**.
 
 Dependencies
 ============

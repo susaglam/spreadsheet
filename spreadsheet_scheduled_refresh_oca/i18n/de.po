@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: German (de)\n"
 "Language: de\n"
@@ -16,22 +16,205 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_scheduled_refresh_oca
-msgid "Default Refresh Interval (hours)"
+#: model_terms:ir.actions.act_window,help:spreadsheet_scheduled_refresh_oca.refresh_schedule_act_window
+msgid ""
+"A schedule ties a spreadsheet to an interval. The hourly cron\n"
+"                pushes a live refresh signal to anyone who has that sheet open,\n"
+"                so their data sources reload without a manual refresh."
 msgstr ""
+"Ein Plan verknüpft eine Tabelle mit einem Intervall. Der stündliche Cron-Job"
+" sendet ein Live-Aktualisierungssignal an alle, die diese Tabelle geöffnet "
+"haben, sodass ihre Datenquellen ohne manuelles Aktualisieren neu geladen "
+"werden."
 
 #. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,help:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__name
+msgid ""
+"A short label to recognise this schedule in the list, for example 'Sales "
+"dashboard - every 6 hours'. It only identifies the schedule and does not "
+"change the spreadsheet itself."
+msgstr ""
+"Eine kurze Bezeichnung, um diesen Plan in der Liste wiederzuerkennen, zum "
+"Beispiel 'Verkaufs-Dashboard - alle 6 Stunden'. Sie dient nur zur "
+"Kennzeichnung des Plans und ändert die Tabelle selbst nicht."
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__active
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_scheduled_refresh_oca.refresh_schedule_act_window
+msgid "Create your first refresh schedule"
+msgstr "Legen Sie Ihren ersten Aktualisierungsplan an"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields.selection,name:spreadsheet_scheduled_refresh_oca.selection__spreadsheet_refresh_schedule__interval_type__days
+msgid "Days"
+msgstr "Tage"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_res_config_settings__refresh_default_interval_hours
+msgid "Default Refresh Interval (hours)"
+msgstr "Standard-Aktualisierungsintervall (Stunden)"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_scheduled_refresh_oca.res_config_settings_view_form_spreadsheet_refresh
 msgid "Default refresh interval (hours) for new refresh schedules."
 msgstr ""
+"Standard-Aktualisierungsintervall (in Stunden) für neue "
+"Aktualisierungspläne."
 
 #. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields.selection,name:spreadsheet_scheduled_refresh_oca.selection__spreadsheet_refresh_schedule__interval_type__hours
+msgid "Hours"
+msgstr "Stunden"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,help:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__interval_number
+msgid ""
+"How often to refresh, combined with the interval type. Example: 6 with Hours"
+" refreshes every 6 hours. New schedules start from the default interval set "
+"in Settings > Spreadsheet."
+msgstr ""
+"Wie oft aktualisiert wird, in Kombination mit der Intervallart. Beispiel: 6 "
+"mit Stunden aktualisiert alle 6 Stunden. Neue Pläne beginnen mit dem "
+"Standardintervall aus Einstellungen > Tabelle."
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__interval_number
+msgid "Interval Number"
+msgstr "Intervallanzahl"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__interval_type
+msgid "Interval Type"
+msgstr "Intervallart"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__last_refresh
+msgid "Last Refresh"
+msgstr "Letzte Aktualisierung"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields.selection,name:spreadsheet_scheduled_refresh_oca.selection__spreadsheet_refresh_schedule__interval_type__months
+msgid "Months"
+msgstr "Monate"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__name
+msgid "Name"
+msgstr "Name"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__next_refresh
+msgid "Next Refresh"
+msgstr "Nächste Aktualisierung"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.actions.act_window,name:spreadsheet_scheduled_refresh_oca.refresh_schedule_act_window
+#: model:ir.ui.menu,name:spreadsheet_scheduled_refresh_oca.menu_refresh_schedules
 msgid "Refresh Schedules"
-msgstr "Aktualisierungsplaene"
+msgstr "Aktualisierungspläne"
 
 #. module: spreadsheet_scheduled_refresh_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_scheduled_refresh_oca.res_config_settings_view_form_spreadsheet_refresh
+msgid "Scheduled Refresh"
+msgstr "Geplante Aktualisierung"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model,name:spreadsheet_scheduled_refresh_oca.model_spreadsheet_refresh_schedule
+msgid "Scheduled Spreadsheet Data Refresh"
+msgstr "Geplante Aktualisierung von Tabellendaten"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,field_description:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__spreadsheet_id
 msgid "Spreadsheet"
 msgstr "Tabelle"
 
 #. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.actions.server,name:spreadsheet_scheduled_refresh_oca.ir_cron_refresh_spreadsheets_ir_actions_server
 msgid "Spreadsheet: Scheduled Data Refresh"
-msgstr ""
+msgstr "Tabelle: Geplante Datenaktualisierung"
 
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.constraint,message:spreadsheet_scheduled_refresh_oca.constraint_spreadsheet_refresh_schedule_interval_positive
+msgid ""
+"The refresh interval must be a positive number of intervals (e.g. 6 Hours)."
+msgstr ""
+"Das Aktualisierungsintervall muss eine positive Anzahl von Intervallen sein "
+"(z. B. 6 Stunden)."
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,help:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__spreadsheet_id
+msgid "The spreadsheet whose data sources this schedule refreshes."
+msgstr "Die Tabelle, deren Datenquellen dieser Plan aktualisiert."
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,help:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__active
+msgid ""
+"Uncheck to pause this schedule without deleting it. The cron skips inactive "
+"schedules, so open sheets stop receiving refresh signals until you enable it"
+" again."
+msgstr ""
+"Deaktivieren Sie das Kontrollkästchen, um diesen Plan anzuhalten, ohne ihn "
+"zu löschen. Der Cron-Job überspringt inaktive Pläne, sodass geöffnete "
+"Tabellen keine Aktualisierungssignale mehr erhalten, bis Sie ihn wieder "
+"aktivieren."
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,help:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__interval_type
+msgid "Unit paired with the interval number (hours/days/weeks/months)."
+msgstr "Einheit, die zur Intervallanzahl gehört (Stunden/Tage/Wochen/Monate)."
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields.selection,name:spreadsheet_scheduled_refresh_oca.selection__spreadsheet_refresh_schedule__interval_type__weeks
+msgid "Weeks"
+msgstr "Wochen"
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,help:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__last_refresh
+msgid ""
+"When the cron last pushed a refresh signal. Read-only, set automatically."
+msgstr ""
+"Wann der Cron-Job zuletzt ein Aktualisierungssignal gesendet hat. "
+"Schreibgeschützt, wird automatisch gesetzt."
+
+#. module: spreadsheet_scheduled_refresh_oca
+#: model:ir.model.fields,help:spreadsheet_scheduled_refresh_oca.field_spreadsheet_refresh_schedule__next_refresh
+msgid ""
+"When the cron will next signal open sheets. Computed from the last refresh "
+"plus the interval; read-only."
+msgstr ""
+"Wann der Cron-Job geöffneten Tabellen das nächste Signal sendet. Berechnet "
+"aus der letzten Aktualisierung plus Intervall; schreibgeschützt."

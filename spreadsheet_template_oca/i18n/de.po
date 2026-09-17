@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_template_oca
+# 	* spreadsheet_template_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
+"PO-Revision-Date: 2026-09-17 00:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: German (de)\n"
 "Language: de\n"
@@ -16,106 +16,419 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.constraint,message:spreadsheet_template_oca.constraint_spreadsheet_template_category_name_uniq
+msgid "A category with the same name already exists."
+msgstr "Es gibt bereits eine Kategorie mit diesem Namen."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__active
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_search
 msgid "Archived"
 msgstr "Archiviert"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_from_template_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_to_template_view_form
 msgid "Cancel"
 msgstr "Abbrechen"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__category_id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__category_id
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_search
 msgid "Category"
 msgstr "Kategorie"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_category_view_form
 msgid "Category name..."
-msgstr ""
+msgstr "Kategoriename..."
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__color
+msgid "Color"
+msgstr "Farbe"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template_category__color
+msgid ""
+"Color tag for this category chip, shown wherever the category is displayed."
+msgstr ""
+"Farbe des Kategorie-Etiketts, die überall verwendet wird, wo die Kategorie "
+"angezeigt wird."
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_from_template_view_form
 msgid "Create Spreadsheet"
 msgstr "Tabelle erstellen"
 
 #. module: spreadsheet_template_oca
+#. odoo-python
+#: code:addons/spreadsheet_template_oca/models/spreadsheet_template.py:0
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_from_template
 msgid "Create Spreadsheet from Template"
 msgstr "Tabelle aus Vorlage erstellen"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_category_act_window
+msgid ""
+"Create categories such as Sales, Finance or HR to group your\n"
+"                spreadsheet templates. Categories appear in the template\n"
+"                gallery's search panel so users can filter by theme."
+msgstr ""
+"Legen Sie Kategorien wie Vertrieb, Finanzen oder Personal an, um Ihre "
+"Tabellenvorlagen zu gruppieren. Kategorien erscheinen im Suchbereich der "
+"Vorlagengalerie, damit Benutzer nach Thema filtern können."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__create_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__create_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__create_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+msgid "Delete"
+msgstr "Löschen"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__description
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__description
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__display_name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__display_name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__display_name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_list
 msgid "Edit"
 msgstr "Bearbeiten"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
 msgid "Edit Template"
-msgstr ""
+msgstr "Vorlage bearbeiten"
 
 #. module: spreadsheet_template_oca
-msgid "Finance"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__usage_count
+msgid ""
+"How many spreadsheets have been created from this template; increments "
+"automatically each time someone uses it."
 msgstr ""
+"Wie viele Tabellen aus dieser Vorlage erstellt wurden; erhöht sich "
+"automatisch bei jeder Verwendung."
 
 #. module: spreadsheet_template_oca
-msgid "General"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__id
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__id
+msgid "ID"
+msgstr "ID"
 
 #. module: spreadsheet_template_oca
-msgid "Group By"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
 
 #. module: spreadsheet_template_oca
-msgid "Human Resources"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__write_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__write_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__write_date
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
 
 #. module: spreadsheet_template_oca
-msgid "Operations"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__sequence
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template_category__sequence
+msgid "Lower numbers sort first in lists and the kanban."
 msgstr ""
+"Niedrigere Zahlen werden in Listen und in der Kanban-Ansicht zuerst "
+"angezeigt."
 
 #. module: spreadsheet_template_oca
-msgid "Sales"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__name
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__name
+msgid "Name"
+msgstr "Name"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_from_template__name
+msgid ""
+"Name of the spreadsheet that will be created. Defaults to the template name;"
+" change it to something specific like 'Sales Report - March 2026'."
+msgstr ""
+"Name der Tabelle, die erstellt wird. Standardmäßig der Name der Vorlage; "
+"ändern Sie ihn in etwas Konkretes wie 'Verkaufsbericht - März 2026'."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__name
+msgid ""
+"Name of the template as it will appear in the template gallery. Defaults to "
+"the current spreadsheet name."
+msgstr ""
+"Name der Vorlage, wie er in der Vorlagengalerie erscheint. Standardmäßig der"
+" Name der aktuellen Tabelle."
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_category_act_window
+msgid "No categories yet"
+msgstr "Noch keine Kategorien"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_act_window
+msgid "No templates yet"
+msgstr "Noch keine Vorlagen"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_template_oca.spreadsheet_template_act_window
+msgid ""
+"Open any spreadsheet and choose File &gt; Save as Template to\n"
+"                create your first one (this needs the Template Manager access\n"
+"                right). Templates let your team start new spreadsheets from a\n"
+"                ready-made layout."
+msgstr ""
+"Öffnen Sie eine beliebige Tabelle und wählen Sie Datei &gt; Als Vorlage "
+"speichern, um Ihre erste Vorlage zu erstellen (dafür ist das Zugriffsrecht "
+"Vorlagenverwalter erforderlich). Mit Vorlagen startet Ihr Team neue Tabellen"
+" mit einem fertigen Layout."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__category_id
+msgid ""
+"Optional grouping (Sales, Finance, HR...) shown in the kanban search panel "
+"so users can filter templates by theme."
+msgstr ""
+"Optionale Gruppierung (Vertrieb, Finanzen, Personal...), die im Suchbereich "
+"der Kanban-Ansicht angezeigt wird, damit Benutzer Vorlagen nach Thema "
+"filtern können."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__category_id
+msgid ""
+"Optional grouping (Sales, Finance, HR...) used to organise templates in the "
+"gallery search panel."
+msgstr ""
+"Optionale Gruppierung (Vertrieb, Finanzen, Personal...), um Vorlagen im "
+"Suchbereich der Galerie zu ordnen."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__thumbnail
+msgid "Preview image shown on the template's kanban card."
+msgstr "Vorschaubild, das auf der Kanban-Karte der Vorlage angezeigt wird."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_to_template
+msgid "Save Spreadsheet as Template"
+msgstr "Tabelle als Vorlage speichern"
+
+#. module: spreadsheet_template_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_template_oca/static/src/spreadsheet/bundle/save_as_template.esm.js:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_to_template_view_form
 msgid "Save as Template"
 msgstr "Als Vorlage speichern"
 
 #. module: spreadsheet_template_oca
-msgid "Spreadsheet Template: Full access for managers"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__sequence
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__sequence
+msgid "Sequence"
+msgstr "Reihenfolge"
 
 #. module: spreadsheet_template_oca
-msgid "Spreadsheet Template: Read for all users"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template_category__name
+msgid ""
+"Short grouping label for templates, e.g. 'Sales', 'Finance', 'HR'. Must be "
+"unique."
 msgstr ""
+"Kurze Gruppierungsbezeichnung für Vorlagen, z. B. 'Vertrieb', 'Finanzen', "
+"'Personal'. Muss eindeutig sein."
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__spreadsheet_id
+msgid "Spreadsheet"
+msgstr "Tabelle"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__name
+msgid "Spreadsheet Name"
+msgstr "Tabellenname"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__spreadsheet_raw
+msgid "Spreadsheet Raw"
+msgstr "Tabellen-Rohdaten"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "Tabellenrevision"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_template
+msgid "Spreadsheet Template"
+msgstr "Tabellenvorlage"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model,name:spreadsheet_template_oca.model_spreadsheet_template_category
+msgid "Spreadsheet Template Category"
+msgstr "Kategorie der Tabellenvorlage"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__spreadsheet_binary_data
+msgid "Spreadsheet file"
+msgstr "Tabellendatei"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_from_template__template_id
 msgid "Template"
 msgstr "Vorlage"
 
 #. module: spreadsheet_template_oca
+#: model:ir.actions.act_window,name:spreadsheet_template_oca.spreadsheet_template_category_act_window
+#: model:ir.ui.menu,name:spreadsheet_template_oca.menu_spreadsheet_template_categories
 msgid "Template Categories"
-msgstr ""
+msgstr "Vorlagenkategorien"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__template_count
+msgid "Template Count"
+msgstr "Anzahl Vorlagen"
+
+#. module: spreadsheet_template_oca
+#: model:res.groups,name:spreadsheet_template_oca.group_template_manager
 msgid "Template Manager"
-msgstr ""
+msgstr "Vorlagenverwalter"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_to_template__name
+msgid "Template Name"
+msgstr "Vorlagenname"
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
+msgid "Template Preview"
+msgstr "Vorlagenvorschau"
+
+#. module: spreadsheet_template_oca
+#. odoo-python
+#: code:addons/spreadsheet_template_oca/wizards/spreadsheet_to_template.py:0
+msgid "Template created successfully."
+msgstr "Vorlage erfolgreich erstellt."
+
+#. module: spreadsheet_template_oca
+#: model:ir.actions.act_window,name:spreadsheet_template_oca.spreadsheet_template_act_window
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template_category__template_ids
+#: model:ir.ui.menu,name:spreadsheet_template_oca.menu_spreadsheet_templates
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_category_view_list
 msgid "Templates"
 msgstr "Vorlagen"
 
 #. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__spreadsheet_id
+msgid ""
+"The spreadsheet whose current contents will be saved as a reusable template."
+msgstr ""
+"Die Tabelle, deren aktueller Inhalt als wiederverwendbare Vorlage "
+"gespeichert wird."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_from_template__template_id
+msgid "The template whose contents will be copied into the new spreadsheet."
+msgstr "Die Vorlage, deren Inhalt in die neue Tabelle kopiert wird."
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__thumbnail
+msgid "Thumbnail"
+msgstr "Vorschaubild"
+
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,field_description:spreadsheet_template_oca.field_spreadsheet_template__usage_count
 msgid "Times Used"
 msgstr "Anzahl Nutzungen"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_list
 msgid "Use"
-msgstr ""
+msgstr "Verwenden"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_kanban
 msgid "Use Template"
 msgstr "Vorlage verwenden"
 
 #. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_list
 msgid "Used"
-msgstr ""
+msgstr "Verwendet"
 
 #. module: spreadsheet_template_oca
-msgid "e.g. Monthly Sales Report"
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_template__description
+msgid ""
+"What this template is for and when to use it — shown on the kanban card. "
+"Example: 'Monthly sales summary with a pivot by salesperson and a total "
+"revenue KPI.'"
 msgstr ""
+"Wofür diese Vorlage gedacht ist und wann man sie verwendet — wird auf der "
+"Kanban-Karte angezeigt. Beispiel: 'Monatliche Verkaufsübersicht mit einer "
+"Pivot-Tabelle nach Verkäufer und einer KPI für den Gesamtumsatz.'"
 
+#. module: spreadsheet_template_oca
+#: model:ir.model.fields,help:spreadsheet_template_oca.field_spreadsheet_to_template__description
+msgid ""
+"What this template is for and when to use it — shown on the template's "
+"kanban card."
+msgstr ""
+"Wofür diese Vorlage gedacht ist und wann man sie verwendet — wird auf der "
+"Kanban-Karte der Vorlage angezeigt."
+
+#. module: spreadsheet_template_oca
+#. odoo-python
+#: code:addons/spreadsheet_template_oca/wizards/spreadsheet_to_template.py:0
+msgid ""
+"You cannot save this spreadsheet as a template: creating templates is "
+"reserved for Template Managers, because a template is shared with every "
+"spreadsheet user. Ask an administrator to give you the 'Template Manager' "
+"access right for Spreadsheets (Settings > Users & Companies > Users, Access "
+"Rights tab), or ask a Template Manager to save this spreadsheet as a "
+"template for you."
+msgstr ""
+"Sie können diese Tabelle nicht als Vorlage speichern: Das Erstellen von "
+"Vorlagen ist Vorlagenverwaltern vorbehalten, da eine Vorlage mit allen "
+"Tabellenbenutzern geteilt wird. Bitten Sie einen Administrator, Ihnen das "
+"Zugriffsrecht 'Vorlagenverwalter' für Tabellen zu erteilen (Einstellungen > "
+"Benutzer & Unternehmen > Benutzer, Reiter Zugriffsrechte), oder bitten Sie "
+"einen Vorlagenverwalter, diese Tabelle für Sie als Vorlage zu speichern."
+
+#. module: spreadsheet_template_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_template_oca.spreadsheet_template_view_form
+msgid "e.g. Monthly Sales Report"
+msgstr "z. B. Monatlicher Verkaufsbericht"

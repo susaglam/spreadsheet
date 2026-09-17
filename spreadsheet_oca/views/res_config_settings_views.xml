@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Codesnap
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Single owner of the "Spreadsheet" settings app.
+
+         The saas-19.4 settings form compiler adds one entry to the Settings
+         navigation for EVERY <app> element and never merges apps that share a
+         name. Spreadsheet add-ons must therefore not declare their own <app>:
+         they inherit this view and xpath into //app[@name='spreadsheet_oca'].
+
+         spreadsheet_oca has no settings of its own, so the app starts hidden
+         (notApp="1", the same mechanism core uses for sale / sale_management).
+         Every add-on that adds a block also sets notApp to "0", so the app only
+         appears once it has content. -->
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.spreadsheet.oca</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="100" />
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app
+                    data-string="Spreadsheet"
+                    string="Spreadsheet"
+                    name="spreadsheet_oca"
+                    logo="/spreadsheet_oca/static/description/icon.png"
+                    notApp="1"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

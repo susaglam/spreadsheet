@@ -15,8 +15,13 @@ class SpreadsheetSpreadsheet(models.Model):
         "spreadsheet.version",
         "spreadsheet_id",
         string="Versions",
+        help="Snapshots captured for this spreadsheet, newest first. Open one to "
+        "compare it with the current content or restore it.",
     )
-    version_count = fields.Integer(compute="_compute_version_count")
+    version_count = fields.Integer(
+        compute="_compute_version_count",
+        help="Number of snapshots captured for this spreadsheet.",
+    )
 
     @api.depends("version_ids")
     def _compute_version_count(self):

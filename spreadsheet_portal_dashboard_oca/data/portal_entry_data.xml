@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Codesnap
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <!-- saas-19.4: /my home cards are portal.entry records rendered by
+         portal.portal_docs_entry. The card stays hidden until /my/counters
+         returns a non-zero portal_dashboard_count, so users without any shared
+         dashboard never see it. noupdate: admins may rename, reorder or hide
+         the card from the portal editor. -->
+    <record id="portal_entry_dashboards" model="portal.entry">
+        <field name="name">Dashboards</field>
+        <field name="description">View your analytics dashboards.</field>
+        <field name="url">/my/dashboards</field>
+        <field
+            name="image"
+            type="bytes"
+            file="spreadsheet_dashboard/static/description/icon.svg"
+        />
+        <field name="placeholder_count">portal_dashboard_count</field>
+        <field name="sequence" eval="110" />
+    </record>
+</odoo>

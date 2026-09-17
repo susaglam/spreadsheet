@@ -382,24 +382,52 @@ of Odoo Enterprise Edition.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#usage" id="toc-entry-1">Usage</a><ul>
-<li><a class="reference internal" href="#create-a-new-spreadsheet" id="toc-entry-2"><strong>Create a new spreadsheet</strong></a></li>
+<li><a class="reference internal" href="#installation" id="toc-entry-1">Installation</a><ul>
+<li><a class="reference internal" href="#upgrading-an-existing-database" id="toc-entry-2">Upgrading an existing database</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#development" id="toc-entry-3">Development</a></li>
-<li><a class="reference internal" href="#bug-tracker" id="toc-entry-4">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-5">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-6">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="toc-entry-7">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-8">Maintainers</a></li>
+<li><a class="reference internal" href="#usage" id="toc-entry-3">Usage</a><ul>
+<li><a class="reference internal" href="#create-a-new-spreadsheet" id="toc-entry-4"><strong>Create a new spreadsheet</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#development" id="toc-entry-5">Development</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-6">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-7">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-8">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-9">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-10">Maintainers</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="section" id="installation">
+<h2><a class="toc-backref" href="#toc-entry-1">Installation</a></h2>
+<div class="section" id="upgrading-an-existing-database">
+<h3><a class="toc-backref" href="#toc-entry-2">Upgrading an existing database</a></h3>
+<p>Version <tt class="docutils literal">saas~19.4.1.0.1</tt> adds the shared <em>Spreadsheet</em> page in
+Settings (view <tt class="docutils literal">spreadsheet_oca.res_config_settings_view_form</tt>). The
+add-ons <tt class="docutils literal">spreadsheet_api_oca</tt>, <tt class="docutils literal">spreadsheet_contract_sla_oca</tt>,
+<tt class="docutils literal">spreadsheet_public_share_oca</tt>, <tt class="docutils literal">spreadsheet_kpi_alert_oca</tt> and
+<tt class="docutils literal">spreadsheet_scheduled_refresh_oca</tt> put their settings on that page,
+so it has to exist in the database before they are upgraded.</p>
+<p>When you upgrade a database that runs an older version, always include
+<tt class="docutils literal">spreadsheet_oca</tt> in the upgrade:</p>
+<pre class="code bash literal-block">
+odoo-bin<span class="w"> </span>module<span class="w"> </span>upgrade<span class="w"> </span>-c<span class="w"> </span>&lt;config&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;database&gt;<span class="w"> </span>spreadsheet_oca<span class="w">
+</span><span class="c1"># or, with the server command:
+</span>odoo-bin<span class="w"> </span>-c<span class="w"> </span>&lt;config&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;database&gt;<span class="w"> </span>-u<span class="w"> </span>spreadsheet_oca<span class="w"> </span>--stop-after-init
+</pre>
+<p>Upgrading <tt class="docutils literal">spreadsheet_oca</tt> also upgrades every installed module that
+depends on it, so this one command is enough. Upgrading only one of the
+add-ons above (for example <tt class="docutils literal"><span class="pre">-u</span> spreadsheet_api_oca</tt>) stops with
+<tt class="docutils literal">External ID not found in the system: spreadsheet_oca.res_config_settings_view_form</tt>
+and that add-on is not upgraded. To recover, run the command above.</p>
+</div>
+</div>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#toc-entry-1">Usage</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-3">Usage</a></h2>
 <div class="section" id="create-a-new-spreadsheet">
-<h3><a class="toc-backref" href="#toc-entry-2"><strong>Create a new spreadsheet</strong></a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4"><strong>Create a new spreadsheet</strong></a></h3>
 <ul class="simple">
 <li>Go to ‘Spreadsheet’ menu</li>
 <li>Click on ‘Create’</li>
@@ -447,13 +475,13 @@ etc.)</li>
 </div>
 </div>
 <div class="section" id="development">
-<h2><a class="toc-backref" href="#toc-entry-3">Development</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-5">Development</a></h2>
 <p>If you want to develop custom business functions, you can add others,
 based on the file
 <a class="reference external" href="https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js">https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js</a></p>
 </div>
 <div class="section" id="bug-tracker">
-<h2><a class="toc-backref" href="#toc-entry-4">Bug Tracker</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-6">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/spreadsheet/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -461,15 +489,15 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h2><a class="toc-backref" href="#toc-entry-5">Credits</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-7">Credits</a></h2>
 <div class="section" id="authors">
-<h3><a class="toc-backref" href="#toc-entry-6">Authors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-8">Authors</a></h3>
 <ul class="simple">
 <li>CreuBlanca</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h3><a class="toc-backref" href="#toc-entry-7">Contributors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-9">Contributors</a></h3>
 <ul class="simple">
 <li>Enric Tobella</li>
 <li><a class="reference external" href="https://www.tecnativa.com">Tecnativa</a>:<ul>
@@ -487,7 +515,7 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h3><a class="toc-backref" href="#toc-entry-8">Maintainers</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-10">Maintainers</a></h3>
 <p>This module is maintained by the OCA.</p>
 <a class="reference external image-reference" href="https://odoo-community.org">
 <img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />

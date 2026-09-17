@@ -1,12 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_api_oca
+# 	* spreadsheet_api_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: German (de)\n"
 "Language: de\n"
@@ -16,90 +15,790 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid "<strong>Example API calls:</strong>"
+msgstr "<strong>Beispiele für API-Aufrufe:</strong>"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_show_view_form
+msgid ""
+"<strong>Important:</strong>\n"
+"                        the token cannot be displayed again, because only its fingerprint is stored. Anyone holding it can read the spreadsheets of the token user, so store it like a password."
+msgstr ""
+"<strong>Wichtig:</strong> Das Token kann nicht erneut angezeigt werden, da "
+"nur sein Fingerabdruck gespeichert wird. Wer es besitzt, kann die "
+"Spreadsheets des Token-Benutzers lesen – bewahren Sie es daher wie ein "
+"Passwort auf."
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid "<strong>Verifying a webhook call:</strong>"
+msgstr "<strong>Einen Webhook-Aufruf überprüfen:</strong>"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid "<strong>Webhook payload format:</strong>"
+msgstr "<strong>Format der Webhook-Nutzdaten:</strong>"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__name
+msgid "A label to identify this token, e.g. \"Power BI dashboard\"."
+msgstr ""
+"Eine Bezeichnung, um dieses Token zu erkennen, z. B. „Power-BI-Dashboard“."
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_api_oca.api_token_act_window
+msgid ""
+"A token lets an external tool call the spreadsheet REST API.\n"
+"                Create one, click Generate Token and copy the secret, then call\n"
+"                <code>/api/spreadsheet/list</code> with an\n"
+"                <code>Authorization: Bearer &lt;token&gt;</code> header."
+msgstr ""
+"Mit einem Token kann ein externes Werkzeug die Spreadsheet-REST-API "
+"aufrufen. Legen Sie eines an, klicken Sie auf „Token erzeugen“ und kopieren "
+"Sie das Geheimnis; rufen Sie dann <code>/api/spreadsheet/list</code> mit dem"
+" Header <code>Authorization: Bearer &lt;token&gt;</code> auf."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__active
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__spreadsheet_ids
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid "Allowed Spreadsheets"
+msgstr "Erlaubte Spreadsheets"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid ""
+"Always send the token in the\n"
+"                                    <code>Authorization</code>\n"
+"                                    header. A\n"
+"                                    <code>?token=</code>\n"
+"                                    query parameter is refused by default because URLs end up in server and proxy logs."
+msgstr ""
+"Senden Sie das Token immer im Header <code>Authorization</code>. Ein "
+"Abfrageparameter <code>?token=</code> wird standardmäßig abgelehnt, weil "
+"URLs in Server- und Proxy-Protokollen landen."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__user_id
+msgid ""
+"API calls run with this user's access rights, so the integration sees "
+"exactly the spreadsheets this user can read. Spreadsheet users can only "
+"create tokens for themselves; managers can pick another active internal "
+"user, and only administrators can pick an administrator. The superuser, "
+"portal/public users and archived users are not allowed."
+msgstr ""
+"API-Aufrufe laufen mit den Zugriffsrechten dieses Benutzers, die Integration"
+" sieht also genau die Spreadsheets, die dieser Benutzer lesen darf. "
+"Spreadsheet-Benutzer können Tokens nur für sich selbst anlegen; Manager "
+"können einen anderen aktiven internen Benutzer wählen, und nur "
+"Administratoren können einen Administrator wählen. Der Superuser, "
+"Portal-/öffentliche Benutzer und archivierte Benutzer sind nicht erlaubt."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid "API Token Ready"
+msgstr "API-Token bereit"
+
+#. module: spreadsheet_api_oca
+#: model:ir.actions.act_window,name:spreadsheet_api_oca.api_token_act_window
+#: model:ir.ui.menu,name:spreadsheet_api_oca.menu_api_tokens
 msgid "API Tokens"
 msgstr "API-Tokens"
 
 #. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
 msgid "API Usage"
-msgstr ""
+msgstr "API-Nutzung"
 
 #. module: spreadsheet_api_oca
-msgid "API calls use this user"
-msgstr ""
+#: model:ir.model,name:spreadsheet_api_oca.model_spreadsheet_api_webhook_event
+msgid "API Webhook Delivery Event"
+msgstr "API-Webhook-Zustellereignis"
 
 #. module: spreadsheet_api_oca
-msgid "Allowed Spreadsheets"
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__active
+msgid ""
+"Archived tokens are rejected by the API. Archive a token to suspend an "
+"integration without losing its configuration and log."
 msgstr ""
+"Archivierte Tokens werden von der API abgelehnt. Archivieren Sie ein Token, "
+"um eine Integration anzuhalten, ohne ihre Konfiguration und ihr Protokoll zu"
+" verlieren."
 
 #. module: spreadsheet_api_oca
+#: model:ir.model,name:spreadsheet_api_oca.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_show_view_form
+msgid ""
+"Configure your integration to send this secret in the HTTP header\n"
+"                        <code>Authorization: Bearer &lt;token&gt;</code>"
+msgstr ""
+"Konfigurieren Sie Ihre Integration so, dass sie dieses Geheimnis im HTTP-"
+"Header <code>Authorization: Bearer &lt;token&gt;</code> sendet"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_show_view_form
+msgid "Copy your API token now"
+msgstr "Kopieren Sie jetzt Ihr API-Token"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.actions.act_window,help:spreadsheet_api_oca.api_token_act_window
+msgid "Create your first API token"
+msgstr "Legen Sie Ihr erstes API-Token an"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields.selection,name:spreadsheet_api_oca.selection__spreadsheet_api_webhook_event__event_type__create
+msgid "Created"
+msgstr "Erstellt"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__create_date
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_res_config_settings__api_default_rate_limit
 msgid "Default API Rate Limit (per minute)"
-msgstr ""
+msgstr "Standard-API-Ratenbegrenzung (pro Minute)"
 
 #. module: spreadsheet_api_oca
-msgid "Default Token Expiry (days, 0 = no expiry)"
-msgstr ""
-
-#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.res_config_settings_view_form_spreadsheet_api
 msgid "Default expiry for new API tokens (0 = no expiry)."
-msgstr ""
+msgstr "Standard-Gültigkeitsdauer für neue API-Tokens (0 = unbegrenzt)."
 
 #. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.res_config_settings_view_form_spreadsheet_api
 msgid "Default rate limit for new API tokens."
-msgstr ""
+msgstr "Standard-Ratenbegrenzung für neue API-Tokens."
 
 #. module: spreadsheet_api_oca
-msgid "If set, this URL is called (POST) when the linked spreadsheet changes."
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_res_config_settings__api_token_default_expiry_days
+msgid "Default Token Expiry (days, 0 = no expiry)"
+msgstr "Standard-Token-Gültigkeit (Tage, 0 = unbegrenzt)"
 
 #. module: spreadsheet_api_oca
+#: model:ir.model.fields.selection,name:spreadsheet_api_oca.selection__spreadsheet_api_webhook_event__event_type__delete
+msgid "Deleted"
+msgstr "Gelöscht"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__delivered
+msgid "Delivered"
+msgstr "Zugestellt"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__display_name
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token_show__display_name
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_show_view_form
+msgid "Done"
+msgstr "Fertig"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid ""
+"Each call carries the headers X-Spreadsheet-Event, X-Spreadsheet-Token-Id "
+"and X-Spreadsheet-Signature. The signature is \"sha256=\" followed by the "
+"HMAC-SHA256 of the raw request body, using the SHA-256 hex digest of your "
+"token as key. Redirects are not followed, and events are only sent for "
+"spreadsheets the token user can read."
+msgstr ""
+"Jeder Aufruf enthält die Header X-Spreadsheet-Event, X-Spreadsheet-Token-Id "
+"und X-Spreadsheet-Signature. Die Signatur ist \"sha256=\" gefolgt vom HMAC-"
+"SHA256 des unveränderten Request-Bodys, mit dem SHA-256-Hex-Digest Ihres "
+"Tokens als Schlüssel. Weiterleitungen werden nicht verfolgt, und Ereignisse "
+"werden nur für Spreadsheets gesendet, die der Token-Benutzer lesen darf."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__event_type
+msgid "Event Type"
+msgstr "Ereignistyp"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__webhook_event_ids
+msgid ""
+"Every webhook call queued for this token, with its delivery status. Failed "
+"calls are retried by a scheduled action."
+msgstr ""
+"Jeder für dieses Token eingereihte Webhook-Aufruf mit seinem Zustellstatus. "
+"Fehlgeschlagene Aufrufe werden von einer geplanten Aktion erneut versucht."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__expires_at
+msgid "Expires At"
+msgstr "Läuft ab am"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid "Generate Token"
+msgstr "Token erzeugen"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid ""
+"GET /api/spreadsheet/list\n"
+"  Authorization: Bearer YOUR_TOKEN\n"
+"\n"
+"GET /api/spreadsheet/&lt;id&gt;\n"
+"  Authorization: Bearer YOUR_TOKEN\n"
+"\n"
+"GET /api/spreadsheet/&lt;id&gt;/cells?sheet=Dashboard\n"
+"  Authorization: Bearer YOUR_TOKEN"
+msgstr ""
+"GET /api/spreadsheet/list\n"
+"  Authorization: Bearer YOUR_TOKEN\n"
+"\n"
+"GET /api/spreadsheet/&lt;id&gt;\n"
+"  Authorization: Bearer YOUR_TOKEN\n"
+"\n"
+"GET /api/spreadsheet/&lt;id&gt;/cells?sheet=Dashboard\n"
+"  Authorization: Bearer YOUR_TOKEN"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__response_status
+msgid ""
+"HTTP status code returned by the webhook endpoint on the last attempt. 0 "
+"means no answer (network error, timeout or blocked address)."
+msgstr ""
+"HTTP-Statuscode, den der Webhook-Endpunkt beim letzten Versuch zurückgegeben"
+" hat. 0 bedeutet keine Antwort (Netzwerkfehler, Zeitüberschreitung oder "
+"blockierte Adresse)."
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid "https://example.com/hook"
+msgstr "https://example.com/hook"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__id
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token_show__id
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__webhook_url
+msgid ""
+"If set, this URL is called (POST) when a spreadsheet this token can read is "
+"created, changed or deleted. Only public http(s) endpoints are accepted; "
+"redirects are not followed. Each call carries an X-Spreadsheet-Signature "
+"header (HMAC-SHA256 of the body) so the receiver can check it really comes "
+"from this server."
+msgstr ""
+"Wenn gesetzt, wird diese URL aufgerufen (POST), sobald ein Spreadsheet, das "
+"dieses Token lesen darf, erstellt, geändert oder gelöscht wird. Nur "
+"öffentliche http(s)-Endpunkte werden akzeptiert; Weiterleitungen werden "
+"nicht verfolgt. Jeder Aufruf enthält einen X-Spreadsheet-Signature-Header "
+"(HMAC-SHA256 des Bodys), damit der Empfänger prüfen kann, dass er wirklich "
+"von diesem Server stammt."
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid ""
+"key = sha256(TOKEN).hexdigest()\n"
+"expected = \"sha256=\" + hmac_sha256(key, raw_body).hexdigest()"
+msgstr ""
+"key = sha256(TOKEN).hexdigest()\n"
+"expected = \"sha256=\" + hmac_sha256(key, raw_body).hexdigest()"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__write_date
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__last_used
+msgid "Last Used"
+msgstr "Zuletzt verwendet"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__spreadsheet_ids
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
 msgid "Leave empty to grant access to all spreadsheets the user can read."
 msgstr ""
+"Leer lassen, um Zugriff auf alle Spreadsheets zu gewähren, die der Benutzer "
+"lesen darf."
 
 #. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.res_config_settings_view_form_spreadsheet_api
 msgid "Max webhook delivery attempts before giving up."
-msgstr ""
+msgstr "Maximale Anzahl an Webhook-Zustellversuchen, bevor aufgegeben wird."
 
 #. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__rate_limit_per_minute
 msgid "Maximum API calls per minute. 0 = unlimited."
-msgstr ""
+msgstr "Maximale Anzahl API-Aufrufe pro Minute. 0 = unbegrenzt."
 
 #. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_res_config_settings__api_webhook_retry_max
 msgid "Maximum Webhook Retries"
-msgstr ""
+msgstr "Maximale Webhook-Wiederholungen"
 
 #. module: spreadsheet_api_oca
-msgid "Optional token expiry date."
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__name
+msgid "Name"
+msgstr "Name"
 
 #. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"Not sent: the API token is archived or has no webhook URL anymore. "
+"Reactivate the token or set its webhook URL; new changes will queue new "
+"events."
+msgstr ""
+"Nicht gesendet: Das API-Token ist archiviert oder hat keine Webhook-URL "
+"mehr. Aktivieren Sie das Token erneut oder setzen Sie seine Webhook-URL; "
+"neue Änderungen reihen neue Ereignisse ein."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"Not sent: the API token runs as the superuser, a portal/public user or an "
+"archived user, which is not allowed. Set an active internal user on the "
+"token."
+msgstr ""
+"Nicht gesendet: Das API-Token läuft als Superuser, als Portal-/öffentlicher "
+"Benutzer oder als archivierter Benutzer, was nicht erlaubt ist. Setzen Sie "
+"einen aktiven internen Benutzer für das Token."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"Not sent: this API token has no secret yet, so the call could not be signed "
+"and the receiver could not check where it comes from. Click Generate Token "
+"on the token; later attempts are then sent normally."
+msgstr ""
+"Nicht gesendet: Dieses API-Token hat noch kein Geheimnis, daher konnte der "
+"Aufruf nicht signiert werden und der Empfänger könnte nicht prüfen, woher er"
+" stammt. Klicken Sie beim Token auf Token erzeugen; spätere Versuche werden "
+"dann normal gesendet."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__rate_limit_exceeded_count
+msgid "Number of calls rejected for exceeding the per-minute rate limit."
+msgstr ""
+"Anzahl der Aufrufe, die wegen Überschreitung der Ratenbegrenzung pro Minute "
+"abgelehnt wurden."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__retry_count
+msgid ""
+"Number of delivery attempts so far. Delivery stops after the maximum number "
+"of webhook retries configured in the settings."
+msgstr ""
+"Bisherige Anzahl der Zustellversuche. Die Zustellung endet nach der in den "
+"Einstellungen festgelegten maximalen Anzahl an Webhook-Wiederholungen."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__expires_at
+msgid ""
+"Optional token expiry date. After this moment the API rejects the token. "
+"Leave empty for a token that never expires."
+msgstr ""
+"Optionales Ablaufdatum des Tokens. Danach lehnt die API das Token ab. Leer "
+"lassen für ein Token, das nie abläuft."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__payload
+msgid "Payload"
+msgstr "Nutzdaten"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__rate_limit_per_minute
 msgid "Rate Limit (per minute)"
-msgstr "Ratenlimit (pro Minute)"
+msgstr "Ratenbegrenzung (pro Minute)"
 
 #. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__rate_limit_exceeded_count
+msgid "Rate Limit Exceeded Count"
+msgstr "Anzahl Überschreitungen der Ratenbegrenzung"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
 msgid "Rate Limiting"
-msgstr ""
+msgstr "Ratenbegrenzung"
 
 #. module: spreadsheet_api_oca
-msgid "Rate Limiting &amp; Webhook"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid "Rate Limiting & Webhook"
+msgstr "Ratenbegrenzung & Webhook"
 
 #. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
 msgid "Regenerate Token"
-msgstr "Token neu generieren"
+msgstr "Token neu erzeugen"
 
 #. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid ""
+"Regenerating invalidates the current token immediately: every integration "
+"using it stops working until you give it the new one. Continue?"
+msgstr ""
+"Das Neuerzeugen macht das aktuelle Token sofort ungültig: Jede Integration, "
+"die es verwendet, funktioniert erst wieder, wenn Sie ihr das neue Token "
+"geben. Fortfahren?"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__response_body
+msgid "Response Body"
+msgstr "Antwortinhalt"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__response_status
+msgid "Response Status"
+msgstr "Antwortstatus"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.res_config_settings_view_form_spreadsheet_api
+msgid "REST API"
+msgstr "REST-API"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__retry_count
+msgid "Retry Count"
+msgstr "Anzahl Versuche"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__delivered
+msgid "Set once the endpoint answered with a 2xx status code."
+msgstr ""
+"Wird gesetzt, sobald der Endpunkt mit einem 2xx-Statuscode geantwortet hat."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__token_hash
+msgid ""
+"SHA-256 fingerprint of the secret token. Only this fingerprint is stored, so"
+" the secret itself cannot be read back from the database; incoming API calls"
+" are matched against it."
+msgstr ""
+"SHA-256-Fingerabdruck des geheimen Tokens. Nur dieser Fingerabdruck wird "
+"gespeichert, sodass das Geheimnis selbst nicht aus der Datenbank gelesen "
+"werden kann; eingehende API-Aufrufe werden damit abgeglichen."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model,name:spreadsheet_api_oca.model_spreadsheet_api_token_show
+msgid "Show Spreadsheet API Token"
+msgstr "Spreadsheet-API-Token anzeigen"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model,name:spreadsheet_api_oca.model_spreadsheet_spreadsheet
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__spreadsheet_id
 msgid "Spreadsheet"
-msgstr "Tabelle"
+msgstr "Spreadsheet"
 
 #. module: spreadsheet_api_oca
+#: model:ir.model,name:spreadsheet_api_oca.model_spreadsheet_api_token
+msgid "Spreadsheet API Token"
+msgstr "Spreadsheet-API-Token"
+
+#. module: spreadsheet_api_oca
+#: model:ir.actions.server,name:spreadsheet_api_oca.ir_cron_deliver_webhooks_ir_actions_server
 msgid "Spreadsheet API: Deliver Webhooks"
-msgstr ""
+msgstr "Spreadsheet-API: Webhooks zustellen"
 
 #. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"The API token \"%(token)s\" cannot run as %(user)s. API calls use this "
+"user's access rights, and the superuser, portal/public users and archived "
+"users would bypass or break those rights. Pick an active internal user "
+"instead."
+msgstr ""
+"Das API-Token „%(token)s“ kann nicht als %(user)s laufen. API-Aufrufe "
+"verwenden die Zugriffsrechte dieses Benutzers, und der Superuser, "
+"Portal-/öffentliche Benutzer sowie archivierte Benutzer würden diese Rechte "
+"umgehen oder aushebeln. Wählen Sie stattdessen einen aktiven internen "
+"Benutzer."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"The API token \"%(token)s\" runs as the administrator %(user)s. Only an "
+"administrator can change it or generate its secret, because whoever holds "
+"that secret gets administrator access to the spreadsheets. Ask an "
+"administrator, or use a token that runs as a user without administration "
+"rights."
+msgstr ""
+"Das API-Token „%(token)s“ läuft als Administrator %(user)s. Nur ein "
+"Administrator kann es ändern oder sein Geheimnis erzeugen, denn wer dieses "
+"Geheimnis besitzt, erhält Administratorzugriff auf die Spreadsheets. Wenden "
+"Sie sich an einen Administrator oder verwenden Sie ein Token, das als "
+"Benutzer ohne Administrationsrechte läuft."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"The API token \"%(token)s\" would run as the administrator %(user)s, which "
+"gives the integration more rights than you have. Only an administrator can "
+"create such a token; otherwise pick a user without administration rights."
+msgstr ""
+"Das API-Token „%(token)s“ würde als Administrator %(user)s laufen und der "
+"Integration damit mehr Rechte geben, als Sie selbst haben. Nur ein "
+"Administrator kann ein solches Token anlegen; wählen Sie andernfalls einen "
+"Benutzer ohne Administrationsrechte."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__token_id
+msgid "The API token whose webhook URL receives this event."
+msgstr "Das API-Token, dessen Webhook-URL dieses Ereignis empfängt."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__response_body
+msgid ""
+"The first 500 characters returned by the endpoint, or the error message of "
+"the last attempt. Visible to Spreadsheet managers only."
+msgstr ""
+"Die ersten 500 Zeichen, die der Endpunkt zurückgegeben hat, oder die "
+"Fehlermeldung des letzten Versuchs. Nur für Spreadsheet-Manager sichtbar."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__token_hint
+msgid ""
+"The first characters of the secret token, so you can recognise which secret "
+"an integration uses. The full token is shown only once, right after you "
+"click Generate Token. Lost it? Generate a new one and update the "
+"integration."
+msgstr ""
+"Die ersten Zeichen des geheimen Tokens, damit Sie erkennen, welches "
+"Geheimnis eine Integration verwendet. Das vollständige Token wird nur einmal"
+" angezeigt, direkt nachdem Sie auf „Token erzeugen“ geklickt haben. "
+"Verloren? Erzeugen Sie ein neues Token und aktualisieren Sie die "
+"Integration."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__payload
+msgid "The JSON body sent to the webhook URL."
+msgstr "Der JSON-Body, der an die Webhook-URL gesendet wird."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token_show__token_name
+msgid "The label of the API token this secret belongs to."
+msgstr "Die Bezeichnung des API-Tokens, zu dem dieses Geheimnis gehört."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token_show__token
+msgid ""
+"The secret Bearer token. Send it as the HTTP header \"Authorization: Bearer "
+"<token>\". Treat it like a password: it is shown only this once."
+msgstr ""
+"Das geheime Bearer-Token. Senden Sie es als HTTP-Header „Authorization: "
+"Bearer <token>“. Behandeln Sie es wie ein Passwort: Es wird nur dieses eine "
+"Mal angezeigt."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__spreadsheet_id
+msgid ""
+"The spreadsheet the event is about. Empty once the spreadsheet has been "
+"deleted."
+msgstr ""
+"Das Spreadsheet, um das es bei dem Ereignis geht. Leer, sobald das "
+"Spreadsheet gelöscht wurde."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"The webhook host %(host)s could not be resolved. Check the URL and that the "
+"host is reachable from this server."
+msgstr ""
+"Der Webhook-Host %(host)s konnte nicht aufgelöst werden. Prüfen Sie die URL "
+"und ob der Host von diesem Server aus erreichbar ist."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"The webhook URL %(url)s has no valid host or port. Use a full URL such as "
+"https://example.com/hook."
+msgstr ""
+"Die Webhook-URL %(url)s hat keinen gültigen Host oder Port. Verwenden Sie "
+"eine vollständige URL wie https://example.com/hook."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"The webhook URL must start with http:// or https:// (got %(url)s). Point it "
+"at a public HTTPS endpoint your integration controls."
+msgstr ""
+"Die Webhook-URL muss mit http:// oder https:// beginnen (erhalten: %(url)s)."
+" Verweisen Sie auf einen öffentlichen HTTPS-Endpunkt, den Ihre Integration "
+"kontrolliert."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"The webhook URL resolves to an internal/private address (%(ip)s), which is "
+"not allowed for security reasons. Use a public endpoint instead."
+msgstr ""
+"Die Webhook-URL verweist auf eine interne/private Adresse (%(ip)s), was aus "
+"Sicherheitsgründen nicht erlaubt ist. Verwenden Sie stattdessen einen "
+"öffentlichen Endpunkt."
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid ""
+"This token has no secret yet. Click\n"
+"                        <strong>Generate Token</strong>\n"
+"                        to create one. The secret is shown only once, so copy it into your integration right away. Only a fingerprint of it is stored."
+msgstr ""
+"Dieses Token hat noch kein Geheimnis. Klicken Sie auf <strong>Token "
+"erzeugen</strong>, um eines zu erstellen. Das Geheimnis wird nur einmal "
+"angezeigt, kopieren Sie es also sofort in Ihre Integration. Gespeichert wird"
+" nur ein Fingerabdruck davon."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__last_used
+msgid "Timestamp of the most recent successful API call made with this token."
+msgstr "Zeitpunkt des letzten erfolgreichen API-Aufrufs mit diesem Token."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__token_hint
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token_show__token
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__token_id
+msgid "Token"
+msgstr "Token"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__token_hash
+msgid "Token Hash"
+msgstr "Token-Hash"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token_show__token_name
+msgid "Token Name"
+msgstr "Token-Name"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_token__usage_count
+msgid "Total number of successful API calls made with this token."
+msgstr "Gesamtzahl der erfolgreichen API-Aufrufe mit diesem Token."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.constraint,message:spreadsheet_api_oca.constraint_spreadsheet_api_token_token_hash_unique
+msgid ""
+"Two API tokens cannot share the same secret. Generate a new token for one of"
+" them."
+msgstr ""
+"Zwei API-Tokens können nicht dasselbe Geheimnis verwenden. Erzeugen Sie für "
+"eines davon ein neues Token."
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields.selection,name:spreadsheet_api_oca.selection__spreadsheet_api_webhook_event__event_type__update
+msgid "Updated"
+msgstr "Aktualisiert"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__usage_count
+msgid "Usage Count"
+msgstr "Anzahl Verwendungen"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__user_id
+msgid "User"
+msgstr "Benutzer"
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
 msgid "Webhook"
-msgstr ""
+msgstr "Webhook"
 
 #. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__webhook_event_ids
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
 msgid "Webhook Delivery Log"
-msgstr ""
+msgstr "Webhook-Zustellprotokoll"
 
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,field_description:spreadsheet_api_oca.field_spreadsheet_api_token__webhook_url
+msgid "Webhook Url"
+msgstr "Webhook-URL"
+
+#. module: spreadsheet_api_oca
+#: model:ir.model.fields,help:spreadsheet_api_oca.field_spreadsheet_api_webhook_event__event_type
+msgid ""
+"What happened to the spreadsheet: created, updated (content changed) or "
+"deleted."
+msgstr ""
+"Was mit dem Spreadsheet passiert ist: erstellt, aktualisiert (Inhalt "
+"geändert) oder gelöscht."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"You can only create or edit API tokens that run as yourself, but "
+"\"%(token)s\" is set to %(user)s. A token grants that user's access rights, "
+"so choosing another user requires the Spreadsheet Manager role. Set the user"
+" back to yourself or ask a manager."
+msgstr ""
+"Sie können nur API-Tokens anlegen oder bearbeiten, die als Sie selbst "
+"laufen, aber „%(token)s“ ist auf %(user)s gesetzt. Ein Token gewährt die "
+"Zugriffsrechte dieses Benutzers, daher erfordert die Wahl eines anderen "
+"Benutzers die Rolle Spreadsheet-Manager. Setzen Sie den Benutzer wieder auf "
+"sich selbst oder wenden Sie sich an einen Manager."
+
+#. module: spreadsheet_api_oca
+#. odoo-python
+#: code:addons/spreadsheet_api_oca/models/api_token.py:0
+msgid ""
+"You can only generate secrets for API tokens that run as yourself, but "
+"\"%(token)s\" runs as %(user)s. The secret grants that user's access rights,"
+" so this requires the Spreadsheet Manager role. Ask a manager to generate "
+"it."
+msgstr ""
+"Sie können Geheimnisse nur für API-Tokens erzeugen, die als Sie selbst "
+"laufen, aber „%(token)s“ läuft als %(user)s. Das Geheimnis gewährt die "
+"Zugriffsrechte dieses Benutzers, daher ist dafür die Rolle Spreadsheet-"
+"Manager erforderlich. Bitten Sie einen Manager, es zu erzeugen."
+
+#. module: spreadsheet_api_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_api_oca.api_token_view_form
+msgid ""
+"{\n"
+"  \"event\": \"update\",\n"
+"  \"spreadsheet_id\": 1,\n"
+"  \"spreadsheet_name\": \"Sales Q1\",\n"
+"  \"timestamp\": \"2026-01-15T10:30:00\"\n"
+"}"
+msgstr ""
+"{\n"
+"  \"event\": \"update\",\n"
+"  \"spreadsheet_id\": 1,\n"
+"  \"spreadsheet_name\": \"Sales Q1\",\n"
+"  \"timestamp\": \"2026-01-15T10:30:00\"\n"
+"}"

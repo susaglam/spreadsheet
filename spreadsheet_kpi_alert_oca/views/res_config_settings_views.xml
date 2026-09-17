@@ -2,32 +2,33 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
+    <!-- Adds a block to the single "Spreadsheet" settings app owned by
+         spreadsheet_oca. Never declare a second <app name="spreadsheet_oca">:
+         saas-19.4 would list "Spreadsheet" twice in the Settings navigation.
+         notApp="0" un-hides the app, which spreadsheet_oca ships hidden until
+         an add-on gives it content. -->
     <record id="res_config_settings_view_form_spreadsheet_kpi" model="ir.ui.view">
         <field name="name">res.config.settings.view.form.spreadsheet.kpi</field>
         <field name="model">res.config.settings</field>
         <field name="priority" eval="100" />
-        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="inherit_id" ref="spreadsheet_oca.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//form" position="inside">
-                <app
-                    data-string="Spreadsheet"
-                    string="Spreadsheet"
-                    name="spreadsheet_oca"
-                    logo="/spreadsheet_oca/static/description/icon.png"
-                >
-                    <block title="KPI Alerts" name="kpi_alert_settings_block">
-                        <setting
-                            help="Default cooldown period between repeated alert notifications."
-                        >
-                            <field name="kpi_alert_default_cooldown_hours" />
-                        </setting>
-                        <setting
-                            help="Send an email alongside Discuss inbox notification by default."
-                        >
-                            <field name="kpi_alert_default_send_email" />
-                        </setting>
-                    </block>
-                </app>
+            <xpath expr="//app[@name='spreadsheet_oca']" position="attributes">
+                <attribute name="notApp">0</attribute>
+            </xpath>
+            <xpath expr="//app[@name='spreadsheet_oca']" position="inside">
+                <block title="KPI Alerts" name="kpi_alert_settings_block">
+                    <setting
+                        help="Default cooldown period between repeated alert notifications."
+                    >
+                        <field name="kpi_alert_default_cooldown_hours" />
+                    </setting>
+                    <setting
+                        help="Send an email alongside Discuss inbox notification by default."
+                    >
+                        <field name="kpi_alert_default_send_email" />
+                    </setting>
+                </block>
             </xpath>
         </field>
     </record>

@@ -6,9 +6,16 @@ import json
 from typing import Any
 
 from odoo import api, fields, models
-from odoo.exceptions import AccessError
 
 CollaborationMessage = dict[str, Any]
+
+# Message types that persist a spreadsheet.oca.revision row.
+PERSISTED_REVISION_TYPES = (
+    "REVISION_UNDONE",
+    "REMOTE_REVISION",
+    "REVISION_REDONE",
+    "SNAPSHOT",
+)
 
 
 class SpreadsheetAbstract(models.AbstractModel):
@@ -27,10 +34,20 @@ class SpreadsheetAbstract(models.AbstractModel):
     spreadsheet_raw = fields.Serialized(
         inverse="_inverse_spreadsheet_raw", compute="_compute_spreadsheet_raw"
     )
+    # Revisions hold the raw cell commands of every collaborative edit, so
+    # spreadsheet.oca.revision has no ACL for regular users and this field is
+    # restricted to administrators. Business code reads/writes revisions
+    # through _get_spreadsheet_revisions() (sudo) AFTER checking access on
+    # the parent record.
     spreadsheet_revision_ids = fields.One2many(
         "spreadsheet.oca.revision",
         inverse_name="res_id",
         domain=lambda r: [("model", "=", r._name)],
+        groups="base.group_system",
+        help="Technical: the collaborative edit history (revision commands) "
+        "replayed on top of the stored spreadsheet file when it is opened. "
+        "Only administrators can read it directly; users see its effect by "
+        "opening the spreadsheet.",
     )
 
     @api.depends("spreadsheet_binary_data")
@@ -69,7 +86,10 @@ class SpreadsheetAbstract(models.AbstractModel):
         The sheet name should be the same for all users to allow consistent references
         in formulas. It is translated for the user creating the spreadsheet.
         """
-        lang = self.env["res.lang"]._lang_get(self.env.user.lang)
+        # sudo: res.lang is only readable through base.group_everyone, which
+        # a user without an internal/portal role does not carry; the locale is
+        # harmless formatting data.
+        lang = self.env["res.lang"].sudo()._lang_get(self.env.user.lang)
         locale = lang._odoo_lang_to_spreadsheet_locale()
         return {
             "sheets": [
@@ -86,10 +106,11 @@ class SpreadsheetAbstract(models.AbstractModel):
 
     def get_spreadsheet_data(self):
         self.ensure_one()
+        # Revisions are read with sudo below, so the parent access check is
+        # the only thing protecting them: it must stay first.
+        self.check_access("read")
         mode = "normal"
-        try:
-            self.check_access("write")
-        except AccessError:
+        if not self.has_access("write"):
             mode = "readonly"
         return {
             "name": self.name,
@@ -100,7 +121,7 @@ class SpreadsheetAbstract(models.AbstractModel):
                     nextRevisionId=revision.next_revision_id,
                     serverRevisionId=revision.server_revision_id,
                 )
-                for revision in self.spreadsheet_revision_ids
+                for revision in self._get_spreadsheet_revisions()
             ],
             "mode": mode,
             "default_currency": self.env[
@@ -108,6 +129,26 @@ class SpreadsheetAbstract(models.AbstractModel):
             ].get_company_currency_for_spreadsheet(),
             "user_locale": self.env["res.lang"]._get_user_spreadsheet_locale(),
         }
+
+    def _get_spreadsheet_revisions(self):
+        """Return the collaborative revisions of the records in ``self``.
+
+        The result is a **sudo** recordset ordered by creation (id): revision
+        commands contain cell contents and spreadsheet.oca.revision is not
+        readable by regular users. Callers MUST check access on ``self``
+        (``check_access('read')`` to read, ``check_access('write')`` to
+        modify) before using it.
+        """
+        if not self.ids:
+            return self.env["spreadsheet.oca.revision"].sudo()
+        return (
+            self.env["spreadsheet.oca.revision"]
+            .sudo()
+            .search(
+                [("model", "=", self._name), ("res_id", "in", self.ids)],
+                order="id",
+            )
+        )
 
     def open_spreadsheet(self):
         self.ensure_one()
@@ -121,9 +162,11 @@ class SpreadsheetAbstract(models.AbstractModel):
         self, message: CollaborationMessage, access_token=None
     ):
         self.ensure_one()
-        if message["type"] in ["REVISION_UNDONE", "REMOTE_REVISION", "REVISION_REDONE"]:
+        if message["type"] in PERSISTED_REVISION_TYPES:
+            # Access check first: the revision is created with sudo because
+            # spreadsheet.oca.revision has no ACL for regular users.
             self._check_access_spreadsheet("write")
-            self.env["spreadsheet.oca.revision"].create(
+            self.env["spreadsheet.oca.revision"].sudo().create(
                 {
                     "model": self._name,
                     "res_id": self.id,
@@ -136,25 +179,12 @@ class SpreadsheetAbstract(models.AbstractModel):
                     ),
                 }
             )
-            self._bus_send(
-                "notification", dict(message, id=self.id), subchannel="spreadsheet_oca"
-            )
-            return True
-        elif message["type"] == "SNAPSHOT":
-            self._check_access_spreadsheet("write")
-            self.env["spreadsheet.oca.revision"].create(
-                {
-                    "model": self._name,
-                    "res_id": self.id,
-                    "type": message["type"],
-                    "client_id": message.get("clientId"),
-                    "next_revision_id": message["nextRevisionId"],
-                    "server_revision_id": message["serverRevisionId"],
-                    "commands": json.dumps(
-                        self._build_spreadsheet_revision_commands_data(message)
-                    ),
-                }
-            )
+            if message["type"] != "SNAPSHOT":
+                self._bus_send(
+                    "notification",
+                    dict(message, id=self.id),
+                    subchannel="spreadsheet_oca",
+                )
             return True
         elif message["type"] in ["CLIENT_JOINED", "CLIENT_LEFT", "CLIENT_MOVED"]:
             self._check_access_spreadsheet("read")
@@ -165,10 +195,8 @@ class SpreadsheetAbstract(models.AbstractModel):
         return False
 
     def _check_access_spreadsheet(self, operation: str):
-        try:
-            self.check_access(operation)
-        except AccessError as e:
-            raise e
+        """Raise AccessError unless the current user may ``operation`` self."""
+        self.check_access(operation)
         return True
 
     @api.model
@@ -182,5 +210,17 @@ class SpreadsheetAbstract(models.AbstractModel):
 
     def write(self, vals):
         if "spreadsheet_raw" in vals:
-            self.spreadsheet_revision_ids.unlink()
+            # A new base document invalidates the edit history. Check write
+            # access on the parents before deleting their revisions with sudo.
+            self.check_access("write")
+            self._get_spreadsheet_revisions().unlink()
         return super().write(vals)
+
+    def unlink(self):
+        # Collect before the parents disappear; delete only once the parent
+        # unlink (and its access check) succeeded, so no orphan revision
+        # commands (cell contents) outlive their spreadsheet.
+        revisions = self._get_spreadsheet_revisions()
+        result = super().unlink()
+        revisions.unlink()
+        return result

@@ -40,7 +40,24 @@ Configuration
 =============
 
 * Requires access to account data across multiple companies
-* Elimination accounts must be configured manually
+* Balances are the posted journal items of each company. A branch that is not
+  listed on the profile is included in its parent company's column; list the
+  branch too to give it its own column (it is then never counted twice)
+* Elimination accounts must be configured manually. The report has one row per
+  account code; for each selected account, the whole row with its code is
+  cancelled in the Eliminations column for all consolidated companies together.
+  The code is looked up in each consolidated company's own chart of accounts,
+  so selecting the inter-company account ``1100`` of one company also cancels
+  the ``1100`` balances of the other consolidated companies. Archived accounts
+  selected for elimination are still eliminated
+* Companies (or branches with posted journal items) that are left out get a
+  warning at the top of the generated sheet, with the reason and the fix: no
+  access for your user, archived company, or journal items your access rights
+  do not allow you to read. Names of companies and accounts you cannot open
+  yourself are not shown, only counted
+* When a listed company is left out but you can access some of its branches,
+  each of those branches gets its own column, so balances you are allowed to
+  see are never dropped
 
 Dependencies
 ============

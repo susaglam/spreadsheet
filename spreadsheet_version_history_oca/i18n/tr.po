@@ -1,12 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * spreadsheet_version_history_oca
+# 	* spreadsheet_version_history_oca
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server saas~19.2\n"
+"Project-Id-Version: Odoo Server saas~19.4\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-04-17 00:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish (tr)\n"
 "Language: tr\n"
@@ -16,78 +15,510 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "%(a)s added, %(c)s changed, %(r)s removed."
+msgstr "%(a)s eklendi, %(c)s değişti, %(r)s silindi."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"%(count)s more differences are not listed, to keep this page fast. The "
+"summary above counts them all; open the spreadsheet to review them."
+msgstr ""
+"Bu sayfanın hızlı kalması için %(count)s fark daha listelenmedi. Yukarıdaki "
+"özet hepsini sayar; incelemek için tabloyu açın."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "(compressed value — open the spreadsheet to see it)"
+msgstr "(sıkıştırılmış değer — görmek için tabloyu açın)"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"<p class='o_view_nocontent_smiling_face'>No snapshots yet</p><p>Use 'New "
+"Snapshot' on the spreadsheet form to capture its current state, then diff or"
+" restore it from here.</p>"
+msgstr ""
+"<p class='o_view_nocontent_smiling_face'>Henüz anlık görüntü "
+"yok</p><p>Mevcut durumu kaydetmek için tablo formundaki 'Yeni Anlık Görüntü'"
+" düğmesini kullanın; ardından buradan karşılaştırabilir veya geri "
+"yükleyebilirsiniz.</p>"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Added"
+msgstr "Eklendi"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"Cannot restore '%(version)s': its stored snapshot is unreadable (corrupted "
+"or truncated). Create a fresh snapshot and restore that instead."
+msgstr ""
+"'%(version)s' geri yüklenemiyor: kayıtlı anlık görüntü okunamıyor (bozuk "
+"veya eksik). Yeni bir anlık görüntü alın ve onun yerine onu geri yükleyin."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Cell"
+msgstr "Hücre"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__diff_html
+msgid ""
+"Cell-by-cell comparison of this snapshot with the spreadsheet as it is now: "
+"which cells were added, changed or removed since the snapshot, with the old "
+"and new value side by side. Only contents (values and formulas) are "
+"compared, not formatting."
+msgstr ""
+"Bu anlık görüntünün tablonun şu anki hâliyle hücre hücre karşılaştırması: "
+"anlık görüntüden bu yana hangi hücrelerin eklendiği, değiştiği veya "
+"silindiği, eski ve yeni değer yan yana gösterilir. Yalnızca içerik (değerler"
+" ve formüller) karşılaştırılır, biçimlendirme karşılaştırılmaz."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__cells_added
 msgid "Cells Added"
-msgstr "Eklenen Hucreler"
+msgstr "Eklenen Hücreler"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__cells_changed
 msgid "Cells Changed"
-msgstr "Degisen Hucreler"
+msgstr "Değişen Hücreler"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__cells_removed
 msgid "Cells Removed"
-msgstr "Silinen Hucreler"
+msgstr "Silinen Hücreler"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Changed"
+msgstr "Değişti"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
+msgid ""
+"Compares this snapshot (Version column) with the spreadsheet as it is now "
+"(Current column). Only contents (values and formulas) are compared, not "
+"formatting."
+msgstr ""
+"Bu anlık görüntüyü (Sürüm sütunu) tablonun şu anki hâliyle (Mevcut sütunu) "
+"karşılaştırır. Yalnızca içerik (değerler ve formüller) karşılaştırılır, "
+"biçimlendirme karşılaştırılmaz."
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
 msgid "Created"
-msgstr "Olusturuldu"
+msgstr "Oluşturulma"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__created_by_id
+msgid "Created By"
+msgstr "Oluşturan"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__create_uid
+msgid "Created by"
+msgstr "Oluşturan"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__create_date
+msgid "Created on"
+msgstr "Oluşturulma Tarihi"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Current"
+msgstr "Mevcut"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__display_name
+msgid "Display Name"
+msgstr "Görünen Ad"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__name
+msgid ""
+"Human label for this snapshot; auto-filled as \"Snapshot <timestamp>\" when "
+"left blank."
+msgstr ""
+"Bu anlık görüntü için okunabilir ad; boş bırakılırsa otomatik olarak \"Anlık"
+" görüntü <zaman damgası>\" olarak doldurulur."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__write_uid
+msgid "Last Updated by"
+msgstr "Son Güncelleyen"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__write_date
+msgid "Last Updated on"
+msgstr "Son Güncelleme Tarihi"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__name
+msgid "Name"
+msgstr "Ad"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_form_versions_button
 msgid "New Snapshot"
-msgstr "Yeni Anlik Goruntu"
+msgstr "Yeni Anlık Görüntü"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "No cell-level changes detected."
+msgstr "Hücre düzeyinde değişiklik bulunamadı."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__note
+msgid "Note"
+msgstr "Not"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "Notes"
 msgstr "Notlar"
 
 #. module: spreadsheet_version_history_oca
-msgid "Optional label (e.g., "
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__cells_removed
+msgid ""
+"Number of cells that had content in this snapshot but are empty in the "
+"spreadsheet now."
 msgstr ""
+"Bu anlık görüntüde içeriği olan ama tabloda artık boş olan hücre sayısı."
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__cells_added
+msgid ""
+"Number of cells that have content in the spreadsheet now but were empty in "
+"this snapshot."
+msgstr ""
+"Tabloda şu anda içeriği olan ama bu anlık görüntüde boş olan hücre sayısı."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__cells_changed
+msgid ""
+"Number of cells whose content differs between this snapshot and the "
+"spreadsheet now."
+msgstr ""
+"İçeriği bu anlık görüntü ile tablonun şu anki hâli arasında farklı olan "
+"hücre sayısı."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_count
+msgid "Number of snapshots captured for this spreadsheet."
+msgstr "Bu tablo için alınan anlık görüntü sayısı."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__version_label
+msgid "Optional label (e.g., 'v1.0', 'before Q1 update')."
+msgstr "İsteğe bağlı etiket (ör. 'v1.0', 'Q1 güncellemesi öncesi')."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Removed"
+msgstr "Silindi"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
 msgid "Restore"
-msgstr "Geri Yukle"
+msgstr "Geri Yükle"
 
 #. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "Restore This Version"
-msgstr "Bu Versiyonu Geri Yukle"
+msgstr "Bu Sürümü Geri Yükle"
 
 #. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
+msgid "Restore this version? Current state will be overwritten."
+msgstr "Bu sürüm geri yüklensin mi? Mevcut durumun üzerine yazılacak."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Sheet:"
+msgstr "Sayfa:"
+
+#. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_list
 msgid "Size"
-msgstr ""
+msgstr "Boyut"
 
 #. module: spreadsheet_version_history_oca
-msgid "Snapshot %s"
-msgstr ""
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__size_bytes
+msgid "Size Bytes"
+msgstr "Boyut (bayt)"
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Snapshot %(ts)s"
+msgstr "Anlık görüntü %(ts)s"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "Snapshot '%(version)s' captured for '%(sheet)s'."
+msgstr "'%(sheet)s' için '%(version)s' anlık görüntüsü alındı."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "Snapshot Created"
+msgstr "Anlık Görüntü Alındı"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_data
 msgid "Snapshot Data"
-msgstr ""
+msgstr "Anlık Görüntü Verisi"
 
 #. module: spreadsheet_version_history_oca
-msgid "Spreadsheet "
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_ids
+msgid ""
+"Snapshots captured for this spreadsheet, newest first. Open one to compare "
+"it with the current content or restore it."
 msgstr ""
+"Bu tablo için alınan anlık görüntüler, en yenisi önce. Mevcut içerikle "
+"karşılaştırmak veya geri yüklemek için birini açın."
 
 #. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"Some cells of the sheet(s) %(sheets)s are stored in a compressed form that "
+"this screen could not fully expand, so they are shown as stored and may be "
+"listed as changed even when their value is the same. Open the spreadsheet to"
+" check those cells."
+msgstr ""
+"Bazı hücreler (sayfa: %(sheets)s) bu ekranın tamamen açamadığı sıkıştırılmış"
+" bir biçimde saklanıyor. Bu hücreler saklandıkları hâliyle gösterilir ve "
+"değerleri aynı kalsa bile değişmiş olarak listelenebilir. Bu hücreleri "
+"kontrol etmek için tabloyu açın."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model,name:spreadsheet_version_history_oca.model_spreadsheet_spreadsheet
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_id
+msgid "Spreadsheet"
+msgstr "Tablo"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Spreadsheet '%(sheet)s' restored to version '%(version)s'."
+msgstr "'%(sheet)s' tablosu '%(version)s' sürümüne geri yüklendi."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model,name:spreadsheet_version_history_oca.model_spreadsheet_version
+msgid "Spreadsheet Version Snapshot"
+msgstr "Tablo Sürümü Anlık Görüntüsü"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Status"
+msgstr "Durum"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__size_bytes
+msgid ""
+"Storage size of this snapshot in bytes (raw JSON before base64 encoding)."
+msgstr ""
+"Bu anlık görüntünün bayt cinsinden depolama boyutu (base64 kodlamasından "
+"önceki ham JSON)."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Summary:"
+msgstr "Özet:"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"The captured content of a snapshot and the user who captured it cannot be "
+"changed. They record the spreadsheet as it was at that moment, and restoring"
+" the snapshot must bring back exactly that. You can still edit its name, "
+"label and note; to record the spreadsheet as it is now, use 'New Snapshot' "
+"on the spreadsheet."
+msgstr ""
+"Bir anlık görüntünün kaydedilen içeriği ve onu alan kullanıcı "
+"değiştirilemez. Bunlar tablonun o andaki halini kaydeder ve anlık görüntüyü "
+"geri yüklemek tam olarak o hali geri getirmelidir. Adını, etiketini ve "
+"notunu yine de düzenleyebilirsiniz; tablonun şu anki halini kaydetmek için "
+"tablodaki 'Yeni Anlık Görüntü' düğmesini kullanın."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_data
+msgid ""
+"The full content of the spreadsheet at the moment the snapshot was captured."
+" It cannot be changed afterwards; restoring the snapshot writes it back to "
+"the spreadsheet."
+msgstr ""
+"Anlık görüntünün alındığı andaki tablonun tüm içeriği. Sonradan "
+"değiştirilemez; anlık görüntü geri yüklendiğinde tabloya geri yazılır."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__spreadsheet_id
+msgid "The spreadsheet this snapshot belongs to."
+msgstr "Bu anlık görüntünün ait olduğu tablo."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"The visual diff could not be built for this snapshot. The snapshot itself is"
+" intact and can still be restored. If this keeps happening, send the server "
+"log to your administrator."
+msgstr ""
+"Bu anlık görüntü için görsel karşılaştırma oluşturulamadı. Anlık görüntünün "
+"kendisi sağlam ve hâlâ geri yüklenebilir. Bu durum tekrarlanırsa sunucu "
+"günlüğünü yöneticinize gönderin."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"This snapshot's stored data is unreadable (corrupted or truncated), so no "
+"comparison can be shown and it cannot be restored. A spreadsheet manager can"
+" delete it; use 'New Snapshot' on the spreadsheet to capture a fresh one."
+msgstr ""
+"Bu anlık görüntünün kayıtlı verisi okunamıyor (bozuk veya eksik); bu yüzden "
+"karşılaştırma gösterilemez ve anlık görüntü geri yüklenemez. Bir tablo "
+"yöneticisi onu silebilir; yenisini almak için tablodaki 'Yeni Anlık Görüntü'"
+" düğmesini kullanın."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "This spreadsheet has no content to snapshot yet — add some data first."
+msgstr ""
+"Bu tabloda henüz anlık görüntüsü alınacak içerik yok — önce veri ekleyin."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"This spreadsheet is too large to compare every cell on this screen, so some "
+"cells of the sheet(s) %(sheets)s are shown as stored and may be listed as "
+"changed even when their value is the same. Open the spreadsheet to check "
+"those cells."
+msgstr ""
+"Bu tablo, her hücrenin bu ekranda karşılaştırılamayacağı kadar büyük. Bu "
+"yüzden bazı hücreler (sayfa: %(sheets)s) saklandıkları hâliyle gösterilir ve"
+" değerleri aynı kalsa bile değişmiş olarak listelenebilir. Bu hücreleri "
+"kontrol etmek için tabloyu açın."
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__created_by_id
+msgid ""
+"User who captured this snapshot. Set automatically when the snapshot is "
+"created and cannot be changed."
+msgstr ""
+"Bu anlık görüntüyü alan kullanıcı. Anlık görüntü oluşturulurken otomatik "
+"olarak ayarlanır ve değiştirilemez."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid "Version"
+msgstr "Sürüm"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_count
+msgid "Version Count"
+msgstr "Sürüm Sayısı"
+
+#. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__version_label
+msgid "Version Label"
+msgstr "Sürüm Etiketi"
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
 msgid "Version Restored"
-msgstr ""
+msgstr "Sürüm Geri Yüklendi"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_spreadsheet__version_ids
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_form_versions_button
 msgid "Versions"
-msgstr "Versiyonlar"
+msgstr "Sürümler"
 
 #. module: spreadsheet_version_history_oca
-msgid "Versions - %s"
-msgstr ""
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_spreadsheet.py:0
+msgid "Versions - %(name)s"
+msgstr "Sürümler - %(name)s"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,field_description:spreadsheet_version_history_oca.field_spreadsheet_version__diff_html
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "Visual Diff vs Current"
-msgstr "Gorsel Karsilastirma"
+msgstr "Mevcut Hâliyle Görsel Karşılaştırma"
 
 #. module: spreadsheet_version_history_oca
+#: model:ir.model.fields,help:spreadsheet_version_history_oca.field_spreadsheet_version__note
 msgid "What changed in this version."
-msgstr ""
+msgstr "Bu sürümde nelerin değiştiği."
 
 #. module: spreadsheet_version_history_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_version_history_oca.spreadsheet_version_view_form
 msgid "What changed in this version..."
-msgstr ""
+msgstr "Bu sürümde neler değişti..."
 
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"You cannot restore '%(version)s' because you may view spreadsheet %(sheet)s "
+"but not edit it. Restoring replaces the spreadsheet's current content with "
+"this snapshot, so only its owner, its contributors and spreadsheet managers "
+"may do it. Ask the owner to restore it, or to add you as a contributor."
+msgstr ""
+"'%(version)s' sürümünü geri yükleyemezsiniz, çünkü %(sheet)s tablosunu "
+"görüntüleyebilir ancak düzenleyemezsiniz. Geri yükleme, tablonun mevcut "
+"içeriğini bu anlık görüntüyle değiştirir; bu yüzden bunu yalnızca tablonun "
+"sahibi, katkıda bulunanları ve tablo yöneticileri yapabilir. Sahibinden "
+"anlık görüntüyü geri yüklemesini veya sizi katkıda bulunan olarak eklemesini"
+" isteyin."
+
+#. module: spreadsheet_version_history_oca
+#. odoo-python
+#: code:addons/spreadsheet_version_history_oca/models/spreadsheet_version.py:0
+msgid ""
+"You cannot save a snapshot on spreadsheet %(spreadsheet)s because you are "
+"not allowed to edit that spreadsheet. A snapshot can be restored over the "
+"spreadsheet's content, so only its owner, its contributors and spreadsheet "
+"managers may create a snapshot on it or move one to it. Ask the owner to add"
+" you as a contributor, or use a spreadsheet you can edit."
+msgstr ""
+"%(spreadsheet)s tablosuna anlık görüntü kaydedemezsiniz, çünkü bu tabloyu "
+"düzenleme izniniz yok. Bir anlık görüntü tablonun içeriğinin üzerine geri "
+"yüklenebilir; bu yüzden bu tabloda yalnızca sahibi, katkıda bulunanları ve "
+"tablo yöneticileri anlık görüntü oluşturabilir veya buraya bir anlık görüntü"
+" taşıyabilir. Sahibinden sizi katkıda bulunan olarak eklemesini isteyin ya "
+"da düzenleyebildiğiniz bir tablo kullanın."

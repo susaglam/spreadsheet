@@ -3,3 +3,5 @@
 
 from . import test_sample_data_loader
 from . import test_tutorial_actions
+from . import test_help_availability
+from . import test_guide_content

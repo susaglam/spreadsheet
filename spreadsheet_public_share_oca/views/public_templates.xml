@@ -44,6 +44,10 @@
                     </div>
                 </div>
 
+                <p t-if="not sheets" class="text-muted">
+                    <i class="fa fa-info-circle me-1" />
+                    <span>There is nothing to preview in this spreadsheet.</span>
+                </p>
                 <t t-foreach="sheets" t-as="sheet">
                     <div class="card mb-3 shadow-sm">
                         <div class="card-header bg-light">
@@ -93,6 +97,15 @@
                                 </table>
                             </div>
                             <div
+                                t-if="sheet.get('error')"
+                                class="alert alert-warning small mb-0 rounded-0 border-0"
+                                role="alert"
+                            >
+                                <i class="fa fa-exclamation-triangle me-1" />
+                                <span>This sheet could not be displayed in the
+                                preview.</span>
+                            </div>
+                            <div
                                 t-if="sheet.get('truncated')"
                                 class="alert alert-warning small mb-0 rounded-0 border-0"
                                 role="alert"
@@ -139,7 +152,18 @@
                             <i class="fa fa-exclamation-circle me-1" />
                             <span>Incorrect password. Please try again.</span>
                         </div>
+                        <div
+                            t-if="locked"
+                            class="alert alert-warning py-2"
+                            role="alert"
+                        >
+                            <i class="fa fa-clock-o me-1" />
+                            <span>Too many incorrect passwords. For security, this
+                            link is locked for up to 15 minutes. Please try again
+                            later.</span>
+                        </div>
                         <form
+                            t-if="not locked"
                             method="post"
                             t-attf-action="/spreadsheet/public/{{ token }}"
                         >

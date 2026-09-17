@@ -7,6 +7,7 @@
             <list>
                 <field name="name" />
                 <field name="spreadsheet_id" />
+                <field name="owner_id" widget="many2one_avatar_user" optional="show" />
                 <field name="format" />
                 <field name="interval_number" />
                 <field name="interval_type" />
@@ -47,6 +48,11 @@
                     <group>
                         <group string="Source">
                             <field name="spreadsheet_id" />
+                            <field
+                                name="owner_id"
+                                widget="many2one_avatar_user"
+                                domain="[('share', '=', False)]"
+                            />
                             <field name="format" />
                         </group>
                         <group string="Schedule">
@@ -69,6 +75,7 @@
                         />
                     </group>
                 </sheet>
+                <chatter />
             </form>
         </field>
     </record>

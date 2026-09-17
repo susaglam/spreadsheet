@@ -3,7 +3,16 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
      Register our web_tours in the DB so they appear in
-     Settings > Technical > Tours and can be launched from the UI. -->
+     Settings > Technical > Tours and can be launched from the UI.
+
+     saas-19.4 MANUAL tours are read from the database: the rows below carry no
+     web_tour.tour.step records on purpose, so the core falls back to the steps
+     registered in static/src/js/tours.esm.js (single source of truth).
+     custom=True keeps them out of the automatic onboarding queue
+     (web_tour.tour.get_current_tour only auto-plays custom=False tours).
+     The Help card launcher passes `url` to startTour, which is the only value
+     the 19.4 tour service redirects to. Existing databases are fixed by
+     migrations/saas~19.4.1.0.2. -->
 <odoo noupdate="1">
     <record id="tour_quick_start" model="web_tour.tour">
         <field name="name">spreadsheet_quick_start</field>
@@ -11,13 +20,10 @@
             name="url"
         >/odoo/action-spreadsheet_oca.spreadsheet_spreadsheet_act_window</field>
         <field name="sequence">100</field>
+        <field name="custom" eval="True" />
         <field
             name="rainbow_man_message"
-        ><![CDATA[
-<p><strong>🎉 Tebrikler!</strong> Ilk spreadsheet'inizi olusturdunuz.</p>
-<p>Simdi hucrelere veri girebilir, formuller kullanabilir,
-'File &gt; Save as Template' ile sablon yapabilirsiniz.</p>
-]]></field>
+        ><![CDATA[<p><strong>🎉 Congratulations!</strong> You created your first spreadsheet.</p><p>You can now enter data in the cells, write formulas and turn it into a template with File &gt; Save as Template.</p>]]></field>
     </record>
 
     <record id="tour_save_template" model="web_tour.tour">
@@ -26,12 +32,10 @@
             name="url"
         >/odoo/action-spreadsheet_oca.spreadsheet_spreadsheet_act_window</field>
         <field name="sequence">110</field>
+        <field name="custom" eval="True" />
         <field
             name="rainbow_man_message"
-        ><![CDATA[
-<p><strong>📋 Harika!</strong> Artik bu spreadsheet'i istediginiz zaman
-template olarak yeniden kullanabilirsiniz.</p>
-]]></field>
+        ><![CDATA[<p><strong>📋 Great!</strong> You can now reuse this spreadsheet as a template whenever you want.</p>]]></field>
     </record>
 
     <record id="tour_kpi_alert" model="web_tour.tour">
@@ -40,12 +44,9 @@ template olarak yeniden kullanabilirsiniz.</p>
             name="url"
         >/odoo/action-spreadsheet_oca.spreadsheet_spreadsheet_act_window</field>
         <field name="sequence">120</field>
+        <field name="custom" eval="True" />
         <field
             name="rainbow_man_message"
-        ><![CDATA[
-<p><strong>🔔 Artik KPI'larin izlenecek!</strong></p>
-<p>Cron her 15 dakikada bir esikleri kontrol edecek. Esigin asildigi
-durumda Discuss inbox'iniza bildirim gelecek.</p>
-]]></field>
+        ><![CDATA[<p><strong>🔔 Your KPI is now being watched!</strong></p><p>A scheduled action checks the thresholds every 15 minutes. When a threshold is crossed, a notification arrives in your Discuss inbox.</p>]]></field>
     </record>
 </odoo>

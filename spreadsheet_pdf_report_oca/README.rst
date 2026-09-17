@@ -26,9 +26,11 @@ Features
 * **File** > **Download PDF** menu in the spreadsheet editor
 * Extracts evaluated cell values (including formula results) from the JS model
 * QWeb template with company logo header and footer
-* Cell styling preserved (bold, italic, colors, alignment, font size)
+* Cell styling preserved as displayed (bold, italic, text/fill colors including
+  conditional formats and table styles, alignment, font size)
 * Merge cell support via colspan/rowspan
-* Landscape A4 paper format
+* Hidden sheets are left out of the PDF
+* Landscape A4 paper format (configurable, see below)
 * Full UTF-8 support (Turkish, Chinese, Arabic characters)
 
 Usage
@@ -41,14 +43,44 @@ Usage
 Configuration
 =============
 
-* Paper format can be changed via **Settings** > **Technical** > **Paper Format**
+* Paper format: open **Settings** > **Technical** > **Actions** >
+  **Reports** >
+  *Spreadsheet PDF Export* and change its *Paper Format* (default
+  *Spreadsheet Landscape A4*: A4 landscape, 15 mm / 7 mm margins).
+* PDF engine: the export uses the same engine as every Odoo report, i.e. the
+  system parameter ``report.pdf_engine_default``. To use a specific engine for
+  this export only, set the *Report Type* of *Spreadsheet PDF Export* to
+  *PDF (Wkhtmltopdf)* or *PDF (Paper Muncher)*.
+* *Spreadsheet PDF Export* only carries these settings. Printing it directly
+  (``/report/...``) shows a static page that points to **File** > **Download
+  PDF**; the export itself is rendered by the ``/spreadsheet/pdf`` controller.
 * Logo is taken from the current company's ``logo`` field
+
+Security and limits
+===================
+
+* Only internal users can export; portal and public users get a clear refusal.
+* The request is CSRF-protected (the web client sends the token automatically).
+* Cell styles are validated server-side: colors must be ``#rgb``, ``#rrggbb``,
+  ``rgb()`` or ``rgba()``, alignment ``left``/``center``/``right``, font size a
+  number from 1 to 400 (the spreadsheet editor's range). Anything else is
+  refused, so no CSS can be injected into the PDF.
+* Size limits per export: 50 sheets, 1000 rows per sheet, 200 cells per row,
+  50,000 cells in total and 8 MB of data. The limits apply to the table the PDF
+  engine lays out: a merged cell counts for every cell it covers, and a row's
+  width includes cells merged down from the rows above. The used range of
+  every visible sheet counts, so one value far away (e.g. in AZ1000) can reach
+  the total limit. The editor checks the total before uploading. Larger
+  spreadsheets get a message suggesting to hide sheets, remove unused ranges or
+  use **Download XLSX**.
 
 Dependencies
 ============
 
 * ``spreadsheet_oca``
-* ``wkhtmltopdf`` (Odoo standard)
+* A PDF engine: ``base_report_wkhtmltox`` (auto-installed, needs the
+  ``wkhtmltopdf`` program) or ``base_report_paper_muncher``. Without a usable
+  engine the export shows a message explaining what to install.
 
 Known issues / Roadmap
 ======================

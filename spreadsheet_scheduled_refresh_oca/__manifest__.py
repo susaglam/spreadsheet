@@ -4,7 +4,7 @@
 {
     "name": "Spreadsheet Scheduled Refresh OCA",
     "summary": "Periodically refresh open spreadsheets' data sources via the bus",
-    "version": "saas~19.4.1.1.1",
+    "version": "saas~19.4.1.1.2",
     "license": "AGPL-3",
     "author": "Codesnap,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",

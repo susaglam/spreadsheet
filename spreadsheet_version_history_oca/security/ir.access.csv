@@ -1,3 +1,4 @@
 id,name,model_id,group_id/id,operation,domain
-access_spreadsheet_version_user,spreadsheet.version.user,spreadsheet.version,spreadsheet_oca.group_user,cru,
-access_spreadsheet_version_manager,spreadsheet.version.manager,spreadsheet.version,spreadsheet_oca.group_manager,crud,
+access_spreadsheet_version_user,spreadsheet.version.user,spreadsheet.version,spreadsheet_oca.group_user,r,"[('spreadsheet_id', 'access', 'read')]"
+access_spreadsheet_version_user_edit,spreadsheet.version.user.edit,spreadsheet.version,spreadsheet_oca.group_user,cu,"[('spreadsheet_id', 'access', 'write')]"
+access_spreadsheet_version_manager,spreadsheet.version.manager,spreadsheet.version,spreadsheet_oca.group_manager,crud,"[('spreadsheet_id', 'access', 'read')]"

@@ -2,7 +2,14 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <!-- Main PDF wrapper with header/footer -->
+    <!-- Main PDF wrapper with header/footer. CONTROLLER-ONLY: rendered by
+         /spreadsheet/pdf with values it builds itself (company, report_name,
+         report_date, content, and page_size / page_margin computed from the
+         report's paper format). page_size and page_margin are written inside
+         <style>, where escaping does not stop CSS, so this template must never
+         become the report_name of an ir.actions.report: the generic
+         /report/<converter>/<reportname> route merges arbitrary client
+         "options" into the rendering values. -->
     <template id="spreadsheet_pdf_main">
         <html lang="en">
             <head>
@@ -10,8 +17,8 @@
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                 <style>
                     @page {
-                        size: A4 landscape;
-                        margin: 15mm 7mm;
+                        size: <t t-out="page_size or 'A4 landscape'" />;
+                        margin: <t t-out="page_margin or '15mm 7mm'" />;
                     }
                     body {
                         font-family: 'DejaVu Sans', 'Liberation Sans', 'Arial Unicode MS', Arial, sans-serif;
@@ -95,7 +102,7 @@
                 <!-- Header -->
                 <div class="report-header">
                     <div class="company-info">
-                        <div class="company-logo" t-if="company.logo">
+                        <div class="company-logo" t-if="company and company.logo">
                             <img
                                 t-att-src="image_data_uri(company.logo)"
                                 alt="Company Logo"
@@ -123,61 +130,26 @@
         </html>
     </template>
 
-    <!-- Sheet content rendering -->
+    <!-- Sheet content rendering. Cells arrive already validated by the
+         controller (normalize_payload): "style" is rebuilt server-side from
+         whitelisted values, so no client string is concatenated here. -->
     <template id="spreadsheet_pdf_content">
-        <t t-foreach="sheets" t-as="sheet">
+        <t t-foreach="sheets or []" t-as="sheet">
             <div class="sheet-section">
                 <div class="sheet-title">
-                    <t t-out="sheet.get('name', 'Sheet')" />
+                    <t t-out="sheet['name']" />
                 </div>
-                <t t-if="sheet.get('rows')">
+                <t t-if="sheet['rows']">
                     <table class="sheet-table">
                         <t t-foreach="sheet['rows']" t-as="row">
                             <tr>
                                 <t t-foreach="row" t-as="cell">
-                                    <t t-set="cell_style" t-value="''" />
-                                    <t t-if="cell.get('bold')">
-                                        <t
-                                            t-set="cell_style"
-                                            t-value="cell_style + 'font-weight:bold;'"
-                                        />
-                                    </t>
-                                    <t t-if="cell.get('italic')">
-                                        <t
-                                            t-set="cell_style"
-                                            t-value="cell_style + 'font-style:italic;'"
-                                        />
-                                    </t>
-                                    <t t-if="cell.get('color')">
-                                        <t
-                                            t-set="cell_style"
-                                            t-value="cell_style + 'color:' + cell['color'] + ';'"
-                                        />
-                                    </t>
-                                    <t t-if="cell.get('bg')">
-                                        <t
-                                            t-set="cell_style"
-                                            t-value="cell_style + 'background-color:' + cell['bg'] + ';'"
-                                        />
-                                    </t>
-                                    <t t-if="cell.get('align')">
-                                        <t
-                                            t-set="cell_style"
-                                            t-value="cell_style + 'text-align:' + cell['align'] + ';'"
-                                        />
-                                    </t>
-                                    <t t-if="cell.get('fontSize')">
-                                        <t
-                                            t-set="cell_style"
-                                            t-value="cell_style + 'font-size:' + str(cell['fontSize']) + 'px;'"
-                                        />
-                                    </t>
                                     <td
-                                        t-att-style="cell_style or None"
-                                        t-att-colspan="cell.get('colspan') or None"
-                                        t-att-rowspan="cell.get('rowspan') or None"
+                                        t-att-style="cell['style'] or None"
+                                        t-att-colspan="cell['colspan'] or None"
+                                        t-att-rowspan="cell['rowspan'] or None"
                                     >
-                                        <t t-out="cell.get('value', '')" />
+                                        <t t-out="cell['value']" />
                                     </td>
                                 </t>
                             </tr>
@@ -192,4 +164,39 @@
             </div>
         </t>
     </template>
+
+    <!-- Stub document of the report action below. The action only carries
+         settings (paper format, engine), the real export is rendered by the
+         /spreadsheet/pdf controller. Opening the action through the generic
+         /report/<converter>/ route renders this static page: it reads no
+         request values, and its <main> keeps both PDF engines working. -->
+    <template id="report_spreadsheet_pdf_placeholder">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <p>
+                    This report only holds the paper format and PDF engine settings of the spreadsheet PDF export. To export a spreadsheet, open it and use File &gt; Download PDF.
+                </p>
+            </div>
+        </t>
+    </template>
+
+    <!-- Report action: not bound to any model menu. It carries the paper
+         format of the export and lets an administrator pick a dedicated PDF
+         engine (Report Type "PDF (Wkhtmltopdf)" / "PDF (Paper Muncher)") in
+         Settings > Technical > Actions > Reports; with plain "PDF" the system
+         parameter report.pdf_engine_default decides, like every other Odoo
+         report. report_name points at the stub, never at
+         spreadsheet_pdf_main (see the comment on that template). -->
+    <record id="action_report_spreadsheet_pdf" model="ir.actions.report">
+        <field name="name">Spreadsheet PDF Export</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >spreadsheet_pdf_report_oca.report_spreadsheet_pdf_placeholder</field>
+        <field
+            name="report_file"
+        >spreadsheet_pdf_report_oca.report_spreadsheet_pdf_placeholder</field>
+        <field name="paperformat_id" ref="paperformat_spreadsheet_landscape" />
+    </record>
 </odoo>

@@ -2,44 +2,52 @@
 <!-- Copyright 2026 Codesnap
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <!-- Actions that open individual guide spreadsheets -->
+    <!-- Actions that open individual guide spreadsheets. They go through
+         spreadsheet.tutorial._action_open_guide(), which explains (instead of
+         crashing or showing #NAME?) when the guide's formula module is missing
+         or the user cannot read the spreadsheet. -->
     <record id="action_guide_forecast" model="ir.actions.server">
-        <field name="name">📈 Tahminleme Fonksiyonlari Rehberi</field>
-        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="name">📈 Forecasting Functions Guide</field>
+        <field name="model_id" ref="model_spreadsheet_tutorial" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
         <field name="state">code</field>
         <field
             name="code"
-        >action = env.ref("spreadsheet_help_oca.guide_forecast").open_spreadsheet()</field>
+        >action = env["spreadsheet.tutorial"]._action_open_guide("spreadsheet_help_oca.guide_forecast")</field>
     </record>
 
     <record id="action_guide_period" model="ir.actions.server">
-        <field name="name">📊 Donem Karsilastirma Rehberi</field>
-        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="name">📊 Period Comparison Guide</field>
+        <field name="model_id" ref="model_spreadsheet_tutorial" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
         <field name="state">code</field>
         <field
             name="code"
-        >action = env.ref("spreadsheet_help_oca.guide_period").open_spreadsheet()</field>
+        >action = env["spreadsheet.tutorial"]._action_open_guide("spreadsheet_help_oca.guide_period")</field>
     </record>
 
     <record id="action_guide_core" model="ir.actions.server">
-        <field name="name">🧰 Core Formulleri Rehberi</field>
-        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="name">🧰 Core Formulas Guide</field>
+        <field name="model_id" ref="model_spreadsheet_tutorial" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
         <field name="state">code</field>
         <field
             name="code"
-        >action = env.ref("spreadsheet_help_oca.guide_core").open_spreadsheet()</field>
+        >action = env["spreadsheet.tutorial"]._action_open_guide("spreadsheet_help_oca.guide_core")</field>
     </record>
 
     <record id="action_guide_features" model="ir.actions.server">
-        <field name="name">✨ Ozellikler ve Menuler Rehberi</field>
-        <field name="model_id" ref="spreadsheet_oca.model_spreadsheet_spreadsheet" />
+        <field name="name">✨ Features and Menus Guide</field>
+        <field name="model_id" ref="model_spreadsheet_tutorial" />
+        <field name="group_ids" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
         <field name="state">code</field>
         <field
             name="code"
-        >action = env.ref("spreadsheet_help_oca.guide_features").open_spreadsheet()</field>
+        >action = env["spreadsheet.tutorial"]._action_open_guide("spreadsheet_help_oca.guide_features")</field>
     </record>
 
-    <!-- "Help & Examples" parent menu under Spreadsheets app -->
+    <!-- "Help & Examples" parent menu under Spreadsheets app (pure grouping
+         parent: no action, so it expands on touch devices too) -->
     <record id="menu_spreadsheet_help" model="ir.ui.menu">
         <field name="name">Help &amp; Examples</field>
         <field name="parent_id" ref="spreadsheet_oca.spreadsheet_spreadsheet_menu" />
@@ -55,30 +63,32 @@
         <field name="sequence" eval="5" />
     </record>
 
-    <!-- Formula reference sub-menus (pre-built spreadsheets) -->
+    <!-- Formula reference sub-menus (pre-built spreadsheets). Entries whose
+         guide needs a module that is not installed are hidden by
+         ir.ui.menu._load_menus_blacklist (see models/ir_ui_menu.py). -->
     <record id="menu_guide_features" model="ir.ui.menu">
-        <field name="name">✨ Ozellikler ve Menuler</field>
+        <field name="name">✨ Features and Menus</field>
         <field name="parent_id" ref="menu_spreadsheet_help" />
         <field name="action" ref="action_guide_features" />
         <field name="sequence" eval="10" />
     </record>
 
     <record id="menu_guide_forecast" model="ir.ui.menu">
-        <field name="name">📈 Tahminleme Formulleri</field>
+        <field name="name">📈 Forecasting Formulas</field>
         <field name="parent_id" ref="menu_spreadsheet_help" />
         <field name="action" ref="action_guide_forecast" />
         <field name="sequence" eval="20" />
     </record>
 
     <record id="menu_guide_period" model="ir.ui.menu">
-        <field name="name">📊 Donem Karsilastirma</field>
+        <field name="name">📊 Period Comparison</field>
         <field name="parent_id" ref="menu_spreadsheet_help" />
         <field name="action" ref="action_guide_period" />
         <field name="sequence" eval="30" />
     </record>
 
     <record id="menu_guide_core" model="ir.ui.menu">
-        <field name="name">🧰 Core Formulleri</field>
+        <field name="name">🧰 Core Formulas</field>
         <field name="parent_id" ref="menu_spreadsheet_help" />
         <field name="action" ref="action_guide_core" />
         <field name="sequence" eval="40" />
@@ -86,7 +96,7 @@
 
     <!-- 📦 Sample Data Loader -->
     <record id="menu_sample_data_loader" model="ir.ui.menu">
-        <field name="name">📦 Ornek Veri Yukle</field>
+        <field name="name">📦 Load Sample Data</field>
         <field name="parent_id" ref="menu_spreadsheet_help" />
         <field name="action" ref="sample_data_loader_action" />
         <field name="sequence" eval="50" />

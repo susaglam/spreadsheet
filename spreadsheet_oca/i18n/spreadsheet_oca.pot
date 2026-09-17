@@ -69,12 +69,6 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
-msgid "Add to spreadesheet"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/graph_controller.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
@@ -309,9 +303,21 @@ msgid "Edit domain"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-msgid "File"
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
+msgid ""
+"Every member of these groups can open and edit this spreadsheet, but not "
+"delete it, including users who receive the group through another group. "
+"Members also need Spreadsheets access (User or Manager). Example: share the "
+"forecast with the sales group so the whole sales team can update it."
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
+msgid ""
+"Every member of these groups can open this spreadsheet in read-only mode, "
+"including users who receive the group through another group. Members also "
+"need Spreadsheets access (User or Manager). Example: share a report with a "
+"managers group so they can view it without changing it."
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -749,12 +755,6 @@ msgid "Server Revision"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-msgid "Settings"
-msgstr ""
-
-#. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_abstract.py:0
 msgid "Sheet1"
@@ -770,12 +770,13 @@ msgstr ""
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
 #: model:ir.module.category,name:spreadsheet_oca.module_category_spreedsheet
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.res_config_settings_view_form
 msgid "Spreadsheet"
 msgstr ""
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_oca_revision
-msgid "Spreadsheet Oca Revision"
+msgid "Spreadsheet Collaborative Revision"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -862,6 +863,31 @@ msgid "Tags"
 msgstr ""
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_revision_ids
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_revision_ids
+msgid ""
+"Technical: the collaborative edit history (revision commands) replayed on "
+"top of the stored spreadsheet file when it is opened. Only administrators "
+"can read it directly; users see its effect by opening the spreadsheet."
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-python
+#: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
+msgid ""
+"The file \"%(file)s\" could not be imported because it is not a valid Excel "
+"workbook (.xlsx), so no spreadsheet was created. Open it in Excel or "
+"LibreOffice, save it as \"Excel Workbook (.xlsx)\" and upload it again."
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
+msgid ""
+"The user who owns this spreadsheet. The owner can always open, edit, share "
+"and delete it, as can Spreadsheet managers."
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
 msgid ""
 "This field allows you to generate tables that its rows are updated with the "
@@ -922,6 +948,21 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:res.groups,name:spreadsheet_oca.group_user
 msgid "User"
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
+msgid ""
+"Users who can open and edit this spreadsheet, but not delete it. They also "
+"need Spreadsheets access (User or Manager). Example: add the colleague who "
+"fills in the monthly figures."
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
+msgid ""
+"Users who can open this spreadsheet in read-only mode. They also need "
+"Spreadsheets access (User or Manager)."
 msgstr ""
 
 #. module: spreadsheet_oca

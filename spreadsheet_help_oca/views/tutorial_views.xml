@@ -12,6 +12,17 @@
                 <field name="tags" />
                 <field name="module_name" />
                 <filter
+                    name="available"
+                    string="Available"
+                    domain="[('is_available', '=', True)]"
+                />
+                <filter
+                    name="not_available"
+                    string="Module Not Installed"
+                    domain="[('is_available', '=', False)]"
+                />
+                <separator />
+                <filter
                     name="beginner"
                     string="Beginner"
                     domain="[('difficulty','=','beginner')]"
@@ -29,28 +40,28 @@
                 <separator />
                 <filter
                     name="has_tour"
-                    string="Interactive Tour Var"
+                    string="Has Interactive Tour"
                     domain="[('tour_name','!=',False)]"
                 />
                 <filter
                     name="has_video"
-                    string="Video Var"
+                    string="Has Video"
                     domain="[('video_url','!=',False)]"
                 />
                 <filter
                     name="has_example"
-                    string="Ornek Spreadsheet Var"
+                    string="Has Example Spreadsheet"
                     domain="[('guide_spreadsheet_id','!=',False)]"
                 />
                 <group>
                     <filter
                         name="group_by_difficulty"
-                        string="Zorluk"
+                        string="Difficulty"
                         context="{'group_by': 'difficulty'}"
                     />
                     <filter
                         name="group_by_module"
-                        string="Modul"
+                        string="Module"
                         context="{'group_by': 'module_name'}"
                     />
                 </group>
@@ -67,6 +78,7 @@
                 <field name="name" />
                 <field name="description" />
                 <field name="module_name" />
+                <field name="is_available" />
                 <field name="difficulty" />
                 <field name="duration_minutes" />
                 <field name="tour_name" />
@@ -91,14 +103,21 @@
                                 <field name="description" />
                             </p>
                             <div class="small text-muted mt-2">
-                                ⏱️ <field name="duration_minutes" /> dk
+                                ⏱️ <field name="duration_minutes" /> min
                                 <t
                                 t-if="record.module_name and record.module_name.raw_value"
                             >
                                     · 📦 <field name="module_name" />
                                 </t>
                             </div>
-                            <footer class="mt-2">
+                            <div
+                                class="alert alert-warning small mt-2 mb-0 py-1 px-2"
+                                role="status"
+                                invisible="is_available"
+                            >
+                                Module not installed: ask an administrator to install it from the Apps menu to unlock this tutorial.
+                            </div>
+                            <footer class="mt-2" invisible="not is_available">
                                 <button
                                     t-if="record.tour_name and record.tour_name.raw_value"
                                     name="action_start_tour"
@@ -113,7 +132,7 @@
                                     type="object"
                                     class="btn btn-sm btn-secondary me-1"
                                 >
-                                    📂 Ornegi Ac
+                                    📂 Open Example
                                 </button>
                             </footer>
                         </main>
@@ -127,24 +146,29 @@
         <field name="name">spreadsheet.tutorial.list</field>
         <field name="model">spreadsheet.tutorial</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-muted="not is_available">
                 <field name="sequence" widget="handle" />
                 <field name="name" />
                 <field name="module_name" />
+                <field name="is_available" optional="show" />
                 <field name="difficulty" widget="badge" />
-                <field name="duration_minutes" string="Dakika" />
+                <field name="duration_minutes" string="Minutes" />
                 <field name="tags" />
+                <field name="tour_name" column_invisible="True" />
+                <field name="guide_spreadsheet_id" column_invisible="True" />
                 <button
                     name="action_start_tour"
                     type="object"
                     string="Tour"
                     icon="fa-play-circle"
+                    invisible="not is_available or not tour_name"
                 />
                 <button
                     name="action_open_example"
                     type="object"
-                    string="Ornek"
+                    string="Example"
                     icon="fa-external-link"
+                    invisible="not is_available or not guide_spreadsheet_id"
                 />
             </list>
         </field>
@@ -159,39 +183,60 @@
                     <button
                         name="action_start_tour"
                         type="object"
-                        string="🎬 Interactive Tour Baslat"
+                        string="🎬 Start Interactive Tour"
                         class="btn-primary"
-                        invisible="not tour_name"
+                        invisible="not tour_name or not is_available"
                     />
                     <button
                         name="action_open_example"
                         type="object"
-                        string="📂 Ornek Spreadsheet'i Ac"
+                        string="📂 Open Example Spreadsheet"
                         class="btn-secondary"
-                        invisible="not guide_spreadsheet_id"
+                        invisible="not guide_spreadsheet_id or not is_available"
                     />
                 </header>
                 <sheet>
+                    <div
+                        class="alert alert-warning"
+                        role="alert"
+                        invisible="is_available"
+                    >
+                        The Related Module is not installed, so this tutorial's tour and example are disabled. Install the module from the Apps menu to use them.
+                    </div>
                     <div class="oe_title">
                         <h1>
-                            <field name="name" />
+                            <field
+                                name="name"
+                                placeholder="e.g. Quick Start - create your first spreadsheet"
+                            />
                         </h1>
                     </div>
                     <group>
                         <group>
-                            <field name="module_name" />
+                            <field
+                                name="module_name"
+                                placeholder="e.g. spreadsheet_template_oca"
+                            />
+                            <field name="is_available" />
                             <field name="difficulty" />
                             <field name="duration_minutes" />
-                            <field name="tags" />
+                            <field name="tags" placeholder="e.g. formula,forecast" />
                         </group>
                         <group>
-                            <field name="tour_name" />
+                            <field
+                                name="tour_name"
+                                placeholder="e.g. spreadsheet_quick_start"
+                            />
                             <field name="guide_spreadsheet_id" />
-                            <field name="video_url" widget="url" />
+                            <field
+                                name="video_url"
+                                widget="url"
+                                placeholder="e.g. https://www.youtube.com/watch?v=..."
+                            />
                             <field name="sequence" />
                         </group>
                     </group>
-                    <group string="Aciklama">
+                    <group string="Description">
                         <field name="description" nolabel="1" />
                     </group>
                     <div
@@ -199,8 +244,7 @@
                         role="alert"
                         invisible="not video_url"
                     >
-                        <strong
-                        >📺 Video linkine tiklamak icin yukaridaki URL alanini kullanin.</strong>
+                        📺 Use the Video URL field above to open the video.
                     </div>
                 </sheet>
             </form>
@@ -211,13 +255,13 @@
         <field name="name">🎓 Tutorials &amp; Videos</field>
         <field name="res_model">spreadsheet.tutorial</field>
         <field name="view_mode">kanban,list,form</field>
+        <field name="context">{'search_default_available': 1}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                Tutorial yok
+                No tutorial available yet
             </p>
             <p>
-                Interactive tour, video ve ornek spreadsheet'ler burada listelenir.
-                Her tutorial icin bir web_tour baslat veya ornek spreadsheet ac.
+                Interactive tours, videos and example spreadsheets are listed here. Remove the "Available" filter to also see tutorials for modules that are not installed.
             </p>
         </field>
     </record>

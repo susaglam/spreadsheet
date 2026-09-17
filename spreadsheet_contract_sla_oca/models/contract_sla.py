@@ -6,6 +6,7 @@ import logging
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -22,7 +23,11 @@ class SpreadsheetContract(models.Model):
         help="Human-readable label for this contract. "
         "Example: 'Acme Cloud Hosting 2026'.",
     )
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(
+        default=True,
+        help="Archived contracts (unchecked) are hidden from the default lists "
+        "and the daily expiry check no longer sends reminders for them.",
+    )
     partner_id = fields.Many2one(
         "res.partner",
         string="Partner",
@@ -75,6 +80,9 @@ class SpreadsheetContract(models.Model):
     currency_id = fields.Many2one(
         "res.currency",
         default=lambda self: self.env.company.currency_id,
+        help="Currency the Contract Value is expressed in. Defaults to your "
+        "company currency; pick another one for a contract signed in, for "
+        "example, USD.",
     )
     responsible_id = fields.Many2one(
         "res.users",
@@ -87,6 +95,8 @@ class SpreadsheetContract(models.Model):
     company_id = fields.Many2one(
         "res.company",
         default=lambda self: self.env.company,
+        help="Company this contract belongs to. Used to group and report "
+        "contracts per company in a multi-company database.",
     )
     state = fields.Selection(
         [
@@ -99,10 +109,17 @@ class SpreadsheetContract(models.Model):
         tracking=True,
         compute="_compute_state",
         store=True,
+        help="Calculated automatically from the dates, never set by hand. "
+        "Draft: the start date is still in the future. Active: running. "
+        "Expiring Soon: the end date is within the reminder window. Expired: "
+        "the end date has passed. The daily expiry check keeps it current.",
     )
     days_to_expiry = fields.Integer(
         compute="_compute_days_to_expiry",
         store=True,
+        help="Number of days from today until the End Date; negative once the "
+        "contract has expired. Example: 12 means the contract ends in 12 days. "
+        "Refreshed every day by the expiry check.",
     )
     last_reminder_date = fields.Date(
         string="Last Reminder Sent",
@@ -111,14 +128,36 @@ class SpreadsheetContract(models.Model):
         help="Date the most recent renewal reminder was sent. Prevents the "
         "cron from re-sending the same reminder every day.",
     )
-    notes = fields.Html()
+    notes = fields.Html(
+        help="Free-form internal notes, e.g. negotiated terms, the renewal "
+        "contact person or where the signed PDF is stored.",
+    )
 
     # SLA fields
     sla_ids = fields.One2many(
         "spreadsheet.contract.sla",
         "contract_id",
         string="SLA Metrics",
+        help="Service levels promised in this contract, each with a target and "
+        "the measured result. Example: 'Uptime' with a target of 99.9 %.",
     )
+
+    @api.constrains("date_start", "date_end")
+    def _check_dates(self):
+        for rec in self:
+            if rec.date_start and rec.date_end and rec.date_end < rec.date_start:
+                raise ValidationError(
+                    self.env._(
+                        "Contract '%(name)s' ends on %(end)s, which is before its "
+                        "start date %(start)s. A contract cannot end before it "
+                        "begins: its status, days-to-expiry countdown and renewal "
+                        "reminders would all be wrong. Set the End Date on or "
+                        "after the Start Date.",
+                        name=rec.name,
+                        end=rec.date_end,
+                        start=rec.date_start,
+                    )
+                )
 
     @api.depends("date_end")
     def _compute_days_to_expiry(self):
@@ -170,6 +209,9 @@ class SpreadsheetContract(models.Model):
         # still flip state. Then narrow to the not-yet-expired reminder subset.
         all_contracts = self.search([("active", "=", True)])
         all_contracts.modified(["date_end"])
+        # Recompute + write now, outside the per-contract savepoints below, so
+        # a failure there is not blamed on (or rolled back with) one contract.
+        self.env.flush_all()
         contracts = all_contracts.filtered(lambda c: c.date_end and c.date_end >= today)
 
         template = self.env.ref(
@@ -196,34 +238,78 @@ class SpreadsheetContract(models.Model):
                 and contract.last_reminder_date >= window_start
             ):
                 continue
+            # One savepoint per contract: a database error on one record (e.g.
+            # a constraint violation) would otherwise abort the whole
+            # transaction, so every later contract in the batch would fail too.
             try:
-                # Schedule activity for responsible user
-                contract.activity_schedule(
-                    "mail.mail_activity_data_todo",
-                    user_id=contract.responsible_id.id,
-                    summary=self.env._(
-                        "Contract '%(name)s' expires in %(days)s days",
-                        name=contract.name,
-                        days=days_left,
-                    ),
-                    date_deadline=contract.date_end,
-                )
-                # Stamp before sending so a mail-queue error cannot cause the
-                # activity to be re-scheduled (duplicated) on the next run.
-                contract.last_reminder_date = today
-
-                # Send email through the outgoing queue (non-blocking)
-                if template:
-                    template.send_mail(contract.id, force_send=False)
-
-                _logger.info(
-                    "Contract expiry reminder sent: %s (expires %s)",
-                    contract.name,
-                    contract.date_end,
-                )
+                with self.env.cr.savepoint():
+                    contract.activity_schedule(
+                        "mail.mail_activity_data_todo",
+                        user_id=contract.responsible_id.id,
+                        summary=self.env._(
+                            "Contract '%(name)s' expires in %(days)s days",
+                            name=contract.name,
+                            days=days_left,
+                        ),
+                        date_deadline=contract.date_end,
+                    )
+                    contract.last_reminder_date = today
             except Exception:
-                _logger.exception("Contract reminder failed for %s", contract.name)
+                _logger.exception(
+                    "Contract expiry reminder skipped for %s (id %s): the "
+                    "activity could not be scheduled. It is retried on the next "
+                    "run.",
+                    contract.name,
+                    contract.id,
+                )
                 continue
+
+            # The email is a secondary channel: the activity above is already
+            # stamped, so a mail problem is logged and never undoes it.
+            contract._send_expiry_reminder_email(template)
+
+    def _send_expiry_reminder_email(self, template):
+        """Queue the expiry reminder email for the responsible user.
+
+        Soft-fails: a missing template, a responsible user without an email
+        address or a rendering error is logged and skipped. Returns True when
+        the email was queued.
+        """
+        self.ensure_one()
+        if not template:
+            _logger.warning(
+                "Contract expiry email not sent for %s: the mail template "
+                "'spreadsheet_contract_sla_oca.contract_expiry_email_template' "
+                "is missing. Upgrade the module to restore it.",
+                self.name,
+            )
+            return False
+        if not self.responsible_id.partner_id.email:
+            _logger.info(
+                "Contract expiry email not sent for %s: the responsible user "
+                "has no email address. The reminder activity was still "
+                "scheduled; add an email on the user to also get the email.",
+                self.name,
+            )
+            return False
+        try:
+            with self.env.cr.savepoint():
+                # Outgoing queue (non-blocking); delivery errors surface there.
+                template.send_mail(self.id, force_send=False)
+        except Exception:
+            _logger.exception(
+                "Contract expiry email could not be queued for %s (id %s); the "
+                "reminder activity was kept.",
+                self.name,
+                self.id,
+            )
+            return False
+        _logger.info(
+            "Contract expiry reminder queued: %s (expires %s)",
+            self.name,
+            self.date_end,
+        )
+        return True
 
 
 class SpreadsheetContractSla(models.Model):
@@ -231,11 +317,18 @@ class SpreadsheetContractSla(models.Model):
     _description = "Contract SLA Metric"
     _order = "contract_id, name"
 
-    name = fields.Char(required=True, string="SLA Metric")
+    name = fields.Char(
+        required=True,
+        string="SLA Metric",
+        help="What is being measured, as agreed in the contract. Examples: "
+        "'Uptime', 'First response time', 'Resolution time'.",
+    )
     contract_id = fields.Many2one(
         "spreadsheet.contract",
         required=True,
         ondelete="cascade",
+        help="Contract this service level belongs to. Deleting the contract "
+        "also deletes its SLA metrics.",
     )
     target_value = fields.Float(
         string="Target",
@@ -258,6 +351,9 @@ class SpreadsheetContractSla(models.Model):
         ],
         compute="_compute_compliance",
         store=True,
+        help="Calculated automatically. Pending: no Actual value measured yet. "
+        "Met: Actual is at or above Target. Breached: Actual is below Target. "
+        "Example: Target 99.9 and Actual 99.5 gives Breached.",
     )
     last_updated = fields.Datetime(
         string="Last Measured",

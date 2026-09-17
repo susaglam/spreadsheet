@@ -1,65 +1,46 @@
 # Copyright 2026 Codesnap
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-import re
+import logging
 
 from odoo import models
+
+_logger = logging.getLogger(__name__)
+
+SPREADSHEET_CHANNEL_PREFIX = "spreadsheet_oca;"
 
 
 class IrWebsocket(models.AbstractModel):
     _inherit = "ir.websocket"
 
     def _build_bus_channel_list(self, channels):
-        """Allow portal users to subscribe to spreadsheet bus channels
-        for dashboards that have been explicitly assigned to them via
-        spreadsheet.portal.dashboard.
+        """Never subscribe non-internal users to spreadsheet edition channels.
+
+        The spreadsheet_oca channel of a dashboard broadcasts every
+        collaborative revision: raw cell formulas, pivot/list definitions with
+        their models and domains, Data sheet edits and CLIENT_* messages with
+        internal user details. The portal preview does not listen to the bus
+        at all (it renders a sanitized snapshot and is refreshed by reloading
+        the page), so portal users have no reason to receive any of it.
+
+        Earlier versions of this module granted that channel to portal users
+        with an assignment; that grant is gone. The channel is dropped
+        silently instead of raising AccessDenied, because raising would abort
+        the WHOLE bus subscription of the session (chat, notifications), not
+        just this channel.
         """
-        # Only PORTAL users get the relaxed dashboard subscription. Public
-        # users (also non-internal) must NOT — they fall through to the parent,
-        # which correctly denies them. Internal users use the normal path too.
-        if self.env.uid and self.env.user._is_portal():
-            partner = self.env.user.partner_id
-            new_channels = []
+        if self.env.uid and not self.env.user._is_internal():
+            kept = []
             for channel in channels:
-                match = (
-                    re.match(r"spreadsheet_oca;(\w+(?:\.\w+)*);(\d+)", channel)
-                    if isinstance(channel, str)
-                    else None
-                )
-                if not match:
-                    # Non-spreadsheet_oca channels pass through untouched.
-                    new_channels.append(channel)
-                    continue
-
-                # Drop the raw spreadsheet_oca string entirely so the parent
-                # override never sees it and never raises AccessDenied. For an
-                # accessible dashboard we substitute a resolved bus tuple; for
-                # anything else the channel is silently removed.
-                model_name = match[1]
-                res_id = int(match[2])
-                if model_name != "spreadsheet.dashboard":
-                    continue
-
-                portal_dash = (
-                    self.env["spreadsheet.portal.dashboard"]
-                    .sudo()
-                    .search(
-                        [
-                            ("dashboard_id", "=", res_id),
-                            ("active", "=", True),
-                        ],
-                        limit=1,
+                if isinstance(channel, str) and channel.startswith(
+                    SPREADSHEET_CHANNEL_PREFIX
+                ):
+                    _logger.debug(
+                        "Ignoring spreadsheet bus channel %r for non-internal user %s",
+                        channel,
+                        self.env.uid,
                     )
-                )
-                if portal_dash and portal_dash._is_accessible_by_partner(partner):
-                    new_channels.append(
-                        (
-                            self.env.registry.db_name,
-                            model_name,
-                            res_id,
-                            "spreadsheet_oca",
-                        )
-                    )
-            return super()._build_bus_channel_list(new_channels)
-
+                    continue
+                kept.append(channel)
+            channels = kept
         return super()._build_bus_channel_list(channels)
