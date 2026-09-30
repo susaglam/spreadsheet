@@ -6,3 +6,4 @@ from . import test_tutorial_actions
 from . import test_help_availability
 from . import test_guide_content
 from . import test_quick_start_tour
+from . import test_editor_tours

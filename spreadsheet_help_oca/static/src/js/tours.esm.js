@@ -180,6 +180,14 @@ const TOURS = {
                 tooltipPosition: "top",
                 run: "click",
             },
+            {
+                // Automatic runs only (a manual tour ends with the click above):
+                // wait until the wizard has saved and closed. Ending the tour
+                // on the click leaves the wizard form dirty, which the test
+                // runner rejects (odoo/tests/common.py, "dirty form view").
+                trigger: `body:not(:has(.modal)) ${EDITOR} .o-grid-overlay`,
+                isActive: ["auto"],
+            },
         ],
     },
 
