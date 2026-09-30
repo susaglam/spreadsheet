@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Codesnap
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <!-- Tutorial records: pre-seeded, user can add video URLs and screenshots later.
+         Cards whose Related Module is not installed are shown as unavailable
+         (spreadsheet.tutorial.is_available). Wording changes on existing
+         databases are applied by migrations/saas~19.4.1.0.2.
+         NEW records need no migration: noupdate only protects records whose
+         xmlid already exists, so `-u` creates a card an older database lacks
+         (odoo/tools/convert.py _tag_record; test_update_creates_missing_cards). -->
+
+    <record id="tutorial_quick_start" model="spreadsheet.tutorial">
+        <field name="name">🚀 Quick Start — Create your first spreadsheet</field>
+        <field name="sequence">10</field>
+        <field
+            name="description"
+        >All the basics of the Spreadsheets app: create a new spreadsheet, enter data, save it, save it as a template and download it as PDF. Start right away with the interactive tour!</field>
+        <field name="module_name">spreadsheet_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">beginner</field>
+        <field name="tour_name">spreadsheet_quick_start</field>
+        <field name="tags">quickstart,beginner,template,pdf</field>
+    </record>
+
+    <record id="tutorial_template_save" model="spreadsheet.tutorial">
+        <field name="name">📋 Save a spreadsheet as a template</field>
+        <field name="sequence">20</field>
+        <field
+            name="description"
+        >Save a report layout you use often and recreate it in one click. Interactive tour of the 'File &gt; Save as Template' flow; it needs the Template Manager access right and a desktop-size screen.</field>
+        <field name="module_name">spreadsheet_template_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tour_name">spreadsheet_save_template</field>
+        <field name="tags">template,reuse</field>
+    </record>
+
+    <record id="tutorial_kpi_alert" model="spreadsheet.tutorial">
+        <field name="name">🔔 Set up a KPI alert</field>
+        <field name="sequence">30</field>
+        <field
+            name="description"
+        >Get notified when a cell crosses a threshold. Create an alert from the spreadsheet's 'Data &gt; KPI Alerts' menu, choose the operator and the notification recipients. The tour needs a desktop-size screen and ends by sending a test notification to your Discuss inbox.</field>
+        <field name="module_name">spreadsheet_kpi_alert_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tour_name">spreadsheet_kpi_alert</field>
+        <field name="tags">alert,kpi,notification,mail</field>
+    </record>
+
+    <record id="tutorial_public_share" model="spreadsheet.tutorial">
+        <field name="name">🔗 Share a spreadsheet with a public link</field>
+        <field name="sequence">40</field>
+        <field
+            name="description"
+        >Share a spreadsheet read-only with customers or external teams. Password protection, expiry date and download permission settings.</field>
+        <field name="module_name">spreadsheet_public_share_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">share,link,public,password</field>
+    </record>
+
+    <record id="tutorial_forecast" model="spreadsheet.tutorial">
+        <field name="name">📈 Forecasting functions</field>
+        <field name="sequence">50</field>
+        <field
+            name="description"
+        >Forecast future values from historical data with ODOO.FORECAST, ODOO.TREND and ODOO.MOVING_AVG. Linear regression and moving average examples.</field>
+        <field name="module_name">spreadsheet_forecast_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">intermediate</field>
+        <field name="guide_spreadsheet_id" ref="spreadsheet_help_oca.guide_forecast" />
+        <field name="tags">formula,forecast,trend,moving_avg</field>
+    </record>
+
+    <record id="tutorial_period_comparison" model="spreadsheet.tutorial">
+        <field name="name">📊 Period comparison</field>
+        <field name="sequence">60</field>
+        <field
+            name="description"
+        >This month vs last month, YoY (year-over-year) and a visual percentage change with GROWTH_ARROW. Essential functions for dashboards.</field>
+        <field name="module_name">spreadsheet_period_comparison_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">beginner</field>
+        <field name="guide_spreadsheet_id" ref="spreadsheet_help_oca.guide_period" />
+        <field name="tags">formula,comparison,yoy,growth</field>
+    </record>
+
+    <record id="tutorial_contract" model="spreadsheet.tutorial">
+        <field name="name">📝 Contract and SLA tracking</field>
+        <field name="sequence">70</field>
+        <field
+            name="description"
+        >Track yearly contracts, record SLA metrics (uptime, response time) and create automatic emails and activities for upcoming end dates.</field>
+        <field name="module_name">spreadsheet_contract_sla_oca</field>
+        <field name="duration_minutes">6</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">contract,sla,renewal,calendar</field>
+    </record>
+
+    <record id="tutorial_version_history" model="spreadsheet.tutorial">
+        <field name="name">📸 Version backups and rollback</field>
+        <field name="sequence">80</field>
+        <field
+            name="description"
+        >Periodic snapshots of a spreadsheet: the 'New Snapshot' button, a visual cell-level diff between versions and rollback.</field>
+        <field name="module_name">spreadsheet_version_history_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">version,snapshot,history,rollback</field>
+    </record>
+
+    <record id="tutorial_api" model="spreadsheet.tutorial">
+        <field name="name">🔑 Integrate with the REST API</field>
+        <field name="sequence">90</field>
+        <field
+            name="description"
+        >Access spreadsheet data from external systems (Power BI, Google Sheets, webhooks). Bearer token, rate limit, webhook delivery log.</field>
+        <field name="module_name">spreadsheet_api_oca</field>
+        <field name="duration_minutes">7</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">api,rest,integration,webhook,token</field>
+    </record>
+
+    <record id="tutorial_portal" model="spreadsheet.tutorial">
+        <field name="name">👥 Dealer dashboards through the portal</field>
+        <field name="sequence">100</field>
+        <field
+            name="description"
+        >Let portal users (dealers/distributors) see a read-only dashboard of their own data. A record rule filter shows each dealer only their own orders.</field>
+        <field name="module_name">spreadsheet_portal_dashboard_oca</field>
+        <field name="duration_minutes">6</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">portal,dealer,dashboard,record_rule</field>
+    </record>
+
+    <record id="tutorial_consolidation" model="spreadsheet.tutorial">
+        <field name="name">🏢 Multi-company consolidation</field>
+        <field name="sequence">110</field>
+        <field
+            name="description"
+        >Combine the balance sheets of several companies into one consolidated report. Currency conversion, inter-company elimination.</field>
+        <field name="module_name">spreadsheet_multicompany_oca</field>
+        <field name="duration_minutes">8</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">consolidation,multicompany,accounting</field>
+    </record>
+
+    <record id="tutorial_email_report" model="spreadsheet.tutorial">
+        <field name="name">📧 Scheduled email reports</field>
+        <field name="sequence">120</field>
+        <field
+            name="description"
+        >Email weekly or monthly reports to your team automatically, attached as spreadsheet data (JSON) that opens in the Spreadsheets app. Mail template, scheduled (cron) delivery and a Send Now button.</field>
+        <field name="module_name">spreadsheet_email_report_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">email,scheduled,cron,report</field>
+    </record>
+
+    <!-- 2026-07-05: scenario records for the remaining 14 custom modules, so
+         the "why does this module exist" answer stays in the Help menu. -->
+    <record id="tutorial_dashboard_sale" model="spreadsheet.tutorial">
+        <field name="name">📈 Sales analysis dashboard</field>
+        <field name="sequence">130</field>
+        <field
+            name="description"
+        >See sales team performance at a glance: Revenue, Orders, Units Sold, Average Order Value (compared with the previous period), the monthly revenue trend and the latest orders. Salesperson and product category filters. Appears automatically under Dashboards > Sales.</field>
+        <field name="module_name">spreadsheet_dashboard_sale_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,sales,revenue,kpi</field>
+    </record>
+
+    <record id="tutorial_dashboard_crm" model="spreadsheet.tutorial">
+        <field name="name">📊 CRM pipeline dashboard</field>
+        <field name="sequence">140</field>
+        <field
+            name="description"
+        >Open opportunities, expected and prorated revenue and won deals, with salesperson and sales team filters. Lets the sales manager follow the quarterly pipeline. Dashboards > Sales.</field>
+        <field name="module_name">spreadsheet_dashboard_crm_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,crm,pipeline</field>
+    </record>
+
+    <record id="tutorial_dashboard_purchase" model="spreadsheet.tutorial">
+        <field name="name">🤝 Vendor purchases dashboard</field>
+        <field name="sequence">145</field>
+        <field
+            name="description"
+        >See where your purchase budget goes: amount purchased, orders, order lines, quantity ordered and days to receive, each compared with the previous period, plus top vendors, orders, products and buyers and sourcing by country, with period, country, vendor and buyer filters. Use it for vendor reviews and before price negotiations. Example: set the Vendor filter to your main supplier to see how much you bought from them in the last 90 days. Dashboards > Purchases, for Purchase administrators.</field>
+        <field name="module_name">spreadsheet_dashboard_purchase_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,purchase,vendor</field>
+    </record>
+
+    <record id="tutorial_dashboard_purchase_stock" model="spreadsheet.tutorial">
+        <field name="name">🚚 Purchase receipts dashboard</field>
+        <field name="sequence">147</field>
+        <field
+            name="description"
+        >Check how reliably vendors deliver: the supplier service level (quantity received versus ordered) and the on-time delivery rate compared with the previous period, the on-time percentage per vendor and the receipts that are running late. Use it to chase late goods before they hold up sales or production. Example: filter on one product category to see which vendor is late most often, then open Late Receipts to follow up. Dashboards > Purchases, for Inventory administrators; needs the Purchase and Inventory apps.</field>
+        <field name="module_name">spreadsheet_dashboard_purchase_stock_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,purchase,receipt,delivery,vendor</field>
+    </record>
+
+    <record id="tutorial_dashboard_stock" model="spreadsheet.tutorial">
+        <field name="name">📦 Stock / inventory dashboard</field>
+        <field name="sequence">150</field>
+        <field
+            name="description"
+        >Stock moves: completed transfers, quantity moved, average lead time, the monthly movement trend and the latest transfers, with warehouse and product category filters. Dashboards > Logistics.</field>
+        <field name="module_name">spreadsheet_dashboard_stock_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,stock,inventory,warehouse</field>
+    </record>
+
+    <record id="tutorial_dashboard_ecommerce" model="spreadsheet.tutorial">
+        <field name="name">🛒 eCommerce dashboard</field>
+        <field name="sequence">160</field>
+        <field
+            name="description"
+        >Web shop (website) sales KPIs: revenue, number of orders, average basket and customers, compared with the previous period, plus the daily revenue trend. NOTE: only website orders are shown; dealer and wholesale orders are excluded.</field>
+        <field name="module_name">spreadsheet_dashboard_ecommerce_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,ecommerce,website</field>
+    </record>
+
+    <record id="tutorial_dashboard_hr" model="spreadsheet.tutorial">
+        <field name="name">👤 Human Resources dashboard</field>
+        <field name="sequence">170</field>
+        <field
+            name="description"
+        >Total employees, new hires, distribution by department and job position and an employee directory, with period, department and company filters. Only meaningful when the Odoo Employees app is used. Dashboards > HR.</field>
+        <field name="module_name">spreadsheet_dashboard_hr_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,hr,employee</field>
+    </record>
+
+    <record id="tutorial_quote_conversion" model="spreadsheet.tutorial">
+        <field name="name">🎯 Quotation → order conversion dashboard</field>
+        <field name="sequence">180</field>
+        <field
+            name="description"
+        >See how many quotations turned into orders and the conversion percentage. A dealer-sales indicator to follow the sales funnel and the quotation success rate.</field>
+        <field name="module_name">spreadsheet_quote_conversion_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">dashboard,quote,conversion,funnel</field>
+    </record>
+
+    <record id="tutorial_vendor_scorecard" model="spreadsheet.tutorial">
+        <field name="name">🏭 Vendor performance scorecard</field>
+        <field name="sequence">190</field>
+        <field
+            name="description"
+        >Score and compare vendors on delivery, quality and price metrics, to see which vendors perform well in a wholesale or dealer supply chain.</field>
+        <field name="module_name">spreadsheet_vendor_scorecard_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">vendor,supplier,scorecard,purchase</field>
+    </record>
+
+    <record id="tutorial_stock_sales_correlation" model="spreadsheet.tutorial">
+        <field name="name">🔗 Stock - sales correlation</field>
+        <field name="sequence">200</field>
+        <field
+            name="description"
+        >Put stock levels next to sales velocity to see which products are overstocked or understocked — for reorder decisions.</field>
+        <field name="module_name">spreadsheet_stock_sales_correlation_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">stock,sales,correlation,reorder</field>
+    </record>
+
+    <record id="tutorial_customer_segmentation" model="spreadsheet.tutorial">
+        <field name="name">🧩 Customer segmentation</field>
+        <field name="sequence">210</field>
+        <field
+            name="description"
+        >Customer overview: total customers, companies and individual buyers, new customers compared with the previous period, a monthly new-customer trend and a top customers list, with a period filter. NOTE: a real RFM/CLV segmentation is not available yet.</field>
+        <field name="module_name">spreadsheet_customer_segmentation_oca</field>
+        <field name="duration_minutes">4</field>
+        <field name="difficulty">intermediate</field>
+        <field name="tags">dashboard,customer,segmentation</field>
+    </record>
+
+    <record id="tutorial_campaign_roi" model="spreadsheet.tutorial">
+        <field name="name">📣 Email campaign performance</field>
+        <field name="sequence">220</field>
+        <field
+            name="description"
+        >Sent, delivered, opened and clicked counts of completed email campaigns and the monthly delivery trend. NOTE: despite the 'ROI' name there is no real revenue or coupon attribution yet — it only measures email engagement.</field>
+        <field name="module_name">spreadsheet_campaign_roi_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,marketing,campaign,mailing</field>
+    </record>
+
+    <record id="tutorial_loyalty_dashboard" model="spreadsheet.tutorial">
+        <field name="name">🎁 Loyalty program dashboard</field>
+        <field name="sequence">230</field>
+        <field
+            name="description"
+        >Loyalty program analysis: points, coupon and member metrics. Only meaningful when the Odoo Loyalty app is actively used.</field>
+        <field name="module_name">spreadsheet_loyalty_dashboard_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">dashboard,loyalty</field>
+    </record>
+
+    <record id="tutorial_pdf_report" model="spreadsheet.tutorial">
+        <field name="name">📄 Professional PDF export</field>
+        <field name="sequence">240</field>
+        <field
+            name="description"
+        >Export a spreadsheet as a professional PDF with your company logo — for customer or management presentations.</field>
+        <field name="module_name">spreadsheet_pdf_report_oca</field>
+        <field name="duration_minutes">3</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">pdf,export,report</field>
+    </record>
+
+    <record id="tutorial_record_rule" model="spreadsheet.tutorial">
+        <field name="name">🔒 Per-user record rules for dashboards</field>
+        <field name="sequence">250</field>
+        <field
+            name="description"
+        >Apply per-user record rules to dashboard data so that every user only sees their own data. Especially useful for dealer isolation (each dealer sees only their own orders).</field>
+        <field name="module_name">spreadsheet_record_rule_oca</field>
+        <field name="duration_minutes">5</field>
+        <field name="difficulty">advanced</field>
+        <field name="tags">security,record_rule,dashboard,dealer</field>
+    </record>
+
+    <record id="tutorial_scheduled_refresh" model="spreadsheet.tutorial">
+        <field name="name">🔄 Scheduled data refresh</field>
+        <field name="sequence">260</field>
+        <field
+            name="description"
+        >Refresh dashboard data automatically by periodically bumping the spreadsheet revision (with a scheduled action), so the data is always up to date when opened.</field>
+        <field name="module_name">spreadsheet_scheduled_refresh_oca</field>
+        <field name="duration_minutes">2</field>
+        <field name="difficulty">beginner</field>
+        <field name="tags">refresh,cron,scheduled</field>
+    </record>
+</odoo>

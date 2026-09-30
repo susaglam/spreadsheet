@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_spreadsheet_tutorial_user,spreadsheet.tutorial.user,spreadsheet.tutorial,spreadsheet_oca.group_user,r,
+access_spreadsheet_tutorial_manager,spreadsheet.tutorial.manager,spreadsheet.tutorial,spreadsheet_oca.group_manager,crud,
+access_sample_data_loader,spreadsheet.sample.data.loader,spreadsheet.sample.data.loader,spreadsheet_oca.group_user,crud,
